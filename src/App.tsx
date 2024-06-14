@@ -1,6 +1,8 @@
 import { BrowserRouter, Route, Routes } from "react-router-dom";
 import { ConfigProvider } from "antd";
-import "./App.css";
+
+import "./index.css";
+import LandingPage from "./pages/landing";
 
 function App() {
   return (
@@ -13,7 +15,7 @@ function App() {
     >
       <BrowserRouter>
         <Routes>
-          <Route></Route>
+          <Route path="/" element={<LandingPage />} />
         </Routes>
       </BrowserRouter>
     </ConfigProvider>

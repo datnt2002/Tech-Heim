@@ -1,3 +1,9 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+@layer components {
+  .gradient {
+    @apply h-px overflow-hidden bg-gradient-to-r from-[#0C68F4]/30 via-[#0C68F4]/70 to-[#0C68F4]/30;
+  }
+}
