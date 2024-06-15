@@ -2,9 +2,9 @@ import { Button } from "antd";
 
 import logo from "../../../../public/assets/images/logo.svg";
 import menuIcon from "../../../../public/assets/icons/menu_icon.svg";
-import ActionBar from "../../atoms/actionBar";
+import ActionBar from "../actionBar";
 import Navbar from "../../atoms/navbar";
-import SearchBox from "../../atoms/searchBox";
+import SearchBox from "../searchBox";
 
 const Header = () => {
   return (
