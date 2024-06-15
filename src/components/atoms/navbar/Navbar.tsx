@@ -6,7 +6,7 @@ import { navBarItems } from "../../../constants";
 const Navbar = () => {
   const location = useLocation();
   return (
-    <div className="flex items-center justify-between my-6 py-2 gap-12 font-inter">
+    <div className="hidden md:flex items-center justify-between my-6 py-2 gap-12 font-inter">
       {navBarItems.map((item) => {
         return (
           <div>
