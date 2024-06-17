@@ -3,10 +3,15 @@ import { Button } from "antd";
 import { user } from "../../../constants/mock";
 import { cn } from "../../../utils/utils";
 import ProfileMenu from "../../atoms/dropdown";
+import { useState } from "react";
+import { AuthModal } from "../../organisms/modal";
 
 const ActionBar = () => {
   const { username } = user;
-
+  const [isOpen, setIsOpen] = useState(false);
+  const handleModalAuth = () => {
+    setIsOpen(true);
+  };
   return (
     <>
       <div className="flex items-center gap-2 my-5 py-2">
@@ -27,7 +32,11 @@ const ActionBar = () => {
           </>
         ) : (
           <>
-            <Button className="md:block hidden self-center" type="primary">
+            <Button
+              className="md:block hidden self-center"
+              type="primary"
+              onClick={handleModalAuth}
+            >
               Login / Sign Up
             </Button>
             <Button
@@ -40,6 +49,7 @@ const ActionBar = () => {
           </>
         )}
       </div>
+      {isOpen && <AuthModal open={isOpen} setOpen={setIsOpen} />}
     </>
   );
 };

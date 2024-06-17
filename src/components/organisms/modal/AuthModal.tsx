@@ -1,21 +1,26 @@
-import { useState } from "react";
-import { Button, Modal } from "antd";
+import { Modal } from "antd";
 
 import AuthTab from "../../molecules/tabs";
 
-const AuthModal = () => {
-  const [modalOpen, setModalOpen] = useState(false);
+type ModalProps = {
+  open: boolean;
+  setOpen: React.Dispatch<React.SetStateAction<boolean>>;
+};
+
+const AuthModal = ({ open, setOpen }: ModalProps) => {
   return (
     <>
-      <Button type="primary" onClick={() => setModalOpen(true)}>
-        Vertically centered modal dialog
-      </Button>
       <Modal
         className="max-w-[600px]"
-        title={<img src="/assets/images/logo_text.svg" className="mx-auto" />}
+        title={
+          <img
+            src="/assets/images/logo_text.svg"
+            className="mx-auto block md:hidden"
+          />
+        }
         centered
-        open={modalOpen}
-        onCancel={() => setModalOpen(false)}
+        open={open}
+        onCancel={() => setOpen(false)}
         footer={false}
       >
         <AuthTab />
