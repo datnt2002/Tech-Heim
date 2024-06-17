@@ -11,6 +11,7 @@ const AuthModal = () => {
         Vertically centered modal dialog
       </Button>
       <Modal
+        className="max-w-[600px]"
         title={<img src="/assets/images/logo_text.svg" className="mx-auto" />}
         centered
         open={modalOpen}
