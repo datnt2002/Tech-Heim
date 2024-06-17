@@ -7,3 +7,18 @@
     @apply h-px overflow-hidden bg-gradient-to-r from-[#0C68F4]/30 via-[#0C68F4]/70 to-[#0C68F4]/30;
   }
 }
+
+@layer base {
+  h1 {
+    @apply font-inter font-medium md:text-[44px];
+    @apply text-[24px];
+  }
+  h2 {
+    @apply font-inter font-medium md:text-[40px];
+    @apply text-[20px];
+  }
+  h3 {
+    @apply font-inter font-medium md:text-[32px];
+    @apply text-[16px];
+  }
+}
