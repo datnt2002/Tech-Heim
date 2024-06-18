@@ -5,6 +5,8 @@ import "./index.css";
 import MainLayout from "./layouts";
 import Banner from "./components/molecules/banner";
 import CategoryHomeList from "./components/molecules/categoryList";
+import { SaleSectionCard } from "./components/atoms/cards";
+import { ProductSale } from "./components/molecules/product";
 
 function App() {
   return (
@@ -23,6 +25,7 @@ function App() {
               <MainLayout>
                 <Banner />
                 <CategoryHomeList />
+                <ProductSale />
               </MainLayout>
             }
           />
