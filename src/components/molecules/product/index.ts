@@ -1,3 +1,3 @@
 import ProductSale from "./ProductSale";
-
-export { ProductSale };
+import NewProduct from "./ListProduct";
+export { ProductSale, NewProduct };
