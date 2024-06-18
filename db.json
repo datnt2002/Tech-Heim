@@ -1,0 +1,20 @@
+{
+  "products": [
+    {
+      "id": 1,
+      "title": "json-server",
+      "author": "typicode"
+    }
+  ],
+  "users": [
+    {
+      "id": 1,
+      "username": "datnt",
+      "name": "datnt1",
+      "password": 123456
+    }
+  ],
+  "profile": {
+    "name": "typicode"
+  }
+}
