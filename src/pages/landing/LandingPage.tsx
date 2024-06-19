@@ -14,6 +14,7 @@ import flower from "../../assets/images/logo/flower.png";
 import lenovo from "../../assets/images/logo/lenovo.png";
 import samsung from "../../assets/images/logo/samsung.png";
 import sony from "../../assets/images/logo/sony.png";
+import { BlogCard } from "../../components/atoms/cards";
 
 const LandingPage = () => {
   const products = newProduct;
@@ -40,6 +41,15 @@ const LandingPage = () => {
         </div>
       </HomeSection>
       <ThirdBanner />
+      <HomeSection sectionName="Our Blogs" viewAllButton>
+        <div className="flex gap-6">
+          <BlogCard className="h-[21.5rem]" />
+          <div className="flex flex-col flex-1 gap-6">
+            <BlogCard mode="horizontal" />
+            <BlogCard mode="horizontal" />
+          </div>
+        </div>
+      </HomeSection>
     </>
   );
 };
