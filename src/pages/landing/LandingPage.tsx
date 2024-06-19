@@ -15,6 +15,7 @@ import lenovo from "../../assets/images/logo/lenovo.png";
 import samsung from "../../assets/images/logo/samsung.png";
 import sony from "../../assets/images/logo/sony.png";
 import { BlogCard } from "../../components/atoms/cards";
+import Footer from "../../components/molecules/footer";
 
 const LandingPage = () => {
   const products = newProduct;
@@ -68,6 +69,7 @@ const LandingPage = () => {
           <p className="text-xl self-center">24/7 Support</p>
         </div>
       </section>
+      <Footer />
     </>
   );
 };
