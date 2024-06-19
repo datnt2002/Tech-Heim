@@ -50,6 +50,24 @@ const LandingPage = () => {
           </div>
         </div>
       </HomeSection>
+      <section className="flex mx-24 justify-between h-24 items-center mt-14">
+        <div className="flex gap-4">
+          <img src="/assets/icons/computer.svg" alt="" />
+          <p className="text-xl self-center">Latest and Greatest Tech</p>
+        </div>
+        <div className="flex gap-4">
+          <img src="/assets/icons/guard.svg" alt="" />
+          <p className="text-xl self-center">Guarantee</p>
+        </div>
+        <div className="flex gap-4">
+          <img src="/assets/icons/shipping.svg" alt="" />
+          <p className="text-xl self-center">Free Shipping over 1000$</p>
+        </div>
+        <div className="flex gap-4">
+          <img src="/assets/icons/time_support.svg" alt="" />
+          <p className="text-xl self-center">24/7 Support</p>
+        </div>
+      </section>
     </>
   );
 };
