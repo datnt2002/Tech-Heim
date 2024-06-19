@@ -1,6 +1,6 @@
 import mouse from "../assets/images/mouse.png";
 export const user = {
-  username: "user",
+  // username: "user",
 };
 
 export const newProduct: {

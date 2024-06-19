@@ -19,6 +19,7 @@ import Footer from "../../components/molecules/footer";
 
 const LandingPage = () => {
   const products = newProduct;
+
   return (
     <>
       <Banner />

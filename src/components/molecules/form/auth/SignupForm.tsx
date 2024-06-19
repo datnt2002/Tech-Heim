@@ -1,29 +1,33 @@
 import type { FormProps } from "antd";
 import { Button, Checkbox, Form, Input } from "antd";
+import { useDispatch } from "react-redux";
+import { SignUpThunk } from "../../../../redux/thunk/authThunk";
+import { signUp } from "../../../../services/auth.service";
 
 type FieldType = {
-  fullName?: string;
-  username?: string;
-  password?: string;
-  agree?: string;
+  fullName: string;
+  email: string;
+  password: string;
+  agree: boolean;
 };
 
-const onFinish: FormProps<FieldType>["onFinish"] = (values) => {
-  console.log("Success:", values);
-};
-
-const onFinishFailed: FormProps<FieldType>["onFinishFailed"] = (errorInfo) => {
-  console.log("Failed:", errorInfo);
-};
 const SignupForm = () => {
+  const dispatch = useDispatch();
+
+  const onFinish: FormProps<FieldType>["onFinish"] = (values) => {
+    console.log("Success:", values);
+    if (values.agree) {
+      signUp({
+        email: values.email,
+        fullName: values.fullName,
+        password: values.password,
+      });
+    }
+  };
   return (
     <>
       <h2 className="mt-4 text-center mb-5">Create your account</h2>
-      <Form
-        initialValues={{}}
-        onFinish={onFinish}
-        onFinishFailed={onFinishFailed}
-      >
+      <Form initialValues={{}} onFinish={onFinish}>
         <Form.Item<FieldType>
           name="fullName"
           rules={[{ required: true, message: "Please input your username!" }]}
@@ -37,8 +41,8 @@ const SignupForm = () => {
           />
         </Form.Item>
         <Form.Item<FieldType>
-          name="username"
-          rules={[{ required: true, message: "Please input your username!" }]}
+          name="email"
+          rules={[{ required: true, message: "Please input your email!" }]}
         >
           <Input
             size="large"
