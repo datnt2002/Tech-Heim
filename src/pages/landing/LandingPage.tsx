@@ -1,4 +1,4 @@
-import Banner from "../../components/molecules/banner";
+import Banner, { SecondBanner } from "../../components/molecules/banner";
 import CategoryHomeList from "../../components/molecules/categoryList";
 import { ProductSale } from "../../components/molecules/product";
 import ListProduct from "../../components/molecules/product/ListProduct";
@@ -15,6 +15,7 @@ const LandingPage = () => {
       <HomeSection sectionName="New Products" viewAllButton>
         <ListProduct productList={products} />
       </HomeSection>
+      <SecondBanner />
       <HomeSection sectionName="Best Sellers" viewAllButton>
         <ListProduct productList={products} />
       </HomeSection>
