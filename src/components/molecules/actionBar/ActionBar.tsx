@@ -4,23 +4,33 @@ import { user } from "../../../constants/mock";
 import { cn } from "../../../utils/utils";
 import ProfileMenu from "../../atoms/dropdown";
 import { useState } from "react";
-import { AuthModal } from "../../organisms/modal";
+import { AuthModal, SearchModal } from "../../organisms/modal";
 
 const ActionBar = () => {
   const { username } = user;
-  const [isOpen, setIsOpen] = useState(false);
+  const [isModalAuthOpen, setIsModalAuthOpen] = useState(false);
   const handleModalAuth = () => {
-    setIsOpen(true);
+    setIsModalAuthOpen(true);
+  };
+  const [isSearchModalOpen, setIsSearchModalOpen] = useState(false);
+  const handleModalSearch = () => {
+    setIsSearchModalOpen(true);
   };
   return (
     <>
       <div className="flex items-center gap-2 my-5 py-2">
-        <img
-          className="hidden md:block md:p-2"
-          src="/assets/icons/search_icon.svg"
-          alt="search_icon"
-        />
-
+        <Button
+          className="border-none shadow-none"
+          onClick={handleModalSearch}
+          type="text"
+          icon={
+            <img
+              className="hidden md:block"
+              src="/assets/icons/search_icon.svg"
+              alt="search_icon"
+            />
+          }
+        ></Button>
         <img
           className={cn("md:p-2 md:block", !username && "hidden")}
           src="/assets/icons/bag_icon.svg"
@@ -49,7 +59,15 @@ const ActionBar = () => {
           </>
         )}
       </div>
-      {isOpen && <AuthModal open={isOpen} setOpen={setIsOpen} />}
+      {isModalAuthOpen && (
+        <AuthModal open={isModalAuthOpen} setOpen={setIsModalAuthOpen} />
+      )}
+      {isSearchModalOpen && (
+        <SearchModal
+          isOpen={isSearchModalOpen}
+          setIsOpen={setIsSearchModalOpen}
+        />
+      )}
     </>
   );
 };
