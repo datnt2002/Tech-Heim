@@ -1,4 +1,4 @@
-import CategoryCard from "./CategoryCard";
+import ImgAndNameCard from "./ImgAndNameCard";
 import SaleSectionCard from "./SaleSectionCard";
 import BlogCard from "./blogCard/BlogCard";
-export { CategoryCard, SaleSectionCard, BlogCard };
+export { ImgAndNameCard, SaleSectionCard, BlogCard };
