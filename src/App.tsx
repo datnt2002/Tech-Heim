@@ -4,6 +4,7 @@ import { ConfigProvider } from "antd";
 import "./index.css";
 import MainLayout from "./layouts";
 import LandingPage from "./pages/landing";
+import CartItem from "./components/atoms/cartItem";
 
 function App() {
   return (
