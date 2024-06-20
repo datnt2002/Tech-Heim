@@ -1,8 +1,7 @@
 import { Button } from "antd";
 
 import { user } from "../../../constants/mock";
-import { cn } from "../../../utils/utils";
-import ProfileMenu from "../../atoms/dropdown";
+import ProfileMenu, { CartDropdown } from "../../atoms/dropdown";
 import { useState } from "react";
 import { AuthModal, SearchModal } from "../../organisms/modal";
 
@@ -31,11 +30,8 @@ const ActionBar = () => {
             />
           }
         ></Button>
-        <img
-          className={cn("md:p-2 md:block", !username && "hidden")}
-          src="/assets/icons/bag_icon.svg"
-          alt="bag_icon"
-        />
+
+        <CartDropdown />
         {username ? (
           <>
             <ProfileMenu />
