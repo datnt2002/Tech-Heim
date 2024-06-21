@@ -17,11 +17,13 @@ const SignupForm = () => {
   const onFinish: FormProps<FieldType>["onFinish"] = (values) => {
     console.log("Success:", values);
     if (values.agree) {
-      signUp({
-        email: values.email,
-        fullName: values.fullName,
-        password: values.password,
-      });
+      dispatch(
+        SignUpThunk({
+          email: values.email,
+          fullName: values.fullName,
+          password: values.password,
+        })
+      );
     }
   };
   return (

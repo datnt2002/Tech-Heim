@@ -3,7 +3,6 @@ import { Button } from "antd";
 import ActionBar from "../actionBar";
 import Navbar from "../../atoms/navbar";
 import SearchBox from "../searchBox";
-import { SearchModal } from "../../organisms/modal";
 
 const Header = () => {
   return (

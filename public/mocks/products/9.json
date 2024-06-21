@@ -1,0 +1,10 @@
+{
+  "id": "9",
+  "type": "sale",
+  "name": "Canon EOS M50",
+  "oldPrice": 649,
+  "newPrice": 579,
+  "sale": 70,
+  "url": "/assets/icons/camera.png",
+  "rating": 4.5
+}

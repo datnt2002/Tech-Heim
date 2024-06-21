@@ -1,0 +1,9 @@
+{
+  "id": "4",
+  "type": "cart",
+  "name": "Samsung Galaxy S21",
+  "oldPrice": 799,
+  "newPrice": 699,
+  "url": "/assets/icons/phone.png",
+  "rating": 4.6
+}

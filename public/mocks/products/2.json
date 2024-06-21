@@ -1,0 +1,9 @@
+{
+  "id": "2",
+  "type": "default",
+  "name": "Apple MacBook Pro 13",
+  "oldPrice": 1299,
+  "newPrice": 1199,
+  "url": "/assets/icons/macbook.png",
+  "rating": 4.8
+}
