@@ -1,0 +1,10 @@
+{
+  "id": "5",
+  "type": "sale",
+  "name": "Dell XPS 13",
+  "oldPrice": 999,
+  "newPrice": 899,
+  "sale": 100,
+  "url": "/assets/icons/laptop.png",
+  "rating": 4.4
+}

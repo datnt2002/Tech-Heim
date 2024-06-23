@@ -4,7 +4,7 @@ import AuthTab from "../../molecules/tabs";
 
 type ModalProps = {
   open: boolean;
-  setOpen: React.Dispatch<React.SetStateAction<boolean>>;
+  setOpen: (isOpen: boolean) => void;
 };
 
 const AuthModal = ({ open, setOpen }: ModalProps) => {

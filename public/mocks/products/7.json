@@ -1,0 +1,9 @@
+{
+  "id": "7",
+  "type": "favorite",
+  "name": "Nintendo Switch",
+  "oldPrice": 299,
+  "newPrice": 279,
+  "url": "/assets/icons/switch.png",
+  "rating": 4.9
+}

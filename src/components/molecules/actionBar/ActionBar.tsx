@@ -1,26 +1,42 @@
+import { useDispatch, useSelector } from "react-redux";
 import { Button } from "antd";
 
+import { AppDispatch, RootState } from "../../../redux/store";
+import { setModalState } from "../../../redux/slice/modalSlice";
 import { user } from "../../../constants/mock";
 import ProfileMenu, { CartDropdown } from "../../atoms/dropdown";
-import { useState } from "react";
 import { AuthModal, SearchModal } from "../../organisms/modal";
 
 const ActionBar = () => {
   const { username } = user;
-  const [isModalAuthOpen, setIsModalAuthOpen] = useState(false);
-  const handleModalAuth = () => {
-    setIsModalAuthOpen(true);
+
+  const { authModal, searchModal } = useSelector(
+    (state: RootState) => state.appModal
+  );
+  const dispatch = useDispatch<AppDispatch>();
+  const handleToggleModalAuth = (isOpen: boolean) => {
+    dispatch(
+      setModalState({
+        key: "authModal",
+        isOpen: isOpen,
+      })
+    );
   };
-  const [isSearchModalOpen, setIsSearchModalOpen] = useState(false);
-  const handleModalSearch = () => {
-    setIsSearchModalOpen(true);
+
+  const handleToggleModalSearch = (isOpen: boolean) => {
+    dispatch(
+      setModalState({
+        key: "searchModal",
+        isOpen: isOpen,
+      })
+    );
   };
   return (
     <>
       <div className="flex items-center gap-2 my-5 py-2">
         <Button
           className="border-none shadow-none"
-          onClick={handleModalSearch}
+          onClick={() => handleToggleModalSearch(true)}
           type="text"
           icon={
             <img
@@ -29,7 +45,7 @@ const ActionBar = () => {
               alt="search_icon"
             />
           }
-        ></Button>
+        />
 
         <CartDropdown />
         {username ? (
@@ -41,7 +57,7 @@ const ActionBar = () => {
             <Button
               className="md:block hidden self-center"
               type="primary"
-              onClick={handleModalAuth}
+              onClick={() => handleToggleModalAuth(true)}
             >
               Login / Sign Up
             </Button>
@@ -55,14 +71,13 @@ const ActionBar = () => {
           </>
         )}
       </div>
-      {isModalAuthOpen && (
-        <AuthModal open={isModalAuthOpen} setOpen={setIsModalAuthOpen} />
+
+      {authModal && (
+        <AuthModal open={authModal} setOpen={handleToggleModalAuth} />
       )}
-      {isSearchModalOpen && (
-        <SearchModal
-          isOpen={isSearchModalOpen}
-          setIsOpen={setIsSearchModalOpen}
-        />
+
+      {searchModal && (
+        <SearchModal isOpen={searchModal} setIsOpen={handleToggleModalSearch} />
       )}
     </>
   );

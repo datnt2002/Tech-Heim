@@ -1,0 +1,9 @@
+{
+  "id": 1,
+  "type": "sale",
+  "name": "Logitech G502 Gaming Mouse",
+  "oldPrice": 38,
+  "newPrice": 32.5,
+  "sale": 50,
+  "url": "/assets/icons/mouse.png"
+}
