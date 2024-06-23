@@ -1,8 +1,10 @@
 import { Button } from "antd";
 
+import { Footer as AntFooter } from "antd/es/layout/layout";
+
 const Footer = () => {
   return (
-    <footer className="bg-primary-900 relative font-inter px-24 text-center text-surface/75 text-white lg:text-left">
+    <AntFooter className="bg-primary-900 relative font-inter px-24 text-center text-surface/75 text-white lg:text-left">
       <div className="mx-6 py-10 text-center md:text-left">
         <div className="col-span-12 grid gap-8 md:grid-cols-2 lg:grid-cols-12">
           <div className="col-span-2">
@@ -138,7 +140,7 @@ const Footer = () => {
           <p>Imprint </p>
         </div>
       </div>
-    </footer>
+    </AntFooter>
   );
 };
 

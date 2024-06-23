@@ -2,10 +2,14 @@ import { createSlice } from "@reduxjs/toolkit";
 interface AppModalState {
   authModal: boolean;
   searchModal: boolean;
+  successModal: boolean;
+  failedModal: boolean;
 }
 const initialState: AppModalState = {
   authModal: false,
   searchModal: false,
+  successModal: false,
+  failedModal: false,
 };
 
 export const appModalSlice = createSlice({

@@ -5,16 +5,22 @@ import { AppDispatch, RootState } from "../../../redux/store";
 import { setModalState } from "../../../redux/slice/modalSlice";
 import { user } from "../../../constants/mock";
 import ProfileMenu, { CartDropdown } from "../../atoms/dropdown";
-import { AuthModal, SearchModal } from "../../organisms/modal";
-import { cn } from "../../../utils/utils";
+import { AuthModal, SearchModal, SuccessModal } from "../../organisms/modal";
+import { useEffect } from "react";
 
 const ActionBar = () => {
   const { username } = user;
+  const dispatch = useDispatch<AppDispatch>();
 
-  const { authModal, searchModal } = useSelector(
+  const { authModal, searchModal, successModal, failedModal } = useSelector(
     (state: RootState) => state.appModal
   );
-  const dispatch = useDispatch<AppDispatch>();
+
+  //TODO
+  const registerResStatus = useSelector<RootState>(
+    (state) => state.auth.status
+  );
+
   const handleToggleModalAuth = (isOpen: boolean) => {
     dispatch(
       setModalState({
@@ -76,6 +82,18 @@ const ActionBar = () => {
       )}
 
       {searchModal && (
+        <SearchModal isOpen={searchModal} setIsOpen={handleToggleModalSearch} />
+      )}
+
+      {successModal && (
+        <SuccessModal
+          title="Well done"
+          message="Congratulation your account has been successfully created."
+          isOpen={searchModal}
+          setIsOpen={handleToggleModalSearch}
+        />
+      )}
+      {failedModal && (
         <SearchModal isOpen={searchModal} setIsOpen={handleToggleModalSearch} />
       )}
     </>

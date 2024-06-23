@@ -1,3 +1,5 @@
 import AuthModal from "./AuthModal";
 import SearchModal from "./SearchModal";
-export { AuthModal, SearchModal };
+import SuccessModal from "./SuccessModal";
+
+export { AuthModal, SearchModal, SuccessModal };
