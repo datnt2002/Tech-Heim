@@ -4,10 +4,10 @@ import { ImgAndNameCard } from "../../atoms/cards";
 import img from "../../../assets/images/mouse.png";
 type SearchProps = {
   isOpen: boolean;
-  setIsOpen: React.Dispatch<React.SetStateAction<boolean>>;
+  setIsOpen: (isOpen: boolean) => void;
 };
 
-const SearchModal = ({ isOpen = false, setIsOpen }: SearchProps) => {
+const SearchModal = ({ isOpen, setIsOpen }: SearchProps) => {
   const [searchValue, setSearchValue] = useState("");
   console.log(searchValue);
 

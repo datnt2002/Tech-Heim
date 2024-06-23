@@ -4,14 +4,18 @@ import { SignUpThunk } from "../thunk/authThunk";
 const initialState = {
   isLoggedIn: false,
   currentUser: {},
-  status: "idle",
+  loading: false,
+  status: 0,
 };
 
 export const authSlice = createSlice({
   name: "auth",
   initialState,
   reducers: {
-    signUpAction: (state, action) => {
+    logoutAction: () => {
+      return initialState;
+    },
+    signUpAction: (state) => {
       return {
         ...state,
         loading: true,
@@ -20,11 +24,27 @@ export const authSlice = createSlice({
   },
   extraReducers: (builder) => {
     builder
-      .addCase(SignUpThunk.pending, (state, action) => {
-        state.status = "loading";
+      .addCase(SignUpThunk.pending, (state) => {
+        return {
+          ...state,
+          loading: true,
+        };
       })
       .addCase(SignUpThunk.fulfilled, (state, action) => {
-        (state.status = "idle"), (state.currentUser = action.payload);
+        const { data, status } = action.payload;
+        return {
+          ...state,
+          loading: false,
+          currentUser: data,
+          status: status,
+        };
+      })
+      .addCase(SignUpThunk.rejected, (state) => {
+        // const {data, status} = action.payload
+        return {
+          ...state,
+          loading: false,
+        };
       });
   },
 });

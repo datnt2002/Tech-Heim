@@ -1,20 +1,18 @@
 import { SignUpBody } from "../types/RequestBody";
 import axiosClient from "./api.service";
+import { v4 as uuidv4 } from "uuid";
 
 export const signUp = (data: SignUpBody) => {
-  console.log(data);
   const body = {
-    id: 2,
+    id: uuidv4(),
     ...data,
   };
-  console.log(body);
 
   return axiosClient
-    .post("/users", body)
+    .post("users", body)
     .then((res) => {
-      console.log(res);
-
-      return res;
+      const { data, status } = res;
+      return { data, status };
     })
     .catch((err) => err);
 };

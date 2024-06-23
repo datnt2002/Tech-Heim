@@ -12,19 +12,11 @@ const onFinish: FormProps<FieldType>["onFinish"] = (values) => {
   console.log("Success:", values);
 };
 
-const onFinishFailed: FormProps<FieldType>["onFinishFailed"] = (errorInfo) => {
-  console.log("Failed:", errorInfo);
-};
 const LoginForm = () => {
   return (
     <>
       <h2 className="mt-4 text-center mb-5">Log in to Tech Heim</h2>
-      <Form
-        name="basic"
-        initialValues={{}}
-        onFinish={onFinish}
-        onFinishFailed={onFinishFailed}
-      >
+      <Form onFinish={onFinish}>
         <Form.Item<FieldType>
           name="username"
           rules={[{ required: true, message: "Please input your username!" }]}
@@ -32,7 +24,10 @@ const LoginForm = () => {
           <Input
             size="large"
             prefix={
-              <img src="/assets/icons/email_icon.svg" className="h-4 mr-2" />
+              <img
+                src="/assets/icons/email/email_icon.svg"
+                className="h-4 mr-2"
+              />
             }
             placeholder="E-mail"
           />
@@ -45,14 +40,17 @@ const LoginForm = () => {
           <Input.Password
             iconRender={(visible) => {
               return visible ? (
-                <img src="/assets/icons/eye_visible.svg" />
+                <img src="/assets/icons/security/eye_visible.svg" />
               ) : (
-                <img src="/assets/icons/eye_unvisible_icon.svg" />
+                <img src="/assets/icons/security/eye_unvisible_icon.svg" />
               );
             }}
             size="large"
             prefix={
-              <img src="/assets/icons/password_icon.svg" className="h-4 mr-2" />
+              <img
+                src="/assets/icons/security/password_icon.svg"
+                className="h-4 mr-2"
+              />
             }
             placeholder="Password"
           />

@@ -1,8 +1,9 @@
 import type { FormProps } from "antd";
 import { Button, Checkbox, Form, Input } from "antd";
 import { useDispatch } from "react-redux";
+
 import { SignUpThunk } from "../../../../redux/thunk/authThunk";
-import { signUp } from "../../../../services/auth.service";
+import { AppDispatch } from "../../../../redux/store";
 
 type FieldType = {
   fullName: string;
@@ -12,44 +13,71 @@ type FieldType = {
 };
 
 const SignupForm = () => {
-  const dispatch = useDispatch();
+  const dispatch = useDispatch<AppDispatch>();
+  const [form] = Form.useForm();
 
   const onFinish: FormProps<FieldType>["onFinish"] = (values) => {
-    console.log("Success:", values);
-    if (values.agree) {
+    if (values?.agree) {
       dispatch(
         SignUpThunk({
-          email: values.email,
-          fullName: values.fullName,
-          password: values.password,
+          email: values?.email,
+          fullName: values?.fullName,
+          password: values?.password,
         })
       );
     }
   };
+
   return (
     <>
       <h2 className="mt-4 text-center mb-5">Create your account</h2>
-      <Form initialValues={{}} onFinish={onFinish}>
+      <Form form={form} onFinish={onFinish}>
         <Form.Item<FieldType>
           name="fullName"
-          rules={[{ required: true, message: "Please input your username!" }]}
+          rules={[
+            { required: true, message: "Please input your fullName!" },
+            {
+              max: 20,
+              message: "Please input full name less than 20 characters",
+            },
+            {
+              min: 3,
+              message: "Please input full name more than 3 characters",
+            },
+          ]}
         >
           <Input
             size="large"
             prefix={
-              <img src="/assets/icons/user_icon.svg" className="h-4 mr-2" />
+              <img
+                src="/assets/icons/user/user_icon.svg"
+                className="h-4 mr-2"
+              />
             }
             placeholder="Full Name"
           />
         </Form.Item>
         <Form.Item<FieldType>
           name="email"
-          rules={[{ required: true, message: "Please input your email!" }]}
+          rules={[
+            { required: true, message: "Please input your email!" },
+            {
+              min: 3,
+              message: "Please input email more than 3 characters",
+            },
+            {
+              type: "email",
+              message: "Please input valid email",
+            },
+          ]}
         >
           <Input
             size="large"
             prefix={
-              <img src="/assets/icons/email_icon.svg" className="h-4 mr-2" />
+              <img
+                src="/assets/icons/email/email_icon.svg"
+                className="h-4 mr-2"
+              />
             }
             placeholder="E-mail"
           />
@@ -57,28 +85,43 @@ const SignupForm = () => {
 
         <Form.Item<FieldType>
           name="password"
-          rules={[{ required: true, message: "Please input your password!" }]}
+          rules={[
+            { required: true, message: "Please input your password!" },
+            {
+              min: 6,
+              message: "Please input password more than 3 characters",
+            },
+          ]}
         >
           <Input.Password
             iconRender={(visible) => {
               return visible ? (
-                <img src="/assets/icons/eye_visible.svg" />
+                <img src="/assets/icons/security/eye_visible.svg" />
               ) : (
-                <img src="/assets/icons/eye_unvisible_icon.svg" />
+                <img src="/assets/icons/security/eye_unvisible_icon.svg" />
               );
             }}
             size="large"
             prefix={
-              <img src="/assets/icons/password_icon.svg" className="h-4 mr-2" />
+              <img
+                src="/assets/icons/security/password_icon.svg"
+                className="h-4 mr-2"
+              />
             }
             placeholder="Password"
           />
         </Form.Item>
 
-        <Form.Item<FieldType> name="agree" valuePropName="checked">
+        <Form.Item<FieldType>
+          name="agree"
+          valuePropName="checked"
+          rules={[
+            { required: true, message: "Please agree our Terms & Conditions" },
+          ]}
+        >
           <Checkbox className="text-gray-717171">
-            I agree to all{" "}
-            <span className="text-primary">Terms & Conditions</span>
+            I agree to all
+            <span className="text-primary ml-1">Terms & Conditions</span>
           </Checkbox>
         </Form.Item>
 
