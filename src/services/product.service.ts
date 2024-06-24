@@ -37,6 +37,16 @@ export const updateQuantityCartItemsAPI = ({
     .catch((err) => err);
 };
 
+export const deleteCartItemsAPI = (id: string) => {
+  return axiosClient
+    .delete(`cart/${id}`)
+    .then((res) => {
+      const { data, status } = res;
+      return { data, status };
+    })
+    .catch((err) => err);
+};
+
 // export const searchProductAPI = () => {
 //   return axiosClient
 //     .get("product-category")

@@ -1,5 +1,6 @@
 import { createAsyncThunk } from "@reduxjs/toolkit";
 import {
+  deleteCartItemsAPI,
   getCartItemsAPI,
   getCategoryAPI,
   updateQuantityCartItemsAPI,
@@ -34,6 +35,18 @@ export const updateQuantityCartItemThunk = createAsyncThunk(
     try {
       const res = await updateQuantityCartItemsAPI({ id, quantity });
       return res;
+    } catch (error) {
+      console.log(error);
+    }
+  }
+);
+
+export const deleteCartItemThunk = createAsyncThunk(
+  "cart/delete",
+  async (id: string) => {
+    try {
+      const res = await deleteCartItemsAPI(id);
+      return { res, id };
     } catch (error) {
       console.log(error);
     }

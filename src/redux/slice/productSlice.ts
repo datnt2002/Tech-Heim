@@ -1,6 +1,7 @@
 import { createSlice } from "@reduxjs/toolkit";
 import { SignUpThunk } from "../thunk/authThunk";
 import {
+  deleteCartItemThunk,
   getCartItemThunk,
   getCategoryThunk,
   updateQuantityCartItemThunk,
@@ -80,6 +81,21 @@ export const productSlice = createSlice({
             item.id === data.id ? data : item
           ),
           status: status,
+        };
+      })
+      .addCase(deleteCartItemThunk.pending, (state) => {
+        return {
+          ...state,
+          loading: true,
+        };
+      })
+      .addCase(deleteCartItemThunk.fulfilled, (state, action) => {
+        return {
+          ...state,
+          loading: false,
+          cartItems: state.cartItems.filter((item) => {
+            return item.id !== action.payload?.id;
+          }),
         };
       });
   },
