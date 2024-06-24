@@ -2,7 +2,10 @@ import { Button } from "antd";
 import { useDispatch } from "react-redux";
 
 import { AppDispatch } from "../../../redux/store";
-import { updateQuantityCartItemThunk } from "../../../redux/thunk/productThunk";
+import {
+  deleteCartItemThunk,
+  updateQuantityCartItemThunk,
+} from "../../../redux/thunk/productThunk";
 import { formatNumber } from "../../../utils/formatNumber";
 import { cn } from "../../../utils/utils";
 
@@ -26,6 +29,10 @@ const CardCart = ({
   className,
 }: Props) => {
   const dispatch = useDispatch<AppDispatch>();
+
+  const handleDeleteItem = (id: string) => {
+    dispatch(deleteCartItemThunk(id));
+  };
 
   const handleIncreaseQuantity = () => {
     dispatch(
@@ -81,7 +88,13 @@ const CardCart = ({
           <div className="flex  justify-between items-end">
             <p className="text-xs">${formatNumber(price)}</p>
             <div className="flex">
-              <img src="/assets/icons/trash_icon.svg" alt="" />
+              <Button
+                type="text"
+                className="p-0"
+                onClick={() => handleDeleteItem(id)}
+              >
+                <img src="/assets/icons/trash_icon.svg" alt="" />
+              </Button>
               <div className="flex items-center space-x-4 border-b border-b-gray-717171 ml-2">
                 <Button
                   type="text"
