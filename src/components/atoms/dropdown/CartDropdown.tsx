@@ -52,7 +52,11 @@ const CartDropdown = () => {
       <Button
         className="border-none shadow-none"
         icon={
-          <img className="" src="/assets/icons/bag_icon.svg" alt="user_icon" />
+          <img
+            className=""
+            src="/assets/icons/shopping/bag_icon.svg"
+            alt="user_icon"
+          />
         }
       />
     </Dropdown>

@@ -6,6 +6,7 @@ import { setModalState } from "../../../redux/slice/modalSlice";
 import { user } from "../../../constants/mock";
 import ProfileMenu, { CartDropdown } from "../../atoms/dropdown";
 import { AuthModal, SearchModal } from "../../organisms/modal";
+import { cn } from "../../../utils/utils";
 
 const ActionBar = () => {
   const { username } = user;
@@ -35,19 +36,17 @@ const ActionBar = () => {
     <>
       <div className="flex items-center gap-2 my-5 py-2">
         <Button
-          className="border-none shadow-none"
+          className="border-none shadow-none hidden md:block"
           onClick={() => handleToggleModalSearch(true)}
           type="text"
           icon={
-            <img
-              className="hidden md:block"
-              src="/assets/icons/search_icon.svg"
-              alt="search_icon"
-            />
+            <img src="/assets/icons/search/search_icon.svg" alt="search_icon" />
           }
         />
 
-        <CartDropdown />
+        <div className={cn("md:p-2 md:block", !username && "hidden")}>
+          <CartDropdown />
+        </div>
         {username ? (
           <>
             <ProfileMenu />
@@ -64,7 +63,7 @@ const ActionBar = () => {
             <Button
               type="text"
               className="text-primary font-inter flex items-center md:hidden"
-              icon={<img src="/assets/icons/login_icon.svg" alt="" />}
+              icon={<img src="/assets/icons/arrow/login_icon.svg" alt="" />}
             >
               Login
             </Button>

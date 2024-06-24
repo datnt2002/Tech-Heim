@@ -28,7 +28,9 @@ const SearchModal = ({ isOpen, setIsOpen }: SearchProps) => {
             size="large"
             placeholder="What can we help you to find ?"
             className="w-2/3"
-            suffix={<img src="/assets/icons/search_icon.svg" className="h-4" />}
+            suffix={
+              <img src="/assets/icons/search/search_icon.svg" className="h-4" />
+            }
           />
         </div>
 

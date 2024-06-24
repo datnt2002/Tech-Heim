@@ -1,7 +1,7 @@
 import { Button } from "antd";
 
 import ActionBar from "../actionBar";
-import Navbar from "../../atoms/navbar";
+import Navbar from "../navbar";
 import SearchBox from "../searchBox";
 
 const Header = () => {

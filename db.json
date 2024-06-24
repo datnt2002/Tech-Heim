@@ -1,4 +1,421 @@
 {
+  "product-category": [
+    {
+      "name": "Mobile Phones",
+      "icon": "/assets/icons/device/mobile_icon.svg",
+      "depth": 1,
+      "subCategories": [
+        {
+          "name": "Smart Phones",
+          "icon": "/assets/icons/device/mobile_program_icon.svg",
+          "depth": 2,
+          "subCategories": [
+            {
+              "name": "",
+              "image": "",
+              "depth": 3
+            }
+          ]
+        },
+        {
+          "name": "Accessories",
+          "icon": "/assets/icons/device/accessories_icon.svg",
+          "depth": 2,
+          "subCategories": [
+            {
+              "name": "Watch & Earpods",
+              "image": "/assets/images/category/watch_airpod.png",
+              "depth": 3
+            },
+            {
+              "name": "Holder",
+              "image": "/assets/images/category/holder.png",
+              "depth": 3
+            },
+            {
+              "name": "Power cables",
+              "image": "/assets/images/category/cables.png",
+              "depth": 3
+            },
+            {
+              "name": "Cases & Protection",
+              "image": "/assets/images/category/phone_cases.png",
+              "depth": 3
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Mobile Phones",
+      "icon": "/assets/icons/device/mobile_icon.svg",
+      "depth": 1,
+      "subCategories": [
+        {
+          "name": "Smart Phones",
+          "icon": "/assets/icons/device/mobile_program_icon.svg",
+          "depth": 2,
+          "subCategories": [
+            {
+              "name": "",
+              "image": "",
+              "depth": 3
+            }
+          ]
+        },
+        {
+          "name": "Accessories",
+          "icon": "/assets/icons/device/accessories_icon.svg",
+          "depth": 2,
+          "subCategories": [
+            {
+              "name": "Watch & Earpods",
+              "image": "/assets/images/category/watch_airpod.png",
+              "depth": 3
+            },
+            {
+              "name": "Holder",
+              "image": "/assets/images/category/holder.png",
+              "depth": 3
+            },
+            {
+              "name": "Power cables",
+              "image": "/assets/images/category/cables.png",
+              "depth": 3
+            },
+            {
+              "name": "Cases & Protection",
+              "image": "/assets/images/category/phone_cases.png",
+              "depth": 3
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Mobile Phones",
+      "icon": "/assets/icons/device/mobile_icon.svg",
+      "depth": 1,
+      "subCategories": [
+        {
+          "name": "Smart Phones",
+          "icon": "/assets/icons/device/mobile_program_icon.svg",
+          "depth": 2,
+          "subCategories": [
+            {
+              "name": "",
+              "image": "",
+              "depth": 3
+            }
+          ]
+        },
+        {
+          "name": "Accessories",
+          "icon": "/assets/icons/device/accessories_icon.svg",
+          "depth": 2,
+          "subCategories": [
+            {
+              "name": "Watch & Earpods",
+              "image": "/assets/images/category/watch_airpod.png",
+              "depth": 3
+            },
+            {
+              "name": "Holder",
+              "image": "/assets/images/category/holder.png",
+              "depth": 3
+            },
+            {
+              "name": "Power cables",
+              "image": "/assets/images/category/cables.png",
+              "depth": 3
+            },
+            {
+              "name": "Cases & Protection",
+              "image": "/assets/images/category/phone_cases.png",
+              "depth": 3
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Mobile Phones",
+      "icon": "/assets/icons/device/mobile_icon.svg",
+      "depth": 1,
+      "subCategories": [
+        {
+          "name": "Smart Phones",
+          "icon": "/assets/icons/device/mobile_program_icon.svg",
+          "depth": 2,
+          "subCategories": [
+            {
+              "name": "",
+              "image": "",
+              "depth": 3
+            }
+          ]
+        },
+        {
+          "name": "Accessories",
+          "icon": "/assets/icons/device/accessories_icon.svg",
+          "depth": 2,
+          "subCategories": [
+            {
+              "name": "Watch & Earpods",
+              "image": "/assets/images/category/watch_airpod.png",
+              "depth": 3
+            },
+            {
+              "name": "Holder",
+              "image": "/assets/images/category/holder.png",
+              "depth": 3
+            },
+            {
+              "name": "Power cables",
+              "image": "/assets/images/category/cables.png",
+              "depth": 3
+            },
+            {
+              "name": "Cases & Protection",
+              "image": "/assets/images/category/phone_cases.png",
+              "depth": 3
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Mobile Phones",
+      "icon": "/assets/icons/device/mobile_icon.svg",
+      "depth": 1,
+      "subCategories": [
+        {
+          "name": "Smart Phones",
+          "icon": "/assets/icons/device/mobile_program_icon.svg",
+          "depth": 2,
+          "subCategories": [
+            {
+              "name": "",
+              "image": "",
+              "depth": 3
+            }
+          ]
+        },
+        {
+          "name": "Accessories",
+          "icon": "/assets/icons/device/accessories_icon.svg",
+          "depth": 2,
+          "subCategories": [
+            {
+              "name": "Watch & Earpods",
+              "image": "/assets/images/category/watch_airpod.png",
+              "depth": 3
+            },
+            {
+              "name": "Holder",
+              "image": "/assets/images/category/holder.png",
+              "depth": 3
+            },
+            {
+              "name": "Power cables",
+              "image": "/assets/images/category/cables.png",
+              "depth": 3
+            },
+            {
+              "name": "Cases & Protection",
+              "image": "/assets/images/category/phone_cases.png",
+              "depth": 3
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Mobile Phones",
+      "icon": "/assets/icons/device/mobile_icon.svg",
+      "depth": 1,
+      "subCategories": [
+        {
+          "name": "Smart Phones",
+          "icon": "/assets/icons/device/mobile_program_icon.svg",
+          "depth": 2,
+          "subCategories": [
+            {
+              "name": "",
+              "image": "",
+              "depth": 3
+            }
+          ]
+        },
+        {
+          "name": "Accessories",
+          "icon": "/assets/icons/device/accessories_icon.svg",
+          "depth": 2,
+          "subCategories": [
+            {
+              "name": "Watch & Earpods",
+              "image": "/assets/images/category/watch_airpod.png",
+              "depth": 3
+            },
+            {
+              "name": "Holder",
+              "image": "/assets/images/category/holder.png",
+              "depth": 3
+            },
+            {
+              "name": "Power cables",
+              "image": "/assets/images/category/cables.png",
+              "depth": 3
+            },
+            {
+              "name": "Cases & Protection",
+              "image": "/assets/images/category/phone_cases.png",
+              "depth": 3
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Mobile Phones",
+      "icon": "/assets/icons/device/mobile_icon.svg",
+      "depth": 1,
+      "subCategories": [
+        {
+          "name": "Smart Phones",
+          "icon": "/assets/icons/device/mobile_program_icon.svg",
+          "depth": 2,
+          "subCategories": [
+            {
+              "name": "",
+              "image": "",
+              "depth": 3
+            }
+          ]
+        },
+        {
+          "name": "Accessories",
+          "icon": "/assets/icons/device/accessories_icon.svg",
+          "depth": 2,
+          "subCategories": [
+            {
+              "name": "Watch & Earpods",
+              "image": "/assets/images/category/watch_airpod.png",
+              "depth": 3
+            },
+            {
+              "name": "Holder",
+              "image": "/assets/images/category/holder.png",
+              "depth": 3
+            },
+            {
+              "name": "Power cables",
+              "image": "/assets/images/category/cables.png",
+              "depth": 3
+            },
+            {
+              "name": "Cases & Protection",
+              "image": "/assets/images/category/phone_cases.png",
+              "depth": 3
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Mobile Phones",
+      "icon": "/assets/icons/device/mobile_icon.svg",
+      "depth": 1,
+      "subCategories": [
+        {
+          "name": "Smart Phones",
+          "icon": "/assets/icons/device/mobile_program_icon.svg",
+          "depth": 2,
+          "subCategories": [
+            {
+              "name": "",
+              "image": "",
+              "depth": 3
+            }
+          ]
+        },
+        {
+          "name": "Accessories",
+          "icon": "/assets/icons/device/accessories_icon.svg",
+          "depth": 2,
+          "subCategories": [
+            {
+              "name": "Watch & Earpods",
+              "image": "/assets/images/category/watch_airpod.png",
+              "depth": 3
+            },
+            {
+              "name": "Holder",
+              "image": "/assets/images/category/holder.png",
+              "depth": 3
+            },
+            {
+              "name": "Power cables",
+              "image": "/assets/images/category/cables.png",
+              "depth": 3
+            },
+            {
+              "name": "Cases & Protection",
+              "image": "/assets/images/category/phone_cases.png",
+              "depth": 3
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Mobile Phones",
+      "icon": "/assets/icons/device/mobile_icon.svg",
+      "depth": 1,
+      "subCategories": [
+        {
+          "name": "Smart Phones",
+          "icon": "/assets/icons/device/mobile_program_icon.svg",
+          "depth": 2,
+          "subCategories": [
+            {
+              "name": "",
+              "image": "",
+              "depth": 3
+            }
+          ]
+        },
+        {
+          "name": "Accessories",
+          "icon": "/assets/icons/device/accessories_icon.svg",
+          "depth": 2,
+          "subCategories": [
+            {
+              "name": "Watch & Earpods",
+              "image": "/assets/images/category/watch_airpod.png",
+              "depth": 3
+            },
+            {
+              "name": "Holder",
+              "image": "/assets/images/category/holder.png",
+              "depth": 3
+            },
+            {
+              "name": "Power cables",
+              "image": "/assets/images/category/cables.png",
+              "depth": 3
+            },
+            {
+              "name": "Cases & Protection",
+              "image": "/assets/images/category/phone_cases.png",
+              "depth": 3
+            }
+          ]
+        }
+      ]
+    }
+  ],
+
   "users": [
     {
       "id": 1,
@@ -30,5 +447,7 @@
       "name": "datnt12",
       "password": 123456
     }
-  ]
+  ],
+
+  "search": []
 }

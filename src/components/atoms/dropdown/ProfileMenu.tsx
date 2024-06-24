@@ -1,12 +1,14 @@
 import { Button, Dropdown, MenuProps } from "antd";
+import { cn } from "../../../utils/utils";
 
 interface DropdownItemProps {
   icon: string;
   label: string;
+  className?: string;
 }
-const DropdownItem = ({ icon, label }: DropdownItemProps) => {
+const DropdownItem = ({ icon, label, className }: DropdownItemProps) => {
   return (
-    <div className="flex gap-4">
+    <div className={cn("flex gap-4", className)}>
       <img src={icon} alt="profile" />
       <p className="font-inter text-lg">{label}</p>
     </div>
@@ -21,6 +23,7 @@ const items: MenuProps["items"] = [
         <DropdownItem
           icon={"/assets/icons/profile_icon.svg"}
           label="Jimmy Smith"
+          className="text-primary"
         />
         <p className="ml-10">Jimmy.smith1996@gmail.com</p>
       </>
@@ -64,7 +67,11 @@ const ProfileMenu = () => {
       <Button
         className="border-none shadow-none"
         icon={
-          <img className="" src="/assets/icons/user_icon.svg" alt="user_icon" />
+          <img
+            className=""
+            src="/assets/icons/user/user_icon.svg"
+            alt="user_icon"
+          />
         }
       />
     </Dropdown>

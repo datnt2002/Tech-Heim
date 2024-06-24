@@ -2,7 +2,7 @@ import { Link, useLocation } from "react-router-dom";
 
 import { cn } from "../../../utils/utils";
 import { navBarItems } from "../../../constants";
-import { ProductNavbarDropdown } from "../dropdown";
+import { ProductNavbarDropdown } from "../../atoms/dropdown";
 
 const Navbar = () => {
   const location = useLocation();
