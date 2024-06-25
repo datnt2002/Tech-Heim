@@ -1,5 +1,5 @@
 import { Button } from "antd";
-import BannerImage from "../../../assets/images/banner_img.png";
+import BannerImage from "../../../assets/images/banner/banner_img.png";
 
 const Banner = () => {
   return (

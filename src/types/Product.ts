@@ -1,7 +1,7 @@
 export type ProductCategory = {
   id: string;
   name: string;
-  image?: string;
+  image: string;
   icon?: string;
   depth: number;
   subCategories: ProductCategory[];

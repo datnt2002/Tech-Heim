@@ -15,10 +15,18 @@ import lenovo from "../../assets/images/logo/lenovo.png";
 import samsung from "../../assets/images/logo/samsung.png";
 import sony from "../../assets/images/logo/sony.png";
 import { BlogCard } from "../../components/atoms/cards";
-import Footer from "../../components/molecules/footer";
+import { useDispatch } from "react-redux";
+import { AppDispatch } from "../../redux/store";
+import { useEffect } from "react";
+import { getCategoryThunk } from "../../redux/thunk/productThunk";
 
 const LandingPage = () => {
   const products = newProduct;
+  const dispatch = useDispatch<AppDispatch>();
+
+  useEffect(() => {
+    dispatch(getCategoryThunk());
+  }, []);
 
   return (
     <>
@@ -70,7 +78,6 @@ const LandingPage = () => {
           <p className="text-xl self-center">24/7 Support</p>
         </div>
       </section>
-      <Footer />
     </>
   );
 };

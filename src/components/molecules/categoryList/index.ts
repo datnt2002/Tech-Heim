@@ -1,3 +1,1 @@
-import CategoryHomeList from "./CategoryHomeList";
-
-export default CategoryHomeList;
+export { default } from "./CategoryCarousel";
