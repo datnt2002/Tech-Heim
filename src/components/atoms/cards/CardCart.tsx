@@ -85,7 +85,7 @@ const CardCart = ({
               Guaranteed
             </p>
           </div>
-          <div className="flex  justify-between items-end">
+          <div className="flex justify-between items-end">
             <p className="text-xs">${formatNumber(price)}</p>
             <div className="flex">
               <Button

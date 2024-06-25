@@ -1,11 +1,15 @@
 import { createAsyncThunk } from "@reduxjs/toolkit";
 import {
   deleteCartItemsAPI,
+  getBestSellerProductsAPI,
   getCartItemsAPI,
   getCategoryAPI,
+  getNewProductsAPI,
+  getProductSaleAPI,
   getSearchKeywordAPI,
   mostProductSearchedAPI,
   searchProductAPI,
+  toggleLikeProductAPI,
   updateQuantityCartItemsAPI,
 } from "../../services/product.service";
 
@@ -14,8 +18,6 @@ export const getCategoryThunk = createAsyncThunk(
   async () => {
     try {
       const res = await getCategoryAPI();
-      console.log(res);
-
       return res;
     } catch (error) {
       console.log(error);
@@ -85,6 +87,51 @@ export const getSearchKeywordThunk = createAsyncThunk(
   async () => {
     try {
       const res = await getSearchKeywordAPI();
+      return res;
+    } catch (error) {
+      console.log(error);
+    }
+  }
+);
+
+export const getProductSaleThunk = createAsyncThunk(
+  "product/sale",
+  async () => {
+    try {
+      const res = await getProductSaleAPI();
+      return res;
+    } catch (error) {
+      console.log(error);
+    }
+  }
+);
+
+export const toggleLikeProductThunk = createAsyncThunk(
+  "product/unlike",
+  async ({ id, favorite }: { id: string; favorite: boolean }) => {
+    try {
+      const res = await toggleLikeProductAPI({ id, favorite });
+      return res;
+    } catch (error) {
+      console.log(error);
+    }
+  }
+);
+
+export const getNewProductThunk = createAsyncThunk("product/new", async () => {
+  try {
+    const res = await getNewProductsAPI();
+    return res;
+  } catch (error) {
+    console.log(error);
+  }
+});
+
+export const getBestSellerProductThunk = createAsyncThunk(
+  "product/best-seller",
+  async () => {
+    try {
+      const res = await getBestSellerProductsAPI();
       return res;
     } catch (error) {
       console.log(error);

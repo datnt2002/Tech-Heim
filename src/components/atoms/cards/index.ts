@@ -1,7 +1,7 @@
 import ImgAndNameCard from "./ImgAndNameCard";
-import SaleSectionCard from "./SaleSectionCard";
+import ProductSaleCard from "./ProductSaleCard";
 import BlogCard from "./blogCard/BlogCard";
 import CardCart from "./CardCart";
 import ProductCard from "./ProductCard";
 
-export { ImgAndNameCard, SaleSectionCard, BlogCard, CardCart, ProductCard };
+export { ImgAndNameCard, ProductSaleCard, BlogCard, CardCart, ProductCard };

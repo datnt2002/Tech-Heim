@@ -6,7 +6,6 @@ import CategoryHomeList from "../../components/molecules/categoryList";
 import { ProductSale } from "../../components/molecules/product";
 import ListProduct from "../../components/molecules/product/ListProduct";
 import HomeSection from "../../components/organisms/section";
-import { newProduct } from "../../constants/mock";
 
 import apple from "../../assets/images/logo/apple.png";
 import canon from "../../assets/images/logo/canon.png";
@@ -15,17 +14,27 @@ import lenovo from "../../assets/images/logo/lenovo.png";
 import samsung from "../../assets/images/logo/samsung.png";
 import sony from "../../assets/images/logo/sony.png";
 import { BlogCard } from "../../components/atoms/cards";
-import { useDispatch } from "react-redux";
-import { AppDispatch } from "../../redux/store";
+import { useDispatch, useSelector } from "react-redux";
+import { AppDispatch, RootState } from "../../redux/store";
 import { useEffect } from "react";
-import { getCategoryThunk } from "../../redux/thunk/productThunk";
+import {
+  getBestSellerProductThunk,
+  getCategoryThunk,
+  getNewProductThunk,
+  getProductSaleThunk,
+} from "../../redux/thunk/productThunk";
 
 const LandingPage = () => {
-  const products = newProduct;
   const dispatch = useDispatch<AppDispatch>();
+  const { newProducts, bestSellers } = useSelector(
+    (state: RootState) => state.product
+  );
 
   useEffect(() => {
     dispatch(getCategoryThunk());
+    dispatch(getProductSaleThunk());
+    dispatch(getNewProductThunk());
+    dispatch(getBestSellerProductThunk());
   }, []);
 
   return (
@@ -34,11 +43,11 @@ const LandingPage = () => {
       <CategoryHomeList />
       <ProductSale />
       <HomeSection sectionName="New Products" viewAllButton>
-        <ListProduct productList={products} />
+        <ListProduct productList={newProducts} />
       </HomeSection>
       <SecondBanner />
       <HomeSection sectionName="Best Sellers" viewAllButton>
-        <ListProduct productList={products} />
+        <ListProduct productList={bestSellers} />
       </HomeSection>
       <HomeSection sectionName="Top Brands" viewAllButton={false}>
         <div className="flex justify-between mb-24">

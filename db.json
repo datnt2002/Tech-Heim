@@ -511,10 +511,31 @@
       "screenSize": 15.6,
       "processor": "Intel Core i7",
       "GPU": "NVIDIA GeForce GTX 1660 Ti",
-      "memory": 16
+      "memory": 16,
+      "rating": 4.5
     },
     {
       "id": "2",
+      "name": "Smartphone Y2",
+      "image": "/assets/images/search/phone.png",
+      "price": 800,
+      "salePrice": 750,
+      "discount": true,
+      "percent": 6,
+      "favorite": false,
+      "description": "A high-performance smartphone with great camera features.",
+      "color": "Black",
+      "rating": 4.5,
+      "categoryId": "electronics",
+      "brand": "Brand Y",
+      "screenSize": 6.2,
+      "processor": "Snapdragon 888",
+      "GPU": "Adreno 660",
+      "memory": 8,
+      "bestSeller": true
+    },
+    {
+      "id": "21",
       "name": "Smartphone Y2",
       "image": "/assets/images/search/phone.png",
       "price": 800,
@@ -543,7 +564,9 @@
       "screenSize": 10.1,
       "processor": "Apple A12 Bionic",
       "GPU": "Apple GPU",
-      "memory": 64
+      "memory": 64,
+      "favorite": true,
+      "rating": 4.2
     },
     {
       "id": "4",
@@ -556,7 +579,9 @@
       "screenSize": 1.5,
       "processor": "N/A",
       "GPU": "N/A",
-      "memory": 8
+      "memory": 8,
+      "bestSeller": true,
+      "rating": 4.8
     },
     {
       "id": "5",
@@ -572,7 +597,8 @@
       "screenSize": 0,
       "processor": "N/A",
       "GPU": "N/A",
-      "memory": 0
+      "memory": 0,
+      "favorite": false
     },
     {
       "id": "6",
@@ -601,7 +627,9 @@
       "screenSize": 0,
       "processor": "Intel Core i9",
       "GPU": "NVIDIA GeForce RTX 3080",
-      "memory": 32
+      "memory": 32,
+      "bestSeller": true,
+      "rating": 4.9
     },
     {
       "id": "8",
@@ -734,7 +762,9 @@
       "screenSize": 0,
       "processor": "N/A",
       "GPU": "N/A",
-      "memory": 0
+      "memory": 0,
+      "bestSeller": true,
+      "rating": 5.0
     },
     {
       "id": "18",
