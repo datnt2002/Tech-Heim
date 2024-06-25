@@ -1,4 +1,5 @@
 export type ProductCategory = {
+  id: string;
   name: string;
   image?: string;
   icon?: string;
@@ -7,15 +8,23 @@ export type ProductCategory = {
 };
 
 export type Product = {
+  id: string;
   name: string;
-  image?: string;
-  price?: number;
+  image: string;
+  price: number;
   salePrice?: number;
-  isSale?: boolean;
+  discount?: boolean;
   percent?: number;
   favorite?: boolean;
   description?: string;
-  color?: string;
+  color: string;
+  rating?: number;
+  categoryId: string;
+  brand: string;
+  screenSize: number;
+  processor: string;
+  GPU: string;
+  memory: number;
 };
 
 export type ProductInCart = {

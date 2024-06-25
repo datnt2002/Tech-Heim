@@ -1,7 +1,15 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
+import { useDispatch, useSelector } from "react-redux";
+
 import { Button, Input, Modal } from "antd";
 import { ImgAndNameCard } from "../../atoms/cards";
-import img from "../../../assets/images/mouse.png";
+import { AppDispatch, RootState } from "../../../redux/store";
+import {
+  getItemMostSearchedThunk,
+  getSearchKeywordThunk,
+  searchProductThunk,
+} from "../../../redux/thunk/productThunk";
+
 type SearchProps = {
   isOpen: boolean;
   setIsOpen: (isOpen: boolean) => void;
@@ -9,7 +17,23 @@ type SearchProps = {
 
 const SearchModal = ({ isOpen, setIsOpen }: SearchProps) => {
   const [searchValue, setSearchValue] = useState("");
-  console.log(searchValue);
+
+  const dispatch = useDispatch<AppDispatch>();
+  const { searchItems, searchKeywords, defaultSearchItems } = useSelector(
+    (state: RootState) => state.product
+  );
+  const limitSearchItems = searchItems.slice(0, 17);
+
+  useEffect(() => {
+    if (searchValue === "") {
+      dispatch(getItemMostSearchedThunk());
+      dispatch(getSearchKeywordThunk());
+    }
+  }, []);
+
+  useEffect(() => {
+    dispatch(searchProductThunk(searchValue));
+  }, [searchValue]);
 
   return (
     <>
@@ -35,24 +59,26 @@ const SearchModal = ({ isOpen, setIsOpen }: SearchProps) => {
         </div>
 
         {/* default search */}
-        {/* TODO: tach la 1 component suggest search maybe */}
         {searchValue === "" ? (
-          <div className="mt-12 grid grid-cols-5">
+          <div className="mt-12 grid grid-cols-5 gap-8 truncate">
             <div className="col-span-2">
               <h5 className="text-xl font-inter font-semibold">
                 The Most Searched Items
               </h5>
               <div className="grid grid-cols-2 mt-10 gap-6 text-lg font-inter font-light">
-                <p className="">MacBook Pro</p>
-                <p className="">JBL speaker</p>
-                <p className="">AirPods Pro</p>
-                <p className="">Canon</p>
-                <p className="">Samsung S9</p>
-                <p className="">AirPods Max</p>
-                <p className="">Tablet</p>
-                <p className="">Asus</p>
-                <p className="">Xiaomi</p>
-                <p className="">MagSafe</p>
+                {defaultSearchItems.map((item) => {
+                  return (
+                    <p
+                      className="cursor-pointer"
+                      key={item.id}
+                      onClick={() => {
+                        setSearchValue(item.name);
+                      }}
+                    >
+                      {item.name}
+                    </p>
+                  );
+                })}
               </div>
             </div>
             <div className="col-span-2">
@@ -60,68 +86,34 @@ const SearchModal = ({ isOpen, setIsOpen }: SearchProps) => {
                 Most used keywords
               </h5>
               <div className="grid grid-cols-2 mt-10 gap-6 text-lg font-inter font-light">
-                <p className="">Tablets</p>
-                <p className="">Laptops</p>
-                <p className="">Headphones</p>
-                <p className="">USB Drive</p>
-                <p className="">Smartphones</p>
-                <p className="">Phone Cases</p>
-                <p className="">Smartwatch</p>
+                {searchKeywords.map((word) => {
+                  return (
+                    <p
+                      className="cursor-pointer"
+                      key={word.id}
+                      onClick={() => {
+                        setSearchValue(word.title);
+                      }}
+                    >
+                      {word.title}
+                    </p>
+                  );
+                })}
               </div>
             </div>
           </div>
         ) : (
           <div className="grid grid-cols-5 mt-4 mb-10 mr-12">
-            <div className="col-span-2">
+            <div className="col-span-2 mr-2">
               <p className="mb-12 text-sm font-inter font-light text-gray-505050 ">
-                view 17 out of 30 results
+                view {limitSearchItems.length} out of {searchItems.length}{" "}
+                <span className="ml">results</span>
               </p>
-              <div className="grid grid-cols-2 gap-y-6 gap-x-14">
-                <p>
-                  X <span>Case</span>
-                </p>
-                <p>
-                  X <span>Case</span>
-                </p>
-                <p>
-                  X <span>Case</span>
-                </p>
-                <p>
-                  X <span>Case</span>
-                </p>
-                <p>
-                  X <span>Case</span>
-                </p>
-                <p>
-                  X <span>Case</span>
-                </p>
-                <p>
-                  X <span>Case</span>
-                </p>
-                <p>
-                  X <span>Case</span>
-                </p>
-                <p>
-                  X <span>Case</span>
-                </p>
-                <p>
-                  X <span>Case</span>
-                </p>
-                <p>
-                  X <span>Case</span>
-                </p>
-                <p>
-                  X <span>Case</span>
-                </p>
-                <p>
-                  X <span>Case</span>
-                </p>
-                <p>
-                  X <span>Case</span>
-                </p>
-                <p>
-                  X <span>Case</span>
-                </p>
+              <div className="grid grid-cols-2 gap-y-6 gap-x-14 truncate">
+                {limitSearchItems.map((item) => {
+                  return <p>{item.name}</p>;
+                })}
+
                 <Button
                   type="text"
                   size="small"
@@ -132,12 +124,15 @@ const SearchModal = ({ isOpen, setIsOpen }: SearchProps) => {
               </div>
             </div>
             <div className="col-span-3 grid grid-cols-3 mt-2 gap-6">
-              <ImgAndNameCard img={img} name="Phone Case" className="w-32 " />
-              <ImgAndNameCard img={img} name="Phone Case" className="w-32 " />
-              <ImgAndNameCard img={img} name="Phone Case" className="w-32 " />
-              <ImgAndNameCard img={img} name="Phone Case" className="w-32 " />
-              <ImgAndNameCard img={img} name="Phone Case" className="w-32 " />
-              <ImgAndNameCard img={img} name="Phone Case" className="w-32" />
+              {limitSearchItems.slice(0, 6).map((item) => {
+                return (
+                  <ImgAndNameCard
+                    img={item.image}
+                    name={item.name}
+                    className="w-32"
+                  />
+                );
+              })}
             </div>
           </div>
         )}
