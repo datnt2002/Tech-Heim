@@ -521,7 +521,7 @@
       "salePrice": 750,
       "discount": true,
       "percent": 6,
-      "favorite": true,
+      "favorite": false,
       "description": "A high-performance smartphone with great camera features.",
       "color": "Black",
       "rating": 4.5,
@@ -540,7 +540,7 @@
       "salePrice": 750,
       "discount": true,
       "percent": 6,
-      "favorite": true,
+      "favorite": false,
       "description": "A high-performance smartphone with great camera features.",
       "color": "Black",
       "rating": 4.5,
@@ -591,7 +591,8 @@
       "screenSize": 0,
       "processor": "N/A",
       "GPU": "N/A",
-      "memory": 0
+      "memory": 0,
+      "favorite": true
     },
     {
       "id": "6",

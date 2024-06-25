@@ -8,6 +8,7 @@ import {
   getProductSaleThunk,
   getSearchKeywordThunk,
   searchProductThunk,
+  toggleLikeProductThunk,
   updateQuantityCartItemThunk,
 } from "../thunk/productThunk";
 import { Product, ProductCategory, ProductInCart } from "../../types/Product";
@@ -48,7 +49,6 @@ export const productSlice = createSlice({
       })
       .addCase(getCategoryThunk.fulfilled, (state, action) => {
         const { data, status } = action.payload;
-        console.log(data);
         return {
           ...state,
           loading: false,
@@ -167,6 +167,23 @@ export const productSlice = createSlice({
           ...state,
           loading: false,
           productSale: data,
+          status: status,
+        };
+      })
+      .addCase(toggleLikeProductThunk.pending, (state) => {
+        return {
+          ...state,
+          loading: true,
+        };
+      })
+      .addCase(toggleLikeProductThunk.fulfilled, (state, action) => {
+        const { data, status } = action.payload;
+        return {
+          ...state,
+          loading: false,
+          productSale: state.productSale.map((item) =>
+            item.id === data.id ? data : item
+          ),
           status: status,
         };
       });

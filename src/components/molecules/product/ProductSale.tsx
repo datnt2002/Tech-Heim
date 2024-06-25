@@ -21,7 +21,9 @@ const ProductSale = () => {
             {productSale.map((item) => {
               return (
                 <ProductSaleCard
+                  id={item.id}
                   key={item.id}
+                  favorite={item.favorite}
                   name={item.name}
                   newPrice={item.salePrice}
                   image={item.image}

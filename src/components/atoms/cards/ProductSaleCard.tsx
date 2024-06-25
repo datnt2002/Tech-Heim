@@ -1,27 +1,33 @@
 import { formatNumber } from "../../../utils/formatNumber";
+import HeartTag from "../Tag/HeartTag";
 
 type Props = {
+  id: string;
   image: string;
   name: string;
   newPrice?: number;
   oldPrice?: number;
   percent?: number;
+  favorite?: boolean;
 };
 
 const ProductSaleCard = ({
+  id,
   name,
   image,
   newPrice,
   oldPrice,
   percent,
+  favorite,
 }: Props) => {
   return (
-    <div className="relative rounded-md bg-white w-44 flex flex-col gap-3 shadow-md">
+    <div className="relative rounded-md bg-white w-44 flex flex-col gap-3 shadow-md group cursor-pointer">
       {percent && (
-        <p className="absolute top-2 left-0 py-1 px-[6px] text-secondary-400 bg-secondary-100 rounded-tr-xl rounded-br-xl">
+        <p className="absolute top-2 left-0 py-1 px-[6px] text-secondary-400 bg-secondary-100 rounded-tr-xl rounded-br-xl group-hover:hidden">
           {percent}%
         </p>
       )}
+      <HeartTag favorite={favorite} id={id} key={id} />
       <div className="flex justify-center items-center w-44 h-36 ">
         <img
           src={image}
@@ -30,9 +36,7 @@ const ProductSaleCard = ({
         />
       </div>
       <div className="pb-2 px-2">
-        <h5 className="text-xs line-clamp-2">
-          NPET K10 Wired Gaming Keyboard, LED Backlit, Spill-Resistant Design
-        </h5>
+        <h5 className="text-xs line-clamp-2">{name}</h5>
         <div className="flex justify-between pt-2">
           <p className="text-gray-717171 line-through text-xs">
             ${formatNumber(oldPrice)}

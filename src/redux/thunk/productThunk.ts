@@ -7,6 +7,7 @@ import {
   getSearchKeywordAPI,
   mostProductSearchedAPI,
   searchProductAPI,
+  toggleLikeProductAPI,
   updateQuantityCartItemsAPI,
 } from "../../services/product.service";
 
@@ -96,6 +97,18 @@ export const getProductSaleThunk = createAsyncThunk(
   async () => {
     try {
       const res = await getProductSaleAPI();
+      return res;
+    } catch (error) {
+      console.log(error);
+    }
+  }
+);
+
+export const toggleLikeProductThunk = createAsyncThunk(
+  "product/unlike",
+  async ({ id, favorite }: { id: string; favorite: boolean }) => {
+    try {
+      const res = await toggleLikeProductAPI({ id, favorite });
       return res;
     } catch (error) {
       console.log(error);

@@ -86,3 +86,20 @@ export const getProductSaleAPI = () => {
     })
     .catch((err) => err);
 };
+
+export const toggleLikeProductAPI = ({
+  id,
+  favorite,
+}: {
+  id: string;
+  favorite: boolean;
+}) => {
+  const body = { favorite };
+  return axiosClient
+    .patch(`product/${id}`, body)
+    .then((res) => {
+      const { data, status } = res;
+      return { data, status };
+    })
+    .catch((err) => err);
+};
