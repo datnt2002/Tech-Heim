@@ -1,8 +1,10 @@
 {
   "product-category": [
     {
-      "name": "Mobile Phones",
+      "id": "1",
+      "name": "Accessories",
       "icon": "/assets/icons/device/mobile_icon.svg",
+      "image": "/assets/images/category/cables.png",
       "depth": 1,
       "subCategories": [
         {
@@ -47,8 +49,10 @@
       ]
     },
     {
-      "name": "Mobile Phones",
+      "id": "2",
+      "name": "Camera",
       "icon": "/assets/icons/device/mobile_icon.svg",
+      "image": "/assets/images/category/phone.png",
       "depth": 1,
       "subCategories": [
         {
@@ -93,8 +97,10 @@
       ]
     },
     {
-      "name": "Mobile Phones",
+      "id": "3",
+      "name": "Laptop",
       "icon": "/assets/icons/device/mobile_icon.svg",
+      "image": "/assets/images/category/phone_cases.png",
       "depth": 1,
       "subCategories": [
         {
@@ -139,8 +145,10 @@
       ]
     },
     {
-      "name": "Mobile Phones",
+      "id": "4",
+      "name": "Smart Phone",
       "icon": "/assets/icons/device/mobile_icon.svg",
+      "image": "/assets/images/category/holder.png",
       "depth": 1,
       "subCategories": [
         {
@@ -185,8 +193,10 @@
       ]
     },
     {
-      "name": "Mobile Phones",
+      "id": "5",
+      "name": "Gaming",
       "icon": "/assets/icons/device/mobile_icon.svg",
+      "image": "/assets/images/category/watch_airpod.png",
       "depth": 1,
       "subCategories": [
         {
@@ -231,8 +241,10 @@
       ]
     },
     {
-      "name": "Mobile Phones",
+      "id": "6",
+      "name": "Smart Watch",
       "icon": "/assets/icons/device/mobile_icon.svg",
+      "image": "/assets/images/category/cables.png",
       "depth": 1,
       "subCategories": [
         {
@@ -277,8 +289,10 @@
       ]
     },
     {
+      "id": "7",
       "name": "Mobile Phones",
       "icon": "/assets/icons/device/mobile_icon.svg",
+      "image": "/assets/images/category/cables.png",
       "depth": 1,
       "subCategories": [
         {
@@ -323,8 +337,10 @@
       ]
     },
     {
+      "id": "8",
       "name": "Mobile Phones",
       "icon": "/assets/icons/device/mobile_icon.svg",
+      "image": "/assets/images/category/cables.png",
       "depth": 1,
       "subCategories": [
         {
@@ -369,8 +385,10 @@
       ]
     },
     {
+      "id": "9",
       "name": "Mobile Phones",
       "icon": "/assets/icons/device/mobile_icon.svg",
+      "image": "/assets/images/category/cables.png",
       "depth": 1,
       "subCategories": [
         {

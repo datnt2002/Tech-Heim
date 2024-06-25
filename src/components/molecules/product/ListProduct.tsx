@@ -1,4 +1,4 @@
-import ProductCard from "../../atoms/productCard";
+import { ProductCard } from "../../atoms/cards";
 
 type Props = {
   productList: {

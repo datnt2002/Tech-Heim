@@ -2,7 +2,7 @@ import { Button, Dropdown, MenuProps } from "antd";
 import { ImgAndNameCard } from "../cards";
 import { Link } from "react-router-dom";
 import { cn } from "../../../utils/utils";
-import img from "../../../assets/images/phone.png";
+import img from "../../../assets/images/mouse.png";
 const items: MenuProps["items"] = [
   {
     key: "1",
