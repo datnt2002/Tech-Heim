@@ -27,13 +27,13 @@ const BlogCard = ({
     >
       <div
         className={cn(
-          "bg-white flex group shadow-md rounded-lg overflow-hidden h-full gap-2",
+          "bg-white flex group shadow-md rounded-lg overflow-hidden h-full gap-2 transform transition-transform duration-200 hover:scale-105",
           mode === "vertical" ? "flex-col" : "flex-row"
         )}
       >
         <div
           className={cn(
-            mode === "vertical" ? "h-[55%]" : "w-1/3 h-full flex-shrink-0"
+            mode === "vertical" ? "h-[60%]" : "w-1/3 h-full flex-shrink-0"
           )}
         >
           <img

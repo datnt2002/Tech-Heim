@@ -33,11 +33,11 @@ const blogs = [
 ];
 const ListBlogPost = () => {
   return (
-    <div className="flex flex-row">
-      <div className="grid grid-cols-2 grid-flow-row gap-5">
+    <>
+      <div className="grid grid-cols-2 gap-5">
         {blogs.slice(0, 4).map((blog, index) => (
           <BlogCard
-            className="w-[25rem]"
+            className="min-w-full"
             title={blog.title}
             releaseDate={blog.releaseDate}
             readTime={blog.readTime}
@@ -45,7 +45,7 @@ const ListBlogPost = () => {
           />
         ))}
       </div>
-    </div>
+    </>
   );
 };
 export default ListBlogPost;

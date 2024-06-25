@@ -32,19 +32,13 @@ const videos: Video[] = [
     title: "How to prevent the laptop from turning off after closing the door?",
     url: "https://example.com/video5",
   },
-  {
-    image: ip14,
-    title:
-      "5 quick and easy ways to check the health of the graphics card in Windows 11",
-    url: "https://example.com/video6",
-  },
 ];
 
 const ListVideoBlog = () => {
   return (
-    <div className="basis-1/3">
-      <div className="flex flex-col gap-2">
-        <div className="text-xl font-bold ">Video</div>
+    <div className="flex flex-col gap-3">
+      <div className="text-xl font-bold">Video</div>
+      <div className="flex flex-col gap-4">
         {videos.map((video, index) => (
           <VideoCard
             key={index}

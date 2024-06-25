@@ -7,22 +7,19 @@ import Footer from "../../components/molecules/footer";
 
 const Blog = () => {
   return (
-    <div className="mt-10 container">
-      <div className="flex flex-row justify-center mx-20">
-        <div className="flex flex-col">
-          <div className="gap-5">
-            <ListBlogPost />
-          </div>
-          <div className="flex flex-col flex-1 gap-6">
-            <ListRecentBlog />
-          </div>
+    <>
+      <div className="grid grid-cols-4 gap-4 px-4">
+        <div className="col-span-3 flex flex-col gap-4">
+          <ListBlogPost />
+
+          <ListRecentBlog />
         </div>
-        <div className="w-1/3">
+        <div className="col-span-1 flex flex-col gap-4">
           <ListVideoBlog />
         </div>
       </div>
       <Footer />
-    </div>
+    </>
   );
 };
 export default Blog;
