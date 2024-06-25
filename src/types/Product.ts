@@ -18,13 +18,14 @@ export type Product = {
   favorite?: boolean;
   description?: string;
   color: string;
-  rating?: number;
+  rating: number;
   categoryId: string;
   brand: string;
   screenSize: number;
   processor: string;
   GPU: string;
   memory: number;
+  bestSeller?: boolean;
 };
 
 export type ProductInCart = {

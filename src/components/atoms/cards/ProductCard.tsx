@@ -1,55 +1,50 @@
+import HeartTag from "../Tag/HeartTag";
 import ProductCardFooter from "./ProductCardFooter";
 
 type Props = {
-  type?: "sale" | "default" | "favorite" | "cart";
-  sale?: number;
-  url: string;
+  id: string;
   name: string;
-  oldPrice?: number;
-  newPrice?: number;
-  rating?: number;
+  image: string;
+  price: number;
+  salePrice?: number;
+  percent?: number;
+  favorite?: boolean;
+  rating: number;
 };
 
 const ProductCard = ({
-  sale,
+  id,
+  image,
   name,
-  url,
-  newPrice,
-  oldPrice,
+  price,
+  favorite,
+  percent,
   rating,
-
-  type = "default",
+  salePrice,
 }: Props) => {
   return (
-    <div className="relative rounded-md bg-white w-72 h-96 flex flex-col gap-3 shadow-md">
-      {type === "sale" && (
-        <p className="absolute top-2 left-0 py-1 px-[6px] text-secondary-400 bg-secondary-100 rounded-tr-xl rounded-br-xl">
-          {sale}%
+    <div className="relative rounded-md bg-white w-72 h-auto flex flex-col gap-3 shadow-md group hover:shadow-lg cursor-pointer">
+      {percent && (
+        <p className="absolute top-2 left-0 py-1 px-[6px] text-secondary-400 bg-secondary-100 rounded-tr-xl rounded-br-xl group-hover:hidden">
+          {percent}%
         </p>
       )}
-      {type === "favorite" && (
+      <HeartTag id={id} favorite={favorite} key={id} />
+      <div className="flex justify-center items-center w-64 h-48">
         <img
-          src="/assets/icons/heart_icon.svg"
-          alt=""
-          className="absolute top-2 left-0 px-1"
-        />
-      )}
-      <div className="flex justify-center items-center w-full h-auto ">
-        <img
-          src={url}
+          src={image}
           alt={name}
           className="object-contain w-full h-full p-2"
         />
       </div>
       {/* gradient */}
-      <div className="gradient mx-2"></div>
+      <div className="gradient-black mx-2 group-hover:gradient"></div>
       {/* title */}
       <div className="pb-2 px-2">
-        <h5 className="pb-4 truncate ">{name}</h5>
+        <h5 className="pb-4 line-clamp-2 group-hover:text-primary">{name}</h5>
         <ProductCardFooter
-          type={type}
-          oldPrice={oldPrice}
-          newPrice={newPrice}
+          price={price}
+          salePrice={salePrice}
           rating={rating}
         />
       </div>

@@ -1,8 +1,10 @@
 import { createAsyncThunk } from "@reduxjs/toolkit";
 import {
   deleteCartItemsAPI,
+  getBestSellerProductsAPI,
   getCartItemsAPI,
   getCategoryAPI,
+  getNewProductsAPI,
   getProductSaleAPI,
   getSearchKeywordAPI,
   mostProductSearchedAPI,
@@ -109,6 +111,27 @@ export const toggleLikeProductThunk = createAsyncThunk(
   async ({ id, favorite }: { id: string; favorite: boolean }) => {
     try {
       const res = await toggleLikeProductAPI({ id, favorite });
+      return res;
+    } catch (error) {
+      console.log(error);
+    }
+  }
+);
+
+export const getNewProductThunk = createAsyncThunk("product/new", async () => {
+  try {
+    const res = await getNewProductsAPI();
+    return res;
+  } catch (error) {
+    console.log(error);
+  }
+});
+
+export const getBestSellerProductThunk = createAsyncThunk(
+  "product/best-seller",
+  async () => {
+    try {
+      const res = await getBestSellerProductsAPI();
       return res;
     } catch (error) {
       console.log(error);

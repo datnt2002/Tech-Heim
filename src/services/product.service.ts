@@ -87,6 +87,26 @@ export const getProductSaleAPI = () => {
     .catch((err) => err);
 };
 
+export const getNewProductsAPI = () => {
+  return axiosClient
+    .get(`product?_limit=4`)
+    .then((res) => {
+      const { data, status } = res;
+      return { data, status };
+    })
+    .catch((err) => err);
+};
+
+export const getBestSellerProductsAPI = () => {
+  return axiosClient
+    .get(`product?bestSeller=true&_limit=4`)
+    .then((res) => {
+      const { data, status } = res;
+      return { data, status };
+    })
+    .catch((err) => err);
+};
+
 export const toggleLikeProductAPI = ({
   id,
   favorite,

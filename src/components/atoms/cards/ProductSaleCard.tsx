@@ -28,7 +28,7 @@ const ProductSaleCard = ({
         </p>
       )}
       <HeartTag favorite={favorite} id={id} key={id} />
-      <div className="flex justify-center items-center w-44 h-36 ">
+      <div className="flex justify-center items-center w-44 h-36">
         <img
           src={image}
           alt={name}

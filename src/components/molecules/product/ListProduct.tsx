@@ -1,15 +1,8 @@
+import { Product } from "../../../types/Product";
 import { ProductCard } from "../../atoms/cards";
 
 type Props = {
-  productList: {
-    type?: "sale" | "default" | "favorite" | "cart";
-    sale?: number;
-    url: string;
-    name: string;
-    oldPrice?: number;
-    newPrice?: number;
-    rating?: number;
-  }[];
+  productList: Product[];
 };
 
 const ListProduct = ({ productList }: Props) => {
@@ -18,12 +11,15 @@ const ListProduct = ({ productList }: Props) => {
       {productList?.map((product) => {
         return (
           <ProductCard
-            key={product.name}
+            key={product.id}
             name={product.name}
-            type={product.type}
-            url={product.url}
+            id={product.id}
+            image={product.image}
+            price={product.price}
             rating={product.rating}
-            newPrice={product.newPrice}
+            favorite={product.favorite}
+            percent={product.percent}
+            salePrice={product.salePrice}
           />
         );
       })}

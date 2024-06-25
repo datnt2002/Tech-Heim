@@ -2,9 +2,11 @@ import { createSlice } from "@reduxjs/toolkit";
 import { SignUpThunk } from "../thunk/authThunk";
 import {
   deleteCartItemThunk,
+  getBestSellerProductThunk,
   getCartItemThunk,
   getCategoryThunk,
   getItemMostSearchedThunk,
+  getNewProductThunk,
   getProductSaleThunk,
   getSearchKeywordThunk,
   searchProductThunk,
@@ -20,6 +22,8 @@ interface ProductState {
   defaultSearchItems: Product[];
   searchKeywords: { id: string; title: string }[];
   productSale: Product[];
+  newProducts: Product[];
+  bestSellers: Product[];
   loading: boolean;
   status: number;
 }
@@ -31,6 +35,8 @@ const initialState: ProductState = {
   defaultSearchItems: [],
   searchKeywords: [],
   productSale: [],
+  newProducts: [],
+  bestSellers: [],
   loading: false,
   status: 0,
 };
@@ -184,6 +190,42 @@ export const productSlice = createSlice({
           productSale: state.productSale.map((item) =>
             item.id === data.id ? data : item
           ),
+          newProducts: state.newProducts.map((item) =>
+            item.id === data.id ? data : item
+          ),
+          bestSellers: state.bestSellers.map((item) =>
+            item.id === data.id ? data : item
+          ),
+          status: status,
+        };
+      })
+      .addCase(getNewProductThunk.pending, (state) => {
+        return {
+          ...state,
+          loading: true,
+        };
+      })
+      .addCase(getNewProductThunk.fulfilled, (state, action) => {
+        const { data, status } = action.payload;
+        return {
+          ...state,
+          loading: false,
+          newProducts: data,
+          status: status,
+        };
+      })
+      .addCase(getBestSellerProductThunk.pending, (state) => {
+        return {
+          ...state,
+          loading: true,
+        };
+      })
+      .addCase(getBestSellerProductThunk.fulfilled, (state, action) => {
+        const { data, status } = action.payload;
+        return {
+          ...state,
+          loading: false,
+          bestSellers: data,
           status: status,
         };
       });
