@@ -3,6 +3,7 @@ import {
   deleteCartItemsAPI,
   getCartItemsAPI,
   getCategoryAPI,
+  getProductSaleAPI,
   getSearchKeywordAPI,
   mostProductSearchedAPI,
   searchProductAPI,
@@ -14,8 +15,6 @@ export const getCategoryThunk = createAsyncThunk(
   async () => {
     try {
       const res = await getCategoryAPI();
-      console.log(res);
-
       return res;
     } catch (error) {
       console.log(error);
@@ -85,6 +84,18 @@ export const getSearchKeywordThunk = createAsyncThunk(
   async () => {
     try {
       const res = await getSearchKeywordAPI();
+      return res;
+    } catch (error) {
+      console.log(error);
+    }
+  }
+);
+
+export const getProductSaleThunk = createAsyncThunk(
+  "product/sale",
+  async () => {
+    try {
+      const res = await getProductSaleAPI();
       return res;
     } catch (error) {
       console.log(error);

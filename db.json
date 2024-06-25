@@ -533,6 +533,25 @@
       "memory": 8
     },
     {
+      "id": "21",
+      "name": "Smartphone Y2",
+      "image": "/assets/images/search/phone.png",
+      "price": 800,
+      "salePrice": 750,
+      "discount": true,
+      "percent": 6,
+      "favorite": true,
+      "description": "A high-performance smartphone with great camera features.",
+      "color": "Black",
+      "rating": 4.5,
+      "categoryId": "electronics",
+      "brand": "Brand Y",
+      "screenSize": 6.2,
+      "processor": "Snapdragon 888",
+      "GPU": "Adreno 660",
+      "memory": 8
+    },
+    {
       "id": "3",
       "name": "Tablet Z3",
       "image": "/assets/images/search/phone.png",

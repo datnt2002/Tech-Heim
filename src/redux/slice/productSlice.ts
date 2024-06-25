@@ -5,6 +5,7 @@ import {
   getCartItemThunk,
   getCategoryThunk,
   getItemMostSearchedThunk,
+  getProductSaleThunk,
   getSearchKeywordThunk,
   searchProductThunk,
   updateQuantityCartItemThunk,
@@ -17,6 +18,7 @@ interface ProductState {
   searchItems: Product[];
   defaultSearchItems: Product[];
   searchKeywords: { id: string; title: string }[];
+  productSale: Product[];
   loading: boolean;
   status: number;
 }
@@ -27,6 +29,7 @@ const initialState: ProductState = {
   searchItems: [],
   defaultSearchItems: [],
   searchKeywords: [],
+  productSale: [],
   loading: false,
   status: 0,
 };
@@ -149,6 +152,21 @@ export const productSlice = createSlice({
           ...state,
           loading: false,
           searchItems: data,
+          status: status,
+        };
+      })
+      .addCase(getProductSaleThunk.pending, (state) => {
+        return {
+          ...state,
+          loading: true,
+        };
+      })
+      .addCase(getProductSaleThunk.fulfilled, (state, action) => {
+        const { data, status } = action.payload;
+        return {
+          ...state,
+          loading: false,
+          productSale: data,
           status: status,
         };
       });

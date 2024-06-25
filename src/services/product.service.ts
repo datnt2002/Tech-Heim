@@ -76,3 +76,13 @@ export const getSearchKeywordAPI = () => {
     })
     .catch((err) => err);
 };
+
+export const getProductSaleAPI = () => {
+  return axiosClient
+    .get(`product?discount=true`)
+    .then((res) => {
+      const { data, status } = res;
+      return { data, status };
+    })
+    .catch((err) => err);
+};

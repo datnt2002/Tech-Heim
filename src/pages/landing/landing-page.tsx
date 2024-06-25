@@ -18,7 +18,10 @@ import { BlogCard } from "../../components/atoms/cards";
 import { useDispatch } from "react-redux";
 import { AppDispatch } from "../../redux/store";
 import { useEffect } from "react";
-import { getCategoryThunk } from "../../redux/thunk/productThunk";
+import {
+  getCategoryThunk,
+  getProductSaleThunk,
+} from "../../redux/thunk/productThunk";
 
 const LandingPage = () => {
   const products = newProduct;
@@ -26,6 +29,7 @@ const LandingPage = () => {
 
   useEffect(() => {
     dispatch(getCategoryThunk());
+    dispatch(getProductSaleThunk());
   }, []);
 
   return (
