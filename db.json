@@ -481,5 +481,314 @@
       "image": "/assets/images/cart/macbook.png"
     }
   ],
-  "search": []
+  "product": [
+    {
+      "id": "1",
+      "name": "Laptop X1",
+      "image": "/assets/images/search/phone.png",
+      "price": 1200,
+      "color": "Silver",
+      "categoryId": "electronics",
+      "brand": "Brand X",
+      "screenSize": 15.6,
+      "processor": "Intel Core i7",
+      "GPU": "NVIDIA GeForce GTX 1660 Ti",
+      "memory": 16
+    },
+    {
+      "id": "2",
+      "name": "Smartphone Y2",
+      "image": "/assets/images/search/phone.png",
+      "price": 800,
+      "salePrice": 750,
+      "discount": true,
+      "percent": 6,
+      "favorite": true,
+      "description": "A high-performance smartphone with great camera features.",
+      "color": "Black",
+      "rating": 4.5,
+      "categoryId": "electronics",
+      "brand": "Brand Y",
+      "screenSize": 6.2,
+      "processor": "Snapdragon 888",
+      "GPU": "Adreno 660",
+      "memory": 8
+    },
+    {
+      "id": "3",
+      "name": "Tablet Z3",
+      "image": "/assets/images/search/phone.png",
+      "price": 500,
+      "color": "White",
+      "categoryId": "electronics",
+      "brand": "Brand Z",
+      "screenSize": 10.1,
+      "processor": "Apple A12 Bionic",
+      "GPU": "Apple GPU",
+      "memory": 64
+    },
+    {
+      "id": "4",
+      "name": "Smartwatch A1",
+      "image": "/assets/images/search/phone.png",
+      "price": 250,
+      "color": "Rose Gold",
+      "categoryId": "electronics",
+      "brand": "Brand A",
+      "screenSize": 1.5,
+      "processor": "N/A",
+      "GPU": "N/A",
+      "memory": 8
+    },
+    {
+      "id": "5",
+      "name": "Headphones B2",
+      "image": "/assets/images/search/phone.png",
+      "price": 150,
+      "salePrice": 120,
+      "discount": true,
+      "percent": 20,
+      "color": "Blue",
+      "categoryId": "electronics",
+      "brand": "Brand B",
+      "screenSize": 0,
+      "processor": "N/A",
+      "GPU": "N/A",
+      "memory": 0
+    },
+    {
+      "id": "6",
+      "name": "Camera C3",
+      "image": "/assets/images/search/phone.png",
+      "price": 1200,
+      "color": "Black",
+      "categoryId": "electronics",
+      "brand": "Brand C",
+      "screenSize": 0,
+      "processor": "N/A",
+      "GPU": "N/A",
+      "memory": 0
+    },
+    {
+      "id": "7",
+      "name": "Desktop D4",
+      "image": "/assets/images/search/phone.png",
+      "price": 1800,
+      "salePrice": 1600,
+      "discount": true,
+      "percent": 11,
+      "color": "Silver",
+      "categoryId": "electronics",
+      "brand": "Brand D",
+      "screenSize": 0,
+      "processor": "Intel Core i9",
+      "GPU": "NVIDIA GeForce RTX 3080",
+      "memory": 32
+    },
+    {
+      "id": "8",
+      "name": "Keyboard E5",
+      "image": "/assets/images/search/phone.png",
+      "price": 80,
+      "color": "Black",
+      "categoryId": "electronics",
+      "brand": "Brand E",
+      "screenSize": 0,
+      "processor": "N/A",
+      "GPU": "N/A",
+      "memory": 0
+    },
+    {
+      "id": "9",
+      "name": "Mouse F6",
+      "image": "/assets/images/search/phone.png",
+      "price": 40,
+      "color": "Red",
+      "categoryId": "electronics",
+      "brand": "Brand F",
+      "screenSize": 0,
+      "processor": "N/A",
+      "GPU": "N/A",
+      "memory": 0
+    },
+    {
+      "id": "10",
+      "name": "Monitor G7",
+      "image": "/assets/images/search/phone.png",
+      "price": 300,
+      "color": "Silver",
+      "categoryId": "electronics",
+      "brand": "Brand G",
+      "screenSize": 27,
+      "processor": "N/A",
+      "GPU": "N/A",
+      "memory": 0
+    },
+    {
+      "id": "11",
+      "name": "Printer H8",
+      "image": "/assets/images/search/phone.png",
+      "price": 200,
+      "color": "White",
+      "categoryId": "electronics",
+      "brand": "Brand H",
+      "screenSize": 0,
+      "processor": "N/A",
+      "GPU": "N/A",
+      "memory": 0
+    },
+    {
+      "id": "12",
+      "name": "Projector I9",
+      "image": "/assets/images/search/phone.png",
+      "price": 1500,
+      "color": "Black",
+      "categoryId": "electronics",
+      "brand": "Brand I",
+      "screenSize": 0,
+      "processor": "N/A",
+      "GPU": "N/A",
+      "memory": 0
+    },
+    {
+      "id": "13",
+      "name": "Speaker J10",
+      "image": "/assets/images/search/phone.png",
+      "price": 100,
+      "salePrice": 90,
+      "discount": true,
+      "percent": 10,
+      "color": "Grey",
+      "categoryId": "electronics",
+      "brand": "Brand J",
+      "screenSize": 0,
+      "processor": "N/A",
+      "GPU": "N/A",
+      "memory": 0
+    },
+    {
+      "id": "14",
+      "name": "Router K11",
+      "image": "/assets/images/search/phone.png",
+      "price": 80,
+      "color": "Black",
+      "categoryId": "electronics",
+      "brand": "Brand K",
+      "screenSize": 0,
+      "processor": "N/A",
+      "GPU": "N/A",
+      "memory": 0
+    },
+    {
+      "id": "15",
+      "name": "External HDD L12",
+      "image": "/assets/images/search/phone.png",
+      "price": 120,
+      "color": "Blue",
+      "categoryId": "electronics",
+      "brand": "Brand L",
+      "screenSize": 0,
+      "processor": "N/A",
+      "GPU": "N/A",
+      "memory": 0
+    },
+    {
+      "id": "16",
+      "name": "Camera Lens M13",
+      "image": "/assets/images/search/phone.png",
+      "price": 400,
+      "color": "Black",
+      "categoryId": "electronics",
+      "brand": "Brand M",
+      "screenSize": 0,
+      "processor": "N/A",
+      "GPU": "N/A",
+      "memory": 0
+    },
+    {
+      "id": "17",
+      "name": "Smart Home Device N14",
+      "image": "/assets/images/search/phone.png",
+      "price": 150,
+      "color": "White",
+      "categoryId": "electronics",
+      "brand": "Brand N",
+      "screenSize": 0,
+      "processor": "N/A",
+      "GPU": "N/A",
+      "memory": 0
+    },
+    {
+      "id": "18",
+      "name": "Fitness Tracker O15",
+      "image": "/assets/images/search/phone.png",
+      "price": 80,
+      "color": "Black",
+      "categoryId": "electronics",
+      "brand": "Brand O",
+      "screenSize": 0,
+      "processor": "N/A",
+      "GPU": "N/A",
+      "memory": 0
+    },
+    {
+      "id": "19",
+      "name": "Drone P16",
+      "image": "/assets/images/search/phone.png",
+      "price": 1000,
+      "color": "Silver",
+      "categoryId": "electronics",
+      "brand": "Brand P",
+      "screenSize": 0,
+      "processor": "N/A",
+      "GPU": "N/A",
+      "memory": 0
+    },
+    {
+      "id": "20",
+      "name": "Game Console Q17",
+      "image": "/assets/images/search/phone.png",
+      "price": 400,
+      "salePrice": 350,
+      "discount": true,
+      "percent": 13,
+      "color": "Black",
+      "categoryId": "electronics",
+      "brand": "Brand Q",
+      "screenSize": 0,
+      "processor": "N/A",
+      "GPU": "N/A",
+      "memory": 0
+    }
+  ],
+  "search-keyword": [
+    {
+      "id": "1",
+      "title": "Tablets"
+    },
+    {
+      "id": "2",
+      "title": "Laptops"
+    },
+    {
+      "id": "3",
+      "title": "Headphones"
+    },
+    {
+      "id": "4",
+      "title": "USB Drive"
+    },
+    {
+      "id": "5",
+      "title": "Smartphones"
+    },
+    {
+      "id": "6",
+      "title": "Phone Cases"
+    },
+    {
+      "id": "7",
+      "title": "Smartwatch"
+    }
+  ]
 }

@@ -47,12 +47,32 @@ export const deleteCartItemsAPI = (id: string) => {
     .catch((err) => err);
 };
 
-// export const searchProductAPI = () => {
-//   return axiosClient
-//     .get("product-category")
-//     .then((res) => {
-//       const { data, status } = res;
-//       return { data, status };
-//     })
-//     .catch((err) => err);
-// };
+export const searchProductAPI = (searchValue: string) => {
+  return axiosClient
+    .get(`product?q=${searchValue}`)
+    .then((res) => {
+      const { data, status } = res;
+      return { data, status };
+    })
+    .catch((err) => err);
+};
+
+export const mostProductSearchedAPI = () => {
+  return axiosClient
+    .get(`product?_page=1&_limit=10`)
+    .then((res) => {
+      const { data, status } = res;
+      return { data, status };
+    })
+    .catch((err) => err);
+};
+
+export const getSearchKeywordAPI = () => {
+  return axiosClient
+    .get(`search-keyword`)
+    .then((res) => {
+      const { data, status } = res;
+      return { data, status };
+    })
+    .catch((err) => err);
+};

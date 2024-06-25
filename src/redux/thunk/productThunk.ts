@@ -3,6 +3,9 @@ import {
   deleteCartItemsAPI,
   getCartItemsAPI,
   getCategoryAPI,
+  getSearchKeywordAPI,
+  mostProductSearchedAPI,
+  searchProductAPI,
   updateQuantityCartItemsAPI,
 } from "../../services/product.service";
 
@@ -47,6 +50,42 @@ export const deleteCartItemThunk = createAsyncThunk(
     try {
       const res = await deleteCartItemsAPI(id);
       return { res, id };
+    } catch (error) {
+      console.log(error);
+    }
+  }
+);
+
+export const searchProductThunk = createAsyncThunk(
+  "product/search",
+  async (searchValue: string) => {
+    try {
+      const res = await searchProductAPI(searchValue);
+      return res;
+    } catch (error) {
+      console.log(error);
+    }
+  }
+);
+
+export const getItemMostSearchedThunk = createAsyncThunk(
+  "search-most",
+  async () => {
+    try {
+      const res = await mostProductSearchedAPI();
+      return res;
+    } catch (error) {
+      console.log(error);
+    }
+  }
+);
+
+export const getSearchKeywordThunk = createAsyncThunk(
+  "search-keyword",
+  async () => {
+    try {
+      const res = await getSearchKeywordAPI();
+      return res;
     } catch (error) {
       console.log(error);
     }
