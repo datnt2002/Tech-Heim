@@ -12,11 +12,12 @@ const CartDropdown = () => {
   const dispatch = useDispatch<AppDispatch>();
   const cartItems = useSelector((state: RootState) => state.product.cartItems);
 
-  const filterCartItems = cartItems.filter((item) => {
+  const filterCartItems = cartItems?.filter((item) => {
     return item.quantity > 0;
   });
+  console.log(filterCartItems);
 
-  const total = filterCartItems.reduce((res, curr) => {
+  const total = filterCartItems?.reduce((res, curr) => {
     return res + curr.price * curr.quantity;
   }, 0);
 

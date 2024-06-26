@@ -9,10 +9,11 @@ const CategoryCarousel = () => {
   const categoriesList = useSelector(
     (state: RootState) => state.product.categories
   );
+  console.log(categoriesList);
   return (
     <section className="px-24 py-12">
       <CarouselWithButton>
-        {categoriesList.map((item) => {
+        {categoriesList?.map((item) => {
           return (
             <ImgAndNameCard key={item.id} name={item.name} img={item.image} />
           );
