@@ -93,7 +93,7 @@ const CardCart = ({
                 className="p-0"
                 onClick={() => handleDeleteItem(id)}
               >
-                <img src="/assets/icons/trash_icon.svg" alt="" />
+                <img src="/assets/icons/essential/trash_icon.svg" alt="" />
               </Button>
               <div className="flex items-center space-x-4 border-b border-b-gray-717171 ml-2">
                 <Button

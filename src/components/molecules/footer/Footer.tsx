@@ -32,7 +32,7 @@ const Footer = () => {
             <p className="mb-4 flex items-center text-xs text-gray-CBCBCB justify-center md:justify-start">
               <span className="mr-1">
                 <img
-                  src="/assets/icons/location.svg"
+                  src="/assets/icons/location/location_icon.svg"
                   alt=""
                   className="text-xs"
                 />
@@ -42,7 +42,7 @@ const Footer = () => {
             <p className="mb-4 flex items-center text-xs text-gray-CBCBCB justify-center md:justify-start">
               <span className="mr-1">
                 <img
-                  src="/assets/icons/call_calling.svg"
+                  src="/assets/icons/device/phone_calling_icon.svg"
                   alt=""
                   className="text-xs"
                 />
@@ -52,7 +52,7 @@ const Footer = () => {
             <p className="mb-4 flex items-center text-xs text-gray-CBCBCB justify-center md:justify-start">
               <span className="mr-1">
                 <img
-                  src="/assets/icons/sms_icon.svg"
+                  src="/assets/icons/email/sms_icon.svg"
                   alt=""
                   className="text-xs"
                 />
@@ -67,45 +67,55 @@ const Footer = () => {
             <Button
               type="text"
               size="large"
-              //   iconPosition="end"
               className="text-gray-F9F9F9 flex justify-between border border-gray-F9F9F9 w-full hover:text-white"
             >
               <div className="flex gap-1">
                 <img
-                  src="/assets/icons/user_icon.svg"
+                  src="/assets/icons/user/user_icon.svg"
                   className="order-first"
                 />
                 <span className="order-2">E-mail Address</span>
               </div>
-              <img src="/assets/icons/arrow-right.svg" className="order-last" />
+              <img
+                src="/assets/icons/arrow/arrow_right_icon.svg"
+                className="order-last"
+              />
             </Button>
             <div className="flex gap-5 mt-5">
               <img
-                src="/assets/icons/Facebook.svg"
+                src="/assets/icons/crypto/facebook_outline_icon.svg"
                 alt=""
                 className="h-6 w-6"
               />
-              <img src="/assets/icons/twitter.svg" alt="" className="h-6 w-6" />
               <img
-                src="/assets/icons/Instagram.svg"
+                src="/assets/icons/crypto/twitter_icon.svg"
                 alt=""
                 className="h-6 w-6"
               />
-              <img src="/assets/icons/Youtube.svg" alt="" className="h-6 w-6" />
+              <img
+                src="/assets/icons/crypto/instagram_icon.svg"
+                alt=""
+                className="h-6 w-6"
+              />
+              <img
+                src="/assets/icons/crypto/youtube_icon.svg"
+                alt=""
+                className="h-6 w-6"
+              />
             </div>
           </div>
           <div className="col-span-1">
             <div className="flex flex-col justify-between h-full py-7">
               <Button className="w-9 h-9 rounded-full p-0">
                 <img
-                  src="/assets/icons/message-question.svg"
+                  src="/assets/icons/like/message_question_icon.svg"
                   alt=""
                   className="w-6 h-6"
                 />
               </Button>
               <Button className="w-9 h-9 rounded-full p-0">
                 <img
-                  src="/assets/icons/arrow_up.svg"
+                  src="/assets/icons/arrow/arrow_up_icon.svg"
                   alt=""
                   className="w-6 h-6"
                 />
@@ -118,7 +128,7 @@ const Footer = () => {
       {/* copyright */}
       <div className="bg-primary-900 p-6 flex justify-between">
         <div className="flex items-center gap-2">
-          <img src="/assets/icons/copyright.svg" alt="" />
+          <img src="/assets/icons/content/copyright_icon.svg" alt="" />
           <p className="text-xs">2023 TechHeim</p>
         </div>
         <div className="text-xs text-gray-CBCBCB gap-12 flex justify-between">

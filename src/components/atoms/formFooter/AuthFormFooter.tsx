@@ -19,14 +19,14 @@ const AuthFormFooter = ({ title, message, href, hrefLabel }: FooterProps) => {
           size="large"
           className="border-primary border-2 text-primary flex-1 "
         >
-          <img src="/assets/icons/google_icon.svg" />
+          <img src="/assets/icons/crypto/google_icon.svg" />
           Google
         </Button>
         <Button
           size="large"
           className="border-primary border-2 text-primary flex-1 "
         >
-          <img src="/assets/icons/facebook_icon.svg" />
+          <img src="/assets/icons/crypto/facebook_icon.svg" />
           Facebook
         </Button>
       </div>

@@ -15,7 +15,7 @@ const Header = () => {
         />
         <Button
           className="block md:hidden border-none"
-          icon={<img src="/assets/icons/menu_icon.svg" alt="menu" />}
+          icon={<img src="/assets/icons/essential/menu_icon.svg" alt="menu" />}
         />
         <h1 className="block md:hidden text-primary-400">Tech Heim</h1>
         <Navbar />

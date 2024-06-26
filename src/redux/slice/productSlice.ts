@@ -3,6 +3,7 @@ import { SignUpThunk } from "../thunk/authThunk";
 import {
   deleteCartItemThunk,
   getBestSellerProductThunk,
+  getBrandThunk,
   getCartItemThunk,
   getCategoryThunk,
   getItemMostSearchedThunk,
@@ -13,7 +14,12 @@ import {
   toggleLikeProductThunk,
   updateQuantityCartItemThunk,
 } from "../thunk/productThunk";
-import { Product, ProductCategory, ProductInCart } from "../../types/Product";
+import {
+  Brand,
+  Product,
+  ProductCategory,
+  ProductInCart,
+} from "../../types/Product";
 
 interface ProductState {
   categories: ProductCategory[];
@@ -24,6 +30,7 @@ interface ProductState {
   productSale: Product[];
   newProducts: Product[];
   bestSellers: Product[];
+  brandList: Brand[];
   loading: boolean;
   status: number;
 }
@@ -37,6 +44,7 @@ const initialState: ProductState = {
   productSale: [],
   newProducts: [],
   bestSellers: [],
+  brandList: [],
   loading: false,
   status: 0,
 };
@@ -226,6 +234,21 @@ export const productSlice = createSlice({
           ...state,
           loading: false,
           bestSellers: data,
+          status: status,
+        };
+      })
+      .addCase(getBrandThunk.pending, (state) => {
+        return {
+          ...state,
+          loading: true,
+        };
+      })
+      .addCase(getBrandThunk.fulfilled, (state, action) => {
+        const { data, status } = action.payload;
+        return {
+          ...state,
+          loading: false,
+          brandList: data,
           status: status,
         };
       });

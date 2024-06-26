@@ -2,6 +2,7 @@ import { createAsyncThunk } from "@reduxjs/toolkit";
 import {
   deleteCartItemsAPI,
   getBestSellerProductsAPI,
+  getBrandAPI,
   getCartItemsAPI,
   getCategoryAPI,
   getNewProductsAPI,
@@ -138,3 +139,12 @@ export const getBestSellerProductThunk = createAsyncThunk(
     }
   }
 );
+
+export const getBrandThunk = createAsyncThunk("brand", async () => {
+  try {
+    const res = await getBrandAPI();
+    return res;
+  } catch (error) {
+    console.log(error);
+  }
+});

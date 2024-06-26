@@ -123,3 +123,13 @@ export const toggleLikeProductAPI = ({
     })
     .catch((err) => err);
 };
+
+export const getBrandAPI = () => {
+  return axiosClient
+    .get(`brand`)
+    .then((res) => {
+      const { data, status } = res;
+      return { data, status };
+    })
+    .catch((err) => err);
+};
