@@ -1,5 +1,4 @@
 import VideoCard from "../atoms/cards/videoCard/VideoCard";
-import { useEffect, useState } from "react";
 import greenScreen from "../../assets/images/greenscreen.png";
 import laptop from "../../assets/images/laptop.png";
 import ip14 from "../../assets/images/ip14.png";
@@ -27,17 +26,23 @@ const videos: Video[] = [
     title: "10 things you should never store in your smartphone!",
     url: "https://example.com/video4",
   },
+
   {
     image: ip14,
-    title: "How to prevent the laptop from turning off after closing the door?",
-    url: "https://example.com/video5",
+    title: "10 things you should never store in your smartphone!",
+    url: "https://example.com/video4",
+  },
+  {
+    image: ip14,
+    title: "10 things you should never store in your smartphone!",
+    url: "https://example.com/video4",
   },
 ];
 
 const ListVideoBlog = () => {
   return (
-    <div className="flex flex-col gap-3">
-      <div className="text-xl font-bold">Video</div>
+    <div>
+      <div className="text-xl font-bold mb-4">Video</div>
       <div className="flex flex-col gap-4">
         {videos.map((video, index) => (
           <VideoCard
@@ -51,4 +56,5 @@ const ListVideoBlog = () => {
     </div>
   );
 };
+
 export default ListVideoBlog;

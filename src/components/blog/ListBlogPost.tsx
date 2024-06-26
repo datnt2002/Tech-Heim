@@ -34,10 +34,10 @@ const blogs = [
 const ListBlogPost = () => {
   return (
     <>
-      <div className="grid grid-cols-2 gap-5">
+      <div className="grid grid-cols-8 gap-4">
         {blogs.slice(0, 4).map((blog, index) => (
           <BlogCard
-            className="min-w-full"
+            className="col-span-4 min-w-full"
             title={blog.title}
             releaseDate={blog.releaseDate}
             readTime={blog.readTime}

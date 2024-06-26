@@ -1,4 +1,5 @@
-import { cn } from "../../../utils/utils";
+import { useNavigate } from "react-router-dom";
+import { cn } from "../../../../utils/utils";
 
 type BlogProps = {
   mode?: "horizontal" | "vertical";
@@ -17,6 +18,7 @@ const BlogCard = ({
   readTime,
   content,
 }: BlogProps) => {
+  const nav = useNavigate();
   return (
     <div
       className={cn(
@@ -24,10 +26,11 @@ const BlogCard = ({
         mode === "vertical" ? "w-1/3 h-80" : "w-full h-40",
         className
       )}
+      onClick={() => nav(`/blog/${title}`)}
     >
       <div
         className={cn(
-          "bg-white flex group shadow-md rounded-lg overflow-hidden h-full gap-2 transform transition-transform duration-200 hover:scale-105",
+          "bg-white flex group shadow-md rounded-lg overflow-hidden h-full gap-2 ",
           mode === "vertical" ? "flex-col" : "flex-row"
         )}
       >

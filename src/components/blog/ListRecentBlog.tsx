@@ -71,18 +71,20 @@ const ListRecentBlog = () => {
       setIsTransitioning(false);
     }, 300); // Match this duration with your CSS transition duration
   };
+
   return (
     <div>
-      <div className="font-bold text-xl mt-5">Recent Post</div>
+      <div className="font-bold text-xl mt-5 mb-8">Recent Posts</div>
       <div
-        className={`flex flex-col justify-center gap-3 transition-opacity  w-[75%] duration-300 ${
+        className={`grid grid-cols-1 gap-4 transition-opacity duration-300 ${
           isTransitioning ? "opacity-0" : "opacity-100"
         }`}
       >
         {currentBlogs.map((blog, index) => (
           <BlogCard
+            key={index}
             mode="horizontal"
-            className=" shadow-md"
+            className="shadow-md"
             title={blog.title}
             releaseDate={blog.releaseDate}
             readTime={blog.readTime}
@@ -101,4 +103,5 @@ const ListRecentBlog = () => {
     </div>
   );
 };
+
 export default ListRecentBlog;

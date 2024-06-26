@@ -3,22 +3,21 @@ import {
   ListBlogPost,
   ListRecentBlog,
 } from "../../components/blog";
-import Footer from "../../components/molecules/footer";
 
 const Blog = () => {
   return (
     <>
-      <div className="grid grid-cols-4 gap-4 px-4">
-        <div className="col-span-3 flex flex-col gap-4">
+      <div className="flex gap-6 px-28 mt-24 mb-14">
+        <div className="basis-2/3">
           <ListBlogPost />
-
-          <ListRecentBlog />
+          <div className="mt-12 mr-32 mb-14">
+            <ListRecentBlog />
+          </div>
         </div>
-        <div className="col-span-1 flex flex-col gap-4">
+        <div className="basis-1/3">
           <ListVideoBlog />
         </div>
       </div>
-      <Footer />
     </>
   );
 };
