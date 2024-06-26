@@ -1,5 +1,5 @@
 import { useNavigate } from "react-router-dom";
-import { cn } from "../../../../utils/utils";
+import { cn } from "../../../utils/utils";
 
 type BlogProps = {
   mode?: "horizontal" | "vertical";
@@ -28,11 +28,7 @@ const BlogCard = ({
   };
   return (
     <div
-      className={cn(
-        "",
-        mode === "vertical" ? "w-1/3 h-80" : "w-full h-40",
-        className
-      )}
+      className={cn(mode === "vertical" ? "w-1/3 " : "w-full ", className)}
       onClick={handleClick}
     >
       <div
@@ -94,7 +90,7 @@ const BlogCard = ({
           </div>
           <h5
             className={cn(
-              " font-semibold font-inter  truncate tracking-tight mb-2 group-hover:text-secondary",
+              " font-semibold font-inter  line-clamp-1 tracking-tight mb-2 group-hover:text-secondary",
               mode === "vertical" ? "text-gray-900 text-xl" : " text-base"
             )}
           >
