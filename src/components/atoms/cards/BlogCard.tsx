@@ -8,6 +8,7 @@ type BlogProps = {
   releaseDate?: string;
   readTime?: string;
   content?: string;
+  author?: string;
 };
 
 const BlogCard = ({
@@ -17,8 +18,14 @@ const BlogCard = ({
   releaseDate,
   readTime,
   content,
+  author,
 }: BlogProps) => {
   const nav = useNavigate();
+  const BlogDetail = { title, content, readTime, releaseDate, author };
+  const handleClick = () => {
+    localStorage.setItem("selectedBlog", JSON.stringify(BlogDetail));
+    nav(`/blog/${title}`);
+  };
   return (
     <div
       className={cn(
@@ -26,7 +33,7 @@ const BlogCard = ({
         mode === "vertical" ? "w-1/3 h-80" : "w-full h-40",
         className
       )}
-      onClick={() => nav(`/blog/${title}`)}
+      onClick={handleClick}
     >
       <div
         className={cn(

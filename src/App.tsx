@@ -5,6 +5,7 @@ import "./index.css";
 import MainLayout from "./layouts";
 import LandingPage from "./pages/landing";
 import { Blog } from "./pages/blog";
+import BlogDetail from "./components/detailblog/DetailBlog";
 
 function App() {
   return (
@@ -30,6 +31,14 @@ function App() {
             element={
               <MainLayout>
                 <Blog />
+              </MainLayout>
+            }
+          />
+          <Route
+            path="/blog/:title"
+            element={
+              <MainLayout>
+                <BlogDetail />
               </MainLayout>
             }
           />
