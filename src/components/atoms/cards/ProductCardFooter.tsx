@@ -25,7 +25,7 @@ const ProductCardFooter = ({ price, rating, salePrice }: Props) => {
         )}
         <div className="flex-1 relative">
           <div className="flex absolute bottom-0 right-0 items-center">
-            <img src="/assets/icons/star_icon.svg" className="p-[2.5px]" />
+            <img src="/assets/icons/like/star_icon.svg" className="p-[2.5px]" />
             <h6 className="text-base text-primary-500 font-semibold">
               {formatNumberFixOneDigit(rating)}
             </h6>

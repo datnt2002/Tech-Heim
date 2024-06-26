@@ -21,7 +21,7 @@ const items: MenuProps["items"] = [
     label: (
       <>
         <DropdownItem
-          icon={"/assets/icons/profile_icon.svg"}
+          icon={"/assets/icons/user/profile_icon.svg"}
           label="Jimmy Smith"
           className="text-primary"
         />
@@ -32,25 +32,37 @@ const items: MenuProps["items"] = [
   {
     key: "orders",
     label: (
-      <DropdownItem icon={"/assets/icons/order_icon.svg"} label="Orders" />
+      <DropdownItem
+        icon={"/assets/icons/shopping/order_icon.svg"}
+        label="Orders"
+      />
     ),
   },
   {
     key: "wishlist",
     label: (
-      <DropdownItem icon={"/assets/icons/heart_icon.svg"} label="Wish List" />
+      <DropdownItem
+        icon={"/assets/icons/like/heart_outline_icon.svg"}
+        label="Wish List"
+      />
     ),
   },
   {
     key: "payments",
     label: (
-      <DropdownItem icon={"/assets/icons/payment_icon.svg"} label="Payments" />
+      <DropdownItem
+        icon={"/assets/icons/crypto/payment_icon.svg"}
+        label="Payments"
+      />
     ),
   },
   {
     key: "logout",
     label: (
-      <DropdownItem icon={"/assets/icons/logout_icon.svg"} label="Log out" />
+      <DropdownItem
+        icon={"/assets/icons/arrow/logout_icon.svg"}
+        label="Log out"
+      />
     ),
   },
 ];

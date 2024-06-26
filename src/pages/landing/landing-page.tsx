@@ -1,3 +1,6 @@
+import { useEffect } from "react";
+import { useDispatch, useSelector } from "react-redux";
+
 import Banner, {
   SecondBanner,
   ThirdBanner,
@@ -6,19 +9,12 @@ import CategoryHomeList from "../../components/molecules/categoryList";
 import { ProductSale } from "../../components/molecules/product";
 import ListProduct from "../../components/molecules/product/ListProduct";
 import HomeSection from "../../components/organisms/section";
-
-import apple from "../../assets/images/logo/apple.png";
-import canon from "../../assets/images/logo/canon.png";
-import flower from "../../assets/images/logo/flower.png";
-import lenovo from "../../assets/images/logo/lenovo.png";
-import samsung from "../../assets/images/logo/samsung.png";
-import sony from "../../assets/images/logo/sony.png";
 import { BlogCard } from "../../components/atoms/cards";
-import { useDispatch, useSelector } from "react-redux";
+
 import { AppDispatch, RootState } from "../../redux/store";
-import { useEffect } from "react";
 import {
   getBestSellerProductThunk,
+  getBrandThunk,
   getCategoryThunk,
   getNewProductThunk,
   getProductSaleThunk,
@@ -26,7 +22,7 @@ import {
 
 const LandingPage = () => {
   const dispatch = useDispatch<AppDispatch>();
-  const { newProducts, bestSellers } = useSelector(
+  const { newProducts, bestSellers, brandList } = useSelector(
     (state: RootState) => state.product
   );
 
@@ -35,6 +31,7 @@ const LandingPage = () => {
     dispatch(getProductSaleThunk());
     dispatch(getNewProductThunk());
     dispatch(getBestSellerProductThunk());
+    dispatch(getBrandThunk());
   }, []);
 
   return (
@@ -51,12 +48,9 @@ const LandingPage = () => {
       </HomeSection>
       <HomeSection sectionName="Top Brands" viewAllButton={false}>
         <div className="flex justify-between mb-24">
-          <img src={apple} alt="" className="object-contain" />
-          <img src={sony} alt="" className="object-contain" />
-          <img src={samsung} alt="" className="object-contain" />
-          <img src={canon} alt="" className="object-contain" />
-          <img src={flower} alt="" className="object-contain" />
-          <img src={lenovo} alt="" className="object-contain" />
+          {brandList.map((brand) => {
+            return <img src={brand.image} alt="" className="object-contain" />;
+          })}
         </div>
       </HomeSection>
       <ThirdBanner />
@@ -71,19 +65,19 @@ const LandingPage = () => {
       </HomeSection>
       <section className="flex mx-24 justify-between h-24 items-center mt-14">
         <div className="flex gap-4">
-          <img src="/assets/icons/computer.svg" alt="" />
+          <img src="/assets/icons/service/computer_icon.svg" alt="" />
           <p className="text-xl self-center">Latest and Greatest Tech</p>
         </div>
         <div className="flex gap-4">
-          <img src="/assets/icons/guard.svg" alt="" />
+          <img src="/assets/icons/service/guard_icon.svg" alt="" />
           <p className="text-xl self-center">Guarantee</p>
         </div>
         <div className="flex gap-4">
-          <img src="/assets/icons/shipping.svg" alt="" />
+          <img src="/assets/icons/service/shipping_icon.svg" alt="" />
           <p className="text-xl self-center">Free Shipping over 1000$</p>
         </div>
         <div className="flex gap-4">
-          <img src="/assets/icons/time_support.svg" alt="" />
+          <img src="/assets/icons/service/time_support_icon.svg" alt="" />
           <p className="text-xl self-center">24/7 Support</p>
         </div>
       </section>

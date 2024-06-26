@@ -57,7 +57,10 @@ const CartDropdown = () => {
               <Button size="large" className="flex-1" type="primary">
                 Proceed to Cart
                 <span>
-                  <img src="/assets/icons/shopping_cart_icon.svg" alt="" />
+                  <img
+                    src="/assets/icons/shopping/shopping_cart_icon.svg"
+                    alt=""
+                  />
                 </span>
               </Button>
             </div>

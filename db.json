@@ -838,5 +838,37 @@
       "id": "7",
       "title": "Smartwatch"
     }
+  ],
+  "brand": [
+    {
+      "id": "1",
+      "name": "Apple",
+      "image": "/assets/images/logo/apple.png"
+    },
+    {
+      "id": "2",
+      "name": "Sony",
+      "image": "/assets/images/logo/sony.png"
+    },
+    {
+      "id": "3",
+      "name": "Samsung",
+      "image": "/assets/images/logo/samsung.png"
+    },
+    {
+      "id": "4",
+      "name": "Canon",
+      "image": "/assets/images/logo/canon.png"
+    },
+    {
+      "id": "5",
+      "name": "Flower",
+      "image": "/assets/images/logo/flower.png"
+    },
+    {
+      "id": "6",
+      "name": "Lenovo",
+      "image": "/assets/images/logo/lenovo.png"
+    }
   ]
 }

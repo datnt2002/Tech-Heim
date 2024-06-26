@@ -1,4 +1,4 @@
-import { cn } from "../../../../utils/utils";
+import { cn } from "../../../utils/utils";
 
 type BlogProps = {
   mode?: "horizontal" | "vertical";
@@ -42,7 +42,7 @@ const BlogCard = ({ mode = "vertical", className }: BlogProps) => {
           >
             <div className="flex items-center text-xs text-gray-9E9E9E">
               <img
-                src="/assets/icons/calender_icon.svg"
+                src="/assets/icons/time/calender_icon.svg"
                 alt=""
                 className="h-4 w-4 mr-1"
               />
@@ -51,7 +51,7 @@ const BlogCard = ({ mode = "vertical", className }: BlogProps) => {
             {mode === "vertical" ? (
               <div className="flex items-center text-xs text-gray-9E9E9E">
                 <img
-                  src="/assets/icons/timer_icon.svg"
+                  src="/assets/icons/time/timer_icon.svg"
                   alt=""
                   className="h-4 w-4 mr-1"
                 />
@@ -60,7 +60,7 @@ const BlogCard = ({ mode = "vertical", className }: BlogProps) => {
             ) : (
               <div className="text-xs text-gray-9E9E9E hidden group-hover:block">
                 <img
-                  src="/assets/icons/save_icon.svg"
+                  src="/assets/icons/archive/save_icon.svg"
                   alt=""
                   className="h-4 w-4 mr-1"
                 />
