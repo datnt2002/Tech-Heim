@@ -1,11 +1,31 @@
-import { cn } from "../../../utils/utils";
+import { useNavigate } from "react-router-dom";
+import { cn } from "../../../../utils/utils";
 
 type BlogProps = {
   mode?: "horizontal" | "vertical";
   className?: string;
+  title?: string;
+  releaseDate?: string;
+  readTime?: string;
+  content?: string;
+  author?: string;
 };
 
-const BlogCard = ({ mode = "vertical", className }: BlogProps) => {
+const BlogCard = ({
+  mode = "vertical",
+  className,
+  title,
+  releaseDate,
+  readTime,
+  content,
+  author,
+}: BlogProps) => {
+  const nav = useNavigate();
+  const BlogDetail = { title, content, readTime, releaseDate, author };
+  const handleClick = () => {
+    localStorage.setItem("selectedBlog", JSON.stringify(BlogDetail));
+    nav(`/blog/${title}`);
+  };
   return (
     <div
       className={cn(
@@ -13,14 +33,19 @@ const BlogCard = ({ mode = "vertical", className }: BlogProps) => {
         mode === "vertical" ? "w-1/3 h-80" : "w-full h-40",
         className
       )}
+      onClick={handleClick}
     >
       <div
         className={cn(
-          "bg-white flex group shadow-md rounded-lg overflow-hidden h-full gap-2",
+          "bg-white flex group shadow-md rounded-lg overflow-hidden h-full gap-2 ",
           mode === "vertical" ? "flex-col" : "flex-row"
         )}
       >
-        <div className={cn(mode === "vertical" ? "h-[55%]" : "w-2/3")}>
+        <div
+          className={cn(
+            mode === "vertical" ? "h-[60%]" : "w-1/3 h-full flex-shrink-0"
+          )}
+        >
           <img
             className="object-cover h-full w-full"
             src="https://flowbite.com/docs/images/blog/image-1.jpg"
@@ -31,7 +56,7 @@ const BlogCard = ({ mode = "vertical", className }: BlogProps) => {
         <div
           className={cn(
             "pb-5 px-5 flex flex-col",
-            mode === "horizontal" && "justify-center pt-5"
+            mode === "horizontal" && "justify-center pt-5 basis 2/3"
           )}
         >
           <div
@@ -46,7 +71,7 @@ const BlogCard = ({ mode = "vertical", className }: BlogProps) => {
                 alt=""
                 className="h-4 w-4 mr-1"
               />
-              <p>August , 8 , 2023</p>
+              <p>{releaseDate}</p>
             </div>
             {mode === "vertical" ? (
               <div className="flex items-center text-xs text-gray-9E9E9E">
@@ -55,7 +80,7 @@ const BlogCard = ({ mode = "vertical", className }: BlogProps) => {
                   alt=""
                   className="h-4 w-4 mr-1"
                 />
-                <p>3 min read</p>
+                <p> {readTime}</p>
               </div>
             ) : (
               <div className="text-xs text-gray-9E9E9E hidden group-hover:block">
@@ -73,7 +98,7 @@ const BlogCard = ({ mode = "vertical", className }: BlogProps) => {
               mode === "vertical" ? "text-gray-900 text-xl" : " text-base"
             )}
           >
-            Noteworthy technology acquisitions 2021
+            {title}
           </h5>
 
           <p
@@ -84,8 +109,7 @@ const BlogCard = ({ mode = "vertical", className }: BlogProps) => {
                 : "text-gray-717171 text-sm"
             )}
           >
-            Here are the biggest enterprise technology acquisitions of 2021 so
-            far, in reverse chronological order.
+            {content}
           </p>
         </div>
       </div>

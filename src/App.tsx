@@ -4,6 +4,8 @@ import { ConfigProvider } from "antd";
 import "./index.css";
 import MainLayout from "./layouts";
 import LandingPage from "./pages/landing";
+import { Blog } from "./pages/blog";
+import BlogDetail from "./components/detailblog/DetailBlog";
 
 function App() {
   return (
@@ -21,6 +23,22 @@ function App() {
             element={
               <MainLayout>
                 <LandingPage />
+              </MainLayout>
+            }
+          />
+          <Route
+            path="/blog"
+            element={
+              <MainLayout>
+                <Blog />
+              </MainLayout>
+            }
+          />
+          <Route
+            path="/blog/:title"
+            element={
+              <MainLayout>
+                <BlogDetail />
               </MainLayout>
             }
           />
