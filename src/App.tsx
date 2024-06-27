@@ -17,6 +17,7 @@ const LayoutWithBreadCrumb = () => {
     </div>
   );
 };
+import { DetailBlog } from "./pages/detailblog";
 
 function App() {
   return (
@@ -43,7 +44,7 @@ function App() {
             path="/blog/:title"
             element={
               <MainLayout>
-                <BlogDetail />
+                <DetailBlog />
               </MainLayout>
             }
           /> */}
