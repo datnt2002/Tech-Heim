@@ -5,7 +5,7 @@ import "./index.css";
 import MainLayout from "./layouts";
 import LandingPage from "./pages/landing";
 import { Blog } from "./pages/blog";
-import BlogDetail from "./components/detailblog/DetailBlog";
+import { DetailBlog } from "./pages/detailblog";
 
 function App() {
   return (
@@ -38,7 +38,7 @@ function App() {
             path="/blog/:title"
             element={
               <MainLayout>
-                <BlogDetail />
+                <DetailBlog />
               </MainLayout>
             }
           />

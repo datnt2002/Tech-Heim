@@ -1,3 +1,5 @@
-import DetailBlog from "./DetailBlog";
+import BlogContent from "./BlogContent";
+import Categorieslist from "./Categorieslist";
+import RecentBlog from "./RecentBlog";
 
-export { DetailBlog };
+export { BlogContent, Categorieslist, RecentBlog };

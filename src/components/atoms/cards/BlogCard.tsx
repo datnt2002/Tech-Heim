@@ -26,24 +26,25 @@ const BlogCard = ({
     localStorage.setItem("selectedBlog", JSON.stringify(BlogDetail));
     nav(`/blog/${title}`);
   };
+
   return (
     <div
-      className={cn(mode === "vertical" ? "w-1/3 " : "w-full ", className)}
+      className={cn(mode === "vertical" ? "w-1/3 " : "w-full", className)}
       onClick={handleClick}
     >
       <div
         className={cn(
-          "bg-white flex group shadow-md rounded-lg overflow-hidden h-full gap-2 ",
+          "bg-white flex group shadow-md rounded-lg overflow-hidden h-full gap-2 cursor-pointer",
           mode === "vertical" ? "flex-col" : "flex-row"
         )}
       >
         <div
           className={cn(
-            mode === "vertical" ? "h-[60%]" : "w-1/3 h-full flex-shrink-0"
+            mode === "vertical" ? "h-60" : "w-1/3 h-full flex-shrink-0"
           )}
         >
           <img
-            className="object-cover h-full w-full"
+            className="object-cover w-full h-full"
             src="https://flowbite.com/docs/images/blog/image-1.jpg"
             alt=""
           />
@@ -52,7 +53,7 @@ const BlogCard = ({
         <div
           className={cn(
             "pb-5 px-5 flex flex-col",
-            mode === "horizontal" && "justify-center pt-5 basis 2/3"
+            mode === "horizontal" && "justify-center pt-5 basis-2/3"
           )}
         >
           <div
@@ -90,7 +91,7 @@ const BlogCard = ({
           </div>
           <h5
             className={cn(
-              " font-semibold font-inter  line-clamp-1 tracking-tight mb-2 group-hover:text-secondary",
+              " font-semibold font-inter line-clamp-1 tracking-tight mb-2 group-hover:text-secondary",
               mode === "vertical" ? "text-gray-900 text-xl" : " text-base"
             )}
           >
@@ -99,7 +100,7 @@ const BlogCard = ({
 
           <p
             className={cn(
-              "font-normal  mb-3 max-h-12 line-clamp-2",
+              "font-normal mb-3 max-h-12 line-clamp-2",
               mode === "vertical"
                 ? "black text-base"
                 : "text-gray-717171 text-sm"

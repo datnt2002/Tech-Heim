@@ -9,7 +9,7 @@ type Blog = {
   readTime: string;
 };
 
-const BlogDetail = () => {
+const BlogContent = () => {
   const [blogDetail, setBlogDetail] = useState<Blog | null>(null);
 
   useEffect(() => {
@@ -25,12 +25,12 @@ const BlogDetail = () => {
   }
 
   return (
-    <div className="prose">
+    <div>
       <div className="mt-4">
-        <h5>{blogDetail.title}</h5>
-        <p className="mt-4">
+        <h5 className="font-medium text-xl">{blogDetail.title}</h5>
+        <div className="mt-4 text-xs text-[#717171]">
           By {blogDetail.author} on {blogDetail.releaseDate}
-        </p>
+        </div>
       </div>
       <div className="mt-4">
         <img
@@ -39,11 +39,14 @@ const BlogDetail = () => {
         />
       </div>
 
-      <Markdown remarkPlugins={[remarkBreaks]} className="prose prose prose-lg">
+      <Markdown
+        remarkPlugins={[remarkBreaks]}
+        className="prose font-light text-xl mt-4"
+      >
         {blogDetail.content}
       </Markdown>
     </div>
   );
 };
 
-export default BlogDetail;
+export default BlogContent;
