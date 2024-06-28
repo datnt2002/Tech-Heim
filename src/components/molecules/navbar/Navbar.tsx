@@ -10,9 +10,9 @@ const Navbar = () => {
     <div className="hidden md:flex items-center justify-between my-6 py-2 gap-12 font-inter">
       {navBarItems.map((item) => {
         return item.key === "products" ? (
-          <ProductNavbarDropdown />
+          <ProductNavbarDropdown key="products" />
         ) : (
-          <div>
+          <div key={item.key}>
             <Link
               to={item.link}
               className={

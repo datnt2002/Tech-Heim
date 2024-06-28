@@ -18,22 +18,11 @@ function App() {
     >
       <BrowserRouter>
         <Routes>
-          <Route
-            path="/"
-            element={
-              <MainLayout>
-                <LandingPage />
-              </MainLayout>
-            }
-          />
-          <Route
-            path="/blog"
-            element={
-              <MainLayout>
-                <Blog />
-              </MainLayout>
-            }
-          />
+          <Route path="/" element={<MainLayout />}>
+            <Route index element={<LandingPage />} />
+            <Route path="/blog" element={<Blog />} />
+          </Route>
+          {/* 
           <Route
             path="/blog/:title"
             element={
@@ -41,7 +30,7 @@ function App() {
                 <BlogDetail />
               </MainLayout>
             }
-          />
+          /> */}
         </Routes>
       </BrowserRouter>
     </ConfigProvider>
