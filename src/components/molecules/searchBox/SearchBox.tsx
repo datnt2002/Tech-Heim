@@ -1,15 +1,16 @@
 import { Input } from "antd";
+import { useSelector } from "react-redux";
 
-import { user } from "../../../constants/mock";
 import { cn } from "../../../utils/utils";
+import { RootState } from "../../../redux/store";
 
 const SearchBox = () => {
-  const { username } = user;
+  const isLoggedIn = useSelector((state: RootState) => state.auth.isLoggedIn);
 
   return (
     <div className="flex">
       <img
-        className={cn("pl-1 py-2 pr-4", username && "hidden")}
+        className={cn("pl-1 py-2 pr-4", isLoggedIn && "hidden")}
         src="/assets/icons/shopping/bag_icon.svg"
         alt="bag_icon"
       />
