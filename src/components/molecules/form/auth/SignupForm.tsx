@@ -4,12 +4,13 @@ import { useDispatch } from "react-redux";
 
 import { SignUpThunk } from "../../../../redux/thunk/authThunk";
 import { AppDispatch } from "../../../../redux/store";
+import { setModalState } from "../../../../redux/slice/modalSlice";
 
 type FieldType = {
   fullName: string;
   email: string;
   password: string;
-  agree: boolean;
+  isAgree: boolean;
 };
 
 const SignupForm = () => {
@@ -17,12 +18,18 @@ const SignupForm = () => {
   const [form] = Form.useForm();
 
   const onFinish: FormProps<FieldType>["onFinish"] = (values) => {
-    if (values?.agree) {
+    if (values?.isAgree) {
       dispatch(
         SignUpThunk({
           email: values?.email,
           fullName: values?.fullName,
           password: values?.password,
+        })
+      );
+      dispatch(
+        setModalState({
+          key: "authModal",
+          isOpen: false,
         })
       );
     }
@@ -113,7 +120,7 @@ const SignupForm = () => {
         </Form.Item>
 
         <Form.Item<FieldType>
-          name="agree"
+          name="isAgree"
           valuePropName="checked"
           rules={[
             { required: true, message: "Please agree our Terms & Conditions" },

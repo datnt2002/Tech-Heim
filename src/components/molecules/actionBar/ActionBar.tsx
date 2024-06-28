@@ -3,23 +3,18 @@ import { Button } from "antd";
 
 import { AppDispatch, RootState } from "../../../redux/store";
 import { setModalState } from "../../../redux/slice/modalSlice";
-import { user } from "../../../constants/mock";
 import ProfileMenu, { CartDropdown } from "../../atoms/dropdown";
 import { AuthModal, SearchModal, SuccessModal } from "../../organisms/modal";
-import { useEffect } from "react";
+import ErrorModal from "../../organisms/modal/ErrorModal";
+import { cn } from "../../../utils/utils";
 
 const ActionBar = () => {
-  const { username } = user;
   const dispatch = useDispatch<AppDispatch>();
 
-  const { authModal, searchModal, successModal, failedModal } = useSelector(
+  const { authModal, searchModal, successModal, errorModal } = useSelector(
     (state: RootState) => state.appModal
   );
-
-  //TODO
-  const registerResStatus = useSelector<RootState>(
-    (state) => state.auth.status
-  );
+  const { isLoggedIn } = useSelector((state: RootState) => state.auth);
 
   const handleToggleModalAuth = (isOpen: boolean) => {
     dispatch(
@@ -38,6 +33,24 @@ const ActionBar = () => {
       })
     );
   };
+
+  const handleToggleModalSuccess = (isOpen: boolean) => {
+    dispatch(
+      setModalState({
+        key: "successModal",
+        isOpen: isOpen,
+      })
+    );
+  };
+  const handleToggleModalError = (isOpen: boolean) => {
+    dispatch(
+      setModalState({
+        key: "errorModal",
+        isOpen: isOpen,
+      })
+    );
+  };
+
   return (
     <>
       <div className="flex items-center gap-2 my-5 py-2">
@@ -50,10 +63,10 @@ const ActionBar = () => {
           }
         />
 
-        <div className={cn("md:p-2 md:block", !username && "hidden")}>
+        <div className={cn("md:p-2 md:block", !isLoggedIn && "hidden")}>
           <CartDropdown />
         </div>
-        {username ? (
+        {isLoggedIn ? (
           <>
             <ProfileMenu />
           </>
@@ -89,12 +102,17 @@ const ActionBar = () => {
         <SuccessModal
           title="Well done"
           message="Congratulation your account has been successfully created."
-          isOpen={searchModal}
-          setIsOpen={handleToggleModalSearch}
+          isOpen={successModal}
+          setIsOpen={handleToggleModalSuccess}
         />
       )}
-      {failedModal && (
-        <SearchModal isOpen={searchModal} setIsOpen={handleToggleModalSearch} />
+      {errorModal && (
+        <ErrorModal
+          title="Oops"
+          message="Unfortunately, there was a problem during creating your account. try again later."
+          isOpen={true}
+          setIsOpen={handleToggleModalError}
+        />
       )}
     </>
   );
