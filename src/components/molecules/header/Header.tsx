@@ -1,10 +1,29 @@
+import { useDispatch } from "react-redux";
+import { useEffect } from "react";
 import { Button } from "antd";
 
 import ActionBar from "../actionBar";
 import Navbar from "../navbar";
 import SearchBox from "../searchBox";
 
+import { AppDispatch } from "../../../redux/store";
+import {
+  getBestSellerProductThunk,
+  getBrandThunk,
+  getCategoryThunk,
+  getNewProductThunk,
+  getProductSaleThunk,
+} from "../../../redux/thunk/productThunk";
+
 const Header = () => {
+  const dispatch = useDispatch<AppDispatch>();
+  useEffect(() => {
+    dispatch(getCategoryThunk());
+    dispatch(getProductSaleThunk());
+    dispatch(getNewProductThunk());
+    dispatch(getBestSellerProductThunk());
+    dispatch(getBrandThunk());
+  }, []);
   return (
     <>
       <header className="flex justify-between items-center py-2 md:py-0 px-1 md:px-6 lg:px-28 md:h-[100px] h-10">

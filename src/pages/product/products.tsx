@@ -1,10 +1,11 @@
-import React from "react";
-import Breadcrumb from "../../components/atoms/breadcrumb";
+import { CategoryListWithIcon } from "../../components/molecules/categoryList";
 
-type Props = {};
-
-const Products = (props: Props) => {
-  return <div>product</div>;
+const Products = () => {
+  return (
+    <div>
+      <CategoryListWithIcon />
+    </div>
+  );
 };
 
 export default Products;
