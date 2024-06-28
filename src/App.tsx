@@ -33,7 +33,9 @@ function App() {
             <Route index element={<LandingPage />} />
             <Route path="/" element={<LayoutWithBreadCrumb />}>
               <Route path="/blog" element={<Blog />} />
-              <Route path="/products" element={<Products />} />
+              <Route path="/products" element={<Products />}>
+                <Route path="/products/:name" element={<Products />} />
+              </Route>
             </Route>
           </Route>
           {/* 

@@ -18,7 +18,7 @@ const Breadcrumb = ({ className }: Props) => {
       title: "Home",
       href: "/",
     },
-    ...pathSnippets.map((item, index) => {
+    ...pathSnippets.slice(0, length + 1).map((item, index) => {
       return {
         title: item,
         href: `/${pathSnippets.slice(0, index + 1).join("/")}`,
