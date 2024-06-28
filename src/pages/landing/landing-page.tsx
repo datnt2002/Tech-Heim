@@ -66,7 +66,14 @@ const LandingPage = () => {
       <HomeSection sectionName="Top Brands" viewAllButton={false}>
         <div className="flex justify-between mb-24">
           {brandList.map((brand) => {
-            return <img src={brand.image} alt="" className="object-contain" />;
+            return (
+              <img
+                key={brand.id}
+                src={brand.image}
+                alt=""
+                className="object-contain"
+              />
+            );
           })}
         </div>
       </HomeSection>
