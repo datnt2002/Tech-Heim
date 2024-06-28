@@ -4,7 +4,11 @@ import { Link, To, useLocation } from "react-router-dom";
 import capitalize from "../../../utils/capitalize";
 import { cn } from "../../../utils/utils";
 
-const Breadcrumb = () => {
+type Props = {
+  className?: string;
+};
+
+const Breadcrumb = ({ className }: Props) => {
   const location = useLocation();
 
   const pathSnippets = location.pathname.split("/").filter((i) => i);
@@ -24,6 +28,7 @@ const Breadcrumb = () => {
 
   return (
     <AntBreadcrumb
+      className={className}
       separator=">"
       items={items}
       itemRender={({ title, href }) => {
