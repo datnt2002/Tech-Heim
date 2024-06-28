@@ -25,6 +25,7 @@ const CartDropdown = () => {
 
   return (
     <Dropdown
+      className="bg-transparent"
       dropdownRender={() => {
         return (
           <div className="mt-[31px] border rounded-b-lg max-w-2xl flex flex-col bg-white">

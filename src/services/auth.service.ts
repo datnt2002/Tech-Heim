@@ -1,3 +1,4 @@
+import { AxiosResponse } from "axios";
 import { SignUpBody } from "../types/RequestBody";
 import axiosClient from "./api.service";
 import { v4 as uuidv4 } from "uuid";
@@ -10,7 +11,7 @@ export const signUp = (data: SignUpBody) => {
 
   return axiosClient
     .post("users", body)
-    .then((res) => {
+    .then((res: AxiosResponse<SignUpBody, number>) => {
       const { data, status } = res;
       return { data, status };
     })

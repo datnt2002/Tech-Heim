@@ -1,9 +1,17 @@
 import { createSlice } from "@reduxjs/toolkit";
 import { SignUpThunk } from "../thunk/authThunk";
+import { User } from "../../types/User";
 
-const initialState = {
+interface AuthState {
+  isLoggedIn: boolean;
+  currentUser: User | undefined;
+  loading: boolean;
+  status: number;
+}
+
+const initialState: AuthState = {
   isLoggedIn: false,
-  currentUser: {},
+  currentUser: undefined,
   loading: false,
   status: 0,
 };
@@ -14,12 +22,6 @@ export const authSlice = createSlice({
   reducers: {
     logoutAction: () => {
       return initialState;
-    },
-    signUpAction: (state) => {
-      return {
-        ...state,
-        loading: true,
-      };
     },
   },
   extraReducers: (builder) => {
@@ -37,6 +39,7 @@ export const authSlice = createSlice({
           loading: false,
           currentUser: data,
           status: status,
+          isLoggedIn: true,
         };
       })
       .addCase(SignUpThunk.rejected, (state) => {
@@ -48,5 +51,5 @@ export const authSlice = createSlice({
       });
   },
 });
-
+export const { logoutAction } = authSlice.actions;
 export default authSlice.reducer;
