@@ -29,13 +29,13 @@ const BlogCard = ({
 
   return (
     <div
-      className={cn(mode === "vertical" ? "w-1/3 " : "w-full", className)}
+      className={cn(mode === "vertical" ? "w-1/3" : "w-full", className)}
       onClick={handleClick}
     >
       <div
         className={cn(
           "bg-white flex group shadow-md rounded-lg overflow-hidden h-full gap-2 cursor-pointer",
-          mode === "vertical" ? "flex-col" : "flex-row"
+          mode === "vertical" ? "flex-col " : "flex-row"
         )}
       >
         <div

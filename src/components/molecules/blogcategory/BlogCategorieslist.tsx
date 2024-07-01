@@ -8,7 +8,7 @@ const categories = [
   { category: "Buying Guides and Tips" },
 ];
 
-const Categorieslist = () => {
+const BlogCategorieslist = () => {
   return (
     <div className="mt-4">
       <p className="font-medium text-xl">Categories</p>
@@ -20,4 +20,4 @@ const Categorieslist = () => {
     </div>
   );
 };
-export default Categorieslist;
+export default BlogCategorieslist;
