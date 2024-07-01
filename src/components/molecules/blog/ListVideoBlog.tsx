@@ -1,7 +1,7 @@
-import VideoCard from "../atoms/cards/videoCard/VideoCard";
-import greenScreen from "../../assets/images/greenscreen.png";
-import laptop from "../../assets/images/laptop.png";
-import ip14 from "../../assets/images/ip14.png";
+import greenScreen from "../../../assets/images/greenscreen.png";
+import laptop from "../../../assets/images/laptop.png";
+import ip14 from "../../../assets/images/ip14.png";
+import VideoCard from "../../atoms/cards/VideoCard";
 
 type Video = { image?: string; title?: string; url?: string };
 const videos: Video[] = [

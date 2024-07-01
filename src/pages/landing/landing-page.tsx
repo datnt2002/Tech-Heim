@@ -62,15 +62,15 @@ const LandingPage = () => {
       </HomeSection>
       <ThirdBanner />
       <HomeSection sectionName="Our Blogs" viewAllButton>
-        <div className="flex gap-6">
+        <div className="flex flex-row gap-6">
           <BlogCard
-            className="h-[21.5rem]"
+            className="basis-1/3"
             title={blogs[0].title}
             releaseDate={blogs[0].releaseDate}
             readTime={blogs[0].readTime}
             content={blogs[0].content}
           />
-          <div className="flex flex-col flex-1 gap-6">
+          <div className="flex flex-col flex-1 gap-6 basis-2/3">
             <BlogCard
               mode="horizontal"
               title={blogs[0].title}

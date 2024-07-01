@@ -1,8 +1,5 @@
-import {
-  BlogContent,
-  Categorieslist,
-  RecentBlog,
-} from "../../components/detailblog";
+import { BlogContent, RecentBlog } from "../../components/detailblog";
+import { BlogCategorieslist } from "../../components/molecules/blogcategory";
 
 const DetailBlog = () => {
   return (
@@ -12,7 +9,7 @@ const DetailBlog = () => {
           <BlogContent />
         </div>
         <div className="basis-1/3 mt-[4.2rem] flex flex-col">
-          <Categorieslist />
+          <BlogCategorieslist />
           <RecentBlog />
         </div>
       </div>

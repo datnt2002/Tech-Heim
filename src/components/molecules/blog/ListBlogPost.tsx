@@ -1,4 +1,4 @@
-import { BlogCard } from "../atoms/cards";
+import { BlogCard } from "../../atoms/cards";
 
 const blogs = [
   {
@@ -139,9 +139,10 @@ const ListBlogPost = () => {
   return (
     <>
       <div className="grid grid-cols-12 gap-4">
-        {blogs.slice(0, 4).map((blog, index) => (
+        {blogs.slice(0, 4).map((blog) => (
           <BlogCard
             className="col-span-6 min-w-full"
+            key={blog.title}
             title={blog.title}
             releaseDate={blog.releaseDate}
             readTime={blog.readTime}

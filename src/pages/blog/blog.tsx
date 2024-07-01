@@ -1,8 +1,10 @@
 import {
-  ListVideoBlog,
   ListBlogPost,
   ListRecentBlog,
-} from "../../components/blog";
+  ListVideoBlog,
+} from "../../components/molecules/blog";
+
+ListBlogPost;
 
 const Blog = () => {
   return (

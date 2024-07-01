@@ -1,6 +1,6 @@
 import { useState } from "react";
-import { BlogCard } from "../atoms/cards";
 import { Pagination } from "antd";
+import { BlogCard } from "../../atoms/cards";
 
 const blogs = [
   {

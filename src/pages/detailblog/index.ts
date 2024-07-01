@@ -1,3 +1,3 @@
-import DetailBlog from "./detailblog";
+import DetailBlog from "./[blogId]";
 
 export { DetailBlog };
