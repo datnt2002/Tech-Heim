@@ -2,9 +2,9 @@ import type { FormProps } from "antd";
 import { Button, Checkbox, Form, Input } from "antd";
 import { useDispatch } from "react-redux";
 
-import { SignUpThunk } from "../../../../redux/thunk/authThunk";
 import { AppDispatch } from "../../../../redux/store";
 import { setModalState } from "../../../../redux/slice/modalSlice";
+import { SignUpThunk } from "../../../../redux/slice/authSlice";
 
 type FieldType = {
   fullName: string;

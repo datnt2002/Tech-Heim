@@ -5,7 +5,8 @@ import { AppDispatch } from "../../../redux/store";
 import {
   deleteCartItemThunk,
   updateQuantityCartItemThunk,
-} from "../../../redux/thunk/productThunk";
+} from "../../../redux/slice/productSlice";
+
 import { formatNumber } from "../../../utils/formatNumber";
 import { cn } from "../../../utils/utils";
 
