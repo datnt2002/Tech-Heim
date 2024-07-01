@@ -1,6 +1,6 @@
 import { useDispatch } from "react-redux";
 import { AppDispatch } from "../../../redux/store";
-import { toggleLikeProductThunk } from "../../../redux/thunk/productThunk";
+import { toggleLikeProductThunk } from "../../../redux/slice/productSlice";
 
 type Props = {
   favorite?: boolean;

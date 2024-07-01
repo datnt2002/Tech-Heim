@@ -3,7 +3,8 @@ import { useDispatch, useSelector } from "react-redux";
 import { Button, Dropdown } from "antd";
 
 import { AppDispatch, RootState } from "../../../redux/store";
-import { getCartItemThunk } from "../../../redux/thunk/productThunk";
+import { getCartItemThunk } from "../../../redux/slice/productSlice";
+
 import { formatNumber } from "../../../utils/formatNumber";
 import { CardCart } from "../cards";
 

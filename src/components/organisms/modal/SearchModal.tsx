@@ -1,14 +1,15 @@
 import { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
-
 import { Button, Input, Modal } from "antd";
-import { ImgAndNameCard } from "../../atoms/cards";
+
 import { AppDispatch, RootState } from "../../../redux/store";
 import {
   getItemMostSearchedThunk,
   getSearchKeywordThunk,
   searchProductThunk,
-} from "../../../redux/thunk/productThunk";
+} from "../../../redux/slice/productSlice";
+
+import { ImgAndNameCard } from "../../atoms/cards";
 import { Product } from "../../../types/Product";
 
 type SearchProps = {

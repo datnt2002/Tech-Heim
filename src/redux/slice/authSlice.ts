@@ -1,6 +1,9 @@
-import { createSlice } from "@reduxjs/toolkit";
-import { SignUpThunk } from "../thunk/authThunk";
+import { createAppSlice } from "../appSlice";
+
+import { setModalState } from "./modalSlice";
+import { signUp } from "../../services/auth.service";
 import { User } from "../../types/User";
+import { SignUpBody } from "../../types/RequestBody";
 
 interface AuthState {
   isLoggedIn: boolean;
@@ -16,40 +19,52 @@ const initialState: AuthState = {
   status: 0,
 };
 
-export const authSlice = createSlice({
+export const authSlice = createAppSlice({
   name: "auth",
   initialState,
-  reducers: {
-    logoutAction: () => {
+  reducers: (create) => ({
+    logoutAction: create.reducer(() => {
       return initialState;
-    },
-  },
-  extraReducers: (builder) => {
-    builder
-      .addCase(SignUpThunk.pending, (state) => {
-        return {
-          ...state,
-          loading: true,
-        };
-      })
-      .addCase(SignUpThunk.fulfilled, (state, action) => {
-        const { data, status } = action.payload;
-        return {
-          ...state,
-          loading: false,
-          currentUser: data,
-          status: status,
-          isLoggedIn: true,
-        };
-      })
-      .addCase(SignUpThunk.rejected, (state) => {
-        // const {data, status} = action.payload
-        return {
-          ...state,
-          loading: false,
-        };
-      });
-  },
+    }),
+    SignUpThunk: create.asyncThunk(
+      async (data: SignUpBody, { dispatch }) => {
+        const res = await signUp(data);
+        if (res?.status === 201) {
+          dispatch(
+            setModalState({
+              key: "successModal",
+              isOpen: true,
+            })
+          );
+        }
+        return res;
+      },
+      {
+        pending: (state) => {
+          return {
+            ...state,
+            loading: true,
+          };
+        },
+        fulfilled: (state, action) => {
+          const { data, status } = action.payload;
+          return {
+            ...state,
+            loading: false,
+            currentUser: data,
+            status: status,
+            isLoggedIn: true,
+          };
+        },
+        rejected: (state) => {
+          return {
+            ...state,
+            loading: false,
+          };
+        },
+      }
+    ),
+  }),
 });
-export const { logoutAction } = authSlice.actions;
+export const { logoutAction, SignUpThunk } = authSlice.actions;
 export default authSlice.reducer;

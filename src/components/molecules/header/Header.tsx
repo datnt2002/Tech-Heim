@@ -7,13 +7,14 @@ import Navbar from "../navbar";
 import SearchBox from "../searchBox";
 
 import { AppDispatch } from "../../../redux/store";
+
 import {
   getBestSellerProductThunk,
   getBrandThunk,
   getCategoryThunk,
   getNewProductThunk,
   getProductSaleThunk,
-} from "../../../redux/thunk/productThunk";
+} from "../../../redux/slice/productSlice";
 
 const Header = () => {
   const dispatch = useDispatch<AppDispatch>();
