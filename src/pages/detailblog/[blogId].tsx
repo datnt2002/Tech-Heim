@@ -1,4 +1,4 @@
-import { BlogContent, RecentBlog } from "../../components/detailblog";
+import { BlogContent, RecentBlog } from "../../components/molecules/detailblog";
 import { BlogCategorieslist } from "../../components/molecules/blogcategory";
 
 const DetailBlog = () => {
