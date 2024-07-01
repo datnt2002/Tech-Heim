@@ -39,12 +39,10 @@ const BlogCard = ({
         )}
       >
         <div
-          className={cn(
-            mode === "vertical" ? "h-60" : "w-1/3 h-full flex-shrink-0"
-          )}
+          className={cn(mode === "vertical" ? "h-60" : "w-1/3 flex-shrink-0")}
         >
           <img
-            className="object-cover w-full h-full"
+            className="object-cover h-full w-full"
             src="https://flowbite.com/docs/images/blog/image-1.jpg"
             alt=""
           />
