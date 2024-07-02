@@ -34,7 +34,7 @@ const ProductCard = ({
         <img
           src={image}
           alt={name}
-          className="object-contain w-full h-full p-2 hover:scale-110 hover:overflow-hidden"
+          className="object-contain w-full h-full p-2"
         />
       </div>
       {/* gradient */}

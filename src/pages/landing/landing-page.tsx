@@ -40,11 +40,11 @@ const LandingPage = () => {
       <CategoryHomeList />
       <ProductSale />
       <HomeSection sectionName="New Products" viewAllButton>
-        <ListProduct productList={newProducts} />
+        <ListProduct productList={newProducts} className="grid-cols-4" />
       </HomeSection>
       <SecondBanner />
       <HomeSection sectionName="Best Sellers" viewAllButton>
-        <ListProduct productList={bestSellers} />
+        <ListProduct productList={bestSellers} className="grid-cols-4" />
       </HomeSection>
       <HomeSection sectionName="Top Brands" viewAllButton={false}>
         <div className="flex justify-between mb-24">

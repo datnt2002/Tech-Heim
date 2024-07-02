@@ -133,3 +133,13 @@ export const getBrandAPI = () => {
     })
     .catch((err) => err);
 };
+
+export const getFilterProductAPI = () => {
+  return axiosClient
+    .get(`product?`)
+    .then((res) => {
+      const { data, status } = res;
+      return { data, status };
+    })
+    .catch((err) => err);
+};
