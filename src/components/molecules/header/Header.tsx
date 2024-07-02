@@ -17,6 +17,7 @@ import {
 } from "../../../redux/slice/productSlice";
 import {
   getBlogThunk,
+  getNewBlogThunk,
   getVideoBlogThunk,
 } from "../../../redux/slice/blogSlice";
 
@@ -30,6 +31,7 @@ const Header = () => {
     dispatch(getBrandThunk());
     dispatch(getBlogThunk());
     dispatch(getVideoBlogThunk());
+    dispatch(getNewBlogThunk());
   }, []);
   return (
     <>

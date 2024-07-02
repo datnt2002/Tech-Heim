@@ -30,3 +30,13 @@ export const getVideoBlogAPI = () => {
     })
     .catch((err) => err);
 };
+
+export const getNewsBlogAPI = () => {
+  return axiosClient
+    .get("blog?_sort=releaseDate&_order=desc&_limit=3")
+    .then((res) => {
+      const { data, status } = res;
+      return { data, status };
+    })
+    .catch((err) => err);
+};
