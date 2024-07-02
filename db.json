@@ -875,18 +875,19 @@
     }
   ],
 
-  "blogs": [
+  "blog": [
     {
-      "id": 1,
+      "id": "1",
       "title": "Challenges and Opportunities in Green Energy",
       "author": "John Doe",
-      "image": "/assets/images/blog/blog1.png",
+
       "releaseDate": "2024-07-01",
       "readTime": "7 mins read",
+      "image": "/assets/images/blog/blog1.png",
       "content": "As the world faces the challenges of climate change and dwindling fossil fuel reserves, green energy emerges as a beacon of hope. Renewable energy sources are becoming increasingly vital in our quest for a sustainable future.\n\n**2. Solar Power**\nSolar energy is one of the most abundant and accessible sources of green energy. Advances in solar panel technology and energy storage solutions have made it more efficient and affordable for both residential and commercial use.\n\n**3. Wind Energy**\nWind power is another key player in the green energy sector. With the development of larger and more efficient turbines, wind farms are generating substantial amounts of clean electricity, contributing significantly to the global energy mix.\n\n**4. Hydropower**\nHydropower, one of the oldest forms of renewable energy, continues to be a reliable and significant source of power. Innovations in small-scale hydro projects and pumped storage are enhancing its role in sustainable energy production.\n\n**5. Biomass Energy**\nBiomass energy, derived from organic materials, offers a versatile and renewable option for energy production. Advances in biofuel technology are making it a more viable alternative to traditional fossil fuels.\n\n**6. Geothermal Energy**\nGeothermal energy harnesses the Earth's internal heat to generate power. With new drilling techniques and improved technology, geothermal energy is becoming a more accessible and efficient renewable energy source.\n\n**7. Challenges and Solutions**\nDespite the progress, the transition to green energy faces challenges such as high initial costs, storage issues, and grid integration. However, ongoing research and development are paving the way for overcoming these obstacles, making renewable energy more practical and widespread.\n\n**8. The Role of Policy and Investment**\nGovernment policies and investments play a crucial role in promoting green energy. Incentives, subsidies, and international cooperation are essential for accelerating the adoption of renewable energy technologies and infrastructure.\n\n**Conclusion**\nThe shift towards green energy is not only essential for environmental sustainability but also for economic resilience and energy security. By embracing renewable energy sources, we can ensure a cleaner, greener future for generations to come."
     },
     {
-      "id": 2,
+      "id": "2",
       "title": "The Future of Electric Vehicles",
       "author": "Jane Smith",
       "releaseDate": "2024-07-02",
@@ -895,7 +896,7 @@
       "content": "Electric vehicles (EVs) are transforming the automotive industry, offering a sustainable alternative to traditional gasoline-powered cars. With advancements in battery technology and a growing charging infrastructure, EVs are becoming more accessible and practical for everyday use.\n\n**2. Advantages of EVs**\nEVs produce zero emissions, reducing air pollution and dependence on fossil fuels. They also offer lower operating costs, as electricity is cheaper than gasoline and EVs require less maintenance.\n\n**3. Challenges in Adoption**\nDespite their benefits, EVs face challenges such as limited range, long charging times, and higher upfront costs. However, ongoing research and development are addressing these issues, making EVs more viable for a wider audience.\n\n**4. Government Incentives**\nMany governments are offering incentives to promote EV adoption, including tax credits, rebates, and investment in charging infrastructure. These measures are helping to accelerate the transition to electric transportation.\n\n**5. The Role of Automakers**\nAutomakers are investing heavily in EV technology, developing new models with longer ranges and faster charging capabilities. Collaborations with technology companies are also driving innovation in the EV market.\n\n**6. Future Trends**\nThe future of EVs looks promising, with trends such as autonomous driving, vehicle-to-grid technology, and wireless charging on the horizon. These advancements will further enhance the convenience and sustainability of electric transportation.\n\n**Conclusion**\nElectric vehicles are poised to play a crucial role in the future of transportation. By overcoming current challenges and embracing new technologies, EVs can lead the way to a cleaner, more sustainable future."
     },
     {
-      "id": 3,
+      "id": "3",
       "title": "Artificial Intelligence in Healthcare",
       "author": "Dr. Alan Turing",
       "releaseDate": "2024-07-03",
@@ -904,7 +905,7 @@
       "content": "Artificial Intelligence (AI) is revolutionizing healthcare by improving diagnostics, treatment planning, and patient care. AI algorithms can analyze vast amounts of data quickly and accurately, leading to more effective and personalized healthcare solutions.\n\n**2. AI in Diagnostics**\nAI-powered diagnostic tools can identify diseases and conditions from medical images with high accuracy. This technology is particularly useful in radiology, dermatology, and pathology, where early detection is critical.\n\n**3. Treatment Planning**\nAI can assist in creating personalized treatment plans based on a patient's medical history, genetic information, and current health status. This approach can lead to more effective treatments with fewer side effects.\n\n**4. Patient Care**\nAI-powered chatbots and virtual assistants can provide patients with instant access to medical information and support, improving patient engagement and satisfaction. These tools can also help healthcare providers manage patient inquiries and appointments more efficiently.\n\n**5. Challenges and Considerations**\nWhile AI offers significant benefits, it also raises ethical and privacy concerns. Ensuring the security of patient data and maintaining transparency in AI decision-making processes are critical for building trust in AI-powered healthcare solutions.\n\n**6. Future of AI in Healthcare**\nThe future of AI in healthcare looks promising, with ongoing advancements in machine learning, natural language processing, and robotics. These technologies will continue to enhance healthcare delivery, making it more efficient, accurate, and patient-centered.\n\n**Conclusion**\nAI is transforming healthcare by providing innovative solutions for diagnostics, treatment planning, and patient care. By addressing ethical and privacy concerns and embracing new technologies, AI can lead to a more effective and personalized healthcare system."
     },
     {
-      "id": 4,
+      "id": "4",
       "title": "Blockchain Technology: Beyond Cryptocurrency",
       "author": "Satoshi Nakamoto",
       "releaseDate": "2024-07-04",
@@ -913,7 +914,7 @@
       "content": "Blockchain technology, best known for underpinning cryptocurrencies like Bitcoin, has far-reaching applications beyond digital currencies. Its decentralized, secure, and transparent nature makes it ideal for various industries, including finance, supply chain, and healthcare.\n\n**2. Financial Services**\nBlockchain can streamline financial transactions by eliminating intermediaries, reducing costs, and increasing transaction speed. It also enhances security and transparency, reducing the risk of fraud.\n\n**3. Supply Chain Management**\nBlockchain enables real-time tracking of goods and materials throughout the supply chain. This transparency helps prevent counterfeiting, ensures product authenticity, and improves efficiency in logistics.\n\n**4. Healthcare**\nBlockchain can securely store and share patient medical records, ensuring data integrity and privacy. It also facilitates seamless communication between healthcare providers, improving patient care and coordination.\n\n**5. Smart Contracts**\nSmart contracts are self-executing contracts with the terms directly written into code. They automatically enforce agreements when predefined conditions are met, reducing the need for intermediaries and increasing efficiency.\n\n**6. Challenges and Limitations**\nDespite its potential, blockchain faces challenges such as scalability, energy consumption, and regulatory uncertainty. Ongoing research and development are addressing these issues, making blockchain more viable for widespread adoption.\n\n**Future of Blockchain**\nThe future of blockchain technology is promising, with potential applications in voting systems, intellectual property, and the Internet of Things (IoT). As the technology matures, it will continue to revolutionize various industries, offering new opportunities for innovation and efficiency.\n\n**Conclusion**\nBlockchain technology has the potential to transform multiple industries by providing secure, transparent, and efficient solutions. By addressing current challenges and exploring new applications, blockchain can lead to a more decentralized and trustworthy digital world."
     },
     {
-      "id": 5,
+      "id": "5",
       "title": "The Impact of 5G Technology",
       "author": "Nina Williams",
       "releaseDate": "2024-07-05",
@@ -922,7 +923,7 @@
       "content": "The rollout of 5G technology is set to revolutionize communication, offering faster speeds, lower latency, and greater connectivity. This next-generation wireless technology will impact various industries, including telecommunications, healthcare, and manufacturing.\n\n**2. Enhanced Mobile Connectivity**\n5G provides significantly faster download and upload speeds compared to previous generations, enabling seamless streaming, gaming, and real-time communication. This enhanced connectivity will improve user experiences and drive innovation in mobile applications.\n\n**3. Internet of Things (IoT)**\n5G will enable the widespread adoption of IoT devices by providing the necessary bandwidth and low latency for real-time data exchange. This connectivity will support smart cities, autonomous vehicles, and industrial automation, leading to increased efficiency and innovation.\n\n**4. Healthcare Applications**\n5G will transform healthcare by enabling remote monitoring, telemedicine, and robotic surgeries. High-speed, low-latency connections will allow for real-time data transmission and communication, improving patient outcomes and access to care.\n\n**5. Manufacturing and Industry 4.0**\n5G will drive the next industrial revolution by supporting advanced manufacturing technologies such as robotics, AI, and IoT. This connectivity will enable real-time monitoring, predictive maintenance, and efficient resource management, increasing productivity and reducing costs.\n\n**6. Challenges and Considerations**\nThe deployment of 5G faces challenges such as high infrastructure costs, spectrum allocation, and security concerns. Addressing these challenges will require collaboration between governments, telecom companies, and technology providers.\n\n**Future of 5G**\nThe future of 5G technology is promising, with potential applications in augmented reality (AR), virtual reality (VR), and immersive experiences. As 5G networks expand, they will continue to drive innovation and transform various industries.\n\n**Conclusion**\n5G technology is poised to revolutionize communication and connectivity across multiple industries. By overcoming current challenges and embracing new applications, 5G can lead to a more connected, efficient, and innovative future."
     },
     {
-      "id": 6,
+      "id": "6",
       "title": "The Evolution of Artificial Intelligence",
       "author": "Dr. Lisa Randall",
       "releaseDate": "2024-07-06",

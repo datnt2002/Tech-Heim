@@ -4,7 +4,7 @@ import { cn } from "../../../utils/utils";
 type BlogProps = {
   mode?: "horizontal" | "vertical";
   className?: string;
-  id: string;
+  id: number;
   title: string;
   releaseDate: string;
   readTime: string;

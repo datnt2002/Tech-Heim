@@ -16,10 +16,9 @@ const LandingPage = () => {
   const { newProducts, bestSellers, brandList } = useSelector(
     (state: RootState) => state.product
   );
-  const { blogsPost } = useSelector((state: RootState) => state.blog);
+  const blogsPost = useSelector((state: RootState) => state.blog.blogsPost);
 
-  console.log(blogsPost);
-  const blogLimit = blogsPost.slice(1, 3);
+  const blogLimit = blogsPost.slice(0, 3);
   return (
     <>
       <Banner />
@@ -51,16 +50,28 @@ const LandingPage = () => {
         <div className="flex flex-row gap-6">
           <BlogCard
             className="basis-1/3"
-            key={blogLimit[1].id}
-            id={blogLimit[1].id}
-            title={blogLimit[1].title}
-            releaseDate={blogLimit[1].releaseDate}
-            readTime={blogLimit[1].readTime}
-            author={blogLimit[1].author}
-            content={blogLimit[1].content}
-            image={blogLimit[1].image}
+            key={blogLimit[0].id}
+            id={blogLimit[0].id}
+            title={blogLimit[0].title}
+            releaseDate={blogLimit[0].releaseDate}
+            readTime={blogLimit[0].readTime}
+            author={blogLimit[0].author}
+            content={blogLimit[0].content}
+            image={blogLimit[0].image}
           />
+
           <div className="flex flex-col flex-1 gap-6 basis-2/3">
+            {/* <BlogCard
+              mode="horizontal"
+              key={blogLimit[1].id}
+              id={blogLimit[1].id}
+              title={blogLimit[1].title}
+              releaseDate={blogLimit[1].releaseDate}
+              readTime={blogLimit[1].readTime}
+              author={blogLimit[1].author}
+              content={blogLimit[1].content}
+              image={blogLimit[1].image}
+            />
             <BlogCard
               mode="horizontal"
               key={blogLimit[2].id}
@@ -71,18 +82,7 @@ const LandingPage = () => {
               author={blogLimit[2].author}
               content={blogLimit[2].content}
               image={blogLimit[2].image}
-            />
-            <BlogCard
-              mode="horizontal"
-              key={blogLimit[3].id}
-              id={blogLimit[3].id}
-              title={blogLimit[3].title}
-              releaseDate={blogLimit[3].releaseDate}
-              readTime={blogLimit[3].readTime}
-              author={blogLimit[3].author}
-              content={blogLimit[3].content}
-              image={blogLimit[3].image}
-            />
+            /> */}
           </div>
         </div>
       </HomeSection>

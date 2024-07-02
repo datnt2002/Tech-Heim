@@ -1,16 +1,21 @@
-import { getBlogAPI } from "../../services/blog.service";
-import { Blog } from "../../types/Blog";
+import { getBlogAPI, getVideoBlogAPI } from "../../services/blog.service";
+import { Blog, VideoBlog } from "../../types/Blog";
 import { createAppSlice } from "../appSlice";
 
 interface BlogState {
   blogsPost: Blog[];
+  videoBlogsPost: VideoBlog[];
   loading: boolean;
 }
 
-const initialState: BlogState = { blogsPost: [], loading: false };
+const initialState: BlogState = {
+  blogsPost: [],
+  videoBlogsPost: [],
+  loading: false,
+};
 
 export const blogSlice = createAppSlice({
-  name: "blogs",
+  name: "blog",
   initialState,
   reducers: (create) => ({
     getBlogThunk: create.asyncThunk(getBlogAPI, {
@@ -26,7 +31,30 @@ export const blogSlice = createAppSlice({
         return {
           ...state,
           loading: false,
-          blogs: data,
+          blogsPost: data,
+          status: status,
+        };
+      },
+      rejected: (state) => {
+        return {
+          ...state,
+          loading: false,
+        };
+      },
+    }),
+    getVideoBlogThunk: create.asyncThunk(getVideoBlogAPI, {
+      pending: (state) => {
+        return {
+          ...state,
+          loading: true,
+        };
+      },
+      fulfilled: (state, action) => {
+        const { data, status } = action.payload;
+        return {
+          ...state,
+          loading: false,
+          videoBlogsPost: data,
           status: status,
         };
       },
@@ -40,5 +68,5 @@ export const blogSlice = createAppSlice({
   }),
 });
 
-export const { getBlogThunk } = blogSlice.actions;
+export const { getBlogThunk, getVideoBlogThunk } = blogSlice.actions;
 export default blogSlice.reducer;

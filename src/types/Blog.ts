@@ -5,7 +5,6 @@ export type Blog = {
   readTime: string;
   releaseDate: string;
   content: string;
-  type: string;
   image: string;
 };
 

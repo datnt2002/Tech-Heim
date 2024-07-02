@@ -15,6 +15,10 @@ import {
   getNewProductThunk,
   getProductSaleThunk,
 } from "../../../redux/slice/productSlice";
+import {
+  getBlogThunk,
+  getVideoBlogThunk,
+} from "../../../redux/slice/blogSlice";
 
 const Header = () => {
   const dispatch = useDispatch<AppDispatch>();
@@ -24,6 +28,8 @@ const Header = () => {
     dispatch(getNewProductThunk());
     dispatch(getBestSellerProductThunk());
     dispatch(getBrandThunk());
+    dispatch(getBlogThunk());
+    dispatch(getVideoBlogThunk());
   }, []);
   return (
     <>
