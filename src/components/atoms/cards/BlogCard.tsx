@@ -4,31 +4,44 @@ import { cn } from "../../../utils/utils";
 type BlogProps = {
   mode?: "horizontal" | "vertical";
   className?: string;
-  title?: string;
-  releaseDate?: string;
-  readTime?: string;
-  content?: string;
-  author?: string;
+  id: string;
+  title: string;
+  releaseDate: string;
+  readTime: string;
+  content: string;
+  author: string;
+  image: string;
 };
 
 const BlogCard = ({
   mode = "vertical",
   className,
+  id,
   title,
   releaseDate,
   readTime,
   content,
   author,
+  image,
 }: BlogProps) => {
   const nav = useNavigate();
-  const BlogDetail = { title, content, readTime, releaseDate, author };
+  const BlogDetail = {
+    id,
+    title,
+    content,
+    readTime,
+    releaseDate,
+    author,
+    image,
+  };
   const handleClick = () => {
     localStorage.setItem("selectedBlog", JSON.stringify(BlogDetail));
-    nav(`/blog/${title}`);
+    nav(`/blog/${id}`);
   };
 
   return (
     <div
+      key={id}
       className={cn(mode === "vertical" ? "w-1/3" : "w-full", className)}
       onClick={handleClick}
     >
@@ -41,11 +54,7 @@ const BlogCard = ({
         <div
           className={cn(mode === "vertical" ? "h-60" : "w-1/3 flex-shrink-0")}
         >
-          <img
-            className="object-cover h-full w-full"
-            src="https://flowbite.com/docs/images/blog/image-1.jpg"
-            alt=""
-          />
+          <img className="object-cover h-full w-full" src={image} alt={title} />
         </div>
 
         <div

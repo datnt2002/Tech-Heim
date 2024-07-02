@@ -4,7 +4,7 @@ import { BlogCategorieslist } from "../../components/molecules/blogcategory";
 const DetailBlog = () => {
   return (
     <>
-      <div className="flex flex-row px-28 mb-14 gap-6">
+      <div className="flex flex-row  mb-14 gap-6">
         <div className="basis-2/3">
           <BlogContent />
         </div>
