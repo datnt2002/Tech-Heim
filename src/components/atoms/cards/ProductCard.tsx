@@ -34,14 +34,14 @@ const ProductCard = ({
         <img
           src={image}
           alt={name}
-          className="object-contain w-full h-full p-2"
+          className="object-contain w-full h-full p-2 hover:scale-110 hover:overflow-hidden"
         />
       </div>
       {/* gradient */}
       <div className="gradient-black mx-2 group-hover:gradient"></div>
       {/* title */}
       <div className="pb-2 px-2">
-        <h5 className="pb-4 line-clamp-2 group-hover:text-primary">{name}</h5>
+        <h5 className="pb-2 line-clamp-2 group-hover:text-primary">{name}</h5>
         <ProductCardFooter
           price={price}
           salePrice={salePrice}
