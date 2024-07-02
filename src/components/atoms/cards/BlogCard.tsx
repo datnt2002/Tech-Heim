@@ -25,17 +25,8 @@ const BlogCard = ({
   image,
 }: BlogProps) => {
   const nav = useNavigate();
-  const BlogDetail = {
-    id,
-    title,
-    content,
-    readTime,
-    releaseDate,
-    author,
-    image,
-  };
+
   const handleClick = () => {
-    localStorage.setItem("selectedBlog", JSON.stringify(BlogDetail));
     nav(`/blog/${id}`);
   };
 
