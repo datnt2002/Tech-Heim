@@ -12,28 +12,14 @@ import { BlogCard } from "../../components/atoms/cards";
 
 import { RootState } from "../../redux/store";
 
-const blogs = [
-  {
-    content:
-      "In this blog post, we explore the different ways to connect your iPhone to a laptop, providing step-by-step instructions for both Windows and macOS users.",
-    title: "How to Connect Your iPhone to a Laptop",
-    releaseDate: "2023-06-15",
-    readTime: "5 min read",
-  },
-  {
-    content:
-      "Learn how to fix the Green Screen of Death (GSoD) error in Windows 10 and 11 with our comprehensive guide, including troubleshooting steps.",
-    title: "How to Fix Green Screen of Death (GSoD) Error in Windows 10 and 11",
-    releaseDate: "2023-06-20",
-    readTime: "7 min read",
-  },
-  // Add more blog entries here if needed
-];
 const LandingPage = () => {
   const { newProducts, bestSellers, brandList } = useSelector(
     (state: RootState) => state.product
   );
+  const { blogsPost } = useSelector((state: RootState) => state.blog);
 
+  console.log(blogsPost);
+  const blogLimit = blogsPost.slice(1, 3);
   return (
     <>
       <Banner />
@@ -65,25 +51,37 @@ const LandingPage = () => {
         <div className="flex flex-row gap-6">
           <BlogCard
             className="basis-1/3"
-            title={blogs[0].title}
-            releaseDate={blogs[0].releaseDate}
-            readTime={blogs[0].readTime}
-            content={blogs[0].content}
+            key={blogLimit[1].id}
+            id={blogLimit[1].id}
+            title={blogLimit[1].title}
+            releaseDate={blogLimit[1].releaseDate}
+            readTime={blogLimit[1].readTime}
+            author={blogLimit[1].author}
+            content={blogLimit[1].content}
+            image={blogLimit[1].image}
           />
           <div className="flex flex-col flex-1 gap-6 basis-2/3">
             <BlogCard
               mode="horizontal"
-              title={blogs[0].title}
-              releaseDate={blogs[0].releaseDate}
-              readTime={blogs[0].readTime}
-              content={blogs[0].content}
+              key={blogLimit[2].id}
+              id={blogLimit[2].id}
+              title={blogLimit[2].title}
+              releaseDate={blogLimit[2].releaseDate}
+              readTime={blogLimit[2].readTime}
+              author={blogLimit[2].author}
+              content={blogLimit[2].content}
+              image={blogLimit[2].image}
             />
             <BlogCard
               mode="horizontal"
-              title={blogs[1].title}
-              releaseDate={blogs[1].releaseDate}
-              readTime={blogs[1].readTime}
-              content={blogs[1].content}
+              key={blogLimit[3].id}
+              id={blogLimit[3].id}
+              title={blogLimit[3].title}
+              releaseDate={blogLimit[3].releaseDate}
+              readTime={blogLimit[3].readTime}
+              author={blogLimit[3].author}
+              content={blogLimit[3].content}
+              image={blogLimit[3].image}
             />
           </div>
         </div>

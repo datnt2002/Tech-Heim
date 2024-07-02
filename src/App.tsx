@@ -5,8 +5,8 @@ import "./index.css";
 import MainLayout from "./layouts";
 import LandingPage from "./pages/landing";
 import { Blog } from "./pages/blog";
-import BlogDetail from "./components/detailblog/DetailBlog";
 import Products from "./pages/product/products";
+import { DetailBlog } from "./pages/detailblog";
 import Breadcrumb from "./components/atoms/breadcrumb";
 
 const LayoutWithBreadCrumb = () => {
@@ -17,7 +17,6 @@ const LayoutWithBreadCrumb = () => {
     </div>
   );
 };
-import { DetailBlog } from "./pages/detailblog";
 
 function App() {
   return (
@@ -34,6 +33,7 @@ function App() {
             <Route index element={<LandingPage />} />
             <Route path="/" element={<LayoutWithBreadCrumb />}>
               <Route path="/blog" element={<Blog />} />
+              <Route path="/blog/:title" element={<DetailBlog />} />
               <Route path="/products" element={<Products />}>
                 <Route path="/products/:name" element={<Products />} />
               </Route>

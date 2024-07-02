@@ -1,14 +1,16 @@
 type VideoProps = {
-  title?: string;
-  image?: string;
-  url?: string;
+  id: string;
+  image: string;
+  title: string;
+  url: string;
 };
 
-const VideoCard = ({ title, image, url }: VideoProps) => {
+const VideoCard = ({ id, image, title, url }: VideoProps) => {
   return (
     <a
       href={url}
       target="_blank"
+      key={id}
       rel="noopener noreferrer"
       className="block overflow-hidden rounded-lg shadow-lg w-full h-[206px] relative"
     >
