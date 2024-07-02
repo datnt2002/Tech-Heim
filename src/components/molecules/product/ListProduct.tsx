@@ -1,13 +1,15 @@
 import { Product } from "../../../types/Product";
+import { cn } from "../../../utils/utils";
 import { ProductCard } from "../../atoms/cards";
 
 type Props = {
   productList: Product[];
+  className?: string;
 };
 
-const ListProduct = ({ productList }: Props) => {
+const ListProduct = ({ productList, className }: Props) => {
   return (
-    <div className="grid grid-cols-4 gap-6">
+    <div className={cn("grid gap-6", className)}>
       {productList?.map((product) => {
         return (
           <ProductCard
