@@ -1,4 +1,4 @@
-import { Checkbox, Collapse, CollapseProps, Divider, GetProp } from "antd";
+import { Collapse as AntCollapse, CollapseProps, Divider } from "antd";
 
 import { cn } from "../../../utils/utils";
 
@@ -8,38 +8,20 @@ type Props = {
   label: string;
   options: string[];
   defaultValue?: string[];
+  children?: React.ReactNode;
 };
 
-const CollapseCheckbox = ({
-  defaultValue,
-  key,
-  className,
-  label,
-  options,
-}: Props) => {
-  const onChange: GetProp<typeof Checkbox.Group, "onChange"> = (
-    checkedValues
-  ) => {
-    console.log("checked = ", checkedValues);
-  };
-
+const Collapse = ({ key, className, label, children }: Props) => {
   const items: CollapseProps["items"] = [
     {
       key: key,
       label: label,
-      children: (
-        <Checkbox.Group
-          options={options}
-          defaultValue={defaultValue}
-          onChange={onChange}
-          className="flex flex-col gap-4"
-        />
-      ),
+      children: children,
     },
   ];
   return (
     <>
-      <Collapse
+      <AntCollapse
         ghost
         items={items}
         expandIcon={({ isActive }) => (
@@ -49,11 +31,11 @@ const CollapseCheckbox = ({
           />
         )}
         expandIconPosition="end"
-        className={cn("", className)}
+        className={cn(className)}
       />
       <Divider className="bg-gray-9E9E9E my-0" />
     </>
   );
 };
 
-export default CollapseCheckbox;
+export default Collapse;

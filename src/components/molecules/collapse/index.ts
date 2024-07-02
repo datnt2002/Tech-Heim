@@ -1,1 +1,1 @@
-export { default } from "./CollapseCheckbox";
+export { default } from "./Collapse";
