@@ -1,13 +1,12 @@
-import { Button, Divider, Switch } from "antd";
-import CollapseCheckbox from "../../molecules/collapse/Collapse";
+import { Button, Divider } from "antd";
 import { useSelector } from "react-redux";
 import { RootState } from "../../../redux/store";
+import CollapseCheckbox from "../../molecules/collapse/Collapse";
+import Switch from "../../atoms/switch";
 
 const FilterOptions = () => {
   const brand = useSelector((state: RootState) => state.product.brandList);
-  const onChange = (checked: boolean) => {
-    console.log(`switch to ${checked}`);
-  };
+
   return (
     <div className="flex flex-col flex-1">
       <div className="flex px-4 py-1 items-center ">
@@ -28,10 +27,7 @@ const FilterOptions = () => {
         options={brand.map((item) => item.name)}
         defaultValue={[]}
       />
-      <div className="flex justify-between items-center px-4 py-3">
-        <h5>Discount</h5>
-        <Switch defaultChecked onChange={onChange} />
-      </div>
+      <Switch title="Discount" />
       <Divider className="m-0 bg-gray-9E9E9E" />
       <CollapseCheckbox
         key="price"
