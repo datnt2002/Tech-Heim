@@ -1,5 +1,6 @@
 import {
   getBlogAPI,
+  getDetailBlogAPI,
   getNewsBlogAPI,
   getVideoBlogAPI,
 } from "../../services/blog.service";
@@ -10,6 +11,7 @@ interface BlogState {
   blogsPost: Blog[];
   videoBlogsPost: VideoBlog[];
   newBlogPost: Blog[];
+  detailBlogPost: Blog | null;
   loading: boolean;
 }
 
@@ -17,6 +19,7 @@ const initialState: BlogState = {
   blogsPost: [],
   videoBlogsPost: [],
   newBlogPost: [],
+  detailBlogPost: null,
   loading: false,
 };
 
@@ -94,9 +97,41 @@ export const blogSlice = createAppSlice({
         };
       },
     }),
+    getDetailBlogThunk: create.asyncThunk(
+      async (id: string) => {
+        const data = await getDetailBlogAPI(id);
+        return { data, id };
+      },
+      {
+        pending: (state) => {
+          return {
+            ...state,
+            loading: true,
+          };
+        },
+        fulfilled: (state, action) => {
+          const { data } = action.payload;
+          return {
+            ...state,
+            loading: false,
+            blogsPost: data,
+          };
+        },
+        rejected: (state) => {
+          return {
+            ...state,
+            loading: false,
+          };
+        },
+      }
+    ),
   }),
 });
 
-export const { getBlogThunk, getVideoBlogThunk, getNewBlogThunk } =
-  blogSlice.actions;
+export const {
+  getBlogThunk,
+  getVideoBlogThunk,
+  getNewBlogThunk,
+  getDetailBlogThunk,
+} = blogSlice.actions;
 export default blogSlice.reducer;
