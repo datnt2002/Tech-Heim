@@ -14,7 +14,7 @@ const DetailBlog = () => {
     if (id) {
       dispatch(getDetailBlogThunk(id));
     }
-  }, [id, dispatch]);
+  }, [dispatch, id]);
   const detailBlogPost = useSelector(
     (state: RootState) => state.blog.detailBlogPost
   );
