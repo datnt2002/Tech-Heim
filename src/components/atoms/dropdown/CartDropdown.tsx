@@ -1,16 +1,17 @@
 import { useEffect } from "react";
+import { useNavigate } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import { Button, Dropdown } from "antd";
 
 import { AppDispatch, RootState } from "../../../redux/store";
 import { getCartItemThunk } from "../../../redux/slice/productSlice";
 
-import { formatNumber } from "../../../utils/formatNumber";
 import { CardCart } from "../cards";
-import { Link } from "react-router-dom";
+import { formatNumber } from "../../../utils/formatNumber";
 
 const CartDropdown = () => {
   const dispatch = useDispatch<AppDispatch>();
+  const navigate = useNavigate();
   const cartItems = useSelector((state: RootState) => state.product.cartItems);
 
   const filterCartItems = cartItems?.filter((item) => {
@@ -57,16 +58,20 @@ const CartDropdown = () => {
                 </p>
                 <h6 className="font-bold">${formatNumber(total)}</h6>
               </div>
-              <Button size="large" className="flex-1" type="primary">
-                <Link to="/cart" className="flex">
-                  Proceed to Cart
-                  <span>
-                    <img
-                      src="/assets/icons/shopping/shopping_cart_icon.svg"
-                      alt=""
-                    />
-                  </span>
-                </Link>
+
+              <Button
+                size="large"
+                className="flex-1"
+                type="primary"
+                onClick={() => navigate("/cart")}
+              >
+                Proceed to Cart
+                <span>
+                  <img
+                    src="/assets/icons/shopping/shopping_cart_icon.svg"
+                    alt=""
+                  />
+                </span>
               </Button>
             </div>
           </div>

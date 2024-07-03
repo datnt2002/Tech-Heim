@@ -1,23 +1,28 @@
 import { Steps as AntStep } from "antd";
 
-type Props = {};
+type Props = {
+  status: "process" | "finish" | "error" | "wait";
+  current: number;
+};
 
-const Step = (props: Props) => {
+const Step = ({ status, current }: Props) => {
   return (
     <AntStep
+      labelPlacement="vertical"
+      current={current}
       items={[
         {
-          title: "Login",
+          title: "Cart",
+          status: "process",
+          icon: <img src="/assets/icons/shopping/bag_happy_icon.svg" />,
+        },
+        {
+          title: "Checkout",
           status: "finish",
           icon: <img src="/assets/icons/shopping/bag_happy_icon.svg" />,
         },
         {
-          title: "Verification",
-          status: "finish",
-          icon: <img src="/assets/icons/shopping/bag_happy_icon.svg" />,
-        },
-        {
-          title: "Pay",
+          title: "Payment",
           status: "process",
           icon: <img src="/assets/icons/shopping/bag_happy_icon.svg" />,
         },
