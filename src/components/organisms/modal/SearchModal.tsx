@@ -9,8 +9,8 @@ import {
   searchProductThunk,
 } from "../../../redux/slice/productSlice";
 
-import { ImgAndNameCard } from "../../atoms/cards";
 import { Product } from "../../../types/Product";
+import ImgAndNameCard from "../../atoms/cards/ImgAndNameCard";
 
 type SearchProps = {
   isOpen: boolean;

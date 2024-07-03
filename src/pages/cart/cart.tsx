@@ -1,9 +1,9 @@
-import { Button, Divider } from "antd";
 import { useDispatch, useSelector } from "react-redux";
 import { AppDispatch, RootState } from "../../redux/store";
-import { CardCart } from "../../components/atoms/cards";
+
 import ListProduct from "../../components/molecules/product/ListProduct";
 import PaymentCard from "../../components/molecules/payment/PaymentCard";
+import CardCart from "../../components/atoms/cards/CardCart";
 
 const Cart = () => {
   const dispatch = useDispatch<AppDispatch>();
@@ -35,6 +35,8 @@ const Cart = () => {
         </div>
         <div className="basis-4/12">
           <PaymentCard
+            buttonLabel="Proceed to checkout"
+            href="/checkout"
             className="gap-4"
             children={
               <h4 className="font-semibold font-inter text-2xl ">

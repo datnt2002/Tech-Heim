@@ -1,7 +1,8 @@
 import { useState } from "react";
 import { Pagination } from "antd";
-import { BlogCard } from "../../atoms/cards";
+
 import { Blog } from "../../../types/Blog";
+import BlogCard from "../../atoms/cards/BlogCard";
 
 type Props = {
   recentBlogList: Blog[];

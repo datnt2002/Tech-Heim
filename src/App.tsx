@@ -10,6 +10,7 @@ import { DetailBlog } from "./pages/detailblog";
 import Breadcrumb from "./components/atoms/breadcrumb";
 import Cart from "./pages/cart";
 import CheckoutLayout from "./layouts/CheckoutLayout";
+import Checkout from "./pages/cart/checkout";
 
 const LayoutWithBreadCrumb = () => {
   return (
@@ -42,6 +43,7 @@ function App() {
             </Route>
             <Route path="/" element={<CheckoutLayout />}>
               <Route path="/cart" element={<Cart />}></Route>
+              <Route path="/checkout" element={<Checkout />}></Route>
             </Route>
           </Route>
         </Routes>
