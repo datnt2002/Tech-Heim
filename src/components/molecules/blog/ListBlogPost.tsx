@@ -1,5 +1,6 @@
 import { Blog } from "../../../types/Blog";
-import { BlogCard } from "../../atoms/cards";
+import BlogCard from "../../atoms/cards/BlogCard";
+
 type Props = {
   blogList: Blog[];
 };

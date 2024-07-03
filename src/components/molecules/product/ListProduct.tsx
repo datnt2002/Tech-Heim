@@ -1,6 +1,6 @@
 import { Product } from "../../../types/Product";
 import { cn } from "../../../utils/utils";
-import { ProductCard } from "../../atoms/cards";
+import ProductCard from "../../atoms/cards/ProductCard";
 
 type Props = {
   productList: Product[];

@@ -1,4 +1,4 @@
-import { BlogCard } from "../../atoms/cards";
+import BlogCard from "../../atoms/cards/BlogCard";
 
 const blogs = [
   {

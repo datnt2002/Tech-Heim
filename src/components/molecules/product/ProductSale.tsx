@@ -1,8 +1,8 @@
 import { useSelector } from "react-redux";
 
-import { ProductSaleCard } from "../../atoms/cards";
 import CarouselWithButton from "../../atoms/carousel/CarouselWithButton";
 import { RootState } from "../../../redux/store";
+import ProductSaleCard from "../../atoms/cards/ProductSaleCard";
 
 const ProductSale = () => {
   const productSale = useSelector(

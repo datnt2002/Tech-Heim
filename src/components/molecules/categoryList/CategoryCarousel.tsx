@@ -1,6 +1,6 @@
 import { useSelector } from "react-redux";
 
-import { ImgAndNameCard } from "../../atoms/cards";
+import ImgAndNameCard from "../../atoms/cards/ImgAndNameCard";
 import CarouselWithButton from "../../atoms/carousel/CarouselWithButton";
 
 import { RootState } from "../../../redux/store";

@@ -31,11 +31,12 @@ export type Product = {
 export type ProductInCart = {
   id: string;
   name: string;
-  image?: string;
+  image: string;
   price: number;
   description?: string;
-  color?: string;
+  color: string;
   quantity: number;
+  salePrice?: number;
 };
 
 export type Brand = {

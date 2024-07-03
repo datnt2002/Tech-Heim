@@ -6,8 +6,8 @@ import { Button, Dropdown } from "antd";
 import { AppDispatch, RootState } from "../../../redux/store";
 import { getCartItemThunk } from "../../../redux/slice/productSlice";
 
-import { CardCart } from "../cards";
 import { formatNumber } from "../../../utils/formatNumber";
+import CardCart from "../cards/CardCart";
 
 const CartDropdown = () => {
   const dispatch = useDispatch<AppDispatch>();

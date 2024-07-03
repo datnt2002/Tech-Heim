@@ -1,13 +1,17 @@
-import { Button, Divider } from "antd";
 import React from "react";
+import { useNavigate } from "react-router-dom";
+import { Button, Divider } from "antd";
 import { cn } from "../../../utils/utils";
 
 type Props = {
   children?: React.ReactNode;
   className?: string;
+  href: string;
+  buttonLabel: string;
 };
 
-const PaymentCard = ({ children, className }: Props) => {
+const PaymentCard = ({ children, buttonLabel, href, className }: Props) => {
+  const navigate = useNavigate();
   return (
     <div
       className={cn(
@@ -37,8 +41,8 @@ const PaymentCard = ({ children, className }: Props) => {
           <span>$519.52</span>
         </h6>
       </div>
-      <Button size="large" type="primary">
-        Proceed to checkout
+      <Button size="large" type="primary" onClick={() => navigate(href)}>
+        {buttonLabel}
       </Button>
     </div>
   );
