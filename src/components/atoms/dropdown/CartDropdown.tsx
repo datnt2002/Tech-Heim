@@ -7,6 +7,7 @@ import { getCartItemThunk } from "../../../redux/slice/productSlice";
 
 import { formatNumber } from "../../../utils/formatNumber";
 import { CardCart } from "../cards";
+import { Link } from "react-router-dom";
 
 const CartDropdown = () => {
   const dispatch = useDispatch<AppDispatch>();
@@ -15,7 +16,6 @@ const CartDropdown = () => {
   const filterCartItems = cartItems?.filter((item) => {
     return item.quantity > 0;
   });
-  console.log(filterCartItems);
 
   const total = filterCartItems?.reduce((res, curr) => {
     return res + curr.price * curr.quantity;
@@ -58,13 +58,15 @@ const CartDropdown = () => {
                 <h6 className="font-bold">${formatNumber(total)}</h6>
               </div>
               <Button size="large" className="flex-1" type="primary">
-                Proceed to Cart
-                <span>
-                  <img
-                    src="/assets/icons/shopping/shopping_cart_icon.svg"
-                    alt=""
-                  />
-                </span>
+                <Link to="/cart" className="flex">
+                  Proceed to Cart
+                  <span>
+                    <img
+                      src="/assets/icons/shopping/shopping_cart_icon.svg"
+                      alt=""
+                    />
+                  </span>
+                </Link>
               </Button>
             </div>
           </div>
