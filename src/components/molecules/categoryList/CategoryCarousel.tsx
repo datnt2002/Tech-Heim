@@ -9,9 +9,9 @@ const CategoryCarousel = () => {
   const categoriesList = useSelector(
     (state: RootState) => state.product.categories
   );
-  console.log(categoriesList);
+
   return (
-    <section className="px-24 py-12">
+    <section className="py-6 md:py-12">
       <CarouselWithButton>
         {categoriesList?.map((item) => {
           return (

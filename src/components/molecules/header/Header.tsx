@@ -21,9 +21,11 @@ import {
   getNewBlogThunk,
   getVideoBlogThunk,
 } from "../../../redux/slice/blogSlice";
+import { getCurrentUserThunk } from "../../../redux/slice/authSlice";
 
 const Header = () => {
   const dispatch = useDispatch<AppDispatch>();
+  const token = localStorage.getItem("token");
   useEffect(() => {
     dispatch(getCategoryThunk());
     dispatch(getProductSaleThunk());
@@ -35,6 +37,13 @@ const Header = () => {
     dispatch(getNewBlogThunk());
     dispatch(getProductThunk());
   }, []);
+
+  useEffect(() => {
+    if (token) {
+      dispatch(getCurrentUserThunk(token));
+    }
+  }, [token]);
+
   return (
     <>
       <header className="flex justify-between items-center py-2 md:py-0 px-1 md:px-6 lg:px-28 md:h-[100px] h-10">
