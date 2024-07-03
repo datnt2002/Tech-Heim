@@ -11,7 +11,7 @@ export const getBlogAPI = () => {
     .catch((err) => err);
 };
 
-export const getDetailBlogAPI = (id: string) => {
+export const getDetailBlogAPI = (id?: string) => {
   return axiosClient
     .get(`blog/${id}`)
     .then((res) => {
