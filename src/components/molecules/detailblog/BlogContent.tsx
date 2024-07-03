@@ -2,24 +2,21 @@ import Markdown from "react-markdown";
 import remarkBreaks from "remark-breaks";
 import { Blog } from "../../../types/Blog";
 type Props = {
-  detailBlogPost: Blog;
+  detailBlogPost: Blog | null;
 };
 
-const BlogContent = ({
-  detailBlogPost,
-}: // readTime,
-Props) => {
+const BlogContent = ({ detailBlogPost }: Props) => {
   return (
     <div>
-      <div className="mt-4" key={detailBlogPost.id}>
-        <h5 className="font-medium text-xl">{detailBlogPost.title}</h5>
+      <div className="mt-4" key={detailBlogPost?.id}>
+        <h5 className="font-medium text-xl">{detailBlogPost?.title}</h5>
         <div className="mt-4 text-xs text-[#717171]">
-          By {detailBlogPost.author} on {detailBlogPost.releaseDate}
+          By {detailBlogPost?.author} on {detailBlogPost?.releaseDate}
         </div>
       </div>
       <div className="mt-4">
         <img
-          src={detailBlogPost.image}
+          src={detailBlogPost?.image}
           className="h-[25.8rem] w-[50.5rem] rounded-lg"
         />
       </div>
@@ -28,7 +25,7 @@ Props) => {
         remarkPlugins={[remarkBreaks]}
         className="prose font-light text-xl mt-4"
       >
-        {detailBlogPost.content}
+        {detailBlogPost?.content}
       </Markdown>
     </div>
   );
