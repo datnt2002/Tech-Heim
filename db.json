@@ -478,7 +478,7 @@
       "id": "2",
       "name": "Inateck 12.3-13 Inch MacBook Case Sleeve",
       "color": "Blue",
-      "quantity": 2,
+      "quantity": 1,
       "price": 63.26,
       "image": "/assets/images/cart/inateck.png"
     },
@@ -512,7 +512,8 @@
       "processor": "Intel Core i7",
       "GPU": "NVIDIA GeForce GTX 1660 Ti",
       "memory": 16,
-      "rating": 4.5
+      "rating": 4.5,
+      "favorite": false
     },
     {
       "id": "2",
@@ -522,7 +523,7 @@
       "salePrice": 750,
       "discount": true,
       "percent": 6,
-      "favorite": false,
+      "favorite": true,
       "description": "A high-performance smartphone with great camera features.",
       "color": "Black",
       "rating": 4.5,
@@ -577,8 +578,8 @@
       "categoryId": "electronics",
       "brand": "Brand A",
       "screenSize": 1.5,
-      "processor": "N/A",
-      "GPU": "N/A",
+      "processor": "Intel Core i9",
+      "GPU": "NVIDIA GeForce RTX 3080",
       "memory": 8,
       "bestSeller": true,
       "rating": 4.8
@@ -595,9 +596,9 @@
       "categoryId": "electronics",
       "brand": "Brand B",
       "screenSize": 0,
-      "processor": "N/A",
-      "GPU": "N/A",
-      "memory": 0,
+      "processor": "Intel Core i9",
+      "GPU": "NVIDIA GeForce RTX 3080",
+      "memory": 8,
       "favorite": false
     },
     {
@@ -609,9 +610,9 @@
       "categoryId": "electronics",
       "brand": "Brand C",
       "screenSize": 0,
-      "processor": "N/A",
-      "GPU": "N/A",
-      "memory": 0
+      "processor": "Intel Core i9",
+      "GPU": "NVIDIA GeForce RTX 3080",
+      "memory": 16
     },
     {
       "id": "7",
@@ -641,9 +642,9 @@
       "categoryId": "electronics",
       "brand": "Brand E",
       "screenSize": 0,
-      "processor": "N/A",
-      "GPU": "N/A",
-      "memory": 0
+      "processor": "Intel Core i9",
+      "GPU": "NVIDIA GeForce RTX 3080",
+      "memory": 8
     },
     {
       "id": "9",
@@ -654,9 +655,9 @@
       "categoryId": "electronics",
       "brand": "Brand F",
       "screenSize": 0,
-      "processor": "N/A",
-      "GPU": "N/A",
-      "memory": 0
+      "processor": "Intel Core i9",
+      "GPU": "NVIDIA GeForce RTX 3080",
+      "memory": 8
     },
     {
       "id": "10",
@@ -667,9 +668,9 @@
       "categoryId": "electronics",
       "brand": "Brand G",
       "screenSize": 27,
-      "processor": "N/A",
-      "GPU": "N/A",
-      "memory": 0
+      "processor": "Intel Core i9",
+      "GPU": "NVIDIA GeForce RTX 3080",
+      "memory": 8
     },
     {
       "id": "11",
@@ -680,9 +681,9 @@
       "categoryId": "electronics",
       "brand": "Brand H",
       "screenSize": 0,
-      "processor": "N/A",
-      "GPU": "N/A",
-      "memory": 0
+      "processor": "Intel Core i9",
+      "GPU": "NVIDIA GeForce RTX 3080",
+      "memory": 8
     },
     {
       "id": "12",
@@ -693,9 +694,9 @@
       "categoryId": "electronics",
       "brand": "Brand I",
       "screenSize": 0,
-      "processor": "N/A",
-      "GPU": "N/A",
-      "memory": 0
+      "processor": "Intel Core i9",
+      "GPU": "NVIDIA GeForce RTX 3080",
+      "memory": 8
     },
     {
       "id": "13",
@@ -709,9 +710,9 @@
       "categoryId": "electronics",
       "brand": "Brand J",
       "screenSize": 0,
-      "processor": "N/A",
-      "GPU": "N/A",
-      "memory": 0,
+      "processor": "Intel Core i9",
+      "GPU": "NVIDIA GeForce RTX 3080",
+      "memory": 8,
       "favorite": true
     },
     {
@@ -723,9 +724,9 @@
       "categoryId": "electronics",
       "brand": "Brand K",
       "screenSize": 0,
-      "processor": "N/A",
-      "GPU": "N/A",
-      "memory": 0
+      "processor": "Intel Core i9",
+      "GPU": "NVIDIA GeForce RTX 3080",
+      "memory": 8
     },
     {
       "id": "15",
@@ -736,9 +737,9 @@
       "categoryId": "electronics",
       "brand": "Brand L",
       "screenSize": 0,
-      "processor": "N/A",
-      "GPU": "N/A",
-      "memory": 0
+      "processor": "Intel Core i9",
+      "GPU": "NVIDIA GeForce RTX 3080",
+      "memory": 8
     },
     {
       "id": "16",
@@ -749,9 +750,9 @@
       "categoryId": "electronics",
       "brand": "Brand M",
       "screenSize": 0,
-      "processor": "N/A",
-      "GPU": "N/A",
-      "memory": 0
+      "processor": "Intel Core i9",
+      "GPU": "NVIDIA GeForce RTX 3080",
+      "memory": 8
     },
     {
       "id": "17",
@@ -762,9 +763,9 @@
       "categoryId": "electronics",
       "brand": "Brand N",
       "screenSize": 0,
-      "processor": "N/A",
-      "GPU": "N/A",
-      "memory": 0,
+      "processor": "Intel Core i9",
+      "GPU": "NVIDIA GeForce RTX 3080",
+      "memory": 8,
       "bestSeller": true,
       "rating": 5
     },
@@ -777,9 +778,9 @@
       "categoryId": "electronics",
       "brand": "Brand O",
       "screenSize": 0,
-      "processor": "N/A",
-      "GPU": "N/A",
-      "memory": 0
+      "processor": "Intel Core i9",
+      "GPU": "NVIDIA GeForce RTX 3080",
+      "memory": 8
     },
     {
       "id": "19",
@@ -790,9 +791,9 @@
       "categoryId": "electronics",
       "brand": "Brand P",
       "screenSize": 0,
-      "processor": "N/A",
-      "GPU": "N/A",
-      "memory": 0
+      "processor": "Intel Core i9",
+      "GPU": "NVIDIA GeForce RTX 3080",
+      "memory": 8
     },
     {
       "id": "20",
@@ -806,9 +807,9 @@
       "categoryId": "electronics",
       "brand": "Brand Q",
       "screenSize": 0,
-      "processor": "N/A",
-      "GPU": "N/A",
-      "memory": 0,
+      "processor": "Intel Core i9",
+      "GPU": "NVIDIA GeForce RTX 3080",
+      "memory": 8,
       "favorite": true
     }
   ],
@@ -874,7 +875,6 @@
       "image": "/assets/images/logo/lenovo.png"
     }
   ],
-
   "blog": [
     {
       "id": "1",

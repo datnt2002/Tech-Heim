@@ -3,9 +3,15 @@ import { useSelector } from "react-redux";
 import { RootState } from "../../../redux/store";
 import CollapseCheckbox from "../../molecules/collapse/Collapse";
 import Switch from "../../atoms/switch";
+import Checkbox from "../../atoms/checkbox";
+import Slider from "../../atoms/slider";
+import { useLocation } from "react-router-dom";
 
 const FilterOptions = () => {
-  const brand = useSelector((state: RootState) => state.product.brandList);
+  const { brandList, filterProduct } = useSelector(
+    (state: RootState) => state.product
+  );
+  const location = useLocation();
 
   return (
     <div className="flex flex-col flex-1">
@@ -18,52 +24,82 @@ const FilterOptions = () => {
       <CollapseCheckbox
         key="brand"
         label="Brand"
-        options={brand.map((item) => item.name)}
-        defaultValue={[]}
+        children={
+          <Checkbox
+            queryKey="brand"
+            options={brandList.map((item) => item.name)}
+            basePath={location.pathname}
+          />
+        }
       />
       <CollapseCheckbox
         key="color"
         label="Color"
-        options={brand.map((item) => item.name)}
-        defaultValue={[]}
+        children={
+          <Checkbox
+            queryKey="color"
+            options={[...new Set(filterProduct.map((item) => item.color))]}
+            basePath={location.pathname}
+          />
+        }
       />
-      <Switch title="Discount" />
+      <Switch title="Discount" basePath={location.pathname} />
       <Divider className="m-0 bg-gray-9E9E9E" />
-      <CollapseCheckbox
-        key="price"
-        label="Price"
-        options={brand.map((item) => item.name)}
-        defaultValue={[]}
-      />
+      <CollapseCheckbox key="price" label="Price" children={<Slider />} />
       <CollapseCheckbox
         key="ram"
         label="RAM"
-        options={brand.map((item) => item.name)}
-        defaultValue={[]}
+        children={
+          <Checkbox
+            queryKey="ram"
+            options={[...new Set(filterProduct.map((item) => item.memory))]}
+            basePath={location.pathname}
+          />
+        }
       />
       <CollapseCheckbox
         key="screen"
         label="Screen Size"
-        options={brand.map((item) => item.name)}
-        defaultValue={[]}
+        children={
+          <Checkbox
+            queryKey="screen"
+            options={["13 - 13.9", "14 - 14.9", "15 - 15.9", "16 - 16.9"]}
+            basePath={location.pathname}
+          />
+        }
       />
       <CollapseCheckbox
         key="processor"
         label="Processor"
-        options={brand.map((item) => item.name)}
-        defaultValue={[]}
+        children={
+          <Checkbox
+            queryKey="processor"
+            options={[...new Set(filterProduct.map((item) => item.processor))]}
+            basePath={location.pathname}
+          />
+        }
       />
       <CollapseCheckbox
         key="gpu"
         label="GPU Brand"
-        options={brand.map((item) => item.name)}
-        defaultValue={[]}
+        children={
+          <Checkbox
+            queryKey="gpu"
+            options={[...new Set(filterProduct.map((item) => item.GPU))]}
+            basePath={location.pathname}
+          />
+        }
       />
       <CollapseCheckbox
         key="drive"
         label="Drive Size"
-        options={brand.map((item) => item.name)}
-        defaultValue={[]}
+        children={
+          <Checkbox
+            queryKey="drive"
+            options={[...new Set(filterProduct.map((item) => item.memory))]}
+            basePath={location.pathname}
+          />
+        }
       />
     </div>
   );
