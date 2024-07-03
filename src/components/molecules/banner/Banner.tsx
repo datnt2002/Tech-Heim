@@ -3,7 +3,7 @@ import BannerImage from "../../../assets/images/banner/banner_img.png";
 
 const Banner = () => {
   return (
-    <div className="relative h-40 md:h-[544px] md:px-6 lg:px-28">
+    <div className="relative h-40 md:h-[544px] mb-6">
       <div className="absolute md:my-14">
         <h1 className="text-primary-700 mt-4 md:mb-12 md:text-[44px] lg:text-[64px]">
           Tech Heim

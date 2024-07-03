@@ -1,8 +1,10 @@
+import { useNavigate } from "react-router-dom";
 import { useSelector } from "react-redux";
 import { Button, Dropdown, MenuProps } from "antd";
-import { cn } from "../../../utils/utils";
+
 import { RootState, store } from "../../../redux/store";
 import { logoutAction } from "../../../redux/slice/authSlice";
+import { cn } from "../../../utils/utils";
 
 interface DropdownItemProps {
   icon: string;
@@ -24,50 +26,52 @@ const DropdownItem = ({
   );
 };
 
-const items: MenuProps["items"] = [
-  {
-    key: "orders",
-    label: (
-      <DropdownItem
-        icon={"/assets/icons/shopping/order_icon.svg"}
-        label="Orders"
-      />
-    ),
-  },
-  {
-    key: "wishlist",
-    label: (
-      <DropdownItem
-        icon={"/assets/icons/like/heart_outline_icon.svg"}
-        label="Wish List"
-      />
-    ),
-  },
-  {
-    key: "payments",
-    label: (
-      <DropdownItem
-        icon={"/assets/icons/crypto/payment_icon.svg"}
-        label="Payments"
-      />
-    ),
-  },
-  {
-    key: "logout",
-    label: (
-      <DropdownItem
-        icon={"/assets/icons/arrow/logout_icon.svg"}
-        label="Log out"
-        onClick={() => {
-          store.dispatch(logoutAction());
-        }}
-      />
-    ),
-  },
-];
-
 const ProfileMenu = () => {
   const currentUser = useSelector((state: RootState) => state.auth.currentUser);
+  const navigate = useNavigate();
+
+  const items: MenuProps["items"] = [
+    {
+      key: "orders",
+      label: (
+        <DropdownItem
+          icon={"/assets/icons/shopping/order_icon.svg"}
+          label="Orders"
+          onClick={() => navigate("/cart")}
+        />
+      ),
+    },
+    {
+      key: "wishlist",
+      label: (
+        <DropdownItem
+          icon={"/assets/icons/like/heart_outline_icon.svg"}
+          label="Wish List"
+        />
+      ),
+    },
+    {
+      key: "payments",
+      label: (
+        <DropdownItem
+          icon={"/assets/icons/crypto/payment_icon.svg"}
+          label="Payments"
+        />
+      ),
+    },
+    {
+      key: "logout",
+      label: (
+        <DropdownItem
+          icon={"/assets/icons/arrow/logout_icon.svg"}
+          label="Log out"
+          onClick={() => {
+            store.dispatch(logoutAction());
+          }}
+        />
+      ),
+    },
+  ];
   return (
     <Dropdown
       className="bg-transparent"
@@ -84,7 +88,6 @@ const ProfileMenu = () => {
                 <p className="ml-10">{currentUser?.email}</p>
               )}
             </div>
-
             {menu}
           </div>
         );

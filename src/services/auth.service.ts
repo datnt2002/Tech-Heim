@@ -17,3 +17,13 @@ export const signUp = (data: SignUpBody) => {
     })
     .catch((err) => err);
 };
+
+export const getCurrentUserAPI = (id: string) => {
+  return axiosClient
+    .get(`users/${id}`)
+    .then((res) => {
+      const { data, status } = res;
+      return { data, status };
+    })
+    .catch((err) => err);
+};

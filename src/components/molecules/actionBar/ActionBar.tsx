@@ -10,7 +10,7 @@ import { cn } from "../../../utils/utils";
 
 const ActionBar = () => {
   const dispatch = useDispatch<AppDispatch>();
-
+  const token = localStorage.getItem("token");
   const { authModal, searchModal, successModal, errorModal } = useSelector(
     (state: RootState) => state.appModal
   );
@@ -66,7 +66,7 @@ const ActionBar = () => {
         <div className={cn("md:p-2 md:block", !isLoggedIn && "hidden")}>
           <CartDropdown />
         </div>
-        {isLoggedIn ? (
+        {token ? (
           <>
             <ProfileMenu />
           </>

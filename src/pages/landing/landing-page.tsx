@@ -17,10 +17,9 @@ const LandingPage = () => {
     (state: RootState) => state.product
   );
   const blogsPost = useSelector((state: RootState) => state.blog.newBlogPost);
-  console.log(blogsPost);
 
   return (
-    <>
+    <div className="px-6 md:px-28">
       <Banner />
       <CategoryHomeList />
       <ProductSale />
@@ -104,7 +103,7 @@ const LandingPage = () => {
           <p className="text-xl self-center">24/7 Support</p>
         </div>
       </section>
-    </>
+    </div>
   );
 };
 

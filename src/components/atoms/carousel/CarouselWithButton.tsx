@@ -1,4 +1,4 @@
-import React, { useRef } from "react";
+import React, { useEffect, useRef, useState } from "react";
 import { Carousel } from "antd";
 import { CarouselRef } from "antd/es/carousel";
 
@@ -49,24 +49,38 @@ const CarouselWithButton = ({
   slideButton,
   className,
 }: Props) => {
-  const responsiveSettings = [
-    {
-      breakpoint: 360,
-      settings: {
-        slidesToShow: 1,
-        slidesToScroll: 1,
-      },
-    },
-    {
-      breakpoint: 720,
-      settings: {
-        slidesToShow: 3,
-        slidesToScroll: 1,
-      },
-    },
-  ];
-
   const ref = useRef<CarouselRef>(null);
+  const [slidesToShow, setSlidesToShow] = useState(slideToShow);
+
+  useEffect(() => {
+    //responsive carousel
+    const handleResize = () => {
+      const screenWidth = window.innerWidth;
+      switch (true) {
+        case screenWidth < 640:
+          setSlidesToShow(1);
+          break;
+        case screenWidth >= 640 && screenWidth < 768:
+          setSlidesToShow(2);
+          break;
+        case screenWidth >= 768 && screenWidth <= 1024:
+          setSlidesToShow(3);
+          break;
+        case screenWidth > 1300:
+          setSlidesToShow(slideToShow);
+          break;
+        default:
+          setSlidesToShow(4);
+          break;
+      }
+    };
+    // Set initial state
+    handleResize();
+    // Attach the event listener
+    window.addEventListener("resize", handleResize);
+    // Detach the event listener on component unmount
+    return () => window.removeEventListener("resize", handleResize);
+  }, []);
 
   return (
     <>
@@ -76,9 +90,8 @@ const CarouselWithButton = ({
         prevArrow={<NextArrow />}
         nextArrow={<PrevArrow />}
         dots={false}
-        slidesToShow={slideToShow}
+        slidesToShow={slidesToShow}
         infinite
-        responsive={responsiveSettings}
         className={className}
       >
         {children}

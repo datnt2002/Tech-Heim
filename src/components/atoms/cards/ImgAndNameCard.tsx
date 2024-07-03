@@ -14,8 +14,16 @@ const ImgAndNameCard = ({ img, name, className }: Props) => {
         className
       )}
     >
-      <img src={img} alt={name} className="w-36 h-36 pt-2 px-4" />
-      <h5 className="font-inter py-2 text-gray-2D2D2D">{name}</h5>
+      <div className="h-16 md:h-36">
+        <img
+          src={img}
+          alt={name}
+          className="object-cover aspect-square w-full h-full pt-2 px-4"
+        />
+      </div>
+      <h5 className="text-sm md:text-base font-inter py-2 text-gray-2D2D2D">
+        {name}
+      </h5>
     </div>
   );
 };
