@@ -16,8 +16,10 @@ type Props = {
   name: string;
   color?: string;
   price: number;
+  salePrice?: number;
   image?: string;
   quantity: number;
+  percent?: number;
 };
 
 const CardCart = ({
@@ -28,6 +30,8 @@ const CardCart = ({
   image,
   quantity,
   className,
+  percent,
+  salePrice,
 }: Props) => {
   const dispatch = useDispatch<AppDispatch>();
 
@@ -87,7 +91,14 @@ const CardCart = ({
             </p>
           </div>
           <div className="flex justify-between items-end">
-            <p className="text-xs">${formatNumber(price)}</p>
+            {percent ? (
+              <>
+                <p className="text-xs line-through">${formatNumber(price)}</p>
+                <p className="font-semibold">${formatNumber(salePrice)}</p>
+              </>
+            ) : (
+              <p className=" font-semibold">${formatNumber(price)}</p>
+            )}
             <div className="flex">
               <Button
                 type="text"

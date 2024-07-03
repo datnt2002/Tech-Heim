@@ -8,6 +8,8 @@ import { Blog } from "./pages/blog";
 import Products from "./pages/product/products";
 import { DetailBlog } from "./pages/detailblog";
 import Breadcrumb from "./components/atoms/breadcrumb";
+import Cart from "./pages/cart";
+import CheckoutLayout from "./layouts/CheckoutLayout";
 
 const LayoutWithBreadCrumb = () => {
   return (
@@ -38,16 +40,10 @@ function App() {
                 <Route path="/products/:name" element={<Products />} />
               </Route>
             </Route>
+            <Route path="/" element={<CheckoutLayout />}>
+              <Route path="/cart" element={<Cart />}></Route>
+            </Route>
           </Route>
-          {/* 
-          <Route
-            path="/blog/:title"
-            element={
-              <MainLayout>
-                <DetailBlog />
-              </MainLayout>
-            }
-          /> */}
         </Routes>
       </BrowserRouter>
     </ConfigProvider>
