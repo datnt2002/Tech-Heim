@@ -470,7 +470,7 @@
       "id": "1",
       "name": "MacBook Pro M2 MNEJ3 2022 LLA 13.3 inch",
       "color": "Black",
-      "quantity": 6,
+      "quantity": 0,
       "price": 433,
       "image": "/assets/images/cart/macbook.png"
     },
@@ -478,7 +478,7 @@
       "id": "2",
       "name": "Inateck 12.3-13 Inch MacBook Case Sleeve",
       "color": "Blue",
-      "quantity": 2,
+      "quantity": 4,
       "price": 63.26,
       "image": "/assets/images/cart/inateck.png"
     },
@@ -874,13 +874,11 @@
       "image": "/assets/images/logo/lenovo.png"
     }
   ],
-
   "blog": [
     {
       "id": "1",
       "title": "Challenges and Opportunities in Green Energy",
       "author": "John Doe",
-
       "releaseDate": "2024-07-01",
       "readTime": "7 mins read",
       "image": "/assets/images/blog/blog1.png",
