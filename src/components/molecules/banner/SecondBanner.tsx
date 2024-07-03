@@ -4,9 +4,9 @@ import psImg from "../../../assets/images/ps53.png";
 
 const SecondBanner = () => {
   return (
-    <section className="flex mx-24 h-[420px] gap-6 mt-12">
+    <section className="flex flex-col lg:flex-row gap-6 mt-12">
       {/* banner 1 */}
-      <div className="basis-7/12 rounded-lg flex bg-gradient-to-br from-[#1975B9] via-[#1FB6CF] to-[#B0E9C9]">
+      <div className="lg:basis-7/12 rounded-lg flex bg-gradient-to-br from-[#1975B9] via-[#1FB6CF] to-[#B0E9C9]">
         <div className="basis-7/12">
           <h4 className="ml-12 mt-6 text-2xl text-black font-inter">
             Iphone <span className="text-white">15 Series</span>
@@ -16,7 +16,7 @@ const SecondBanner = () => {
           </div>
         </div>
         <div className="basis-5/12 pr-[72px]">
-          <div className="flex gap-3 mt-11 ">
+          <div className="flex gap-3 mt-11">
             <div className="border border-black px-1 text-center rounded-lg w-12 max-h-11">
               <h6 className="font-bold">8</h6>
               <p className="-mt-2">Days</p>
@@ -50,7 +50,7 @@ const SecondBanner = () => {
         </div>
       </div>
       {/* banner 2 */}
-      <div className="relative basis-5/12 bg-[#005690] rounded-lg">
+      <div className="relative min-h-80 lg:basis-5/12 bg-[#005690] rounded-lg">
         <div className="absolute bg-[#FCC870] h-24 w-24 rounded-br-full"></div>
         <div className="absolute bg-[#FCC870] h-3/5 w-full bottom-0 rounded-t-[50%]"></div>
         <h4 className="text-[#FCC870] text-2xl font-inter mt-8 text-center ">
@@ -65,7 +65,7 @@ const SecondBanner = () => {
           </h5>
           <Button
             size="large"
-            className=" text-white bg-primary border-none  ml-16 mb-9"
+            className=" text-white bg-primary border-none ml-16 mb-9"
           >
             Buy Now
           </Button>

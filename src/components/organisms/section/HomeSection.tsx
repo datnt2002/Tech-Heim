@@ -20,7 +20,7 @@ const HomeSection = ({
     navigate(url);
   };
   return (
-    <div className="mx-24 mt-12">
+    <div className="mt-12">
       <div className="flex justify-between">
         <h3 className="text-[32px]">{sectionName}</h3>
         {viewAllButton && (
