@@ -100,7 +100,7 @@ export const blogSlice = createAppSlice({
     getDetailBlogThunk: create.asyncThunk(
       async (id: string) => {
         const data = await getDetailBlogAPI(id);
-        return { data, id };
+        return data;
       },
       {
         pending: (state) => {
@@ -114,7 +114,7 @@ export const blogSlice = createAppSlice({
           return {
             ...state,
             loading: false,
-            blogsPost: data,
+            detailBlogPost: data,
           };
         },
         rejected: (state) => {
