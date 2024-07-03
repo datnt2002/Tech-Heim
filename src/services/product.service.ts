@@ -1,4 +1,5 @@
 import axiosClient from "./api.service";
+import queryString from "query-string";
 
 export const getCategoryAPI = () => {
   return axiosClient
@@ -134,9 +135,21 @@ export const getBrandAPI = () => {
     .catch((err) => err);
 };
 
-export const getFilterProductAPI = () => {
+export const getFilterProductAPI = ({
+  discount = false,
+  brand,
+}: {
+  discount: boolean;
+  brand: string[];
+}) => {
+  const newParams = {
+    brand: brand,
+  };
+  const filterParams = queryString.stringify(newParams);
+  console.log(filterParams);
+
   return axiosClient
-    .get(`product?`)
+    .get(`product?discount=${discount}&${filterParams}`)
     .then((res) => {
       const { data, status } = res;
       return { data, status };

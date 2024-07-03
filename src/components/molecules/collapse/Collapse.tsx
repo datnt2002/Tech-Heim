@@ -4,17 +4,14 @@ import { cn } from "../../../utils/utils";
 
 type Props = {
   className?: string;
-  key: string;
   label: string;
-  options: string[];
-  defaultValue?: string[];
   children?: React.ReactNode;
 };
 
-const Collapse = ({ key, className, label, children }: Props) => {
+const Collapse = ({ className, label, children }: Props) => {
   const items: CollapseProps["items"] = [
     {
-      key: key,
+      key: label,
       label: label,
       children: children,
     },
