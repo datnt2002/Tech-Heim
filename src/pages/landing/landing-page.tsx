@@ -24,22 +24,29 @@ const LandingPage = () => {
       <CategoryHomeList />
       <ProductSale />
       <HomeSection sectionName="New Products" viewAllButton>
-        <ListProduct productList={newProducts} className="grid-cols-4" />
+        <ListProduct
+          productList={newProducts}
+          className="grid-cols-2 lg:grid-cols-4"
+        />
       </HomeSection>
       <SecondBanner />
       <HomeSection sectionName="Best Sellers" viewAllButton>
-        <ListProduct productList={bestSellers} className="grid-cols-4" />
+        <ListProduct
+          productList={bestSellers}
+          className="grid-cols-2 lg:grid-cols-4"
+        />
       </HomeSection>
       <HomeSection sectionName="Top Brands" viewAllButton={false}>
-        <div className="flex justify-between mb-24">
+        <div className="flex flex-row overflow-hidden justify-between mb-24">
           {brandList.map((brand) => {
             return (
-              <img
-                key={brand.id}
-                src={brand.image}
-                alt=""
-                className="object-contain"
-              />
+              <div className="w-14 md:w-auto mx-auto" key={brand.id}>
+                <img
+                  src={brand.image}
+                  alt=""
+                  className="object-contain w-full h-full aspect-square"
+                />
+              </div>
             );
           })}
         </div>
@@ -85,7 +92,7 @@ const LandingPage = () => {
           </div>
         </div>
       </HomeSection>
-      <section className="flex mx-24 justify-between h-24 items-center mt-14">
+      <section className="flex flex-col gap-4 md:flex-row justify-between items-start md:items-center my-14">
         <div className="flex gap-4">
           <img src="/assets/icons/service/computer_icon.svg" alt="" />
           <p className="text-xl self-center">Latest and Greatest Tech</p>
