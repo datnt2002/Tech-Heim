@@ -4,12 +4,16 @@ interface AppModalState {
   searchModal: boolean;
   successModal: boolean;
   errorModal: boolean;
+  mapModal: boolean;
+  addressModal: boolean;
 }
 const initialState: AppModalState = {
   authModal: false,
   searchModal: false,
   successModal: false,
   errorModal: false,
+  mapModal: false,
+  addressModal: false,
 };
 
 export const appModalSlice = createSlice({

@@ -30,9 +30,9 @@ const PaymentCard = ({
 
   const discount = cartItems.reduce((res, curr) => {
     if (curr.salePrice) {
-      return res + (curr.price - curr?.salePrice) * curr.quantity;
+      return res + (curr.price - curr.salePrice) * curr.quantity;
     }
-    return res + curr.price * curr.quantity;
+    return res;
   }, 0);
 
   return (
