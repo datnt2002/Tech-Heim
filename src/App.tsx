@@ -8,6 +8,7 @@ import { Blog } from "./pages/blog";
 import Products from "./pages/product/products";
 import { DetailBlog } from "./pages/detailblog";
 import Breadcrumb from "./components/atoms/breadcrumb";
+import DetailProduct from "./pages/detailproduct/[productId]";
 import Cart from "./pages/cart";
 import CheckoutLayout from "./layouts/CheckoutLayout";
 import Checkout from "./pages/cart/checkout";
@@ -38,9 +39,8 @@ function App() {
             <Route path="/" element={<LayoutWithBreadCrumb />}>
               <Route path="/blog" element={<Blog />} />
               <Route path="/blog/:id" element={<DetailBlog />} />
-              <Route path="/products" element={<Products />}>
-                <Route path="/products/:name" element={<Products />} />
-              </Route>
+              <Route path="/products" element={<Products />}></Route>
+              <Route path="/products/:id" element={<DetailProduct />} />
             </Route>
             <Route path="/" element={<CheckoutLayout />}>
               <Route path="/cart" element={<Cart />}></Route>

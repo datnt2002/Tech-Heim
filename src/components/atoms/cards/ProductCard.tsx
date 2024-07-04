@@ -1,3 +1,4 @@
+import { useNavigate } from "react-router-dom";
 import HeartTag from "../Tag/HeartTag";
 import ProductCardFooter from "./ProductCardFooter";
 
@@ -22,6 +23,10 @@ const ProductCard = ({
   rating,
   salePrice,
 }: Props) => {
+  const nav = useNavigate();
+  const handleClick = () => {
+    nav(`/products/${id}`);
+  };
   return (
     <div className="relative rounded-md bg-white w-72 h-auto flex flex-col gap-3 shadow-md group hover:shadow-lg cursor-pointer">
       {percent && (
@@ -30,7 +35,10 @@ const ProductCard = ({
         </p>
       )}
       <HeartTag id={id} favorite={favorite} key={id} />
-      <div className="flex justify-center items-center w-64 h-48">
+      <div
+        className="flex justify-center items-center w-64 h-48"
+        onClick={handleClick}
+      >
         <img
           src={image}
           alt={name}
