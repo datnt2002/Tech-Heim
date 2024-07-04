@@ -90,7 +90,9 @@ export const productSlice = createAppSlice({
         return {
           ...state,
           loading: false,
-          cartItems: data,
+          cartItems: data.filter((item: ProductInCart) => {
+            return item.quantity > 0;
+          }),
           status: status,
         };
       },
