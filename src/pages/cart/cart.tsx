@@ -4,6 +4,7 @@ import { AppDispatch, RootState } from "../../redux/store";
 import ListProduct from "../../components/molecules/product/ListProduct";
 import PaymentCard from "../../components/molecules/payment/PaymentCard";
 import CardCart from "../../components/atoms/cards/CardCart";
+import Step from "../../components/atoms/step";
 
 const Cart = () => {
   const dispatch = useDispatch<AppDispatch>();
@@ -17,6 +18,18 @@ const Cart = () => {
 
   return (
     <div>
+      <div className="max-w-lg mx-auto mb-12">
+        <Step
+          current={0}
+          iconCart={<img src="/assets/icons/shopping/cart_active_icon.svg" />}
+          iconCheckout={
+            <img src="/assets/icons/shopping/checkout_wait_icon.svg" />
+          }
+          iconPayment={
+            <img src="/assets/icons/shopping/payment_wait_icon.svg" />
+          }
+        />
+      </div>
       <div className="flex justify-between">
         <div className="flex flex-col gap-3 basis-7/12">
           {filterCartItems?.map((item) => {
