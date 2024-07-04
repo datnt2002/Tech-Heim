@@ -10,6 +10,7 @@ import {
   getBrandAPI,
   getCartItemsAPI,
   getCategoryAPI,
+  getDetailProductAPI,
   getFilterProductAPI,
   getNewProductsAPI,
   getProductSaleAPI,
@@ -31,7 +32,6 @@ interface ProductState {
   newProducts: Product[];
   bestSellers: Product[];
   brandList: Brand[];
-  filterProduct: Product[];
   loading: boolean;
   status: number;
 }
@@ -45,6 +45,7 @@ const initialState: ProductState = {
   productSale: [],
   newProducts: [],
   bestSellers: [],
+  detailProduct: null,
   brandList: [],
   filterProduct: [],
   loading: false,
@@ -367,35 +368,6 @@ export const productSlice = createAppSlice({
         };
       },
     }),
-    getProductThunk: create.asyncThunk(
-      async ({ discount, brand }: { discount: boolean; brand: string[] }) => {
-        const res = await getFilterProductAPI({ discount, brand });
-        return res;
-      },
-      {
-        pending: (state) => {
-          return {
-            ...state,
-            loading: true,
-          };
-        },
-        fulfilled: (state, action) => {
-          const { data, status } = action.payload;
-          return {
-            ...state,
-            loading: false,
-            filterProduct: data,
-            status: status,
-          };
-        },
-        rejected: (state) => {
-          return {
-            ...state,
-            loading: false,
-          };
-        },
-      }
-    ),
   }),
 });
 
@@ -412,7 +384,6 @@ export const {
   getNewProductThunk,
   getBestSellerProductThunk,
   getBrandThunk,
-  getProductThunk,
 } = productSlice.actions;
 
 export default productSlice.reducer;

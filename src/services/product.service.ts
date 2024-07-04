@@ -156,3 +156,14 @@ export const getFilterProductAPI = ({
     })
     .catch((err) => err);
 };
+
+export const getDetailProductAPI = (id?: string) => {
+  console.log(id);
+  return axiosClient
+    .get(`product/${id}`)
+    .then((res) => {
+      const { data, status } = res;
+      return { data, status };
+    })
+    .catch((err) => err);
+};
