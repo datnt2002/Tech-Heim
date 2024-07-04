@@ -96,7 +96,7 @@ const Checkout = () => {
           <PaymentCard
             shipCost={shipCost}
             buttonLabel="Continue to pay"
-            href="/payment"
+            onClick={() => navigate("/payment")}
             children={<OrderList cartItems={cartItems} />}
           />
         </div>

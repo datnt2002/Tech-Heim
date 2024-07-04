@@ -5,11 +5,13 @@ import ListProduct from "../../components/molecules/product/ListProduct";
 import PaymentCard from "../../components/molecules/payment/PaymentCard";
 import CardCart from "../../components/atoms/cards/CardCart";
 import Step from "../../components/atoms/step";
+import { useNavigate } from "react-router-dom";
 
 const Cart = () => {
   const { cartItems, newProducts } = useSelector(
     (state: RootState) => state.product
   );
+  const navigate = useNavigate();
 
   return (
     <>
@@ -45,7 +47,7 @@ const Cart = () => {
         <div className="basis-4/12  mt-6 md:mt-0">
           <PaymentCard
             buttonLabel="Proceed to checkout"
-            href="/checkout"
+            onClick={() => navigate("/checkout")}
             className="gap-4"
             children={
               <h4 className="font-semibold font-inter text-2xl ">

@@ -1,6 +1,5 @@
 import React from "react";
 import { useSelector } from "react-redux";
-import { useNavigate } from "react-router-dom";
 import { Button, Divider } from "antd";
 import { RootState } from "../../../redux/store";
 import { cn } from "../../../utils/utils";
@@ -9,19 +8,19 @@ import { formatNumber } from "../../../utils/formatNumber";
 type Props = {
   children?: React.ReactNode;
   className?: string;
-  href: string;
+
   buttonLabel: string;
   shipCost?: number;
+  onClick?: () => void;
 };
 
 const PaymentCard = ({
   children,
   buttonLabel,
-  href,
+  onClick,
   className,
   shipCost = 0,
 }: Props) => {
-  const navigate = useNavigate();
   const { cartItems } = useSelector((state: RootState) => state.product);
 
   const total = cartItems.reduce((res, curr) => {
@@ -64,7 +63,7 @@ const PaymentCard = ({
           <span>${formatNumber(total - discount + shipCost)}</span>
         </h6>
       </div>
-      <Button size="large" type="primary" onClick={() => navigate(href)}>
+      <Button size="large" type="primary" onClick={onClick}>
         {buttonLabel}
       </Button>
     </div>
