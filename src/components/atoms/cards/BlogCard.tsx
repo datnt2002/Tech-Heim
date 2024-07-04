@@ -21,6 +21,7 @@ const BlogCard = ({
   releaseDate,
   readTime,
   content,
+
   author,
   image,
 }: BlogProps) => {
