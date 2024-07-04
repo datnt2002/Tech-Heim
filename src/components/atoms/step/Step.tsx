@@ -1,30 +1,38 @@
 import { Steps as AntStep } from "antd";
+import { cn } from "../../../utils/utils";
 
 type Props = {
-  status: "process" | "finish" | "error" | "wait";
   current: number;
+  iconCart: React.ReactNode;
+  iconCheckout: React.ReactNode;
+  iconPayment: React.ReactNode;
+  className?: string;
 };
 
-const Step = ({ status, current }: Props) => {
+const Step = ({
+  current,
+  iconCart,
+  iconCheckout,
+  iconPayment,
+  className,
+}: Props) => {
   return (
     <AntStep
       labelPlacement="vertical"
       current={current}
+      className={cn("", className)}
       items={[
         {
           title: "Cart",
-          status: "process",
-          icon: <img src="/assets/icons/shopping/bag_happy_icon.svg" />,
+          icon: <div className="w-10 h-10">{iconCart}</div>,
         },
         {
           title: "Checkout",
-          status: "finish",
-          icon: <img src="/assets/icons/shopping/bag_happy_icon.svg" />,
+          icon: <div className="w-10 h-10">{iconCheckout}</div>,
         },
         {
           title: "Payment",
-          status: "process",
-          icon: <img src="/assets/icons/shopping/bag_happy_icon.svg" />,
+          icon: <div className="w-10 h-10">{iconPayment}</div>,
         },
       ]}
     />
