@@ -18,6 +18,7 @@ const OrderList = ({ cartItems }: Props) => {
             price={item.price}
             quantity={item.quantity}
             key={item.id}
+            image={item.image}
             salePrice={item?.salePrice}
           />
         );

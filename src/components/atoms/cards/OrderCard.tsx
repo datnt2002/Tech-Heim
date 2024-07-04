@@ -8,6 +8,7 @@ type Props = {
   price: number;
   salePrice?: number;
   className?: string;
+  image: string;
 };
 
 const OrderCard = ({
@@ -17,6 +18,7 @@ const OrderCard = ({
   quantity,
   className,
   salePrice,
+  image,
 }: Props) => {
   return (
     <div
@@ -26,11 +28,7 @@ const OrderCard = ({
       )}
     >
       <div className="basis-1/4">
-        <img
-          src="/assets/images/cart/inateck.png"
-          alt=""
-          className="object-cover w-full h-full"
-        />
+        <img src={image} alt="" className="object-cover w-full h-full" />
       </div>
       <div className="flex flex-col flex-1 gap-2">
         <p className="text-xs text-gray-2D2D2D">{name}</p>
