@@ -1,9 +1,10 @@
-import { useState } from "react";
 import { Radio, RadioChangeEvent } from "antd";
 
 type Props = {
   label?: string;
   className?: string;
+  value: number;
+  setValue: React.Dispatch<React.SetStateAction<number>>;
 };
 
 type RadioCardProps = {
@@ -24,11 +25,8 @@ const RadioCard = ({ label, price, time }: RadioCardProps) => {
   );
 };
 
-const RadioFormField = ({ label, className }: Props) => {
-  const [value, setValue] = useState(1);
-
+const RadioFormField = ({ label, className, setValue, value }: Props) => {
   const onChange = (e: RadioChangeEvent) => {
-    console.log("radio checked", e.target.value);
     setValue(e.target.value);
   };
   return (
@@ -45,7 +43,7 @@ const RadioFormField = ({ label, className }: Props) => {
         <Radio value={7.5} className="relative">
           <RadioCard label="Regular Shipping" time="3-14" price={7.5} />
         </Radio>
-        <Radio value={3} className="relative">
+        <Radio value={22.5} className="relative">
           <RadioCard label="Express Shipping" time="1-3" price={22.5} />
         </Radio>
       </Radio.Group>

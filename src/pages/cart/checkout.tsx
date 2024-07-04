@@ -8,11 +8,14 @@ import RadioFormField from "../../components/atoms/formField/RadioFormField";
 import { useNavigate } from "react-router-dom";
 import OrderList from "../../components/organisms/order/OrderList";
 import Step from "../../components/atoms/step";
+import { useState } from "react";
 
 const Checkout = () => {
   const { cartItems } = useSelector((state: RootState) => state.product);
   const { currentUser } = useSelector((state: RootState) => state.auth);
   const navigate = useNavigate();
+  const [shipCost, setShipCost] = useState(0);
+
   return (
     <>
       <div className="max-w-lg mx-auto mb-12">
@@ -43,7 +46,11 @@ const Checkout = () => {
                 <img src="/assets/icons/email/edit_icon.svg" className="w-5" />
               }
             />
-            <RadioFormField label="Shiping Method" />
+            <RadioFormField
+              setValue={setShipCost}
+              value={shipCost}
+              label="Shiping Method"
+            />
           </div>
           <Button
             size="large"
@@ -56,6 +63,7 @@ const Checkout = () => {
         </div>
         <div className="basis-2/5">
           <PaymentCard
+            shipCost={shipCost}
             buttonLabel="Continue to pay"
             href="/payment"
             children={<OrderList cartItems={cartItems} />}
