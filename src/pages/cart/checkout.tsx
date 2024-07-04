@@ -1,6 +1,7 @@
+import { useState } from "react";
 import { Button } from "antd";
-import { useSelector } from "react-redux";
-import { RootState } from "../../redux/store";
+import { useDispatch, useSelector } from "react-redux";
+import { AppDispatch, RootState } from "../../redux/store";
 
 import PaymentCard from "../../components/molecules/payment/PaymentCard";
 import InputFormField from "../../components/atoms/formField/InputFormField";
@@ -8,13 +9,37 @@ import RadioFormField from "../../components/atoms/formField/RadioFormField";
 import { useNavigate } from "react-router-dom";
 import OrderList from "../../components/organisms/order/OrderList";
 import Step from "../../components/atoms/step";
-import { useState } from "react";
+import { setModalState } from "../../redux/slice/modalSlice";
+import MapModal from "../../components/organisms/modal/MapModal";
+import AddressModal from "../../components/organisms/modal/AddressModal";
 
 const Checkout = () => {
   const { cartItems } = useSelector((state: RootState) => state.product);
   const { currentUser } = useSelector((state: RootState) => state.auth);
-  const navigate = useNavigate();
+  const { mapModal, addressModal } = useSelector(
+    (state: RootState) => state.appModal
+  );
   const [shipCost, setShipCost] = useState(0);
+  const navigate = useNavigate();
+  const dispatch = useDispatch<AppDispatch>();
+
+  const handleOpenMapModal = (isOpen: boolean) => {
+    dispatch(
+      setModalState({
+        key: "mapModal",
+        isOpen: isOpen,
+      })
+    );
+  };
+
+  const handleOpenAddressModal = (isOpen: boolean) => {
+    dispatch(
+      setModalState({
+        key: "addressModal",
+        isOpen: isOpen,
+      })
+    );
+  };
 
   return (
     <>
@@ -38,18 +63,24 @@ const Checkout = () => {
               value={currentUser?.fullName}
               disable
             />
+
             <InputFormField
               label="Ship to"
               value="HubSpot, 25 First Street, Cambridge MA 02141, United States"
               disable
               icon={
-                <img src="/assets/icons/email/edit_icon.svg" className="w-5" />
+                <img
+                  src="/assets/icons/email/edit_icon.svg"
+                  className="w-5 cursor-pointer"
+                  onClick={() => handleOpenMapModal(true)}
+                />
               }
-            />
+            ></InputFormField>
+
             <RadioFormField
               setValue={setShipCost}
               value={shipCost}
-              label="Shiping Method"
+              label="Shipping Method"
             />
           </div>
           <Button
@@ -70,6 +101,15 @@ const Checkout = () => {
           />
         </div>
       </div>
+      {mapModal && (
+        <MapModal isOpen={mapModal} setIsOpen={handleOpenMapModal} />
+      )}
+      {addressModal && (
+        <AddressModal
+          isOpen={addressModal}
+          setIsOpen={handleOpenAddressModal}
+        />
+      )}
     </>
   );
 };
