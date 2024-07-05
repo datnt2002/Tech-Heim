@@ -9,17 +9,37 @@ import InputFormField from "../../components/atoms/formField/InputFormField";
 import MapModal from "../../components/organisms/modal/MapModal";
 import { Button } from "antd";
 import { useNavigate } from "react-router-dom";
-import { useState } from "react";
+import { useEffect, useState } from "react";
+import ChooseCardModal from "../../components/organisms/modal/ChooseCardModal";
+import { getCreditCardThunk } from "../../redux/slice/authSlice";
 
 const Payment = () => {
   const { cartItems } = useSelector((state: RootState) => state.product);
-  const { mapModal } = useSelector((state: RootState) => state.appModal);
+  const { mapModal, chooseCardModal, addNewCardModal } = useSelector(
+    (state: RootState) => state.appModal
+  );
+  const { selectedCreditCard } = useSelector((state: RootState) => state.auth);
+
   const dispatch = useDispatch<AppDispatch>();
   const navigate = useNavigate();
+
+  useEffect(() => {
+    dispatch(getCreditCardThunk());
+  }, []);
+
   const handleOpenMapModal = (isOpen: boolean) => {
     dispatch(
       setModalState({
         key: "mapModal",
+        isOpen: isOpen,
+      })
+    );
+  };
+
+  const handleOpenChooseModal = (isOpen: boolean) => {
+    dispatch(
+      setModalState({
+        key: "chooseCardModal",
         isOpen: isOpen,
       })
     );
@@ -61,14 +81,13 @@ const Payment = () => {
                   <label>Credit Cards</label>
                 </div>
                 <div className="flex gap-2">
-                  <img
-                    src="/assets/icons/delivery/america.svg"
-                    className="w-14"
-                  />
+                  <img src={selectedCreditCard?.image} className="w-14" />
                   <img
                     src="/assets/icons/email/edit_icon.svg"
                     className="w-5 cursor-pointer"
-                    onClick={() => {}}
+                    onClick={() => {
+                      handleOpenChooseModal(true);
+                    }}
                   />
                 </div>
               </div>
@@ -119,6 +138,12 @@ const Payment = () => {
       </div>
       {mapModal && (
         <MapModal isOpen={mapModal} setIsOpen={handleOpenMapModal} />
+      )}
+      {chooseCardModal && (
+        <ChooseCardModal
+          isOpen={chooseCardModal}
+          setIsOpen={handleOpenChooseModal}
+        />
       )}
     </>
   );
