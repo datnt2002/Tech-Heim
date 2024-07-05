@@ -5,12 +5,19 @@ type Props = {
   message?: string;
   isOpen: boolean;
   setIsOpen: (isOpen: boolean) => void;
+  children?: React.ReactNode;
 };
 
-const SuccessModal = ({ title, message, isOpen, setIsOpen }: Props) => {
+const SuccessModal = ({
+  title,
+  message,
+  isOpen,
+  setIsOpen,
+  children,
+}: Props) => {
   return (
     <Modal
-      className="max-w-[600px]"
+      className="max-w-[500px]"
       centered
       open={isOpen}
       onCancel={() => setIsOpen(false)}
@@ -27,6 +34,7 @@ const SuccessModal = ({ title, message, isOpen, setIsOpen }: Props) => {
 
         <h3 className="text-[32px] text-success font-inter">{title}</h3>
         <p className="text-gray-505050 text-lg mt-4 px-5">{message}</p>
+        {children}
       </div>
     </Modal>
   );

@@ -14,13 +14,16 @@ import InputFormField from "../../components/atoms/formField/InputFormField";
 import MapModal from "../../components/organisms/modal/MapModal";
 import ChooseCardModal from "../../components/organisms/modal/ChooseCardModal";
 import AddNewCardModal from "../../components/organisms/modal/AddNewCardModal";
+import { SuccessModal } from "../../components/organisms/modal";
+import { formatNumber } from "../../utils/formatNumber";
 
 const Payment = () => {
   const cartItems = useSelector((state: RootState) => state.product.cartItems);
-  const { mapModal, chooseCardModal, addNewCardModal } = useSelector(
-    (state: RootState) => state.appModal
+  const { mapModal, chooseCardModal, addNewCardModal, successModal } =
+    useSelector((state: RootState) => state.appModal);
+  const { selectedCreditCard, currentUser } = useSelector(
+    (state: RootState) => state.auth
   );
-  const { selectedCreditCard } = useSelector((state: RootState) => state.auth);
 
   const dispatch = useDispatch<AppDispatch>();
   const navigate = useNavigate();
@@ -55,8 +58,17 @@ const Payment = () => {
     );
   };
 
-  const [selectedPayment, setSelectedPayment] = useState("cr");
+  const handleOpenSuccessModal = (isOpen: boolean) => {
+    dispatch(
+      setModalState({
+        key: "successModal",
+        isOpen: isOpen,
+      })
+    );
+  };
 
+  const [selectedPayment, setSelectedPayment] = useState("cr");
+  const [grandTotal, setGrandTotal] = useState(0);
   const handlePaymentChange = (paymentMethod: string) => {
     setSelectedPayment(paymentMethod);
   };
@@ -147,7 +159,9 @@ const Payment = () => {
         </div>
         <div className="basis-2/5">
           <PaymentCard
+            setGrandTotal={setGrandTotal}
             buttonLabel="Place order"
+            onClick={() => handleOpenSuccessModal(true)}
             children={<OrderList cartItems={cartItems} />}
           />
         </div>
@@ -165,6 +179,45 @@ const Payment = () => {
         <AddNewCardModal
           isOpen={addNewCardModal}
           setIsOpen={handleOpenAddModal}
+        />
+      )}
+      {successModal && (
+        <SuccessModal
+          title="Successful Payment"
+          isOpen={successModal}
+          setIsOpen={handleOpenSuccessModal}
+          children={
+            <div className="flex flex-col gap-4">
+              <p className="text-base text-gray-717171 flex justify-between">
+                <span>Payment type</span>
+                <span>Net Banking</span>
+              </p>
+              <p className="text-base text-gray-717171 flex justify-between">
+                <span>Phone number</span>
+                <span>+12345678910</span>
+              </p>
+              <p className="text-base text-gray-717171 flex justify-between">
+                <span>Email</span>
+                <span>{currentUser?.email}</span>
+              </p>
+              <p className="text-base text-gray-717171 flex justify-between">
+                <span>Transaction id</span>
+                <span>2345678910</span>
+              </p>
+              <p className="text-base font-semibold text-gray-717171 flex justify-between">
+                <span>Amount Paid</span>
+                <span>${formatNumber(grandTotal)}</span>
+              </p>
+              <Button
+                onClick={() => handleOpenSuccessModal(false)}
+                className="w-1/2 self-end"
+                type="primary"
+                size="large"
+              >
+                Order Status
+              </Button>
+            </div>
+          }
         />
       )}
     </>
