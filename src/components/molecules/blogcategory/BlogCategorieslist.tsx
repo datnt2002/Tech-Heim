@@ -13,7 +13,7 @@ const BlogCategorieslist = () => {
     <div className="mt-4">
       <p className="font-medium text-xl">Categories</p>
       <div className="mt-6 gap-4 flex flex-col">
-        {categories.map((category, index) => (
+        {categories.map((category) => (
           <div className="font-light text-xl">{category.category}</div>
         ))}
       </div>
