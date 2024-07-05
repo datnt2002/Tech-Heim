@@ -22,7 +22,7 @@ const BlogCard = ({
   readTime,
   content,
 
-  author,
+  // author,
   image,
 }: BlogProps) => {
   const nav = useNavigate();

@@ -1,9 +1,9 @@
 import { Checkbox as AntCheckbox, GetProp } from "antd";
 import { useNavigate } from "react-router-dom";
 import queryString from "query-string";
-import { useDispatch } from "react-redux";
-import { AppDispatch } from "../../../redux/store";
-import { getProductThunk } from "../../../redux/slice/productSlice";
+// import { useDispatch } from "react-redux";
+// import { AppDispatch } from "../../../redux/store";
+// import { getProductThunk } from "../../../redux/slice/productSlice";
 
 type Props = {
   options: string[] | number[];
@@ -14,7 +14,7 @@ type Props = {
 
 const Checkbox = ({ options, basePath, queryKey, defaultValue }: Props) => {
   const navigate = useNavigate();
-  const dispatch = useDispatch<AppDispatch>();
+  // const dispatch = useDispatch<AppDispatch>();
   const currentParams = queryString.parse(location.search);
 
   const onChange: GetProp<typeof AntCheckbox.Group, "onChange"> = (

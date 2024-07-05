@@ -10,8 +10,7 @@ type Props = {
   className?: string;
   buttonLabel: string;
   onClick?: () => void;
-
-  setGrandTotal: React.Dispatch<React.SetStateAction<number>>;
+  setGrandTotal?: React.Dispatch<React.SetStateAction<number>>;
 };
 
 const PaymentCard = ({
@@ -19,7 +18,6 @@ const PaymentCard = ({
   buttonLabel,
   onClick,
   className,
-
   setGrandTotal,
 }: Props) => {
   const { cartItems, shipCost } = useSelector(
@@ -38,7 +36,9 @@ const PaymentCard = ({
   }, 0);
 
   useEffect(() => {
-    setGrandTotal(total - discount + shipCost);
+    if (setGrandTotal) {
+      setGrandTotal(total - discount + shipCost);
+    }
   }, [discount, shipCost, total]);
 
   return (

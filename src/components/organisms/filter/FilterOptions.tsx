@@ -8,9 +8,7 @@ import Slider from "../../atoms/slider";
 import { useLocation } from "react-router-dom";
 
 const FilterOptions = () => {
-  const { brandList, filterProduct } = useSelector(
-    (state: RootState) => state.product
-  );
+  const { brandList } = useSelector((state: RootState) => state.product);
   const location = useLocation();
 
   return (
@@ -32,31 +30,31 @@ const FilterOptions = () => {
           />
         }
       />
-      <CollapseCheckbox
+      {/* <CollapseCheckbox
         key="color"
         label="Color"
         children={
           <Checkbox
             queryKey="color"
-            options={[...new Set(filterProduct.map((item) => item.color))]}
+            // options={[...new Set(filterProduct.map((item) => item.color))]}
             basePath={location.pathname}
           />
         }
-      />
+      /> */}
       <Switch title="Discount" basePath={location.pathname} />
       <Divider className="m-0 bg-gray-9E9E9E" />
       <CollapseCheckbox key="price" label="Price" children={<Slider />} />
-      <CollapseCheckbox
+      {/* <CollapseCheckbox
         key="ram"
         label="RAM"
         children={
           <Checkbox
             queryKey="ram"
-            options={[...new Set(filterProduct.map((item) => item.memory))]}
+            // options={[...new Set(filterProduct.map((item) => item.memory))]}
             basePath={location.pathname}
           />
         }
-      />
+      /> */}
       <CollapseCheckbox
         key="screen"
         label="Screen Size"
@@ -68,18 +66,18 @@ const FilterOptions = () => {
           />
         }
       />
-      <CollapseCheckbox
+      {/* <CollapseCheckbox
         key="processor"
         label="Processor"
         children={
           <Checkbox
             queryKey="processor"
-            options={[...new Set(filterProduct.map((item) => item.processor))]}
+            // options={[...new Set(filterProduct.map((item) => item.processor))]}
             basePath={location.pathname}
           />
         }
-      />
-      <CollapseCheckbox
+      /> */}
+      {/* <CollapseCheckbox
         key="gpu"
         label="GPU Brand"
         children={
@@ -100,7 +98,7 @@ const FilterOptions = () => {
             basePath={location.pathname}
           />
         }
-      />
+      /> */}
     </div>
   );
 };
