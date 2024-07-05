@@ -5,7 +5,7 @@ type Props = { price?: number; percent?: number };
 
 const PayCard = ({ price, percent }: Props) => {
   const [paymentMethod, setPaymentMethod] = useState(1);
-  const [installmentPeriod, setInstallmentPeriod] = useState();
+  // const [installmentPeriod, setInstallmentPeriod] = useState();
 
   const [disable, setDisable] = useState(true);
   const periods = [3, 6, 12, 18];
@@ -20,23 +20,23 @@ const PayCard = ({ price, percent }: Props) => {
     }
   };
 
-  const salePrice = () => {
-    return (price * percent) / 100;
-  };
+  // const salePrice = () => {
+  //   return (price * percent) / 100;
+  // };
 
-  const pricePerMonth = () => {
-    if (percent) {
-      return (salePrice() / installmentPeriod).toFixed(2);
-    }
-    return (price / installmentPeriod).toFixed(2);
-  };
+  // const pricePerMonth = () => {
+  //   if (percent) {
+  //     return (salePrice() / installmentPeriod).toFixed(2);
+  //   }
+  //   return (price / installmentPeriod).toFixed(2);
+  // };
 
   return (
     <div className="flex flex-col gap-4 shadow-md  p-6  rounded-md">
       {percent ? (
         <div className="flex flex-col gap-1">
           <div className="flex justify-between ">
-            <div className="font-medium text-2xl">{salePrice()}</div>
+            {/* <div className="font-medium text-2xl">{salePrice()}</div> */}
             <div className="flex flex-row content-center gap-1 ">
               <img src="/assets/icons/discount/discount-shape.svg" />
               <div className="text-secondary text-base font-medium justify-center">
@@ -73,19 +73,20 @@ const PayCard = ({ price, percent }: Props) => {
                 type="radio"
                 name="installmentPeriod"
                 value={month}
-                checked={installmentPeriod === month}
-                onChange={() => setInstallmentPeriod(month)}
+                // checked={installmentPeriod === month}
+                // onChange={() => setInstallmentPeriod(month)}
                 className="hidden"
                 disabled={disable}
               />
               <div
-                className={`border rounded-lg px-3 py-1 cursor-pointer ${
-                  disable
-                    ? "bg-gray-100 "
-                    : installmentPeriod === month
-                    ? "bg-blue-100 border-blue-500 text-blue-700"
-                    : "bg-gray-100"
-                }`}
+                className={`border rounded-lg px-3 py-1 cursor-pointer`}
+                // ${
+                //   disable
+                //     ? "bg-gray-100 "
+                //     : installmentPeriod === month
+                //     ? "bg-blue-100 border-blue-500 text-blue-700"
+                //     : "bg-gray-100"
+                // }
               >
                 <span className="block text-lg text-center font-light">
                   {month}
@@ -98,7 +99,7 @@ const PayCard = ({ price, percent }: Props) => {
           ))}
         </div>
         <div className="text-sm" hidden={disable}>
-          ${pricePerMonth()}
+          {/* ${pricePerMonth()} */}
           <span className="text-gray-717171 font-light text-xs">/Month</span>
         </div>
       </div>
