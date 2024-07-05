@@ -15,3 +15,5 @@ export type VideoBlog = {
   url: string;
   image: string;
 };
+
+export type Detail = {};
