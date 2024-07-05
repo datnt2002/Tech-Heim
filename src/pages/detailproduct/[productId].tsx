@@ -22,12 +22,14 @@ const DetailProduct = () => {
   console.log(detailProduct);
 
   return (
-    <div className="flex flex-wrap gap-8">
-      <div className="flex flex-row gap-6 basis-2/3">
+    <div className="flex flex-row gap-8">
+      <div className="flex flex-row basis-2/3 gap-6">
         <div>
-          <img src="/assets/images/blog/blog1.png" className="w-108 h-96" />
+          <img src="/assets/images/blog/blog1.png" className="w-124 h-80" />
         </div>
-        <ProductInfoCard product={detailProduct} />
+        <div>
+          <ProductInfoCard product={detailProduct} />
+        </div>
       </div>
       <div className="basis-1/3">
         <PayCard

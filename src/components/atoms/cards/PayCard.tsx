@@ -32,7 +32,7 @@ const PayCard = ({ price, percent }: Props) => {
   };
 
   return (
-    <div className="flex flex-col gap-4 shadow-md h-fit w-full p-6 m-20 rounded-md">
+    <div className="flex flex-col gap-4 shadow-md w-fit p-6 rounded-md">
       {percent ? (
         <div className="flex flex-col gap-1">
           <div className="flex justify-between ">
