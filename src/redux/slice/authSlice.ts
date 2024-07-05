@@ -2,6 +2,7 @@ import { createAppSlice } from "../appSlice";
 
 import { setModalState } from "./modalSlice";
 import {
+  addCreditCardAPI,
   getCreditCardAPI,
   getCurrentUserAPI,
   signUp,
@@ -130,6 +131,36 @@ export const authSlice = createAppSlice({
         };
       },
     }),
+    addCreditCardThunk: create.asyncThunk(
+      async (data: Omit<CreditCard, "id" | "image" | "selected">) => {
+        const res = await addCreditCardAPI(data);
+        return res;
+      },
+      {
+        pending: (state) => {
+          return {
+            ...state,
+            loading: true,
+          };
+        },
+        fulfilled: (state, action) => {
+          const { data, status }: { data: CreditCard; status: number } =
+            action.payload;
+          return {
+            ...state,
+            loading: false,
+            creditCard: state.creditCard.concat(data),
+            status: status,
+          };
+        },
+        rejected: (state) => {
+          return {
+            ...state,
+            loading: false,
+          };
+        },
+      }
+    ),
   }),
 });
 export const {
@@ -137,5 +168,6 @@ export const {
   SignUpThunk,
   getCurrentUserThunk,
   getCreditCardThunk,
+  addCreditCardThunk,
 } = authSlice.actions;
 export default authSlice.reducer;
