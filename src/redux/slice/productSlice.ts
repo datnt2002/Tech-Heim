@@ -33,6 +33,7 @@ interface ProductState {
   brandList: Brand[];
   loading: boolean;
   status: number;
+  shipCost: number;
 }
 
 const initialState: ProductState = {
@@ -49,6 +50,7 @@ const initialState: ProductState = {
   filterProduct: [],
   loading: false,
   status: 0,
+  shipCost: 0,
 };
 
 export const productSlice = createAppSlice({
@@ -396,6 +398,13 @@ export const productSlice = createAppSlice({
         };
       },
     }),
+    chooseShipCostAction: create.reducer((state, action) => {
+      const data = action.payload as unknown as number;
+      return {
+        ...state,
+        shipCost: data,
+      };
+    }),
   }),
 });
 
@@ -413,6 +422,7 @@ export const {
   getBestSellerProductThunk,
   getBrandThunk,
   addCartItemThunk,
+  chooseShipCostAction,
 } = productSlice.actions;
 
 export default productSlice.reducer;
