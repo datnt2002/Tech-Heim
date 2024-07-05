@@ -1,20 +1,22 @@
+import { useEffect, useState } from "react";
+import { useNavigate } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
+import { Button } from "antd";
+
 import { AppDispatch, RootState } from "../../redux/store";
 import { setModalState } from "../../redux/slice/modalSlice";
+import { getCreditCardThunk } from "../../redux/slice/authSlice";
 
 import PaymentCard from "../../components/molecules/payment/PaymentCard";
 import OrderList from "../../components/organisms/order/OrderList";
 import Step from "../../components/atoms/step";
 import InputFormField from "../../components/atoms/formField/InputFormField";
 import MapModal from "../../components/organisms/modal/MapModal";
-import { Button } from "antd";
-import { useNavigate } from "react-router-dom";
-import { useEffect, useState } from "react";
 import ChooseCardModal from "../../components/organisms/modal/ChooseCardModal";
-import { getCreditCardThunk } from "../../redux/slice/authSlice";
+import AddNewCardModal from "../../components/organisms/modal/AddNewCardModal";
 
 const Payment = () => {
-  const { cartItems } = useSelector((state: RootState) => state.product);
+  const cartItems = useSelector((state: RootState) => state.product.cartItems);
   const { mapModal, chooseCardModal, addNewCardModal } = useSelector(
     (state: RootState) => state.appModal
   );
@@ -25,7 +27,7 @@ const Payment = () => {
 
   useEffect(() => {
     dispatch(getCreditCardThunk());
-  }, []);
+  }, [dispatch]);
 
   const handleOpenMapModal = (isOpen: boolean) => {
     dispatch(
@@ -44,6 +46,15 @@ const Payment = () => {
       })
     );
   };
+  const handleOpenAddModal = (isOpen: boolean) => {
+    dispatch(
+      setModalState({
+        key: "addNewCardModal",
+        isOpen: isOpen,
+      })
+    );
+  };
+
   const [selectedPayment, setSelectedPayment] = useState("cr");
 
   const handlePaymentChange = (paymentMethod: string) => {
@@ -77,6 +88,7 @@ const Payment = () => {
                     type="radio"
                     name="payment"
                     checked={selectedPayment === "cr"}
+                    readOnly
                   />
                   <label>Credit Cards</label>
                 </div>
@@ -91,7 +103,10 @@ const Payment = () => {
                   />
                 </div>
               </div>
-              <button className="p-3 bg-primary-25 rounded-lg">
+              <button
+                className="p-3 bg-primary-25 rounded-lg"
+                onClick={() => handleOpenAddModal(true)}
+              >
                 <span className="p-2 text-primary text-xl">+</span>
               </button>
             </div>
@@ -104,6 +119,7 @@ const Payment = () => {
                 name="payment"
                 checked={selectedPayment === "pp"}
                 className="mr-2"
+                readOnly
               />
               <label>PayPal</label>
             </div>
@@ -143,6 +159,12 @@ const Payment = () => {
         <ChooseCardModal
           isOpen={chooseCardModal}
           setIsOpen={handleOpenChooseModal}
+        />
+      )}
+      {addNewCardModal && (
+        <AddNewCardModal
+          isOpen={addNewCardModal}
+          setIsOpen={handleOpenAddModal}
         />
       )}
     </>

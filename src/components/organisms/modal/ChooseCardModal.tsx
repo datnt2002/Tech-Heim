@@ -1,6 +1,8 @@
 import { Button, Modal } from "antd";
-import { useSelector } from "react-redux";
-import { RootState } from "../../../redux/store";
+import { useDispatch, useSelector } from "react-redux";
+import { AppDispatch, RootState } from "../../../redux/store";
+import { setModalState } from "../../../redux/slice/modalSlice";
+import dayjs from "dayjs";
 
 type ModalProps = {
   isOpen: boolean;
@@ -9,6 +11,15 @@ type ModalProps = {
 
 const ChooseCardModal = ({ isOpen, setIsOpen }: ModalProps) => {
   const { creditCard } = useSelector((state: RootState) => state.auth);
+  const dispatch = useDispatch<AppDispatch>();
+  const handleOpenAddModal = (isOpen: boolean) => {
+    dispatch(
+      setModalState({
+        key: "addNewCardModal",
+        isOpen: isOpen,
+      })
+    );
+  };
   return (
     <Modal
       className="max-w-[800px]"
@@ -30,7 +41,6 @@ const ChooseCardModal = ({ isOpen, setIsOpen }: ModalProps) => {
             className="flex-1"
             type="primary"
             htmlType="submit"
-            // onClick={handleSubmitAddress}
           >
             Save
           </Button>
@@ -38,32 +48,41 @@ const ChooseCardModal = ({ isOpen, setIsOpen }: ModalProps) => {
       )}
     >
       <table className="w-full py-4">
-        <tr className="text-center text-gray-505050 font-normal">
-          <td className="w-1/2"></td>
-          <td>Name on card</td>
-          <td>Expires</td>
-        </tr>
+        <thead>
+          <tr className="text-center text-gray-505050 font-normal">
+            <td className="w-1/2"></td>
+            <td>Name on card</td>
+            <td>Expires</td>
+          </tr>
+        </thead>
 
-        {creditCard.map((card) => {
-          return (
-            <tr className=" bg-gray-F6F6F6 rounded-lg" key={card.id}>
-              <td className="flex gap-2 py-2 px-4">
-                <input
-                  type="radio"
-                  name="payment"
-                  checked={card.selected === true}
-                  className=""
-                />
-                <img src={card.image} className="w-8" />
-                <label>{card.code}</label>
-              </td>
-              <td className="text-center">{card.name}</td>
-              <td className="text-center">{card.expires}</td>
-            </tr>
-          );
-        })}
+        <tbody>
+          {creditCard.map((card) => {
+            return (
+              <tr className=" bg-gray-F6F6F6 rounded-lg" key={card.id}>
+                <td className="flex gap-2 py-2 px-4">
+                  <input
+                    type="radio"
+                    name="payment"
+                    checked={card.selected === true}
+                    readOnly
+                  />
+                  <img src={card.image} className="w-8" />
+                  <label>{card.code}</label>
+                </td>
+                <td className="text-center">{card.name}</td>
+                <td className="text-center">
+                  {dayjs(card.expires).format("MM/YY")}
+                </td>
+              </tr>
+            );
+          })}
+        </tbody>
       </table>
-      <div className="flex justify-between items-center cursor-pointer bg-gray-F6F6F6 rounded-lg  py-2 px-4 mt-2">
+      <div
+        onClick={() => handleOpenAddModal(true)}
+        className="flex justify-between items-center cursor-pointer bg-gray-F6F6F6 rounded-lg  py-2 px-4 mt-2"
+      >
         <div className="flex gap-2">
           <img
             src="/assets/icons/essential/add_circle_icon.svg"
