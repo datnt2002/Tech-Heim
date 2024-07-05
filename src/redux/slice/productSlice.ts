@@ -31,6 +31,7 @@ interface ProductState {
   newProducts: Product[];
   bestSellers: Product[];
   brandList: Brand[];
+  // detailProduct: Product | null;
   loading: boolean;
   status: number;
   shipCost: number;
