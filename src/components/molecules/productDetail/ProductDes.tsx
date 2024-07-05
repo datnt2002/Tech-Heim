@@ -1,5 +1,3 @@
-import { Tabs, TabsProps } from "antd";
-
 const ProductDes = () => {
   return <></>;
 };
