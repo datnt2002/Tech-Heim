@@ -25,7 +25,7 @@ const Checkbox = ({ options, basePath, queryKey, defaultValue }: Props) => {
       ...currentParams,
       [queryKey]: checkedValues.join(","),
     };
-    dispatch(getProductThunk({ discount: true, brand: checkedValues }));
+    // dispatch(getProductThunk({ discount: true, brand: checkedValues }));
     navigate({
       pathname: basePath,
       search: `?${queryString.stringify(newParams)}`,

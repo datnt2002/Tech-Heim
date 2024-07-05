@@ -37,6 +37,7 @@ export type ProductInCart = {
   color: string;
   quantity: number;
   salePrice?: number;
+  productId: string;
 };
 
 export type Brand = {

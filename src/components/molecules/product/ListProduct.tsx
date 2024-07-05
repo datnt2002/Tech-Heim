@@ -13,6 +13,7 @@ const ListProduct = ({ productList, className }: Props) => {
       {productList?.map((product) => {
         return (
           <ProductCard
+            color={product.color}
             key={product.id}
             name={product.name}
             id={product.id}

@@ -1,6 +1,7 @@
+import { ProductInCart } from "../types/Product";
 import axiosClient from "./api.service";
 import queryString from "query-string";
-
+import { v4 as uuidv4 } from "uuid";
 export const getCategoryAPI = () => {
   return axiosClient
     .get("product-category")
@@ -41,6 +42,18 @@ export const updateQuantityCartItemsAPI = ({
 export const deleteCartItemsAPI = (id: string) => {
   return axiosClient
     .delete(`cart/${id}`)
+    .then((res) => {
+      const { data, status } = res;
+      return { data, status };
+    })
+    .catch((err) => err);
+};
+
+export const addToCartAPI = (data: Omit<ProductInCart, "id" | "quantity">) => {
+  const body = { id: uuidv4(), quantity: 1, ...data };
+
+  return axiosClient
+    .post(`cart`, body)
     .then((res) => {
       const { data, status } = res;
       return { data, status };
