@@ -15,6 +15,7 @@ import {
   getNewProductsAPI,
   getProductSaleAPI,
   getSearchKeywordAPI,
+  getSimilarProductAPI,
   mostProductSearchedAPI,
   searchProductAPI,
   toggleLikeProductAPI,
@@ -31,6 +32,7 @@ interface ProductState {
   productSale: Product[];
   newProducts: Product[];
   bestSellers: Product[];
+  similarProducts: Product[];
   brandList: Brand[];
   filterProduct: Product[];
   loading: boolean;
@@ -48,6 +50,7 @@ const initialState: ProductState = {
   newProducts: [],
   bestSellers: [],
   brandList: [],
+  similarProducts: [],
   filterProduct: [],
   detailProduct: null,
   loading: false,
@@ -427,6 +430,34 @@ export const productSlice = createAppSlice({
         },
       }
     ),
+    getSimilarProductThunk: create.asyncThunk(
+      async (category: string) => {
+        const data = await getSimilarProductAPI(category);
+        return data;
+      },
+      {
+        pending: (state) => {
+          return {
+            ...state,
+            loading: true,
+          };
+        },
+        fulfilled: (state, action) => {
+          const { data } = action.payload;
+          return {
+            ...state,
+            loading: false,
+            similarProducts: data,
+          };
+        },
+        rejected: (state) => {
+          return {
+            ...state,
+            loading: false,
+          };
+        },
+      }
+    ),
   }),
 });
 
@@ -443,6 +474,7 @@ export const {
   getNewProductThunk,
   getBestSellerProductThunk,
   getBrandThunk,
+  getSimilarProductThunk,
   getProductThunk,
   getDetailProductThunk,
 } = productSlice.actions;

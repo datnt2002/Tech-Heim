@@ -1,7 +1,7 @@
 import { Button, Radio, RadioChangeEvent } from "antd";
 import { useState } from "react";
 
-type Props = { price: number; percent: number };
+type Props = { price?: number; percent?: number };
 
 const PayCard = ({ price, percent }: Props) => {
   const [paymentMethod, setPaymentMethod] = useState(1);

@@ -166,3 +166,13 @@ export const getDetailProductAPI = (id?: string) => {
     })
     .catch((err) => err);
 };
+
+export const getSimilarProductAPI = (category?: string) => {
+  return axiosClient
+    .get(`product?categoryId=${category}`)
+    .then((res) => {
+      const { data, status } = res;
+      return { data, status };
+    })
+    .catch((err) => err);
+};

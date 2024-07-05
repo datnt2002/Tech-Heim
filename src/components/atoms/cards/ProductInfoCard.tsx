@@ -5,7 +5,13 @@ type Props = {
 };
 
 const ProductInfoCard = ({ product }: Props) => {
-  const displayKey = ["brand", "screenSize", "processor", "GPU", "memory"];
+  const displayKey: (keyof Product)[] = [
+    "brand",
+    "screenSize",
+    "processor",
+    "GPU",
+    "memory",
+  ];
   return (
     <div className="flex flex-col gap-8 w-full">
       <div className="flex flex-col gap-6">
@@ -43,7 +49,7 @@ const ProductInfoCard = ({ product }: Props) => {
         <div className="flex flex-row gap-10">
           <div className="font-light text-base">Select Color</div>
         </div>
-        <table className="w-fit border-spacing-2">
+        <table className="table-auto border-spacing-2">
           {displayKey.map((key) => (
             <tr className="flex basis-2/3">
               <td className="font-medium text-sm text-gray-717171 w-4 flex">
