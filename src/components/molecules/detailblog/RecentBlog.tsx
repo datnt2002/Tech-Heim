@@ -1,7 +1,6 @@
 import { useSelector } from "react-redux";
-import { BlogCard } from "../../atoms/cards";
 import { RootState } from "../../../redux/store";
-
+import BlogCard from "../../atoms/cards/BlogCard";
 const RecentBlog = () => {
   const blogsPost = useSelector((state: RootState) => state.blog.blogsPost);
   const limitPost = blogsPost.slice(0, 3);

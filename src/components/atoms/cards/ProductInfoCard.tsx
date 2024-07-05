@@ -1,15 +1,21 @@
-const ProductInfoCard = () => {
+import { Product } from "../../../types/Product";
+
+type Props = {
+  product: Product | null;
+};
+
+const ProductInfoCard = ({ product }: Props) => {
   const displayKey = ["brand", "screenSize", "processor", "GPU", "memory"];
   return (
     <div className="flex flex-col gap-8 h-full  shadow-2xl mb-10 w-96">
       <div className="flex flex-col gap-6">
-        <div className="font-medium text-xl">
-          MacBook Pro M2 MNEJ3 2022 LLA 13.3 inch
-        </div>
+        <div className="font-medium text-xl">{product?.name}</div>
         <div className="flex flex-row  gap-2">
           <div className="bg-primary-500 rounded-lg text-white p-1 flex flex-row justify-center w-fit ">
             <img src="/assets/icons/like/white_star.svg" className="p-[2.5] " />
-            <div className="font-medium text-xs content-center">4.9</div>
+            <div className="font-medium text-xs content-center">
+              {product?.rating}
+            </div>
           </div>
           <img src="/assets/icons/line/line.svg" />
           <div className="text-xl font-light">sold </div>
@@ -44,7 +50,9 @@ const ProductInfoCard = () => {
               <td className="font-medium text-sm text-gray-717171 content-center">
                 {key}
               </td>
-              <th className="font-medium text-sm text-left">checking</th>
+              <th className="font-medium text-sm text-left">
+                {product?.[key]}
+              </th>
             </tr>
           ))}
         </table>

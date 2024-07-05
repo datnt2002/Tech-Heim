@@ -4,3 +4,4 @@ export * from "./BlogCard";
 export * from "./CardCart";
 export * from "./ProductCard";
 export * from "./OrderCard";
+export * from "./PayCard";

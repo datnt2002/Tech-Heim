@@ -25,26 +25,34 @@ const PayCard = ({ price, percent }: Props) => {
   };
 
   const pricePerMonth = () => {
-    return (salePrice() / installmentPeriod).toFixed(2);
+    if (percent) {
+      return (salePrice() / installmentPeriod).toFixed(2);
+    }
+    return (price / installmentPeriod).toFixed(2);
   };
 
   return (
     <div className="flex flex-col gap-4 shadow-md h-fit w-full p-6 m-20 rounded-md">
-      <div className="flex flex-col gap-1">
-        <div className="flex justify-between ">
-          <div className="font-medium text-2xl">{salePrice()}</div>
-          <div className="flex flex-row content-center gap-1 ">
-            <img src="/assets/icons/discount/discount-shape.svg" />
-            <div className="text-secondary text-base font-medium justify-center">
-              {percent}%
+      {percent ? (
+        <div className="flex flex-col gap-1">
+          <div className="flex justify-between ">
+            <div className="font-medium text-2xl">{salePrice()}</div>
+            <div className="flex flex-row content-center gap-1 ">
+              <img src="/assets/icons/discount/discount-shape.svg" />
+              <div className="text-secondary text-base font-medium justify-center">
+                {percent}%
+              </div>
             </div>
           </div>
+          <div className="flex gap-2 text-sm font-light text-neutral-500">
+            <div>Last Price</div>
+            <div>{price} $</div>
+          </div>
         </div>
-        <div className="flex gap-2 text-sm font-light text-neutral-500">
-          <div>Last Price</div>
-          <div>{price} $</div>
-        </div>
-      </div>
+      ) : (
+        <div className="font-medium text-2xl">$ {price}</div>
+      )}
+
       <Radio.Group
         onChange={onChange}
         value={paymentMethod}

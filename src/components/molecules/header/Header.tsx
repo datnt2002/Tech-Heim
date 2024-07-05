@@ -14,7 +14,6 @@ import {
   getCategoryThunk,
   getNewProductThunk,
   getProductSaleThunk,
-  getProductThunk,
 } from "../../../redux/slice/productSlice";
 import {
   getBlogThunk,
@@ -35,7 +34,6 @@ const Header = () => {
     dispatch(getBlogThunk());
     dispatch(getVideoBlogThunk());
     dispatch(getNewBlogThunk());
-    dispatch(getProductThunk());
   }, []);
 
   useEffect(() => {
