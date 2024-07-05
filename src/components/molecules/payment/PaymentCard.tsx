@@ -8,20 +8,14 @@ import { formatNumber } from "../../../utils/formatNumber";
 type Props = {
   children?: React.ReactNode;
   className?: string;
-
   buttonLabel: string;
-  shipCost?: number;
   onClick?: () => void;
 };
 
-const PaymentCard = ({
-  children,
-  buttonLabel,
-  onClick,
-  className,
-  shipCost = 0,
-}: Props) => {
-  const { cartItems } = useSelector((state: RootState) => state.product);
+const PaymentCard = ({ children, buttonLabel, onClick, className }: Props) => {
+  const { cartItems, shipCost } = useSelector(
+    (state: RootState) => state.product
+  );
 
   const total = cartItems.reduce((res, curr) => {
     return res + curr.price * curr.quantity;

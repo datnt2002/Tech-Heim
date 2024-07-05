@@ -1,10 +1,12 @@
 import { Radio, RadioChangeEvent } from "antd";
+import { useDispatch } from "react-redux";
+import { AppDispatch } from "../../../redux/store";
+import { chooseShipCostAction } from "../../../redux/slice/productSlice";
 
 type Props = {
   label?: string;
   className?: string;
   value: number;
-  setValue: React.Dispatch<React.SetStateAction<number>>;
 };
 
 type RadioCardProps = {
@@ -25,10 +27,12 @@ const RadioCard = ({ label, price, time }: RadioCardProps) => {
   );
 };
 
-const RadioFormField = ({ label, className, setValue, value }: Props) => {
+const RadioFormField = ({ label, className, value }: Props) => {
+  const dispatch = useDispatch<AppDispatch>();
   const onChange = (e: RadioChangeEvent) => {
-    setValue(e.target.value);
+    dispatch(chooseShipCostAction(e.target.value));
   };
+
   return (
     <div className={className}>
       <h5 className="text-xl mb-2 font-semibold">{label}</h5>

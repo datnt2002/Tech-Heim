@@ -1,4 +1,3 @@
-import { useState } from "react";
 import { Button } from "antd";
 import { useDispatch, useSelector } from "react-redux";
 import { AppDispatch, RootState } from "../../redux/store";
@@ -14,12 +13,14 @@ import MapModal from "../../components/organisms/modal/MapModal";
 import AddressModal from "../../components/organisms/modal/AddressModal";
 
 const Checkout = () => {
-  const { cartItems } = useSelector((state: RootState) => state.product);
+  const { cartItems, shipCost } = useSelector(
+    (state: RootState) => state.product
+  );
   const { currentUser } = useSelector((state: RootState) => state.auth);
   const { mapModal, addressModal } = useSelector(
     (state: RootState) => state.appModal
   );
-  const [shipCost, setShipCost] = useState(0);
+
   const navigate = useNavigate();
   const dispatch = useDispatch<AppDispatch>();
 
@@ -77,11 +78,7 @@ const Checkout = () => {
               }
             ></InputFormField>
 
-            <RadioFormField
-              setValue={setShipCost}
-              value={shipCost}
-              label="Shipping Method"
-            />
+            <RadioFormField value={shipCost} label="Shipping Method" />
           </div>
           <Button
             size="large"
@@ -94,7 +91,6 @@ const Checkout = () => {
         </div>
         <div className="basis-2/5">
           <PaymentCard
-            shipCost={shipCost}
             buttonLabel="Continue to pay"
             onClick={() => navigate("/payment")}
             children={<OrderList cartItems={cartItems} />}
