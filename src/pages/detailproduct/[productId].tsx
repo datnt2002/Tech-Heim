@@ -1,7 +1,8 @@
 import { useParams } from "react-router-dom";
-
-import { useDispatch } from "react-redux";
-import { AppDispatch } from "../../redux/store";
+import PayCard from "../../components/atoms/cards/PayCard";
+import ProductInfoCard from "../../components/atoms/cards/ProductInfoCard";
+import { useDispatch, useSelector } from "react-redux";
+import { AppDispatch, RootState } from "../../redux/store";
 import { useEffect } from "react";
 // import { getDetailProductThunk } from "../../redux/slice/productSlice";
 
@@ -15,8 +16,10 @@ const DetailProduct = () => {
     }
   }, [dispatch, id]);
 
-  // const detailProduct = useSelector((state: RootState) => state.product.);
-  // console.log(detailProduct);
+  const detailProduct = useSelector(
+    (state: RootState) => state.product.detailProduct
+  );
+  console.log(detailProduct);
 
   return (
     <div className="flex flex-row gap-8">
@@ -24,13 +27,13 @@ const DetailProduct = () => {
         <div>
           <img src="/assets/images/blog/blog1.png" className="w-108 h-96" />
         </div>
-        {/* <ProductInfoCard product={detailProduct} /> */}
+        <ProductInfoCard product={detailProduct} />
       </div>
       <div className="basis-1/3">
-        {/* <PayCard
+        <PayCard
           percent={detailProduct?.percent}
           price={detailProduct?.price}
-        /> */}
+        />
       </div>
     </div>
   );

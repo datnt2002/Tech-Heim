@@ -1,4 +1,5 @@
 import { Button } from "antd";
+import { Blog } from "../../../types/Blog";
 
 type Props = {
   tags?: [];
