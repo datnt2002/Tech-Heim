@@ -27,3 +27,12 @@ export const getCurrentUserAPI = (id: string) => {
     })
     .catch((err) => err);
 };
+export const getCreditCardAPI = () => {
+  return axiosClient
+    .get(`credit-card`)
+    .then((res) => {
+      const { data, status } = res;
+      return { data, status };
+    })
+    .catch((err) => err);
+};

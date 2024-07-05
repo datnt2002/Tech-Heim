@@ -1008,5 +1008,31 @@
       "url": "https://www.youtube.com/watch?v=zTbDqlDi268",
       "image": "/assets/images/blog/ip14.png"
     }
+  ],
+  "credit-card": [
+    {
+      "id": "1",
+      "image": "/assets/icons/delivery/america.svg",
+      "code": "1002 300004 50006",
+      "name": "J SMITH",
+      "expires": "12/24",
+      "selected": true
+    },
+    {
+      "id": "2",
+      "image": "/assets/icons/delivery/visa.svg",
+      "code": "4763 5007 0001 3456",
+      "name": "J SMITH",
+      "expires": "10/27",
+      "selected": false
+    },
+    {
+      "id": "3",
+      "image": "/assets/icons/delivery/master_card.svg",
+      "code": "5258 9712 3456 7890",
+      "name": "J SMITH",
+      "expires": "07/24",
+      "selected": false
+    }
   ]
 }

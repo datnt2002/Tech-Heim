@@ -1,13 +1,19 @@
 import { createAppSlice } from "../appSlice";
 
 import { setModalState } from "./modalSlice";
-import { getCurrentUserAPI, signUp } from "../../services/auth.service";
-import { User } from "../../types/User";
+import {
+  getCreditCardAPI,
+  getCurrentUserAPI,
+  signUp,
+} from "../../services/auth.service";
+import { CreditCard, User } from "../../types/User";
 import { SignUpBody } from "../../types/RequestBody";
 
 interface AuthState {
   isLoggedIn: boolean;
   currentUser: User | undefined;
+  creditCard: CreditCard[];
+  selectedCreditCard: CreditCard | undefined;
   loading: boolean;
   status: number;
 }
@@ -15,6 +21,8 @@ interface AuthState {
 const initialState: AuthState = {
   isLoggedIn: false,
   currentUser: undefined,
+  creditCard: [],
+  selectedCreditCard: undefined,
   loading: false,
   status: 0,
 };
@@ -96,8 +104,38 @@ export const authSlice = createAppSlice({
         },
       }
     ),
+    getCreditCardThunk: create.asyncThunk(getCreditCardAPI, {
+      pending: (state) => {
+        return {
+          ...state,
+          loading: true,
+        };
+      },
+      fulfilled: (state, action) => {
+        const { data, status } = action.payload;
+        return {
+          ...state,
+          loading: false,
+          creditCard: data,
+          status: status,
+          selectedCreditCard: data.find(
+            (card: CreditCard) => card.selected === true
+          ),
+        };
+      },
+      rejected: (state) => {
+        return {
+          ...state,
+          loading: false,
+        };
+      },
+    }),
   }),
 });
-export const { logoutAction, SignUpThunk, getCurrentUserThunk } =
-  authSlice.actions;
+export const {
+  logoutAction,
+  SignUpThunk,
+  getCurrentUserThunk,
+  getCreditCardThunk,
+} = authSlice.actions;
 export default authSlice.reducer;
