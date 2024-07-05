@@ -8,9 +8,10 @@ type Props = {
   price: number;
   salePrice?: number;
   rating: number;
+  onClick?: () => void;
 };
 
-const ProductCardFooter = ({ price, rating, salePrice }: Props) => {
+const ProductCardFooter = ({ price, rating, salePrice, onClick }: Props) => {
   const renderPrice = salePrice ? (
     <div className="flex-1">
       <p className="text-gray-717171 line-through text-xs">
@@ -21,6 +22,7 @@ const ProductCardFooter = ({ price, rating, salePrice }: Props) => {
   ) : (
     <p className="text-sm">${formatNumber(price)}</p>
   );
+
   return (
     <div className="group">
       <div className="flex justify-between group-hover:hidden">
@@ -44,6 +46,7 @@ const ProductCardFooter = ({ price, rating, salePrice }: Props) => {
           }
           className="text-primary border-primary border-2"
           size="middle"
+          onClick={onClick}
         >
           Add to cart
         </Button>

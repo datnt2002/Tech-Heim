@@ -1,9 +1,14 @@
 import { useNavigate } from "react-router-dom";
+import { useDispatch } from "react-redux";
+import { addCartItemThunk } from "../../../redux/slice/productSlice";
+import { AppDispatch } from "../../../redux/store";
+
 import HeartTag from "../Tag/HeartTag";
 import ProductCardFooter from "./ProductCardFooter";
 
 type Props = {
   id: string;
+  color: string;
   name: string;
   image: string;
   price: number;
@@ -16,6 +21,7 @@ type Props = {
 const ProductCard = ({
   id,
   image,
+  color,
   name,
   price,
   favorite,
@@ -27,6 +33,14 @@ const ProductCard = ({
   const handleClick = () => {
     nav(`/products/${id}`);
   };
+  const dispatch = useDispatch<AppDispatch>();
+
+  const handleAddToCart = () => {
+    dispatch(
+      addCartItemThunk({ productId: id, color, image, name, price, salePrice })
+    );
+  };
+
   return (
     <div className="relative rounded-md bg-white w-72 h-auto flex flex-col gap-3 shadow-md group hover:shadow-lg cursor-pointer">
       {percent && (
@@ -54,6 +68,7 @@ const ProductCard = ({
           price={price}
           salePrice={salePrice}
           rating={rating}
+          onClick={handleAddToCart}
         />
       </div>
     </div>

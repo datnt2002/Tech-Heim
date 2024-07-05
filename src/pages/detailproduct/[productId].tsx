@@ -4,7 +4,7 @@ import ProductInfoCard from "../../components/atoms/cards/ProductInfoCard";
 import { useDispatch, useSelector } from "react-redux";
 import { AppDispatch, RootState } from "../../redux/store";
 import { useEffect } from "react";
-import { getDetailProductThunk } from "../../redux/slice/productSlice";
+// import { getDetailProductThunk } from "../../redux/slice/productSlice";
 
 const DetailProduct = () => {
   const { id } = useParams<{ id?: string }>() ?? {};
@@ -12,7 +12,7 @@ const DetailProduct = () => {
 
   useEffect(() => {
     if (id) {
-      dispatch(getDetailProductThunk(id));
+      // dispatch(getDetailProductThunk(id));
     }
   }, [dispatch, id]);
 

@@ -5,13 +5,12 @@ import {
   ProductInCart,
 } from "../../types/Product";
 import {
+  addToCartAPI,
   deleteCartItemsAPI,
   getBestSellerProductsAPI,
   getBrandAPI,
   getCartItemsAPI,
   getCategoryAPI,
-  getDetailProductAPI,
-  getFilterProductAPI,
   getNewProductsAPI,
   getProductSaleAPI,
   getSearchKeywordAPI,
@@ -154,6 +153,35 @@ export const productSlice = createAppSlice({
             cartItems: state.cartItems.filter((item) => {
               return item.id !== action.payload?.id;
             }),
+          };
+        },
+        rejected: (state) => {
+          return {
+            ...state,
+            loading: false,
+          };
+        },
+      }
+    ),
+    addCartItemThunk: create.asyncThunk(
+      async (data: Omit<ProductInCart, "id" | "quantity">) => {
+        const res = await addToCartAPI(data);
+        return res;
+      },
+      {
+        pending: (state) => {
+          return {
+            ...state,
+            loading: true,
+          };
+        },
+        fulfilled: (state, action) => {
+          const { data, status } = action.payload;
+          return {
+            ...state,
+            loading: false,
+            cartItems: state.cartItems.concat(data),
+            status: status,
           };
         },
         rejected: (state) => {
@@ -384,6 +412,7 @@ export const {
   getNewProductThunk,
   getBestSellerProductThunk,
   getBrandThunk,
+  addCartItemThunk,
 } = productSlice.actions;
 
 export default productSlice.reducer;
