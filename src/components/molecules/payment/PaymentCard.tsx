@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { useSelector } from "react-redux";
 import { Button, Divider } from "antd";
 import { RootState } from "../../../redux/store";
@@ -10,9 +10,18 @@ type Props = {
   className?: string;
   buttonLabel: string;
   onClick?: () => void;
+
+  setGrandTotal: React.Dispatch<React.SetStateAction<number>>;
 };
 
-const PaymentCard = ({ children, buttonLabel, onClick, className }: Props) => {
+const PaymentCard = ({
+  children,
+  buttonLabel,
+  onClick,
+  className,
+
+  setGrandTotal,
+}: Props) => {
   const { cartItems, shipCost } = useSelector(
     (state: RootState) => state.product
   );
@@ -27,6 +36,10 @@ const PaymentCard = ({ children, buttonLabel, onClick, className }: Props) => {
     }
     return res;
   }, 0);
+
+  useEffect(() => {
+    setGrandTotal(total - discount + shipCost);
+  }, [discount, shipCost, total]);
 
   return (
     <div
