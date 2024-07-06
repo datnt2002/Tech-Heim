@@ -2,13 +2,12 @@ import { Link, useLocation } from "react-router-dom";
 
 import { cn } from "../../../utils/utils";
 import { navBarItems } from "../../../constants";
-import { ProductNavbarDropdown } from "../../atoms/dropdown";
 
 const Navbar = () => {
   const location = useLocation();
   return (
     <div className="hidden md:flex items-center justify-between my-6 py-2 gap-12 font-inter">
-      {navBarItems.map((item) => {
+      {/* {navBarItems.map((item) => {
         return item.key === "products" ? (
           <ProductNavbarDropdown key="products" />
         ) : (
@@ -25,6 +24,22 @@ const Navbar = () => {
             {location.pathname === item.link && (
               <div className="gradient w-full" />
             )}
+          </div>
+        );
+      })} */}
+      {navBarItems.map((item) => {
+        const isActive =
+          location.pathname === item.link ||
+          location.pathname.startsWith(item.link + "/");
+        return (
+          <div key={item.key}>
+            <Link
+              to={item.link}
+              className={(cn("p-2"), isActive ? "text-primary" : "")}
+            >
+              <p>{item.label}</p>
+            </Link>
+            {isActive && <div className="gradient w-full" />}
           </div>
         );
       })}
