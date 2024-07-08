@@ -425,3 +425,5 @@ export const {
   addCartItemThunk,
   chooseShipCostAction,
 } = productSlice.actions;
+
+export default productSlice;
