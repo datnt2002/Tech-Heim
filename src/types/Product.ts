@@ -45,3 +45,16 @@ export type Brand = {
   name: string;
   image: string;
 };
+
+export type SearchParams = {
+  category?: string;
+  brand?: string[];
+  price?: number[];
+  discount?: boolean;
+  color?: string[];
+  rating?: number[];
+  screenSize?: number[];
+  processor?: string[];
+  GPU?: string[];
+  memory?: number[];
+};

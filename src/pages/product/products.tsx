@@ -5,17 +5,20 @@ import FilterOptions from "../../components/organisms/filter/FilterOptions";
 import { RootState } from "../../redux/store";
 
 const Products = () => {
-  const { newProducts } = useSelector((state: RootState) => state.product);
+  // const { newProducts } = useSelector((state: RootState) => state.product);
+  const a = { brand: "a", brand: "b" };
   return (
     <section>
-      <CategoryListWithIcon />
+      <div className="">
+        <CategoryListWithIcon />
+      </div>
       <div className="flex">
         <div className="basis-1/4 mr-6">
           <FilterOptions />
         </div>
-        <div className="basis-3/4">
-          <ListProduct productList={newProducts} className="grid-cols-3" />
-        </div>
+        {/* <div className="basis-3/4">
+            <ListProduct productList={newProducts} className="grid-cols-3" />
+          </div> */}
       </div>
     </section>
   );

@@ -16,6 +16,7 @@ const Collapse = ({ className, label, children }: Props) => {
       children: children,
     },
   ];
+
   return (
     <>
       <AntCollapse

@@ -16,7 +16,7 @@ const CategoryListWithIcon = () => {
     navigate(`${name}`);
   };
   return (
-    <div className="flex justify-center gap-8 p-2 mb-12">
+    <div className="flex justify-center gap-8 p-2 mb-12 overflow-auto">
       {categoriesList.map((item) => {
         return (
           <div
