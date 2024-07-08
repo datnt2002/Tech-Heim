@@ -20,3 +20,5 @@ const BlogCategorieslist = () => {
     </div>
   );
 };
+
+export default BlogCategorieslist;
