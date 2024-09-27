@@ -1,35 +1,38 @@
-import { ProductInCart } from "./Product";
+import { Address } from './User'
+
+export type OrderItems = {
+  name: string
+  image: string
+  quantity: number
+  price: number
+}
 
 export type Order = {
-  id?: string | number;
-  userId: string | number;
-  fullname: string;
-  street: string;
-  city: string;
-  region: string;
-  postalcode: string;
-  shippingMethod: string;
-  shippingPrice: number;
-  Products: ProductInCart[];
-  totalAmount: number;
-  depositAmount: number;
-  isPaid: boolean;
-  sharedWith: string[];
-  payments: Payment[];
-};
+  id: string
+  userID: string
+  address: Address
+  status: string
+  orderItems: OrderItems[]
+  total: number
+  transaction?: Transaction[]
+  createdAt: Date
+  updatedAt: Date
+}
 
-export type Payment = {
-  id: string;
-  userId: string | number;
-  fullname: string;
-  amountPaid: number;
-  paidTime: string;
-};
+export type ShipMethod = {
+  id: number
+  method: string
+  detail: string
+  price: number
+}
 
-export type Notification = {
-  id: string;
-  title: string;
-  message: string;
-  date: string;
-  userIDs: { id: string | number }[];
-};
+export type Transaction = {
+  id: string
+  orderID: string
+  userID: string
+  type: string
+  deposit: number
+  status: string
+  createdAt: Date
+  updatedAt: Date
+}

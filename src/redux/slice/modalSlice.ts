@@ -1,16 +1,16 @@
-import { createSlice } from "@reduxjs/toolkit";
+import { createSlice } from '@reduxjs/toolkit'
 interface AppModalState {
-  authModal: boolean;
-  searchModal: boolean;
-  successModal: boolean;
-  errorModal: boolean;
-  mapModal: boolean;
-  addressModal: boolean;
-  chooseCardModal: boolean;
-  addNewCardModal: boolean;
-  editAddressModal: boolean;
-  editPaymentModal: boolean;
-  userModal: boolean;
+  authModal: boolean
+  searchModal: boolean
+  successModal: boolean
+  errorModal: boolean
+  mapModal: boolean
+  addressModal: boolean
+  chooseCardModal: boolean
+  addNewCardModal: boolean
+  editAddressModal: boolean
+  editPaymentModal: boolean
+  userModal: boolean
 }
 const initialState: AppModalState = {
   authModal: false,
@@ -23,23 +23,23 @@ const initialState: AppModalState = {
   addNewCardModal: false,
   editAddressModal: false,
   editPaymentModal: false,
-  userModal: false,
-};
+  userModal: false
+}
 
 export const appModalSlice = createSlice({
-  name: "appModal",
+  name: 'appModal',
   initialState,
   reducers: {
     setModalState: (state, action) => {
-      const { key, isOpen } = action.payload;
+      const { key, isOpen } = action.payload
       return {
         ...state,
-        [key]: isOpen,
-      };
-    },
-  },
-});
+        [key]: isOpen
+      }
+    }
+  }
+})
 
-export const { setModalState } = appModalSlice.actions;
+export const { setModalState } = appModalSlice.actions
 
-export default appModalSlice.reducer;
+export default appModalSlice.reducer

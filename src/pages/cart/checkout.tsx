@@ -17,10 +17,9 @@ import { ProductInCart } from "../../types/Product";
 import { Order } from "../../types/Order";
 
 const Checkout = () => {
-  const { cartItems, shipCost } = useSelector(
-    (state: RootState) => state.product
-  );
+  const { shipCost } = useSelector((state: RootState) => state.product);
   const { currentUser } = useSelector((state: RootState) => state.auth);
+  const cartItems = currentUser?.cart;
   const { mapModal, addressModal } = useSelector(
     (state: RootState) => state.appModal
   );
@@ -84,33 +83,35 @@ const Checkout = () => {
   };
 
   const handleContinueToPay = () => {
-    const transactionId = generateTransactionID();
-    const totalAmount =
-      cartItems.reduce((sum: number, item: ProductInCart) => {
-        const price = item.salePrice ? item.salePrice : item.price;
-        return sum + price * item.quantity;
-      }, 0) + shipmentData.shippingPrice;
+    if (cartItems) {
+      const transactionId = generateTransactionID();
+      const totalAmount =
+        cartItems.reduce((sum: number, item: ProductInCart) => {
+          const price = item.salePrice ? item.salePrice : item.price;
+          return sum + price * item.quantity;
+        }, 0) + shipmentData.shippingPrice;
 
-    const newOrder: Order = {
-      id: transactionId,
-      userId: currentUser?.id as string | number,
-      fullname: shipmentData.fullname,
-      street: shipmentData.street,
-      city: shipmentData.city,
-      region: shipmentData.region,
-      postalcode: shipmentData.postalcode,
-      shippingMethod: shipmentData.shippingMethod,
-      shippingPrice: shipmentData.shippingPrice,
-      Products: cartItems,
-      totalAmount: totalAmount,
-      depositAmount: 0,
-      isPaid: false,
-      sharedWith: [],
-      payments: [],
-    };
+      const newOrder: Order = {
+        id: transactionId,
+        userId: currentUser?.id as string | number,
+        fullname: shipmentData.fullname,
+        street: shipmentData.street,
+        city: shipmentData.city,
+        region: shipmentData.region,
+        postalcode: shipmentData.postalcode,
+        shippingMethod: shipmentData.shippingMethod,
+        shippingPrice: shipmentData.shippingPrice,
+        Products: cartItems,
+        totalAmount: totalAmount,
+        depositAmount: 0,
+        isPaid: false,
+        sharedWith: [],
+        payments: [],
+      };
 
-    dispatch(addOrderThunk(newOrder));
-    navigate(`/payment/${transactionId}`);
+      dispatch(addOrderThunk(newOrder));
+      navigate(`/payment/${transactionId}`);
+    }
   };
 
   return (
@@ -174,7 +175,7 @@ const Checkout = () => {
             onClick={handleContinueToPay}
             shippingCost={shipmentData.shippingPrice}
           >
-            <OrderList cartItems={cartItems} />
+            <OrderList cartItems={cartItems || []} />
           </PaymentCartCard>
         </div>
       </div>

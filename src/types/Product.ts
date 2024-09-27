@@ -1,67 +1,54 @@
-import { Comment } from "./Comment";
+import { Comment } from './Comment'
 
 export type ProductCategory = {
-  id: string;
-  name: string;
-  image: string;
-  icon?: string;
-  depth: number;
-  subCategories: ProductCategory[];
-};
+  id: string
+  name: string
+  image: string
+  icon?: string
+  depth: number
+  subCategories: ProductCategory[]
+}
 
 export type Product = {
-  id: string;
-  name: string;
-  image: string;
-  price: number;
-  salePrice?: number;
-  discount?: boolean;
-  percent?: number;
-  favorite?: boolean;
-  description?: string;
-  color: string;
-  rating: number;
-  categoryId: string;
-  brand: string;
-  screenSize: number;
-  processor: string;
-  GPU: string;
-  memory: number;
-  bestSeller?: boolean;
-  specifications: { key: string; value: string }[];
-  imagePreview: ImagePreview[];
-  comment?: Comment[];
-  ratingFunction: { key: string; value: number }[];
-};
+  id: number
+  name: string
+  image: string
+  price?: PriceTag
+  color: string
+  rating?: number
+  category: string
+  brand: string
+  specifications?: { key: string; value: string }[]
+  comments?: Comment[]
+}
 
-export type ProductInCart = {
-  id: string;
-  name: string;
-  image: string;
-  price: number;
-  description?: string;
-  color: string;
-  quantity: number;
-  salePrice?: number;
-  productId: string;
-};
+export type SpecFilter = { [key: string]: string[] }
+
+export type PriceTag = {
+  id: number
+  productID: number
+  price: number
+  discount?: boolean
+  percent?: number
+  saleprice?: number
+}
 
 export type Brand = {
-  id: string;
-  name: string;
-  image: string;
-};
+  id: string
+  name: string
+  image: string
+}
 
 export type ImagePreview = {
-  img: string;
-};
+  img: string
+}
 
 export type Colors = {
-  color: string;
-};
+  color: string
+}
 
 export type ShipCost = {
-  label: string;
-  time?: string;
-  price: number;
-};
+  label: string
+  time?: string
+  price: number
+}

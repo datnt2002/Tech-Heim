@@ -1,201 +1,76 @@
-import { AxiosResponse } from "axios";
-import { SignUpBody } from "../types/RequestBody";
-import axiosClient from "./api.service";
-import { v4 as uuidv4 } from "uuid";
-import { CreditCard, User } from "../types/User";
+import axiosClient from './api.service'
 
-export const signUp = (data: SignUpBody) => {
-  const body = {
-    id: uuidv4(),
-    ...data,
-  };
-
+export const registerAPI = ({
+  fullName,
+  email,
+  password,
+  phoneNumber
+}: {
+  fullName: string
+  email: string
+  password: string
+  phoneNumber: string
+}) => {
+  const body = { fullName, email, password, phoneNumber }
   return axiosClient
-    .post("users", body)
-    .then((res: AxiosResponse<SignUpBody, number>) => {
-      const { data, status } = res;
-      return { data, status };
+    .post('auth/register', body)
+    .then((res) => {
+      const { data, status } = res
+      return { data, status }
     })
-    .catch((err) => err);
-};
+    .catch((err) => err)
+}
 
 export const loginAPI = ({
   email,
-  password,
+  password
 }: {
-  email: string;
-  password: string;
+  email: string
+  password: string
 }) => {
+  const body = { email, password }
   return axiosClient
-    .get(`users?email=${email}&password=${password}`)
+    .post('auth/login', body)
     .then((res) => {
-      const { data, status } = res;
-      return { data, status };
+      const { data, status } = res
+      return { data, status }
     })
-    .catch((err) => err);
-};
+    .catch((err) => err)
+}
 
-export const getCurrentUserAPI = (id: string) => {
+export const getCurrentUserAPI = () => {
+  const token = localStorage.getItem('token')
   return axiosClient
-    .get(`users/${id}`)
+    .get('auth/user/me', { headers: { Authorization: `Bearer ${token}` } })
     .then((res) => {
-      const { data, status } = res;
-      return { data, status };
+      const { data, status } = res
+      return { data, status }
     })
-    .catch((err) => err);
-};
+    .catch((err) => err)
+}
 
-export const getCreditCardAPI = () => {
-  return axiosClient
-    .get(`credit-card`)
-    .then((res) => {
-      const { data, status } = res;
-      return { data, status };
-    })
-    .catch((err) => err);
-};
-
-export const addCreditCardAPI = (
-  data: Omit<CreditCard, "id" | "image" | "selected">
-) => {
-  const body = {
-    id: uuidv4(),
-    image: "/assets/icons/delivery/visa.svg",
-    selected: false,
-    ...data,
-  };
-  return axiosClient
-    .post(`credit-card`, body)
-    .then((res) => {
-      const { data, status } = res;
-      return { data, status };
-    })
-    .catch((err) => err);
-};
-
-export const editUserAPI = (user: User) => {
-  return axiosClient
-    .put(`users/${user.id}`)
-    .then((res) => {
-      const { data, status } = res;
-      return { data, status };
-    })
-    .catch((err) => err);
-};
-
-export const editFullnameUserAPI = ({
-  id,
-  fullName,
-}: {
-  id: string | number;
-  fullName: string;
-}) => {
-  const body = { fullName };
-  return axiosClient
-    .patch(`users/${id}`, body)
-    .then((res) => {
-      const { data, status } = res;
-      return { data, status };
-    })
-    .catch((err) => err);
-};
-
-export const editPhoneUserAPI = ({
-  id,
-  phoneNumber,
-}: {
-  id: string | number;
-  phoneNumber: string;
-}) => {
-  const body = { phoneNumber };
-  return axiosClient
-    .put(`users/${id}`, body)
-    .then((res) => {
-      const { data, status } = res;
-      return { data, status };
-    })
-    .catch((err) => err);
-};
-
-export const editAddressUserAPI = ({
-  id,
+export const addAddressUserAPI = ({
+  name,
   address,
+  district,
+  city,
+  country
 }: {
-  id: string | number;
-  address: string;
+  name: string
+  address: string
+  district: string
+  city: string
+  country: string
 }) => {
-  const body = { address };
+  const token = localStorage.getItem('token')
+  const body = { name, address, district, city, country }
   return axiosClient
-    .put(`users/${id}`, body)
-    .then((res) => {
-      const { data, status } = res;
-      return { data, status };
+    .post('address/add', body, {
+      headers: { Authorization: `Bearer ${token}` }
     })
-    .catch((err) => err);
-};
-
-export const editPasswordUserAPI = ({
-  id,
-  password,
-}: {
-  id: string | number;
-  password: string;
-}) => {
-  const body = { password };
-  return axiosClient
-    .patch(`users/${id}`, body)
     .then((res) => {
-      const { data, status } = res;
-      return { data, status };
+      const { data, status } = res
+      return { data, status }
     })
-    .catch((err) => err);
-};
-
-export const addPaymentCardAndOrderAPI = ({
-  id,
-  currentUser,
-}: {
-  id: string | number;
-  currentUser: User;
-}) => {
-  return axiosClient
-    .patch(`users/${id}`, currentUser)
-    .then((res) => {
-      const { data, status } = res;
-      return { data, status };
-    })
-    .catch((err) => err);
-};
-
-export const addOrderAPI = ({
-  id,
-  currentUser,
-}: {
-  id: string | number;
-  currentUser: User;
-}) => {
-  axiosClient
-    .patch(`users/${id}`, currentUser)
-    .then((res) => {
-      const { data, status } = res;
-      return { data, status };
-    })
-    .catch((err) => err);
-};
-
-export const editPaymentCardAPI = ({
-  id,
-  users,
-}: {
-  id: string | number;
-  users: User;
-}) => {
-  const body = { users };
-  return axiosClient
-    .post(`users/${id}`, body)
-    .then((res) => {
-      const { data, status } = res;
-      return { data, status };
-    })
-    .catch((err) => err);
-};
+    .then((err) => err)
+}

@@ -23,15 +23,15 @@ const PaymentCartCard = ({
   setGrandTotal,
   depositAmount = 0,
 }: Props) => {
-  const { cartItems, shipCost } = useSelector(
-    (state: RootState) => state.product
-  );
+  const { shipCost } = useSelector((state: RootState) => state.product);
+  const { user } = useSelector((state: RootState) => state.order);
+  const cart = user?.cart;
 
-  const total = cartItems.reduce((res, curr) => {
+  const total = cart?.reduce((res, curr) => {
     return res + curr.price * curr.quantity;
   }, 0);
 
-  const discount = cartItems.reduce((res, curr) => {
+  const discount = cart?.reduce((res, curr) => {
     if (curr.salePrice) {
       return res + (curr.price - curr.salePrice) * curr.quantity;
     }
@@ -40,7 +40,7 @@ const PaymentCartCard = ({
 
   const shippingCost = shipCost?.price ?? 0; // Default to 0 if shipCost is null or undefined
 
-  const grandTotal = total - discount + shippingCost;
+  const grandTotal = (total as number) - (discount as number) + shippingCost;
   const remainingAmount = grandTotal - depositAmount;
 
   useEffect(() => {

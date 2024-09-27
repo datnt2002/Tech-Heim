@@ -1,24 +1,24 @@
-import axios from "axios";
-import { setModalState } from "../redux/slice/modalSlice";
-import { store } from "../redux/store";
+import axios from 'axios'
+import { setModalState } from '../redux/slice/modalSlice'
+import { store } from '../redux/store'
 
 const axiosClient = axios.create({
   baseURL: import.meta.env.VITE_API_URL,
   headers: {
-    "Content-Type": "application/json",
-    "ngrok-skip-browser-warning": "true",
-  },
-});
+    'Content-Type': 'application/json',
+    'ngrok-skip-browser-warning': 'true'
+  }
+})
 
 axiosClient.interceptors.request.use(
   async function (config) {
-    return config;
+    return config
   },
   function (error) {
     // Do something with request error
-    return Promise.reject(error);
+    return Promise.reject(error)
   }
-);
+)
 
 // Add a response interceptor
 axiosClient.interceptors.response.use(
@@ -30,20 +30,20 @@ axiosClient.interceptors.response.use(
       case 500:
         store.dispatch(
           setModalState({
-            key: "errorModal",
-            isOpen: true,
+            key: 'errorModal',
+            isOpen: true
           })
-        );
-        break;
+        )
+        break
 
       default:
-        break;
+        break
     }
-    return response;
+    return response
   },
   async function (error) {
-    return error.response;
+    return error.response
   }
-);
+)
 
-export default axiosClient;
+export default axiosClient

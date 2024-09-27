@@ -8,9 +8,10 @@ import Step from "../../components/atoms/step";
 import { useNavigate } from "react-router-dom";
 
 const Cart = () => {
-  const { cartItems, newProducts } = useSelector(
-    (state: RootState) => state.product
-  );
+  const { newProducts } = useSelector((state: RootState) => state.product);
+
+  const { currentUser } = useSelector((state: RootState) => state.auth);
+  const cart = currentUser?.cart;
   const navigate = useNavigate();
 
   return (
@@ -29,19 +30,8 @@ const Cart = () => {
       </div>
       <div className="flex flex-col md:flex-row justify-between">
         <div className="flex flex-col gap-3 basis-7/12">
-          {cartItems.map((item) => {
-            return (
-              <CardCart
-                id={item.id}
-                key={item.id}
-                name={item.name}
-                price={item.price}
-                quantity={item.quantity}
-                color={item.color}
-                salePrice={item.salePrice}
-                image={item.image}
-              />
-            );
+          {cart?.map((item) => {
+            return <CardCart cartItem={item} />;
           })}
         </div>
         <div className="basis-4/12  mt-6 md:mt-0">
