@@ -2,17 +2,17 @@ import {
   getBlogAPI,
   getDetailBlogAPI,
   getNewsBlogAPI,
-  getVideoBlogAPI,
-} from "../../services/blog.service";
-import { Blog, VideoBlog } from "../../types/Blog";
-import { createAppSlice } from "../appSlice";
+  getVideoBlogAPI
+} from '../../services/blog.service'
+import { Blog, VideoBlog } from '../../types/Blog'
+import { createAppSlice } from '../appSlice'
 
 interface BlogState {
-  blogsPost: Blog[];
-  videoBlogsPost: VideoBlog[];
-  newBlogPost: Blog[];
-  detailBlogPost: Blog | null;
-  loading: boolean;
+  blogsPost: Blog[]
+  videoBlogsPost: VideoBlog[]
+  newBlogPost: Blog[]
+  detailBlogPost: Blog | null
+  loading: boolean
 }
 
 const initialState: BlogState = {
@@ -20,118 +20,118 @@ const initialState: BlogState = {
   videoBlogsPost: [],
   newBlogPost: [],
   detailBlogPost: null,
-  loading: false,
-};
+  loading: false
+}
 
 export const blogSlice = createAppSlice({
-  name: "blog",
+  name: 'blog',
   initialState,
   reducers: (create) => ({
     getBlogThunk: create.asyncThunk(getBlogAPI, {
       pending: (state) => {
-        console.log(state);
+        console.log(state)
         return {
           ...state,
-          loading: true,
-        };
+          loading: true
+        }
       },
       fulfilled: (state, action) => {
-        const { data, status } = action.payload;
+        const { data, status } = action.payload
         return {
           ...state,
           loading: false,
           blogsPost: data,
-          status: status,
-        };
+          status: status
+        }
       },
       rejected: (state) => {
         return {
           ...state,
-          loading: false,
-        };
-      },
+          loading: false
+        }
+      }
     }),
     getVideoBlogThunk: create.asyncThunk(getVideoBlogAPI, {
       pending: (state) => {
         return {
           ...state,
-          loading: true,
-        };
+          loading: true
+        }
       },
       fulfilled: (state, action) => {
-        const { data, status } = action.payload;
+        const { data, status } = action.payload
         return {
           ...state,
           loading: false,
           videoBlogsPost: data,
-          status: status,
-        };
+          status: status
+        }
       },
       rejected: (state) => {
         return {
           ...state,
-          loading: false,
-        };
-      },
+          loading: false
+        }
+      }
     }),
     getNewBlogThunk: create.asyncThunk(getNewsBlogAPI, {
       pending: (state) => {
         return {
           ...state,
-          loading: true,
-        };
+          loading: true
+        }
       },
       fulfilled: (state, action) => {
-        const { data, status } = action.payload;
+        const { data, status } = action.payload
         return {
           ...state,
           loading: false,
           newBlogPost: data,
-          status: status,
-        };
+          status: status
+        }
       },
       rejected: (state) => {
         return {
           ...state,
-          loading: false,
-        };
-      },
+          loading: false
+        }
+      }
     }),
     getDetailBlogThunk: create.asyncThunk(
       async (id: string) => {
-        const data = await getDetailBlogAPI(id);
-        return data;
+        const data = await getDetailBlogAPI(id)
+        return data
       },
       {
         pending: (state) => {
           return {
             ...state,
-            loading: true,
-          };
+            loading: true
+          }
         },
         fulfilled: (state, action) => {
-          const { data } = action.payload;
+          const { data } = action.payload
           return {
             ...state,
             loading: false,
-            detailBlogPost: data,
-          };
+            detailBlogPost: data
+          }
         },
         rejected: (state) => {
           return {
             ...state,
-            loading: false,
-          };
-        },
+            loading: false
+          }
+        }
       }
-    ),
-  }),
-});
+    )
+  })
+})
 
 export const {
   getBlogThunk,
   getVideoBlogThunk,
   getNewBlogThunk,
-  getDetailBlogThunk,
-} = blogSlice.actions;
-export default blogSlice.reducer;
+  getDetailBlogThunk
+} = blogSlice.actions
+export default blogSlice.reducer

@@ -1,10 +1,17 @@
 import { useNavigate } from "react-router-dom";
 import { useDispatch } from "react-redux";
-import { addCartItemThunk } from "../../../../redux/slice/productSlice";
 import { AppDispatch } from "../../../../redux/store";
 
 import HeartTag from "../../Tag/HeartTag";
 import ProductCardFooter from "./ProductCardFooter";
+
+import { User } from "../../../../types/User";
+import { ProductInCart } from "../../../../types/Product";
+import { v4 as uuidv4 } from "uuid";
+import {
+  getUserDetailThunk,
+  usingCartfromUserThunk,
+} from "../../../../redux/slice/orderSlice";
 
 type Props = {
   id: string;
@@ -36,10 +43,30 @@ const ProductCard = ({
     nav(`/products/${id}`);
   };
 
-  const handleAddToCart = () => {
-    dispatch(
-      addCartItemThunk({ productId: id, color, image, name, price, salePrice })
-    );
+  const handleAddToCart = async () => {
+    const userID = localStorage.getItem("token");
+    if (userID) {
+      const userResponse = await dispatch(getUserDetailThunk(userID)).unwrap();
+      const user = userResponse.data as User;
+
+      const cartItems: ProductInCart = {
+        id: uuidv4(),
+        productId: id,
+        color: color,
+        image: image,
+        name: name,
+        price: price,
+        salePrice: salePrice,
+        quantity: 1,
+      };
+      const updatedUser: User = {
+        ...user,
+        cart: [...(user?.cart || []), cartItems],
+      };
+      dispatch(
+        usingCartfromUserThunk({ id: updatedUser.id, user: updatedUser })
+      );
+    }
   };
 
   return (

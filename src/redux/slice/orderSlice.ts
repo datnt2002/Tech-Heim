@@ -1,279 +1,127 @@
 import {
-  addBillToUserAPI,
-  addNotificationAPI,
   addOrderAPI,
-  fetchNotificationAPI,
-  getDetailOrderAPI,
-  getOrderAPI,
-  getUserAPI,
-  paidOrderAPI,
-} from "../../services/order.service";
-import { Notification, Order } from "../../types/Order";
-import { User } from "../../types/User";
-import { createAppSlice } from "../appSlice";
+  addtransactionAPI,
+  getDetailOrderAPI
+} from '../../services/order.service'
+import { Order, Transaction } from '../../types/Order'
+
+import { createAppSlice } from '../appSlice'
 
 interface OrderState {
-  orders: Order[];
-  detailOrder: Order | null;
-  user: User | undefined;
-  notification: Notification | null;
+  loading: boolean
+  order: Order | null
+  transaction: Transaction | null
 }
 
 const initialState: OrderState = {
-  orders: [],
-  detailOrder: null,
-  user: undefined,
-  notification: null,
-};
+  loading: true,
+  order: null,
+  transaction: null
+}
 
 export const orderSlice = createAppSlice({
-  name: "order",
+  name: 'order',
   initialState,
   reducers: (create) => ({
-    getOrderThunk: create.asyncThunk(getOrderAPI, {
-      pending: (state) => {
-        return {
-          ...state,
-          loading: true,
-        };
-      },
-      fulfilled: (state, action) => {
-        const { data, status } = action.payload;
-        return {
-          ...state,
-          loading: false,
-          orders: data,
-          status: status,
-        };
-      },
-      rejected: (state) => {
-        return {
-          ...state,
-          loading: false,
-        };
-      },
-    }),
-    getOrderDetailThunk: create.asyncThunk(
-      async (id: string) => {
-        const res = await getDetailOrderAPI(id);
-        return res;
-      },
-      {
-        pending: (state) => {
-          return {
-            ...state,
-            loading: true,
-          };
-        },
-        fulfilled: (state, action) => {
-          const { data, status } = action.payload;
-          return {
-            ...state,
-            loading: false,
-            detailOrder: data,
-            status: status,
-          };
-        },
-        rejected: (state) => {
-          return {
-            ...state,
-            loading: true,
-          };
-        },
-      }
-    ),
     addOrderThunk: create.asyncThunk(
-      async (data: Order) => {
-        const res = await addOrderAPI(data);
-        return res;
+      async (addressID: number) => {
+        const res = await addOrderAPI(addressID)
+        return res
       },
       {
         pending: (state) => {
           return {
             ...state,
-            loading: true,
-          };
+            loading: false
+          }
         },
         fulfilled: (state, action) => {
-          const { data, status } = action.payload;
+          const { data, status } = action.payload
           return {
             ...state,
             loading: false,
-            orders: data,
-            status: status,
-          };
+            order: data,
+            status: status
+          }
         },
         rejected: (state) => {
           return {
             ...state,
-            loading: false,
-          };
-        },
+            loading: false
+          }
+        }
       }
     ),
-    paidOrderThunk: create.asyncThunk(
+    getOrderDetailThunk: create.asyncThunk(
+      async (orderID: string) => {
+        const res = getDetailOrderAPI(orderID)
+        return res
+      },
+      {
+        pending: (state) => {
+          return {
+            ...state,
+            loading: true
+          }
+        },
+        fulfilled: (state, action) => {
+          const { data, status } = action.payload
+          return {
+            ...state,
+            order: data,
+            loading: false,
+            status: status
+          }
+        },
+        rejected: (state) => {
+          return {
+            ...state,
+            loading: false
+          }
+        }
+      }
+    ),
+    addTransactionThunk: create.asyncThunk(
       async ({
-        id,
-        currentOrder,
+        orderID,
+        type,
+        deposit
       }: {
-        id: string | number;
-        currentOrder: Order;
+        orderID: string
+        type: string
+        deposit: number
       }) => {
-        const res = await paidOrderAPI({ id, currentOrder });
-        return res;
+        const res = await addtransactionAPI({ orderID, type, deposit })
+        return res
       },
       {
         pending: (state) => {
           return {
             ...state,
-            loading: true,
-          };
+            loading: true
+          }
         },
         fulfilled: (state, action) => {
-          const { data, status } = action.payload;
+          const { data, status } = action.payload
           return {
             ...state,
             loading: false,
-            detailOrder: data,
-            status: status,
-          };
+            transaction: data,
+            status: status
+          }
         },
         rejected: (state) => {
           return {
             ...state,
-            loading: false,
-          };
-        },
+            loading: false
+          }
+        }
       }
-    ),
-    getUserDetailThunk: create.asyncThunk(
-      async (id: string | number) => {
-        const res = await getUserAPI(id);
-        return res;
-      },
-      {
-        pending: (state) => {
-          return {
-            ...state,
-            loading: true,
-          };
-        },
-        fulfilled: (state, action) => {
-          const { data, status } = action.payload;
-          return {
-            ...state,
-            loading: false,
-            user: data,
-            status: status,
-          };
-        },
-        rejected: (state) => {
-          return {
-            ...state,
-            loading: false,
-          };
-        },
-      }
-    ),
-    addBillToUserThunk: create.asyncThunk(
-      async ({ id, user }: { id: string | number; user: User }) => {
-        const res = await addBillToUserAPI({ id, user });
-        return res;
-      },
-      {
-        pending: (state) => {
-          return {
-            ...state,
-            loading: true,
-          };
-        },
-        fulfilled: (state, action) => {
-          const { data, status } = action.payload;
-          return {
-            ...state,
-            loading: false,
-            user: data,
-            status: status,
-          };
-        },
-        rejected: (state) => {
-          return {
-            ...state,
-            loading: false,
-          };
-        },
-      }
-    ),
-    addNotificationThunk: create.asyncThunk(
-      async (data: Notification) => {
-        const res = await addNotificationAPI(data);
-        return res;
-      },
-      {
-        pending: (state) => {
-          return {
-            ...state,
-            loading: true,
-          };
-        },
-        fulfilled: (state, action) => {
-          const { data, status } = action.payload;
-          return {
-            ...state,
-            loading: false,
-            notification: data,
-            status: status,
-          };
-        },
-        rejected: (state) => {
-          return {
-            ...state,
-            loading: false,
-          };
-        },
-      }
-    ),
-    fetchNotificationThunk: create.asyncThunk(
-      async (id: string) => {
-        const res = await fetchNotificationAPI(id);
-        return res;
-      },
-      {
-        pending: (state) => {
-          return {
-            ...state,
-            loading: true,
-          };
-        },
-        fulfilled: (state, action) => {
-          const { data, status } = action.payload;
-          return {
-            ...state,
-            loading: false,
-            notification: data,
-            status: status,
-          };
-        },
-        rejected: (state) => {
-          return {
-            ...state,
-            loading: false,
-          };
-        },
-      }
-    ),
-  }),
-});
+    )
+  })
+})
 
-export const {
-  getOrderThunk,
-  getOrderDetailThunk,
-  addOrderThunk,
-  paidOrderThunk,
-  getUserDetailThunk,
-  addBillToUserThunk,
-  addNotificationThunk,
-  fetchNotificationThunk,
-} = orderSlice.actions;
+export const { addOrderThunk, getOrderDetailThunk, addTransactionThunk } =
+  orderSlice.actions
 
-export default orderSlice.reducer;
+export default orderSlice.reducer

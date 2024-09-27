@@ -22,7 +22,7 @@ const setPooler = async () => {
   const interval = setInterval(async () => {
     console.log("[service worker] pooling notification...");
     const res = await fetch(
-      `https://hamster-merry-bat.ngrok-free.app/notification?_sort=date&_order=desc`,
+      `http://localhost:3000/notification?_sort=date&_order=desc`,
       {
         headers: {
           "ngrok-skip-browser-warning": "true",

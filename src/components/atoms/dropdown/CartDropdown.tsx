@@ -8,13 +8,17 @@ import { getCartItemThunk } from "../../../redux/slice/productSlice";
 
 import { formatNumber } from "../../../utils/formatNumber";
 import CardCart from "../cards/cart/CardCart";
+import { getCartfromUserThunk } from "../../../redux/slice/orderSlice";
 
 const CartDropdown = () => {
   const dispatch = useDispatch<AppDispatch>();
   const navigate = useNavigate();
-  const cartItems = useSelector((state: RootState) => state.product.cartItems);
 
-  const filterCartItems = cartItems?.filter((item) => {
+  const { user } = useSelector((state: RootState) => state.order);
+  const userID = localStorage.getItem("token");
+  const cart = user?.cart;
+
+  const filterCartItems = cart?.filter((item) => {
     return item.quantity > 0;
   });
 
@@ -24,6 +28,7 @@ const CartDropdown = () => {
 
   useEffect(() => {
     dispatch(getCartItemThunk());
+    if (userID) dispatch(getCartfromUserThunk(userID));
   }, []);
 
   return (
@@ -37,17 +42,7 @@ const CartDropdown = () => {
             </p>
             <div className="max-h-[35rem] w-[28rem] flex flex-col gap-3 mx-8 overflow-y-auto">
               {filterCartItems?.map((item) => {
-                return (
-                  <CardCart
-                    id={item.id}
-                    key={item.id}
-                    name={item.name}
-                    price={item.price}
-                    quantity={item.quantity}
-                    color={item.color}
-                    image={item.image}
-                  />
-                );
+                return <CardCart cartItem={item} />;
               })}
             </div>
 

@@ -1,8 +1,8 @@
 const capitalize = (string: string) => {
   return string
-    .split("-")
+    .split('-')
     .map((word) => word.charAt(0).toUpperCase() + word.slice(1))
-    .join(" ");
-};
+    .join(' ')
+}
 
-export default capitalize;
+export default capitalize
