@@ -37,8 +37,41 @@ export const getSpecFilterAPI = (category: string) => {
 }
 
 export const getProductDetailAPI = (productID: number) => {
-  return axiosClient.get(`product/detail/${productID}`).then((res) => {
-    const { data, status } = res
-    return { data, status }
-  })
+  return axiosClient
+    .get(`product/detail/${productID}`)
+    .then((res) => {
+      const { data, status } = res
+      return { data, status }
+    })
+    .catch((err) => err)
+}
+
+export const getNewProductsAPI = () => {
+  return axiosClient
+    .get(`product?limit=10`)
+    .then((res) => {
+      const { data, status } = res
+      return { data, status }
+    })
+    .catch((err) => err)
+}
+
+export const getBestSellerProductsAPI = () => {
+  return axiosClient
+    .get(`product?limit=10`)
+    .then((res) => {
+      const { data, status } = res
+      return { data, status }
+    })
+    .catch((err) => err)
+}
+
+export const getSearchProductsAPI = (search: string) => {
+  return axiosClient
+    .get(`product/search-product?search=${search}`)
+    .then((res) => {
+      const { data, status } = res
+      return { data, status }
+    })
+    .catch((err) => err)
 }

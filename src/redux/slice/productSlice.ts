@@ -1,7 +1,10 @@
 import {
+  getBestSellerProductsAPI,
+  getNewProductsAPI,
   getProductByBrandAPI,
   getProductByCatAPI,
   getProductDetailAPI,
+  getSearchProductsAPI,
   getSpecFilterAPI
 } from '../../services/product.service'
 import { Product, SpecFilter } from '../../types/Product'
@@ -10,6 +13,9 @@ import { createAppSlice } from '../appSlice'
 interface ProductState {
   loading: boolean
   listProducts: Product[]
+  listNewProducts: Product[]
+  listBestSellerProducts: Product[]
+  listSearchProducts: Product[]
   product: Product | null
   specFilter: SpecFilter | null
 }
@@ -18,7 +24,10 @@ const initialState: ProductState = {
   loading: true,
   listProducts: [],
   product: null,
-  specFilter: null
+  specFilter: null,
+  listNewProducts: [],
+  listSearchProducts: [],
+  listBestSellerProducts: []
 }
 
 export const listProductslice = createAppSlice({
@@ -140,6 +149,81 @@ export const listProductslice = createAppSlice({
           }
         }
       }
+    ),
+    getNewProductsThunk: create.asyncThunk(getNewProductsAPI, {
+      pending: (state) => {
+        return {
+          ...state,
+          loading: true
+        }
+      },
+      fulfilled: (state, action) => {
+        const { data, status } = action.payload
+        return {
+          ...state,
+          loading: false,
+          listNewProducts: data,
+          status: status
+        }
+      },
+      rejected: (state) => {
+        return {
+          ...state,
+          loading: false
+        }
+      }
+    }),
+    getBestSellerProductsThunk: create.asyncThunk(getBestSellerProductsAPI, {
+      pending: (state) => {
+        return {
+          ...state,
+          loading: true
+        }
+      },
+      fulfilled: (state, action) => {
+        const { data, status } = action.payload
+        return {
+          ...state,
+          loading: false,
+          listBestSellerProducts: data,
+          status: status
+        }
+      },
+      rejected: (state) => {
+        return {
+          ...state,
+          loading: false
+        }
+      }
+    }),
+    getSearchedProductListThunk: create.asyncThunk(
+      async (search: string) => {
+        const res = await getSearchProductsAPI(search)
+        return res
+      },
+      {
+        pending: (state) => {
+          return {
+            ...state,
+            loading: true
+          }
+        },
+        fulfilled: (state, action) => {
+          const { data, status } = action.payload
+          return {
+            ...state,
+            loading: false,
+            listSearchProducts: data,
+            status: status
+          }
+        },
+        rejected: (state) => {
+          return {
+            ...state,
+            loading: false
+          }
+        }
+      }
     )
   })
 })
@@ -148,7 +232,10 @@ export const {
   getFilterProductThunk,
   getProductByBrandThunk,
   getProductDetailThunk,
-  getSpecFilterThunk
+  getSpecFilterThunk,
+  getNewProductsThunk,
+  getBestSellerProductsThunk,
+  getSearchedProductListThunk
 } = listProductslice.actions
 
 export default listProductslice.reducer

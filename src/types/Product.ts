@@ -28,9 +28,7 @@ export type PriceTag = {
   id: number
   productID: number
   price: number
-  discount?: boolean
   percent?: number
-  saleprice?: number
 }
 
 export type Brand = {
