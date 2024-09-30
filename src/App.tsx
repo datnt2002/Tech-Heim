@@ -52,14 +52,6 @@ const LayoutWithBreadCrumb = () => {
 }
 
 function App() {
-  useEffect(() => {
-    receiveNotification()
-    initServiceWorker()
-
-    return () => {
-      cleanUpServiceWorker()
-    }
-  })
   return (
     <ConfigProvider
       theme={{

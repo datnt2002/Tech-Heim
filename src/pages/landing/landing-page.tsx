@@ -1,66 +1,67 @@
-import { useSelector } from "react-redux";
+import { useSelector } from 'react-redux'
 
 import Banner, {
   SecondBanner,
-  ThirdBanner,
-} from "../../components/molecules/banner";
-import CategoryHomeList from "../../components/molecules/categoryList";
-import { ProductSale } from "../../components/molecules/product";
-import HomeSection from "../../components/organisms/section";
+  ThirdBanner
+} from '../../components/molecules/banner'
+import CategoryHomeList from '../../components/molecules/categoryList'
+import { ProductSale } from '../../components/molecules/product'
+import HomeSection from '../../components/organisms/section'
 
-import { RootState } from "../../redux/store";
-import BlogCard from "../../components/atoms/cards/blog/BlogCard";
-import ListProductFromLanding from "../../components/molecules/product/ListProductFromLanding";
+import { RootState } from '../../redux/store'
+import BlogCard from '../../components/atoms/cards/blog/BlogCard'
+import ListProductFromLanding from '../../components/molecules/product/ListProductFromLanding'
 
-import BrandCarousel from "../../components/molecules/brandList/BrandCarousel";
+import BrandCarousel from '../../components/molecules/brandList/BrandCarousel'
 
 const LandingPage = () => {
-  const { newProducts, bestSellers, brandList } = useSelector(
+  const { listNewProducts, listBestSellerProducts } = useSelector(
     (state: RootState) => state.product
-  );
-  const blogsPost = useSelector((state: RootState) => state.blog.newBlogPost);
-  const blogLoading = useSelector((state: RootState) => state.blog.loading);
+  )
+  // const blogsPost = useSelector((state: RootState) => state.blog.newBlogPost)
+  // const blogLoading = useSelector((state: RootState) => state.blog.loading)
+  console.log(listNewProducts, listBestSellerProducts)
 
   return (
-    <div className="px-6 md:px-28 mb-14">
+    <div className='px-6 md:px-28 mb-14'>
       <Banner />
       <CategoryHomeList />
       <ProductSale />
-      <HomeSection sectionName="New Products" viewAllButton>
+      <HomeSection sectionName='New Products' viewAllButton>
         <ListProductFromLanding
-          productList={newProducts}
-          className="grid-cols-2 lg:grid-cols-4"
+          productList={listNewProducts}
+          className='grid-cols-2 lg:grid-cols-4'
         />
       </HomeSection>
       <SecondBanner />
-      <HomeSection sectionName="Best Sellers" viewAllButton>
+      <HomeSection sectionName='Best Sellers' viewAllButton>
         <ListProductFromLanding
-          productList={bestSellers}
-          className="grid-cols-2 lg:grid-cols-4"
+          productList={listBestSellerProducts}
+          className='grid-cols-2 lg:grid-cols-4'
         />
       </HomeSection>
-      <HomeSection sectionName="Top Brands" viewAllButton={false}>
-        <div className="lg:flex flex-row overflow-hidden justify-between mb-12 hidden">
+      <HomeSection sectionName='Top Brands' viewAllButton={false}>
+        {/* <div className='lg:flex flex-row overflow-hidden justify-between mb-12 hidden'>
           {brandList.map((brand) => {
             return (
-              <div className="w-14 md:w-auto mx-auto" key={brand.id}>
+              <div className='w-14 md:w-auto mx-auto' key={brand.id}>
                 <img
                   src={brand.image}
-                  alt=""
-                  className="object-contain w-full h-full aspect-square"
+                  alt=''
+                  className='object-contain w-full h-full aspect-square'
                 />
               </div>
-            );
+            )
           })}
         </div>
-        <BrandCarousel brand={brandList} />
+        <BrandCarousel brand={brandList} /> */}
       </HomeSection>
       <ThirdBanner />
-      <HomeSection sectionName="Our Blogs" viewAllButton>
-        <div className="flex flex-col lg:flex-row gap-6 h-full">
+      <HomeSection sectionName='Our Blogs' viewAllButton>
+        {/* <div className='flex flex-col lg:flex-row gap-6 h-full'>
           <BlogCard
             loading={blogLoading}
-            className="w-full lg:basis-1/3"
+            className='w-full lg:basis-1/3'
             key={blogsPost[0]?.id}
             id={blogsPost[0]?.id}
             title={blogsPost[0]?.title}
@@ -70,10 +71,10 @@ const LandingPage = () => {
             content={blogsPost[0]?.content}
             image={blogsPost[0]?.image}
           />
-          <div className="flex flex-col flex-1 gap-6 basis-2/3 h-fit">
+          <div className='flex flex-col flex-1 gap-6 basis-2/3 h-fit'>
             <BlogCard
               loading={blogLoading}
-              mode="horizontal"
+              mode='horizontal'
               key={blogsPost[1]?.id}
               id={blogsPost[1]?.id}
               title={blogsPost[1]?.title}
@@ -85,7 +86,7 @@ const LandingPage = () => {
             />
             <BlogCard
               loading={blogLoading}
-              mode="horizontal"
+              mode='horizontal'
               key={blogsPost[2]?.id}
               id={blogsPost[2]?.id}
               title={blogsPost[2]?.title}
@@ -96,28 +97,28 @@ const LandingPage = () => {
               image={blogsPost[2]?.image}
             />
           </div>
-        </div>
+        </div> */}
       </HomeSection>
-      <section className="lg:flex flex-col gap-4 md:flex-row justify-between items-start md:items-center my-14 hidden">
-        <div className="flex gap-4 ">
-          <img src="/assets/icons/service/computer_icon.svg" alt="" />
-          <p className="text-xl self-center">Latest and Greatest Tech</p>
+      <section className='lg:flex flex-col gap-4 md:flex-row justify-between items-start md:items-center my-14 hidden'>
+        <div className='flex gap-4 '>
+          <img src='/assets/icons/service/computer_icon.svg' alt='' />
+          <p className='text-xl self-center'>Latest and Greatest Tech</p>
         </div>
-        <div className="flex gap-4">
-          <img src="/assets/icons/service/guard_icon.svg" alt="" />
-          <p className="text-xl self-center">Guarantee</p>
+        <div className='flex gap-4'>
+          <img src='/assets/icons/service/guard_icon.svg' alt='' />
+          <p className='text-xl self-center'>Guarantee</p>
         </div>
-        <div className="flex gap-4">
-          <img src="/assets/icons/service/shipping_icon.svg" alt="" />
-          <p className="text-xl self-center">Free Shipping over 1000$</p>
+        <div className='flex gap-4'>
+          <img src='/assets/icons/service/shipping_icon.svg' alt='' />
+          <p className='text-xl self-center'>Free Shipping over 1000$</p>
         </div>
-        <div className="flex gap-4">
-          <img src="/assets/icons/service/time_support_icon.svg" alt="" />
-          <p className="text-xl self-center">24/7 Support</p>
+        <div className='flex gap-4'>
+          <img src='/assets/icons/service/time_support_icon.svg' alt='' />
+          <p className='text-xl self-center'>24/7 Support</p>
         </div>
       </section>
     </div>
-  );
-};
+  )
+}
 
-export default LandingPage;
+export default LandingPage

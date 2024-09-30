@@ -180,6 +180,7 @@ export const authSlice = createAppSlice({
 export const {
   logoutAction,
   registerThunk,
+  loginThunk,
   getUserDetailThunk,
   addAddressThunk
 } = authSlice.actions

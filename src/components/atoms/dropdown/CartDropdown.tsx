@@ -1,91 +1,89 @@
-import { useEffect } from "react";
-import { useNavigate } from "react-router-dom";
-import { useDispatch, useSelector } from "react-redux";
-import { Button, Dropdown } from "antd";
+import { useEffect } from 'react'
+import { useNavigate } from 'react-router-dom'
+import { useDispatch, useSelector } from 'react-redux'
+import { Button, Dropdown } from 'antd'
 
-import { AppDispatch, RootState } from "../../../redux/store";
-import { getCartItemThunk } from "../../../redux/slice/productSlice";
+import { AppDispatch, RootState } from '../../../redux/store'
 
-import { formatNumber } from "../../../utils/formatNumber";
-import CardCart from "../cards/cart/CardCart";
-import { getCartfromUserThunk } from "../../../redux/slice/orderSlice";
+import { formatNumber } from '../../../utils/formatNumber'
+import CardCart from '../cards/cart/CardCart'
 
 const CartDropdown = () => {
-  const dispatch = useDispatch<AppDispatch>();
-  const navigate = useNavigate();
+  const dispatch = useDispatch<AppDispatch>()
+  const navigate = useNavigate()
 
-  const { user } = useSelector((state: RootState) => state.order);
-  const userID = localStorage.getItem("token");
-  const cart = user?.cart;
+  const { user } = useSelector((state: RootState) => state.order)
+  const userID = localStorage.getItem('token')
+  const cart = user?.cart
 
   const filterCartItems = cart?.filter((item) => {
-    return item.quantity > 0;
-  });
+    return item.quantity > 0
+  })
 
   const total = filterCartItems?.reduce((res, curr) => {
-    return res + curr.price * curr.quantity;
-  }, 0);
+    return res + curr.price * curr.quantity
+  }, 0)
 
   useEffect(() => {
-    dispatch(getCartItemThunk());
-    if (userID) dispatch(getCartfromUserThunk(userID));
-  }, []);
+    dispatch(getCartItemThunk())
+    if (userID) dispatch(getCartfromUserThunk(userID))
+  }, [])
 
   return (
     <Dropdown
-      className="bg-transparent"
+      className='bg-transparent'
       dropdownRender={() => {
         return (
-          <div className="mt-[31px] border rounded-b-lg max-w-2xl flex flex-col bg-white">
-            <p className="pt-6 pl-6 text-lg pb-3">
+          <div className='mt-[31px] border rounded-b-lg max-w-2xl flex flex-col bg-white'>
+            <p className='pt-6 pl-6 text-lg pb-3'>
               {filterCartItems?.length} items
             </p>
-            <div className="max-h-[35rem] w-[28rem] flex flex-col gap-3 mx-8 overflow-y-auto">
+            <div className='max-h-[35rem] w-[28rem] flex flex-col gap-3 mx-8 overflow-y-auto'>
               {filterCartItems?.map((item) => {
-                return <CardCart cartItem={item} />;
+                return <CardCart cartItem={item} />
               })}
             </div>
 
-            <div className="flex justify-between px-6 pb-6 pt-2">
-              <div className="flex flex-col justify-center mr-8 font-inter text-center">
-                <p className="text-sm text-gray-2D2D2D font-light">
+            <div className='flex justify-between px-6 pb-6 pt-2'>
+              <div className='flex flex-col justify-center mr-8 font-inter text-center'>
+                <p className='text-sm text-gray-2D2D2D font-light'>
                   Grand total
                 </p>
-                <h6 className="font-bold">${formatNumber(total)}</h6>
+                <h6 className='font-bold'>${formatNumber(total)}</h6>
               </div>
 
               <Button
-                size="large"
-                className="flex-1"
-                type="primary"
-                onClick={() => navigate("/cart")}
+                size='large'
+                className='flex-1'
+                type='primary'
+                onClick={() => navigate('/cart')}
               >
                 Proceed to Cart
                 <span>
                   <img
-                    src="/assets/icons/shopping/shopping_cart_icon.svg"
-                    alt=""
+                    src='/assets/icons/shopping/shopping_cart_icon.svg'
+                    alt=''
                   />
                 </span>
               </Button>
             </div>
           </div>
-        );
+        )
       }}
-      placement="bottomRight"
+      placement='bottomRight'
     >
       <Button
-        className="border-none shadow-none"
+        className='border-none shadow-none'
         icon={
           <img
-            className=""
-            src="/assets/icons/shopping/bag_icon.svg"
-            alt="user_icon"
+            className=''
+            src='/assets/icons/shopping/bag_icon.svg'
+            alt='user_icon'
           />
         }
       />
     </Dropdown>
-  );
-};
+  )
+}
 
-export default CartDropdown;
+export default CartDropdown
