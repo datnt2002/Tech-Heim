@@ -7,6 +7,7 @@ import { AppDispatch, RootState } from '../../../redux/store'
 import { Product } from '../../../types/Product'
 import ImgAndNameCard from '../../atoms/cards/ImgAndNameCard'
 import { debounce } from 'lodash'
+import { getSearchedProductListThunk } from '../../../redux/slice/productSlice'
 
 type SearchProps = {
   isOpen: boolean
@@ -121,12 +122,14 @@ const SearchModal = ({ isOpen, setIsOpen }: SearchProps) => {
   const [searchValue, setSearchValue] = useState('')
 
   const dispatch = useDispatch<AppDispatch>()
-  const {} = useSelector((state: RootState) => state.product)
-  const limitSearchItems = searchItems.slice(0, 17)
+  const { listSearchProducts } = useSelector(
+    (state: RootState) => state.product
+  )
+  const limitSearchItems = listSearchProducts.slice(0, 17)
 
   const debounceSearch = useCallback(
     debounce((value) => {
-      dispatch(searchPR)
+      dispatch(getSearchedProductListThunk(value))
     }, 1000),
     [dispatch]
   )
@@ -164,7 +167,7 @@ const SearchModal = ({ isOpen, setIsOpen }: SearchProps) => {
           />
         </div>
 
-        {searchValue === '' ? (
+        {/* {searchValue === '' ? (
           <DefaultSearch
             defaultSearchItems={defaultSearchItems}
             searchKeywords={searchKeywords}
@@ -175,7 +178,7 @@ const SearchModal = ({ isOpen, setIsOpen }: SearchProps) => {
             limitSearchItems={limitSearchItems}
             searchItems={searchItems}
           />
-        )}
+        )} */}
       </Modal>
     </>
   )

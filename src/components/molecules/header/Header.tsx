@@ -15,6 +15,7 @@ import {
 } from '../../../redux/slice/blogSlice'
 import {
   getBestSellerProductsThunk,
+  getBrandListThunk,
   getNewProductsThunk
 } from '../../../redux/slice/productSlice'
 
@@ -26,6 +27,7 @@ const Header = () => {
   useEffect(() => {
     dispatch(getNewProductsThunk)
     dispatch(getBestSellerProductsThunk)
+    dispatch(getBrandListThunk)
   }, [dispatch])
 
   return (

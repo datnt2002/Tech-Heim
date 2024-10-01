@@ -1,53 +1,55 @@
-import React, { useEffect, useState } from "react";
-import type { ImagePreview as ImagePreviewType } from "../../../types/Product";
+import React, { useEffect, useState } from 'react'
+import type { ImagePreview as ImagePreviewType } from '../../../types/Product'
 
 type ImagePreviewProps = {
-  imageUrl: string;
+  imageUrl: string
 
-  imagePreview: ImagePreviewType[] | null;
-};
+  imagePreview?: ImagePreviewType[] | null
+}
 
 const ImagePreview: React.FC<ImagePreviewProps> = ({
   imageUrl,
 
-  imagePreview,
+  imagePreview
 }) => {
-  const [selectedImage, setSelectedImage] = useState(imageUrl);
+  const [selectedImage, setSelectedImage] = useState(imageUrl)
 
   useEffect(() => {
     if (imagePreview && imagePreview.length > 0) {
-      setSelectedImage(imagePreview[0].img);
+      setSelectedImage(imagePreview[0].img)
     }
-  }, [imagePreview]);
+  }, [imagePreview])
 
   const handleChangeImg = (img: string) => {
-    setSelectedImage(img);
-  };
+    setSelectedImage(img)
+  }
 
   return (
     <div>
       <div className={` grid grid-cols-5 grid-flow-row gap-3  w-full`}>
         <div className={` bg-white col-span-5`}>
           <img
-            className="h-full w-full object-contain"
+            className='h-full w-full object-contain'
             src={selectedImage}
-            alt=""
+            alt=''
           />
         </div>
 
-        <div className="grid grid-cols-5 col-span-5 gap-2">
-          {imagePreview?.slice(0, 5).map((item) => (
-            <img
-              key={item.img}
-              src={item?.img || ""}
-              className="w-full h-full cursor-pointer object-contain"
-              onClick={() => handleChangeImg(item?.img)}
-            />
-          ))}
+        <div className='grid grid-cols-5 col-span-5 gap-2'>
+          {imagePreview
+            ?.slice(0, 5)
+            .map((item) => (
+              <img
+                key={item.img}
+                src={item?.img || ''}
+                className='w-full h-full cursor-pointer object-contain'
+                onClick={() => handleChangeImg(item?.img)}
+              />
+            ))}
         </div>
       </div>
     </div>
-  );
-};
+  )
+}
 
-export default ImagePreview;
+export default ImagePreview

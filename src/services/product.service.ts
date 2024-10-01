@@ -75,3 +75,13 @@ export const getSearchProductsAPI = (search: string) => {
     })
     .catch((err) => err)
 }
+
+export const getBrandListAPI = () => {
+  return axiosClient
+    .get('product/brand/brand-list')
+    .then((res) => {
+      const { data, status } = res
+      return { data, status }
+    })
+    .catch((err) => err)
+}

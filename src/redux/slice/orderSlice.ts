@@ -1,3 +1,4 @@
+import { PayloadAction } from '@reduxjs/toolkit'
 import {
   addOrderAPI,
   addtransactionAPI,
@@ -6,23 +7,35 @@ import {
 import { Order, Transaction } from '../../types/Order'
 
 import { createAppSlice } from '../appSlice'
+import { ShipCost } from '../../types/Product'
 
 interface OrderState {
   loading: boolean
   order: Order | null
   transaction: Transaction | null
+  shipCost: ShipCost | null
 }
 
 const initialState: OrderState = {
   loading: true,
   order: null,
-  transaction: null
+  transaction: null,
+  shipCost: null
 }
 
 export const orderSlice = createAppSlice({
   name: 'order',
   initialState,
   reducers: (create) => ({
+    chooseShipCostAction: create.reducer(
+      (state, action: PayloadAction<ShipCost>) => {
+        const data = action.payload
+        return {
+          ...state,
+          shipCost: data
+        }
+      }
+    ),
     addOrderThunk: create.asyncThunk(
       async (addressID: number) => {
         const res = await addOrderAPI(addressID)
@@ -121,7 +134,11 @@ export const orderSlice = createAppSlice({
   })
 })
 
-export const { addOrderThunk, getOrderDetailThunk, addTransactionThunk } =
-  orderSlice.actions
+export const {
+  addOrderThunk,
+  getOrderDetailThunk,
+  addTransactionThunk,
+  chooseShipCostAction
+} = orderSlice.actions
 
 export default orderSlice.reducer

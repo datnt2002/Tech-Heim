@@ -1,6 +1,6 @@
 import { BrowserRouter, Outlet, Route, Routes } from 'react-router-dom'
 import { ConfigProvider } from 'antd'
-import { lazy, useEffect } from 'react'
+import { lazy } from 'react'
 
 import './index.css'
 import MainLayout from './layouts'
@@ -14,11 +14,7 @@ const Cart = lazy(() => import('./pages/cart'))
 import CheckoutLayout from './layouts/CheckoutLayout'
 import { ToastContainer } from 'react-toastify'
 import 'react-toastify/dist/ReactToastify.css'
-import {
-  cleanUpServiceWorker,
-  initServiceWorker,
-  receiveNotification
-} from './utils/serviceWorkerUtils'
+
 const Complete = lazy(() => import('./pages/redirect/Complete'))
 
 const Checkout = lazy(() => import('./pages/cart/checkout'))

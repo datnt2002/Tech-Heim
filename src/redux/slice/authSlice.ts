@@ -10,6 +10,7 @@ import {
 import { Address, User } from '../../types/User'
 
 interface AuthState {
+  isLoggedIn: boolean
   token: string | null
   currentUser: User | null
   address: Address | null
@@ -17,6 +18,7 @@ interface AuthState {
 }
 
 const initialState: AuthState = {
+  isLoggedIn: false,
   currentUser: null,
   token: null,
   address: null,
@@ -63,7 +65,8 @@ export const authSlice = createAppSlice({
           return {
             ...state,
             loading: false,
-            users: data,
+            isLoggedIn: true,
+            token: data,
             status: status
           }
         },

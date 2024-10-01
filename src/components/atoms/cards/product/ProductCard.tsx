@@ -2,13 +2,11 @@ import { useNavigate } from 'react-router-dom'
 import { useDispatch } from 'react-redux'
 import { AppDispatch } from '../../../../redux/store'
 
-import HeartTag from '../../Tag/HeartTag'
 import ProductCardFooter from './ProductCardFooter'
 
-import { User } from '../../../../types/User'
 import { PriceTag } from '../../../../types/Product'
-import { v4 as uuidv4 } from 'uuid'
 import {} from '../../../../redux/slice/orderSlice'
+import { addToCartThunk } from '../../../../redux/slice/cartSlice'
 
 type Props = {
   id: number
@@ -30,6 +28,7 @@ const ProductCard = ({ id, image, color, name, price, rating }: Props) => {
   const handleAddToCart = async () => {
     const userID = localStorage.getItem('token')
     if (userID) {
+      dispatch(addToCartThunk(id))
     }
   }
 
