@@ -1,11 +1,14 @@
 import { Button } from 'antd'
-import { useDispatch, useSelector } from 'react-redux'
-
-import { AppDispatch, RootState } from '../../../../redux/store'
 
 import { formatNumber } from '../../../../utils/formatNumber'
 import { cn } from '../../../../utils/utils'
 import { CartItem } from '../../../../types/Cart'
+import { useDispatch } from 'react-redux'
+import { AppDispatch } from '../../../../redux/store'
+import {
+  deleteCartItemThunk,
+  updateQuantityThunk
+} from '../../../../redux/slice/cartSlice'
 
 type Props = {
   cartItem: CartItem
@@ -13,8 +16,27 @@ type Props = {
 }
 
 const CardCart = ({ className, cartItem }: Props) => {
-  const { currentUser } = useSelector((state: RootState) => state.auth)
   const dispatch = useDispatch<AppDispatch>()
+
+  const handleDeleteItem = (id: number) => {
+    dispatch(deleteCartItemThunk(id))
+  }
+
+  const increaseCartItem = (id: number) => {
+    const updatedQuantity = cartItem.quantity + 1
+    dispatch(updateQuantityThunk({ cartItemID: id, quantity: updatedQuantity }))
+  }
+
+  const decreaseCartItem = (id: number) => {
+    if (cartItem.quantity > 1) {
+      const updatedQuantity = cartItem.quantity - 1
+      dispatch(
+        updateQuantityThunk({ cartItemID: id, quantity: updatedQuantity })
+      )
+    } else {
+      handleDeleteItem(id)
+    }
+  }
 
   return (
     <div className={cn('w-full h-44 bg-gray-F9F9F9', className)}>
@@ -55,7 +77,11 @@ const CardCart = ({ className, cartItem }: Props) => {
             <p className=' font-semibold'>${formatNumber(cartItem.price)}</p>
 
             <div className='flex'>
-              <Button type='text' className='p-0'>
+              <Button
+                type='text'
+                className='p-0'
+                onClick={() => handleDeleteItem(cartItem.id)}
+              >
                 <img src='/assets/icons/essential/trash_icon.svg' alt='' />
               </Button>
               <div className='flex items-center space-x-4 border-b border-b-gray-717171 ml-2'>
@@ -63,6 +89,7 @@ const CardCart = ({ className, cartItem }: Props) => {
                   type='text'
                   size='small'
                   className='flex items-center justify-center border-none shadow-none '
+                  onClick={() => decreaseCartItem(cartItem.id)}
                 >
                   -
                 </Button>
@@ -71,6 +98,7 @@ const CardCart = ({ className, cartItem }: Props) => {
                   type='text'
                   size='small'
                   className='flex items-center justify-center border-none shadow-none '
+                  onClick={() => increaseCartItem(cartItem.id)}
                 >
                   +
                 </Button>

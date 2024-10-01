@@ -15,7 +15,7 @@ import ListProductFromLanding from '../../components/molecules/product/ListProdu
 import BrandCarousel from '../../components/molecules/brandList/BrandCarousel'
 
 const LandingPage = () => {
-  const { listNewProducts, listBestSellerProducts } = useSelector(
+  const { listNewProducts, listBestSellerProducts, listBrand } = useSelector(
     (state: RootState) => state.product
   )
   // const blogsPost = useSelector((state: RootState) => state.blog.newBlogPost)
@@ -53,12 +53,12 @@ const LandingPage = () => {
               </div>
             )
           })}
-        </div>
-        <BrandCarousel brand={brandList} /> */}
+        </div> */}
+        <BrandCarousel brand={listBrand} />
       </HomeSection>
       <ThirdBanner />
       <HomeSection sectionName='Our Blogs' viewAllButton>
-        {/* <div className='flex flex-col lg:flex-row gap-6 h-full'>
+        <div className='flex flex-col lg:flex-row gap-6 h-full'>
           <BlogCard
             loading={blogLoading}
             className='w-full lg:basis-1/3'
@@ -97,7 +97,7 @@ const LandingPage = () => {
               image={blogsPost[2]?.image}
             />
           </div>
-        </div> */}
+        </div>
       </HomeSection>
       <section className='lg:flex flex-col gap-4 md:flex-row justify-between items-start md:items-center my-14 hidden'>
         <div className='flex gap-4 '>

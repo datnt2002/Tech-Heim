@@ -1,37 +1,37 @@
-import { useEffect } from "react";
-import { useDispatch, useSelector } from "react-redux";
-import { AppDispatch, RootState } from "../../../redux/store";
-import { getSimilarProductThunk } from "../../../redux/slice/productSlice";
-import CarouselWithButton from "../../atoms/carousel/CarouselWithButton";
-import ProductCard from "../../atoms/cards/product/ProductCard";
-import { Product } from "../../../types/Product";
-import ProductCardSKE from "../skeleton/ProductCardSKE";
+import { useEffect } from 'react'
+import { useDispatch, useSelector } from 'react-redux'
+import { AppDispatch, RootState } from '../../../redux/store'
+import CarouselWithButton from '../../atoms/carousel/CarouselWithButton'
+import ProductCard from '../../atoms/cards/product/ProductCard'
+import { PriceTag, Product } from '../../../types/Product'
+import ProductCardSKE from '../skeleton/ProductCardSKE'
+import { getProductByBrandThunk } from '../../../redux/slice/productSlice'
 
 type Props = {
-  product?: Product | null;
-};
+  product?: Product | null
+}
 
 const ProductSimilarCarousel = ({ product }: Props) => {
-  const dispatch = useDispatch<AppDispatch>();
+  const dispatch = useDispatch<AppDispatch>()
   useEffect(() => {
-    if (product) dispatch(getSimilarProductThunk(product));
-  }, [dispatch, product]);
-  const { similarProduct, loading } = useSelector(
+    if (product) dispatch(getProductByBrandThunk(product.brand))
+  }, [dispatch, product])
+  const { listProducts, loading } = useSelector(
     (state: RootState) => state.product
-  );
+  )
 
   if (loading) {
-    <div className="grid grid-cols-4">
+    ;<div className='grid grid-cols-4'>
       {Array(4).map((_, index) => (
         <ProductCardSKE key={index} />
       ))}
-    </div>;
+    </div>
   }
   return (
     <div>
-      <div className="font-medium text-xl mb-8">Similar Product</div>
+      <div className='font-medium text-xl mb-8'>Similar Product</div>
       <CarouselWithButton slideToShow={4}>
-        {similarProduct?.map((product) => {
+        {listProducts?.map((product) => {
           return (
             <ProductCard
               color={product.color}
@@ -39,16 +39,13 @@ const ProductSimilarCarousel = ({ product }: Props) => {
               name={product.name}
               id={product.id}
               image={product.image}
-              price={product.price}
-              rating={product.rating}
-              favorite={product.favorite}
-              percent={product.percent}
-              salePrice={product.salePrice}
+              price={product.price as PriceTag}
+              rating={product.rating as number}
             />
-          );
+          )
         })}
       </CarouselWithButton>
     </div>
-  );
-};
-export default ProductSimilarCarousel;
+  )
+}
+export default ProductSimilarCarousel

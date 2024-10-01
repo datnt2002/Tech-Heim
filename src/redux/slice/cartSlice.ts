@@ -77,6 +77,7 @@ export const cartSlice = createAppSlice({
         }
       }
     }),
+
     deleteCartThunk: create.asyncThunk(deleteCartAPI, {
       pending: (state) => {
         return {

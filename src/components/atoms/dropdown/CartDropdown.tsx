@@ -7,16 +7,16 @@ import { AppDispatch, RootState } from '../../../redux/store'
 
 import { formatNumber } from '../../../utils/formatNumber'
 import CardCart from '../cards/cart/CardCart'
+import { getCartThunk } from '../../../redux/slice/cartSlice'
 
 const CartDropdown = () => {
   const dispatch = useDispatch<AppDispatch>()
   const navigate = useNavigate()
+  const { cart } = useSelector((state: RootState) => state.cart)
+  const { isLoggedIn } = useSelector((state: RootState) => state.auth)
+  const cartItems = cart?.cartItems
 
-  const { user } = useSelector((state: RootState) => state.order)
-  const userID = localStorage.getItem('token')
-  const cart = user?.cart
-
-  const filterCartItems = cart?.filter((item) => {
+  const filterCartItems = cartItems?.filter((item) => {
     return item.quantity > 0
   })
 
@@ -25,8 +25,7 @@ const CartDropdown = () => {
   }, 0)
 
   useEffect(() => {
-    dispatch(getCartItemThunk())
-    if (userID) dispatch(getCartfromUserThunk(userID))
+    dispatch(getCartThunk())
   }, [])
 
   return (
