@@ -46,8 +46,8 @@ const SignupForm = () => {
           rules={[
             { required: true, message: 'Please input your fullName!' },
             {
-              max: 20,
-              message: 'Please input full name less than 20 characters'
+              max: 50,
+              message: 'Please input full name less than 50 characters'
             },
             {
               min: 3,
@@ -91,7 +91,31 @@ const SignupForm = () => {
             placeholder='E-mail'
           />
         </Form.Item>
-
+        <Form.Item<FieldType>
+          name='phoneNumber'
+          rules={[
+            { required: true, message: 'Please input your fullName!' },
+            {
+              max: 20,
+              message: 'Please input full name less than 20 characters'
+            },
+            {
+              min: 3,
+              message: 'Please input full name more than 3 characters'
+            }
+          ]}
+        >
+          <Input
+            size='large'
+            prefix={
+              <img
+                src='/assets/icons/user/user_icon.svg'
+                className='h-4 mr-2'
+              />
+            }
+            placeholder='Phone number'
+          />
+        </Form.Item>
         <Form.Item<FieldType>
           name='password'
           rules={[

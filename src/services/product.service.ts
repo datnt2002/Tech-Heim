@@ -76,9 +76,29 @@ export const getSearchProductsAPI = (search: string) => {
     .catch((err) => err)
 }
 
+export const getSaleProductsAPI = () => {
+  return axiosClient
+    .get('product/sale?limit=10')
+    .then((res) => {
+      const { data, status } = res
+      return { data, status }
+    })
+    .catch((err) => err)
+}
+
 export const getBrandListAPI = () => {
   return axiosClient
-    .get('product/brand/brand-list')
+    .get('product/brand-list')
+    .then((res) => {
+      const { data, status } = res
+      return { data, status }
+    })
+    .catch((err) => err)
+}
+
+export const getCategoriesListAPI = () => {
+  return axiosClient
+    .get('/product/category-list')
     .then((res) => {
       const { data, status } = res
       return { data, status }

@@ -9,15 +9,18 @@ import SearchBox from '../searchBox'
 import { AppDispatch } from '../../../redux/store'
 
 import {
-  getBlogThunk,
-  getNewBlogThunk,
-  getVideoBlogThunk
-} from '../../../redux/slice/blogSlice'
-import {
-  getBestSellerProductsThunk,
+  getBestSellerProductListThunk,
   getBrandListThunk,
-  getNewProductsThunk
+  getCategoriesListThunk,
+  getNewProductsListThunk,
+  getSaleProductListThunk
 } from '../../../redux/slice/productSlice'
+import {
+  getListBlogThunk,
+  getListNewBlogsThunk,
+  getListVideoBlogsThunk
+} from '../../../redux/slice/blogSlice'
+import { getUserDetailThunk } from '../../../redux/slice/authSlice'
 
 const Header = () => {
   const dispatch = useDispatch<AppDispatch>()
@@ -25,9 +28,17 @@ const Header = () => {
 
   //TODO: Add dispatch
   useEffect(() => {
-    dispatch(getNewProductsThunk)
-    dispatch(getBestSellerProductsThunk)
-    dispatch(getBrandListThunk)
+    dispatch(getNewProductsListThunk())
+    dispatch(getBestSellerProductListThunk())
+    dispatch(getBrandListThunk())
+    dispatch(getListBlogThunk())
+    dispatch(getListNewBlogsThunk())
+    dispatch(getListVideoBlogsThunk())
+    dispatch(getSaleProductListThunk())
+    dispatch(getCategoriesListThunk())
+    if (token) {
+      dispatch(getUserDetailThunk())
+    }
   }, [dispatch])
 
   return (

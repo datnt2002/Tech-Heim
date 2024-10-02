@@ -1,9 +1,8 @@
 import axiosClient from './api.service'
 
-export const getBlogAPI = () => {
-  console.log('checked')
+export const getListBlogAPI = () => {
   return axiosClient
-    .get('blog')
+    .get('/blog')
     .then((res) => {
       const { data, status } = res
       return { data, status }
@@ -11,9 +10,9 @@ export const getBlogAPI = () => {
     .catch((err) => err)
 }
 
-export const getDetailBlogAPI = (id?: string) => {
+export const getListNewBlogsAPI = () => {
   return axiosClient
-    .get(`blog/${id}`)
+    .get('/blog?limit=4')
     .then((res) => {
       const { data, status } = res
       return { data, status }
@@ -21,9 +20,9 @@ export const getDetailBlogAPI = (id?: string) => {
     .catch((err) => err)
 }
 
-export const getVideoBlogAPI = () => {
+export const getBlogDetailAPI = (blogID: number) => {
   return axiosClient
-    .get('videoblogs')
+    .get(`/blog/${blogID}`)
     .then((res) => {
       const { data, status } = res
       return { data, status }
@@ -31,9 +30,9 @@ export const getVideoBlogAPI = () => {
     .catch((err) => err)
 }
 
-export const getNewsBlogAPI = () => {
+export const getListVideoBlogAPI = () => {
   return axiosClient
-    .get('blog?_sort=releaseDate&_order=desc&_limit=3')
+    .get('/blog/video')
     .then((res) => {
       const { data, status } = res
       return { data, status }

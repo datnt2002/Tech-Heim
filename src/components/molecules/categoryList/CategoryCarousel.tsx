@@ -1,31 +1,29 @@
-import { useSelector } from "react-redux";
+import { useSelector } from 'react-redux'
 
-import ImgAndNameCard from "../../atoms/cards/ImgAndNameCard";
-import CarouselWithButton from "../../atoms/carousel/CarouselWithButton";
+import ImgAndNameCard from '../../atoms/cards/ImgAndNameCard'
+import CarouselWithButton from '../../atoms/carousel/CarouselWithButton'
 
-import { RootState } from "../../../redux/store";
+import { RootState } from '../../../redux/store'
 
 const CategoryCarousel = () => {
-  const categoriesList = useSelector(
-    (state: RootState) => state.product.categories
-  );
+  const { listCategory } = useSelector((state: RootState) => state.product)
 
   return (
-    <section className="py-6 md:py-12 my-3">
+    <section className='py-6 md:py-12 my-3'>
       <CarouselWithButton slideToShow={6}>
-        {categoriesList?.map((item) => {
+        {listCategory?.map((item) => {
           return (
             <ImgAndNameCard
               key={item.id}
-              name={item.name}
+              name={item.categoryName}
               img={item.image}
-              className="my-3"
+              className='my-3'
             />
-          );
+          )
         })}
       </CarouselWithButton>
     </section>
-  );
-};
+  )
+}
 
-export default CategoryCarousel;
+export default CategoryCarousel
