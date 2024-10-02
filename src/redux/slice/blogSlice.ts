@@ -1,24 +1,24 @@
 import {
-  getBlogAPI,
-  getDetailBlogAPI,
-  getNewsBlogAPI,
-  getVideoBlogAPI
+  getBlogDetailAPI,
+  getListBlogAPI,
+  getListNewBlogsAPI,
+  getListVideoBlogAPI
 } from '../../services/blog.service'
 import { Blog, VideoBlog } from '../../types/Blog'
 import { createAppSlice } from '../appSlice'
 
 interface BlogState {
-  blogsPost: Blog[]
-  videoBlogsPost: VideoBlog[]
-  newBlogPost: Blog[]
+  listBlogs: Blog[]
+  listvideoBlogsPost: VideoBlog[]
+  listNewBlogPost: Blog[]
   detailBlogPost: Blog | null
   loading: boolean
 }
 
 const initialState: BlogState = {
-  blogsPost: [],
-  videoBlogsPost: [],
-  newBlogPost: [],
+  listBlogs: [],
+  listvideoBlogsPost: [],
+  listNewBlogPost: [],
   detailBlogPost: null,
   loading: false
 }
@@ -27,31 +27,7 @@ export const blogSlice = createAppSlice({
   name: 'blog',
   initialState,
   reducers: (create) => ({
-    getBlogThunk: create.asyncThunk(getBlogAPI, {
-      pending: (state) => {
-        console.log(state)
-        return {
-          ...state,
-          loading: true
-        }
-      },
-      fulfilled: (state, action) => {
-        const { data, status } = action.payload
-        return {
-          ...state,
-          loading: false,
-          blogsPost: data,
-          status: status
-        }
-      },
-      rejected: (state) => {
-        return {
-          ...state,
-          loading: false
-        }
-      }
-    }),
-    getVideoBlogThunk: create.asyncThunk(getVideoBlogAPI, {
+    getListBlogThunk: create.asyncThunk(getListBlogAPI, {
       pending: (state) => {
         return {
           ...state,
@@ -63,7 +39,7 @@ export const blogSlice = createAppSlice({
         return {
           ...state,
           loading: false,
-          videoBlogsPost: data,
+          listBlogs: data,
           status: status
         }
       },
@@ -74,7 +50,7 @@ export const blogSlice = createAppSlice({
         }
       }
     }),
-    getNewBlogThunk: create.asyncThunk(getNewsBlogAPI, {
+    getListNewBlogsThunk: create.asyncThunk(getListNewBlogsAPI, {
       pending: (state) => {
         return {
           ...state,
@@ -86,7 +62,7 @@ export const blogSlice = createAppSlice({
         return {
           ...state,
           loading: false,
-          newBlogPost: data,
+          listNewBlogPost: data,
           status: status
         }
       },
@@ -97,10 +73,33 @@ export const blogSlice = createAppSlice({
         }
       }
     }),
-    getDetailBlogThunk: create.asyncThunk(
-      async (id: string) => {
-        const data = await getDetailBlogAPI(id)
-        return data
+    getListVideoBlogsThunk: create.asyncThunk(getListVideoBlogAPI, {
+      pending: (state) => {
+        return {
+          ...state,
+          loading: true
+        }
+      },
+      fulfilled: (state, action) => {
+        const { data, status } = action.payload
+        return {
+          ...state,
+          loading: false,
+          listvideoBlogsPost: data,
+          status: status
+        }
+      },
+      rejected: (state) => {
+        return {
+          ...state,
+          loading: false
+        }
+      }
+    }),
+    getBlogDetailThunk: create.asyncThunk(
+      async (blogID: number) => {
+        const res = await getBlogDetailAPI(blogID)
+        return res
       },
       {
         pending: (state) => {
@@ -110,11 +109,12 @@ export const blogSlice = createAppSlice({
           }
         },
         fulfilled: (state, action) => {
-          const { data } = action.payload
+          const { data, status } = action.payload
           return {
             ...state,
             loading: false,
-            detailBlogPost: data
+            detailBlogPost: data,
+            status: status
           }
         },
         rejected: (state) => {
@@ -129,9 +129,9 @@ export const blogSlice = createAppSlice({
 })
 
 export const {
-  getBlogThunk,
-  getVideoBlogThunk,
-  getNewBlogThunk,
-  getDetailBlogThunk
+  getListBlogThunk,
+  getBlogDetailThunk,
+  getListNewBlogsThunk,
+  getListVideoBlogsThunk
 } = blogSlice.actions
 export default blogSlice.reducer

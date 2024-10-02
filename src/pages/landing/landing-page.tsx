@@ -18,9 +18,15 @@ const LandingPage = () => {
   const { listNewProducts, listBestSellerProducts, listBrand } = useSelector(
     (state: RootState) => state.product
   )
-  // const blogsPost = useSelector((state: RootState) => state.blog.newBlogPost)
-  // const blogLoading = useSelector((state: RootState) => state.blog.loading)
-  console.log(listNewProducts, listBestSellerProducts)
+  const { listNewBlogPost, loading } = useSelector(
+    (state: RootState) => state.blog
+  )
+  console.log(
+    listNewBlogPost,
+    listNewProducts,
+    listBestSellerProducts,
+    listBrand
+  )
 
   return (
     <div className='px-6 md:px-28 mb-14'>
@@ -41,60 +47,47 @@ const LandingPage = () => {
         />
       </HomeSection>
       <HomeSection sectionName='Top Brands' viewAllButton={false}>
-        {/* <div className='lg:flex flex-row overflow-hidden justify-between mb-12 hidden'>
-          {brandList.map((brand) => {
-            return (
-              <div className='w-14 md:w-auto mx-auto' key={brand.id}>
-                <img
-                  src={brand.image}
-                  alt=''
-                  className='object-contain w-full h-full aspect-square'
-                />
-              </div>
-            )
-          })}
-        </div> */}
         <BrandCarousel brand={listBrand} />
       </HomeSection>
       <ThirdBanner />
       <HomeSection sectionName='Our Blogs' viewAllButton>
         <div className='flex flex-col lg:flex-row gap-6 h-full'>
           <BlogCard
-            loading={blogLoading}
+            loading={loading}
             className='w-full lg:basis-1/3'
-            key={blogsPost[0]?.id}
-            id={blogsPost[0]?.id}
-            title={blogsPost[0]?.title}
-            releaseDate={blogsPost[0]?.releaseDate}
-            readTime={blogsPost[0]?.readTime}
-            author={blogsPost[0]?.author}
-            content={blogsPost[0]?.content}
-            image={blogsPost[0]?.image}
+            key={listNewBlogPost[0]?.id}
+            id={listNewBlogPost[0]?.id}
+            title={listNewBlogPost[0]?.title}
+            releaseDate={listNewBlogPost[0]?.releaseDate}
+            readTime={listNewBlogPost[0]?.readTime}
+            author={listNewBlogPost[0]?.author}
+            content={listNewBlogPost[0]?.content}
+            image={listNewBlogPost[0]?.image}
           />
           <div className='flex flex-col flex-1 gap-6 basis-2/3 h-fit'>
             <BlogCard
-              loading={blogLoading}
+              loading={loading}
               mode='horizontal'
-              key={blogsPost[1]?.id}
-              id={blogsPost[1]?.id}
-              title={blogsPost[1]?.title}
-              releaseDate={blogsPost[1]?.releaseDate}
-              readTime={blogsPost[1]?.readTime}
-              author={blogsPost[1]?.author}
-              content={blogsPost[1]?.content}
-              image={blogsPost[1]?.image}
+              key={listNewBlogPost[1]?.id}
+              id={listNewBlogPost[1]?.id}
+              title={listNewBlogPost[1]?.title}
+              releaseDate={listNewBlogPost[1]?.releaseDate}
+              readTime={listNewBlogPost[1]?.readTime}
+              author={listNewBlogPost[1]?.author}
+              content={listNewBlogPost[1]?.content}
+              image={listNewBlogPost[1]?.image}
             />
             <BlogCard
-              loading={blogLoading}
+              loading={loading}
               mode='horizontal'
-              key={blogsPost[2]?.id}
-              id={blogsPost[2]?.id}
-              title={blogsPost[2]?.title}
-              releaseDate={blogsPost[2]?.releaseDate}
-              readTime={blogsPost[2]?.readTime}
-              author={blogsPost[2]?.author}
-              content={blogsPost[2]?.content}
-              image={blogsPost[2]?.image}
+              key={listNewBlogPost[2]?.id}
+              id={listNewBlogPost[2]?.id}
+              title={listNewBlogPost[2]?.title}
+              releaseDate={listNewBlogPost[2]?.releaseDate}
+              readTime={listNewBlogPost[2]?.readTime}
+              author={listNewBlogPost[2]?.author}
+              content={listNewBlogPost[2]?.content}
+              image={listNewBlogPost[2]?.image}
             />
           </div>
         </div>

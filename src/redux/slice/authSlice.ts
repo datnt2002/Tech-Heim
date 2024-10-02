@@ -51,6 +51,9 @@ export const authSlice = createAppSlice({
           password,
           phoneNumber
         })
+        if (res.status === 201) {
+          localStorage.setItem('token', res.data)
+        }
         return res
       },
       {

@@ -1,12 +1,9 @@
 import { Comment } from './Comment'
 
-export type ProductCategory = {
+export type Category = {
   id: string
-  name: string
+  categoryName: string
   image: string
-  icon?: string
-  depth: number
-  subCategories: ProductCategory[]
 }
 
 export type Product = {

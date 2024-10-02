@@ -1,14 +1,17 @@
+import { act } from 'react'
 import {
   getBestSellerProductsAPI,
   getBrandListAPI,
+  getCategoriesListAPI,
   getNewProductsAPI,
   getProductByBrandAPI,
   getProductByCatAPI,
   getProductDetailAPI,
+  getSaleProductsAPI,
   getSearchProductsAPI,
   getSpecFilterAPI
 } from '../../services/product.service'
-import { Brand, Product, SpecFilter } from '../../types/Product'
+import { Brand, Category, Product, SpecFilter } from '../../types/Product'
 import { createAppSlice } from '../appSlice'
 
 interface ProductState {
@@ -18,6 +21,8 @@ interface ProductState {
   listNewProducts: Product[]
   listBestSellerProducts: Product[]
   listSearchProducts: Product[]
+  listSaleProducts: Product[]
+  listCategory: Category[]
   product: Product | null
   specFilter: SpecFilter | null
 }
@@ -30,7 +35,9 @@ const initialState: ProductState = {
   specFilter: null,
   listNewProducts: [],
   listSearchProducts: [],
-  listBestSellerProducts: []
+  listBestSellerProducts: [],
+  listSaleProducts: [],
+  listCategory: []
 }
 
 export const listProductslice = createAppSlice({
@@ -60,7 +67,7 @@ export const listProductslice = createAppSlice({
         }
       }
     }),
-    getFilterProductThunk: create.asyncThunk(
+    getFilterProductListThunk: create.asyncThunk(
       async ({
         category,
         query
@@ -147,7 +154,7 @@ export const listProductslice = createAppSlice({
         }
       }
     ),
-    getSpecFilterThunk: create.asyncThunk(
+    getSpecFilterListThunk: create.asyncThunk(
       async (category: string) => {
         const res = await getSpecFilterAPI(category)
         return res
@@ -176,7 +183,7 @@ export const listProductslice = createAppSlice({
         }
       }
     ),
-    getNewProductsThunk: create.asyncThunk(getNewProductsAPI, {
+    getNewProductsListThunk: create.asyncThunk(getNewProductsAPI, {
       pending: (state) => {
         return {
           ...state,
@@ -199,7 +206,7 @@ export const listProductslice = createAppSlice({
         }
       }
     }),
-    getBestSellerProductsThunk: create.asyncThunk(getBestSellerProductsAPI, {
+    getBestSellerProductListThunk: create.asyncThunk(getBestSellerProductsAPI, {
       pending: (state) => {
         return {
           ...state,
@@ -250,19 +257,67 @@ export const listProductslice = createAppSlice({
           }
         }
       }
-    )
+    ),
+    getSaleProductListThunk: create.asyncThunk(getSaleProductsAPI, {
+      pending: (state) => {
+        return {
+          ...state,
+          loading: true
+        }
+      },
+      fulfilled: (state, action) => {
+        const { data, status } = action.payload
+        return {
+          ...state,
+          loading: false,
+          listSaleProducts: data,
+          status: status
+        }
+      },
+      rejected: (state) => {
+        return {
+          ...state,
+          loading: false
+        }
+      }
+    }),
+    getCategoriesListThunk: create.asyncThunk(getCategoriesListAPI, {
+      pending: (state) => {
+        return {
+          ...state,
+          loading: true
+        }
+      },
+      fulfilled: (state, action) => {
+        const { data, status } = action.payload
+        return {
+          ...state,
+          loading: false,
+          listCategory: data,
+          status: status
+        }
+      },
+      rejected: (state) => {
+        return {
+          ...state,
+          loading: false
+        }
+      }
+    })
   })
 })
 
 export const {
-  getFilterProductThunk,
+  getFilterProductListThunk,
+  getSaleProductListThunk,
   getProductByBrandThunk,
   getProductDetailThunk,
-  getSpecFilterThunk,
-  getNewProductsThunk,
-  getBestSellerProductsThunk,
+  getSpecFilterListThunk,
+  getNewProductsListThunk,
+  getBestSellerProductListThunk,
   getSearchedProductListThunk,
-  getBrandListThunk
+  getBrandListThunk,
+  getCategoriesListThunk
 } = listProductslice.actions
 
 export default listProductslice.reducer
