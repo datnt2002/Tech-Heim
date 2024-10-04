@@ -6,7 +6,7 @@ export type Blog = {
   author: string
   readTime: string
   tags: []
-  releaseDate: string
+  releaseDate: Date
   content: string
   image: string
   comment?: Comment[]

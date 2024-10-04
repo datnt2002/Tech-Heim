@@ -1,51 +1,51 @@
 import React, { useEffect, useState } from 'react'
-import type { ImagePreview as ImagePreviewType } from '../../../types/Product'
 
 type ImagePreviewProps = {
-  imageUrl: string
-
-  imagePreview?: ImagePreviewType[] | null
+  imageUrl: string[]
 }
 
-const ImagePreview: React.FC<ImagePreviewProps> = ({
-  imageUrl,
-
-  imagePreview
-}) => {
-  const [selectedImage, setSelectedImage] = useState(imageUrl)
+const ImagePreview: React.FC<ImagePreviewProps> = ({ imageUrl }) => {
+  const [selectedImage, setSelectedImage] = useState<string | null>(null)
 
   useEffect(() => {
-    if (imagePreview && imagePreview.length > 0) {
-      setSelectedImage(imagePreview[0].img)
+    if (imageUrl && imageUrl.length > 0) {
+      setSelectedImage(imageUrl[0])
     }
-  }, [imagePreview])
+  }, [imageUrl])
 
-  const handleChangeImg = (img: string) => {
-    setSelectedImage(img)
+  const handleChangeImg = (index: number) => {
+    setSelectedImage(imageUrl[index])
+  }
+
+  if (!imageUrl || imageUrl.length === 0) {
+    return <div>No images available</div>
   }
 
   return (
     <div>
-      <div className={` grid grid-cols-5 grid-flow-row gap-3  w-full`}>
-        <div className={` bg-white col-span-5`}>
-          <img
-            className='h-full w-full object-contain'
-            src={selectedImage}
-            alt=''
-          />
+      <div className={`grid grid-cols-5 grid-flow-row gap-3 w-full`}>
+        <div className={`col-span-5`}>
+          {selectedImage ? (
+            <img
+              className=' w-full h-64 object-fit rounded-md'
+              src={selectedImage}
+              alt='Selected'
+            />
+          ) : (
+            <div>No image selected</div>
+          )}
         </div>
 
         <div className='grid grid-cols-5 col-span-5 gap-2'>
-          {imagePreview
-            ?.slice(0, 5)
-            .map((item) => (
-              <img
-                key={item.img}
-                src={item?.img || ''}
-                className='w-full h-full cursor-pointer object-contain'
-                onClick={() => handleChangeImg(item?.img)}
-              />
-            ))}
+          {imageUrl.slice(0, 5).map((_, index) => (
+            <img
+              key={index}
+              src={imageUrl[index]}
+              className='w-full h-full cursor-pointer object-contain'
+              onClick={() => handleChangeImg(index)}
+              alt={`Thumbnail ${index + 1}`}
+            />
+          ))}
         </div>
       </div>
     </div>

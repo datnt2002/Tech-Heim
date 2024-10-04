@@ -6,7 +6,7 @@ import './index.css'
 import MainLayout from './layouts'
 const LandingPage = lazy(() => import('./pages/landing'))
 const Blog = lazy(() => import('./pages/blog'))
-const Products = lazy(() => import('./pages/product/products'))
+
 const DetailBlog = lazy(() => import('./pages/detailblog'))
 const Breadcrumb = lazy(() => import('./components/atoms/breadcrumb'))
 const DetailProduct = lazy(() => import('./pages/detailproduct/[productId]'))
@@ -20,7 +20,7 @@ const Complete = lazy(() => import('./pages/redirect/Complete'))
 const Checkout = lazy(() => import('./pages/cart/checkout'))
 const Payments = lazy(() => import('./pages/cart/payment'))
 const ProductFilterBrand = lazy(
-  () => import('./pages/product/productFilterBrand')
+  () => import('./pages/product/productFilterCategory')
 )
 const DetailUser = lazy(() => import('./pages/account-detail/[accountId]'))
 const AccountDetailLayout = lazy(() => import('./layouts/AccountDetailLayout'))
@@ -65,9 +65,9 @@ function App() {
             <Route path='/' element={<LayoutWithBreadCrumb />}>
               <Route path='/blog' element={<Blog />} />
               <Route path='/blog/:id' element={<DetailBlog />} />
-              <Route path='/products' element={<Products />}></Route>
+
               <Route
-                path='/products/categories/:categoryId'
+                path='/products/categories/:category'
                 element={<ProductFilterBrand />}
               />
               <Route path='/products/:id' element={<DetailProduct />} />

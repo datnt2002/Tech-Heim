@@ -10,6 +10,7 @@ export const getProductByCatAPI = ({
   return axiosClient
     .get(`product/category/${category}`, { params: query })
     .then((res) => {
+      console.log()
       const { data, status } = res
       return { data, status }
     })

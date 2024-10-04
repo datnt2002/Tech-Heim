@@ -22,9 +22,9 @@ const product = () => {
   }, [dispatch, id])
 
   const { product, loading } = useSelector((state: RootState) => state.product)
-  const reviewVideo = useSelector(
-    (state: RootState) => state.blog.videoBlogsPost
-  )
+  const { listvideoBlogsPost } = useSelector((state: RootState) => state.blog)
+
+  console.log(product?.imagePreview)
 
   if (loading) {
   }
@@ -33,10 +33,7 @@ const product = () => {
       <div className='flex xl:flex-row flex-col gap-8 mb-8'>
         <div className='flex lg:flex-row flex-col gap-6'>
           <div className='xl:basis-3/5 lg:basis-1/2'>
-            <ImagePreview
-              imageUrl={product?.image || ''}
-              // imagePreview={product?.imagePreview || null}
-            />
+            <ImagePreview imageUrl={product?.imagePreview as string[]} />
           </div>
           <div className='xl:basis-2/5 lg:basis-1/2'>
             <ProductInfoCard product={product} key={product?.id} />
@@ -53,7 +50,7 @@ const product = () => {
         <ProductSimilarCarousel product={product} />
       </div>
       <div>
-        <VideoBlogCarousel videoBlog={reviewVideo} />
+        <VideoBlogCarousel videoBlog={listvideoBlogsPost} />
       </div>
     </div>
   )
