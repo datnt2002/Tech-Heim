@@ -1,4 +1,4 @@
-import { Comment } from './Comment'
+import { Comments } from './Comment'
 
 export type Category = {
   id: string
@@ -16,10 +16,11 @@ export type Product = {
   category: string
   brand: string
   specifications?: { key: string; value: string }[]
-  comments?: Comment[]
+  comments?: Comments[]
+  imagePreview?: string[]
 }
 
-export type SpecFilter = { [key: string]: string[] }
+export type SpecFilter = { key: string; value: string[] }
 
 export type PriceTag = {
   id: number

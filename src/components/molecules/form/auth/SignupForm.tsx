@@ -1,10 +1,11 @@
 import type { FormProps } from 'antd'
 import { Button, Checkbox, Form, Input } from 'antd'
-import { useDispatch } from 'react-redux'
+import { useDispatch, useSelector } from 'react-redux'
 
-import { AppDispatch } from '../../../../redux/store'
+import { AppDispatch, RootState } from '../../../../redux/store'
 import { setModalState } from '../../../../redux/slice/modalSlice'
 import { registerThunk } from '../../../../redux/slice/authSlice'
+import { SuccessModal } from '../../../organisms/modal'
 
 type FieldType = {
   fullName: string
@@ -17,7 +18,7 @@ type FieldType = {
 const SignupForm = () => {
   const dispatch = useDispatch<AppDispatch>()
   const [form] = Form.useForm()
-
+  const { successModal } = useSelector((state: RootState) => state.appModal)
   const onFinish: FormProps<FieldType>['onFinish'] = (values) => {
     if (values?.isAgree) {
       dispatch(
@@ -35,6 +36,15 @@ const SignupForm = () => {
         })
       )
     }
+  }
+
+  const handleToggleModalSuccess = (isOpen: boolean) => {
+    dispatch(
+      setModalState({
+        key: 'successModal',
+        isOpen: isOpen
+      })
+    )
   }
 
   return (
@@ -169,6 +179,14 @@ const SignupForm = () => {
           </Button>
         </Form.Item>
       </Form>
+      {successModal && (
+        <SuccessModal
+          title='Well done'
+          message='Congratulation your account has been successfully created'
+          isOpen={successModal}
+          setIsOpen={handleToggleModalSuccess}
+        />
+      )}
     </>
   )
 }

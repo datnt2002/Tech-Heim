@@ -27,7 +27,7 @@ const ListProduct = ({ productList, className }: Props) => {
     setTimeout(() => {
       setCurrentPage(page)
       setIsTransitioning(false)
-    }, 300) // Match this duration with your CSS transition duration
+    }, 300)
   }
 
   return (

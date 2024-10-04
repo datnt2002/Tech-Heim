@@ -1,35 +1,35 @@
-import { Link, useLocation } from "react-router-dom";
+import { Link, useLocation } from 'react-router-dom'
 
-import { cn } from "../../../utils/utils";
-import { navBarItems } from "../../../constants";
-import { ProductNavbarDropdown } from "../../atoms/dropdown";
+import { cn } from '../../../utils/utils'
+import { navBarItems } from '../../../constants'
+import { ProductNavbarDropdown } from '../../atoms/dropdown'
 
 const Navbar = () => {
-  const location = useLocation();
+  const location = useLocation()
   return (
-    <div className="hidden md:flex items-center justify-between my-6 py-2 gap-12 font-inter">
+    <div className='hidden md:flex items-center justify-between my-6 py-2 gap-12 font-inter'>
       {navBarItems.map((item) => {
-        return item.key === "products" ? (
-          <ProductNavbarDropdown key="products" />
+        return item.key === 'products' ? (
+          <ProductNavbarDropdown key='products' />
         ) : (
           <div key={item.key}>
             <Link
               to={item.link}
               className={
-                (cn("p-2"),
-                location.pathname === item.link ? "text-primary" : "")
+                (cn('p-2'),
+                location.pathname === item.link ? 'text-primary' : '')
               }
             >
               <p>{item.label}</p>
             </Link>
             {location.pathname === item.link && (
-              <div className="gradient w-full" />
+              <div className='gradient w-full' />
             )}
           </div>
-        );
+        )
       })}
     </div>
-  );
-};
+  )
+}
 
-export default Navbar;
+export default Navbar

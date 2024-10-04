@@ -5,7 +5,7 @@ import CarouselWithButton from '../../atoms/carousel/CarouselWithButton'
 import ProductCard from '../../atoms/cards/product/ProductCard'
 import { PriceTag, Product } from '../../../types/Product'
 import ProductCardSKE from '../skeleton/ProductCardSKE'
-import { getProductByBrandThunk } from '../../../redux/slice/productSlice'
+import { getBestSellerProductListThunk } from '../../../redux/slice/productSlice'
 
 type Props = {
   product?: Product | null
@@ -14,8 +14,8 @@ type Props = {
 const ProductSimilarCarousel = ({ product }: Props) => {
   const dispatch = useDispatch<AppDispatch>()
   useEffect(() => {
-    if (product) dispatch(getProductByBrandThunk(product.brand))
-  }, [dispatch, product])
+    if (product) dispatch(getBestSellerProductListThunk())
+  }, [dispatch])
   const { listProducts, loading } = useSelector(
     (state: RootState) => state.product
   )

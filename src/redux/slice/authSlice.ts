@@ -34,17 +34,20 @@ export const authSlice = createAppSlice({
       return initialState
     }),
     registerThunk: create.asyncThunk(
-      async ({
-        fullName,
-        email,
-        password,
-        phoneNumber
-      }: {
-        fullName: string
-        email: string
-        password: string
-        phoneNumber: string
-      }) => {
+      async (
+        {
+          fullName,
+          email,
+          password,
+          phoneNumber
+        }: {
+          fullName: string
+          email: string
+          password: string
+          phoneNumber: string
+        },
+        { dispatch }
+      ) => {
         const res = await registerAPI({
           fullName,
           email,
@@ -53,6 +56,13 @@ export const authSlice = createAppSlice({
         })
         if (res.status === 201) {
           localStorage.setItem('token', res.data)
+          dispatch(
+            setModalState({
+              key: 'successModal',
+              isOpen: true
+            })
+          )
+          window.location.reload()
         }
         return res
       },
@@ -65,12 +75,14 @@ export const authSlice = createAppSlice({
         },
         fulfilled: (state, action) => {
           const { data, status } = action.payload
-          return {
-            ...state,
-            loading: false,
-            isLoggedIn: true,
-            token: data,
-            status: status
+          if (typeof localStorage.getItem('token') === 'string') {
+            return {
+              ...state,
+              loading: false,
+              isLoggedIn: true,
+              token: data,
+              status: status
+            }
           }
         },
         rejected: (state) => {
@@ -87,9 +99,10 @@ export const authSlice = createAppSlice({
         { dispatch }
       ) => {
         const res = await loginAPI({ email, password })
-        if (res.status === 201) {
-          localStorage.setItem('token', res.data.token)
+        if (res.status === 202) {
+          localStorage.setItem('token', res.data)
           dispatch(setModalState({ key: 'successModal', isOpen: true }))
+          window.location.reload()
         }
         return res
       },
@@ -102,11 +115,14 @@ export const authSlice = createAppSlice({
         },
         fulfilled: (state, action) => {
           const { data, status } = action.payload
-          return {
-            ...state,
-            loading: false,
-            token: data,
-            status: status
+          if (typeof localStorage.getItem('token') === 'string') {
+            return {
+              ...state,
+              loading: false,
+              isLoggedIn: true,
+              token: data,
+              status: status
+            }
           }
         }
       }

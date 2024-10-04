@@ -1,11 +1,8 @@
-export type Comment = {
-  id: string
-  user: string
-  userImage?: string
+export type Comments = {
+  id: number
+  productID: number
+  userID: string
   content: string
-  rating?: number
-  like?: number
-  unlike?: number
-  date: string
-  ratingFunction?: { key: string; value: number }[]
+  date: Date
+  rating: number
 }
