@@ -6,17 +6,11 @@ type Props = {
   options: string[] | number[]
   basePath: string
   queryKey: string
-  checkedValues?: string[]
+  checkedValues: string[]
   onCheckedValuesChange: (queryKey: string, checkedValues: string[]) => void
 }
 
-const Checkbox = ({
-  options,
-  basePath,
-  queryKey,
-  checkedValues,
-  onCheckedValuesChange
-}: Props) => {
+const Checkbox = ({ options, basePath, queryKey, checkedValues, onCheckedValuesChange }: Props) => {
   const navigate = useNavigate()
   const location = useLocation()
   const currentParams = queryString.parse(location.search)
@@ -24,7 +18,6 @@ const Checkbox = ({
   const onChange = (newCheckedValues: Array<string | number>) => {
     const updatedValues = newCheckedValues as string[]
     onCheckedValuesChange(queryKey, updatedValues)
-    console.log(checkedValues)
     const newParams = { ...currentParams }
     if (updatedValues.length > 0) {
       newParams[queryKey] = updatedValues.join(',')
