@@ -5,19 +5,14 @@ import FilterOptions from '../../components/organisms/filter/FilterOptions'
 import { AppDispatch, RootState } from '../../redux/store'
 import { useLocation, useParams } from 'react-router-dom'
 import { useEffect } from 'react'
-import {
-  getFilterProductListThunk,
-  getSpecFilterListThunk
-} from '../../redux/slice/productSlice'
+import { getFilterProductListThunk, getSpecFilterListThunk } from '../../redux/slice/productSlice'
 
 const ProductFilterBrand = () => {
   const { category } = useParams<{ category?: string }>() ?? {}
   const location = useLocation()
 
   const queryParams = new URLSearchParams(location.search)
-  const queryObject: { [key: string]: string } = Object.fromEntries(
-    queryParams.entries()
-  )
+  const queryObject: { [key: string]: string } = Object.fromEntries(queryParams.entries())
   const dispatch = useDispatch<AppDispatch>()
   const { listProducts } = useSelector((state: RootState) => state.product)
   const { specFilter } = useSelector((state: RootState) => state.product)
@@ -53,7 +48,7 @@ const ProductFilterBrand = () => {
       <CategoryListWithIcon />
       <div className='flex'>
         <div className='basis-1/4 mr-6'>
-          {specFilter && <FilterOptions specFilter={specFilter} />}
+          <FilterOptions specFilter={specFilter} />
         </div>
         <div className='basis-3/4'>
           <ListProduct productList={listProducts} className='grid-cols-3' />

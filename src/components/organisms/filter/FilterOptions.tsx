@@ -1,4 +1,4 @@
-import { useEffect, useState } from 'react'
+import { useState, useEffect } from 'react'
 import { Button } from 'antd'
 import CollapseCheckbox from '../../molecules/collapse/Collapse'
 import Checkbox from '../../atoms/checkbox'
@@ -13,23 +13,46 @@ type Props = {
 
 const FilterOptions = ({ specFilter }: Props) => {
   const [switched, setSwitched] = useState<boolean>(false)
-  const [checkedValues, setCheckedValues] = useState<string[]>([])
+  const [checkedValues, setCheckedValues] = useState<{
+    [key: string]: string[]
+  }>({})
+  const [expandedKeys, setExpandedKeys] = useState<{ [key: string]: boolean }>(
+    {}
+  )
   const location = useLocation()
   const navigate = useNavigate()
 
-  useEffect(() => {})
+  useEffect(() => {
+    const params = queryString.parse(location.search)
+    const updatedCheckedValues: { [key: string]: string[] } = {}
+    const newExpandedKeys: { [key: string]: boolean } = {}
+    specFilter.forEach((spec) => {
+      if (params[spec.key]) {
+        updatedCheckedValues[spec.key] = (params[spec.key] as string).split(',')
+        newExpandedKeys[spec.key] = true
+      } else {
+        newExpandedKeys[spec.key] = false
+      }
+    })
+
+    const isDiscounted = params.discount === 'true'
+
+    setCheckedValues(updatedCheckedValues)
+    setSwitched(isDiscounted)
+    setExpandedKeys(newExpandedKeys)
+  }, [location.search, specFilter, switched])
 
   const handleCheckedValuesChange = (
     queryKey: string,
     selectedValues: string[]
   ) => {
     const currentParams = queryString.parse(location.search)
-    setCheckedValues(selectedValues)
+
     const newParams = { ...currentParams }
-    if (currentParams[queryKey]) {
+    if (selectedValues.length > 0) {
       newParams[queryKey] = selectedValues.join(',')
     } else {
-      newParams[queryKey] = []
+      delete newParams[queryKey]
     }
 
     navigate({
@@ -37,7 +60,7 @@ const FilterOptions = ({ specFilter }: Props) => {
       search: queryString.stringify(newParams)
     })
 
-    console.log('Selected Values:', selectedValues)
+    console.log(`${queryKey}`, selectedValues)
   }
 
   const handleSwitchChange = (checked: boolean) => {
@@ -54,12 +77,20 @@ const FilterOptions = ({ specFilter }: Props) => {
     })
   }
 
+  const handleCollapseChange = (key: string) => {
+    setExpandedKeys((prevExpanded) => ({
+      ...prevExpanded,
+      [key]: !prevExpanded[key]
+    }))
+  }
+
   const clearAllFilters = () => {
     navigate({
       pathname: location.pathname,
       search: ''
     })
     setSwitched(false)
+    setCheckedValues({})
   }
 
   return (
@@ -86,12 +117,14 @@ const FilterOptions = ({ specFilter }: Props) => {
         <CollapseCheckbox
           key={spec.key}
           label={spec.key}
+          isOpen={expandedKeys[spec.key]}
+          onToggle={() => handleCollapseChange(spec.key)}
           children={
             <Checkbox
+              queryKey={spec.key}
               options={spec.value}
               basePath={location.pathname}
-              queryKey={spec.key}
-              checkedValues={checkedValues || []}
+              checkedValues={checkedValues[spec.key]}
               onCheckedValuesChange={handleCheckedValuesChange}
             />
           }

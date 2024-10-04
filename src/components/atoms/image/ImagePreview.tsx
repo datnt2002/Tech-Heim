@@ -27,7 +27,7 @@ const ImagePreview: React.FC<ImagePreviewProps> = ({ imageUrl }) => {
         <div className={`col-span-5`}>
           {selectedImage ? (
             <img
-              className=' w-full h-64 object-fit rounded-md'
+              className=' w-full h-80 object-fit rounded-md'
               src={selectedImage}
               alt='Selected'
             />

@@ -46,9 +46,7 @@ const product = () => {
         />
       </div>
       <ProductTab />
-      <div>
-        <ProductSimilarCarousel product={product} />
-      </div>
+
       <div>
         <VideoBlogCarousel videoBlog={listvideoBlogsPost} />
       </div>

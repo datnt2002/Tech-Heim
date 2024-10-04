@@ -16,9 +16,7 @@ const ProductSimilarCarousel = ({ product }: Props) => {
   useEffect(() => {
     if (product) dispatch(getBestSellerProductListThunk())
   }, [dispatch])
-  const { listProducts, loading } = useSelector(
-    (state: RootState) => state.product
-  )
+  const { listBestSellerProducts, loading } = useSelector((state: RootState) => state.product)
 
   if (loading) {
     ;<div className='grid grid-cols-4'>
@@ -31,7 +29,7 @@ const ProductSimilarCarousel = ({ product }: Props) => {
     <div>
       <div className='font-medium text-xl mb-8'>Similar Product</div>
       <CarouselWithButton slideToShow={4}>
-        {listProducts?.map((product) => {
+        {listBestSellerProducts?.map((product) => {
           return (
             <ProductCard
               color={product.color}
