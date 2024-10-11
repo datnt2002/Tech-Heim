@@ -15,7 +15,6 @@ const CartDropdown = () => {
   const { cart } = useSelector((state: RootState) => state.cart)
   const { isLoggedIn } = useSelector((state: RootState) => state.auth)
   const cartItems = cart?.cartItems
-
   const filterCartItems = cartItems?.filter((item) => {
     return item.quantity > 0
   })
@@ -26,7 +25,7 @@ const CartDropdown = () => {
 
   useEffect(() => {
     if (isLoggedIn) dispatch(getCartThunk())
-  }, [])
+  }, [isLoggedIn])
 
   return (
     <Dropdown
