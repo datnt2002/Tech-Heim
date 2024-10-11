@@ -18,11 +18,11 @@ interface AuthState {
 }
 
 const initialState: AuthState = {
-  isLoggedIn: false,
   currentUser: null,
   token: null,
   address: null,
-  loading: true
+  loading: true,
+  isLoggedIn: false
 }
 
 export const authSlice = createAppSlice({
@@ -75,14 +75,13 @@ export const authSlice = createAppSlice({
         },
         fulfilled: (state, action) => {
           const { data, status } = action.payload
-          if (typeof localStorage.getItem('token') === 'string') {
-            return {
-              ...state,
-              loading: false,
-              isLoggedIn: true,
-              token: data,
-              status: status
-            }
+          console.log('data: ', data)
+          return {
+            ...state,
+            loading: false,
+            isLoggedIn: true,
+            token: data,
+            status: status
           }
         },
         rejected: (state) => {
@@ -101,9 +100,14 @@ export const authSlice = createAppSlice({
         const res = await loginAPI({ email, password })
         if (res.status === 202) {
           localStorage.setItem('token', res.data)
+          dispatch(getUserDetailThunk())
           dispatch(setModalState({ key: 'successModal', isOpen: true }))
-          window.location.reload()
         }
+        if (res.status === 500) {
+          dispatch(setModalState({ key: 'errorModal', isOpen: true }))
+          localStorage.removeItem('token')
+        }
+
         return res
       },
       {
@@ -115,14 +119,13 @@ export const authSlice = createAppSlice({
         },
         fulfilled: (state, action) => {
           const { data, status } = action.payload
-          if (typeof localStorage.getItem('token') === 'string') {
-            return {
-              ...state,
-              loading: false,
-              isLoggedIn: true,
-              token: data,
-              status: status
-            }
+
+          return {
+            ...state,
+            loading: false,
+            isLoggedIn: true,
+            token: data,
+            status: status
           }
         }
       }

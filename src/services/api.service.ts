@@ -1,6 +1,7 @@
 import axios from 'axios'
 import { setModalState } from '../redux/slice/modalSlice'
 import { store } from '../redux/store'
+import { logoutAction } from '../redux/slice/authSlice'
 
 const axiosClient = axios.create({
   baseURL: import.meta.env.VITE_API_URL,
@@ -22,7 +23,7 @@ axiosClient.interceptors.request.use(
 
 // Add a response interceptor
 axiosClient.interceptors.response.use(
-  function (response) {
+  async function (response) {
     // Any status code that lie within the range of 2xx cause this function to trigger
     // Do something with response data
 
@@ -34,6 +35,11 @@ axiosClient.interceptors.response.use(
             isOpen: true
           })
         )
+        break
+      case 401:
+        store.dispatch(setModalState({ key: 'errorModal', isOpen: true }))
+        store.dispatch(logoutAction())
+
         break
 
       default:

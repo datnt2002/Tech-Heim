@@ -17,7 +17,7 @@ type Props = {
   rating: number
 }
 
-const ProductCard = ({ id, image, color, name, price, rating }: Props) => {
+const ProductCard = ({ id, image, name, price, rating }: Props) => {
   const nav = useNavigate()
   const dispatch = useDispatch<AppDispatch>()
 
