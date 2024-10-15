@@ -1,19 +1,9 @@
-import { useDispatch } from 'react-redux'
-import { AppDispatch } from '../../../redux/store'
-
 type Props = {
   favorite?: boolean
   id: string
 }
 
-const HeartTag = ({ favorite, id }: Props) => {
-  const dispatch = useDispatch<AppDispatch>()
-  // const handleClickUnlike = () => {
-  //   dispatch(toggleLikeProductThunk({ id, favorite: false }));
-  // };
-  // const handleClickLike = () => {
-  //   dispatch(toggleLikeProductThunk({ id, favorite: true }));
-  // };
+const HeartTag = ({ favorite }: Props) => {
   return (
     <div className='absolute top-2 left-0 py-1 px-[6px] hidden group-hover:block'>
       {favorite ? (

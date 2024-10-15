@@ -2,7 +2,7 @@ import { useState } from 'react'
 import { Product } from '../../../../types/Product'
 
 type Props = {
-  product?: Product | null
+  product?: Product
 }
 
 const ProductInfoCard = ({ product }: Props) => {
